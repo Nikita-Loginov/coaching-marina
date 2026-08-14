@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import classNames from "classnames";
 
-import { Container } from "../container/Container";
+import { Logo, Container, Menu, Button } from "../index.ui";
 
 import { useElementSize } from "@/shared/hooks/index.hooks";
 
@@ -28,14 +28,18 @@ export const Header = () => {
       >
         <Container>
           <div className={scss["header__inner"]}>
-            {/* <Logo /> */}
+            <Logo />
 
-            {/* <Menu /> */}
+            <Menu />
 
             <div className={scss["header__btns"]}>
               {/* <ContactMessageBtn theme="secondary" size="small">
                 <p className="p3">Записаться на консультацию</p>
               </ContactMessageBtn> */}
+
+              <Button theme="primary" size="small">
+                <p className="p3">Записаться на консультацию</p>
+              </Button>
             </div>
           </div>
         </Container>

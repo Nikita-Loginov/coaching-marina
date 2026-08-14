@@ -1,0 +1,25 @@
+.list-default {
+  --list-default-gap: 24px;
+  --list-default-list-gap: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--list-default-gap);
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--list-default-list-gap);
+    align-items: flex-start;
+  }
+
+  &__item,
+  &__link {
+    color: inherit;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --list-default-gap: #{vw(24)};
+    --list-default-list-gap: #{vw(20)};
+  }
+}

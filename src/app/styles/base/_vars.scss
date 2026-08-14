@@ -11,8 +11,12 @@
   --dark-color-0: #000000;
 
   --primary-color-0: #07064a;
+  --primary-color-70: #07064ab2;
+  --primary-color-100: #050438;
 
   --secondary-color-0: #edf4fc;
+  --secondary-color-30: #edf4fc4d;
+  --secondary-color-80: #edf4fccc;
 
   --red-color-100: #660403;
   --red-color-200: #ff5f57;
@@ -82,6 +86,11 @@
   --radius-5xl: 32px;
   --radius-6xl: 36px;
   --radius-7xl: 40px;
+  --radius-8xl: 48px;
+  --radius-9xl: 56px;
+  --radius-10xl: 64px;
+  --radius-11xl: 72px;
+  --radius-12xl: 80px;
   --radius-max: 100000px;
 
   --icon-sm: 16px;
@@ -106,7 +115,7 @@
     1840px + (calc(var(--container-inline-padding) * 2))
   );
 
-  --calback-header-height: 62px;
+  --calback-header-height: 87px;
 
   --gap-blocks: #{calculate-clamp(
       60px,
@@ -127,11 +136,11 @@
 
 @media (min-width: $desktop-breakpoint) {
   :root {
-    --font-size-xxl: #{vw(64)};
-    --font-size-xl: #{vw(40)};
-    --font-size-lg: #{vw(32)};
-    --font-size-md: #{vw(28)};
-    --font-size-base: #{vw(20)};
+    --font-size-xxl: #{vw(120)};
+    --font-size-xl: #{vw(60)};
+    --font-size-lg: #{vw(48)};
+    --font-size-md: #{vw(30)};
+    --font-size-base: #{vw(18)};
     --font-size-sm: #{vw(16)};
     --font-size-xs: #{vw(14)};
     --font-size-xxs: #{vw(12)};
@@ -139,7 +148,7 @@
     --container-max-width: calc(
       #{vw(1840)} + (var(--container-inline-padding) * 2)
     );
-    --calback-header-height: #{vw(62)};
+    --calback-header-height: #{vw(87)};
     --gap-blocks: #{vw(120)};
     --radius-sm: #{vw(4)};
     --radius-base: #{vw(8)};
@@ -152,6 +161,11 @@
     --radius-5xl: #{vw(32)};
     --radius-6xl: #{vw(36)};
     --radius-7xl: #{vw(40)};
+    --radius-8xl: #{vw(48)};
+    --radius-9xl: #{vw(56)};
+    --radius-10xl: #{vw(64)};
+    --radius-11xl: #{vw(72)};
+    --radius-12xl: #{vw(80)};
     --icon-sm: #{vw(16)};
     --icon-base: #{vw(20)};
     --icon-md: #{vw(24)};

@@ -156,14 +156,15 @@ body {
   }
 }
 
-// .link {
-//   color: var(--gray-color-300);
-//   transition: color var(--transition-base);
+.link {
+  color: inherit;
+  transition: opacity var(--transition-base);
 
-//   &:hover {
-//     color: var(--primary-color-100);
-//   }
-// }
+  &:hover {
+    // color: var(--primary-color-0);
+    opacity: 0.7;
+  }
+}
 
 nextjs-portal {
   display: none !important;
