@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  sassOptions: {
+    additionalData: `
+      @use "@/app/styles/base/breakpoints" as *;
+      @use "@/app/styles/base/helpers" as *;
+    `,
+  },
 };
 
 export default nextConfig;

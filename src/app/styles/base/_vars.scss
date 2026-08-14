@@ -1,0 +1,167 @@
+@use "./breakpoints" as *;
+@use "./helpers" as *;
+
+:root {
+  --gray-color-0: #ffffff;
+  --gray-color-10: #ffffff1a;
+  --gray-color-50: #ffffff80;
+  --gray-color-60: #ffffff99;
+  --gray-color-80: #ffffffcc;
+
+  --dark-color-0: #000000;
+
+  --primary-color-0: #07064a;
+
+  --secondary-color-0: #edf4fc;
+
+  --red-color-100: #660403;
+  --red-color-200: #ff5f57;
+
+  --font-family-main: var(--font-inter-sans), sans-serif;
+  --font-family-second: var(--font-playfair-display-sans), sans-serif;
+
+  --weight-font-main: 400;
+  --weight-font-md: 500;
+  --weight-font-lg: 600;
+  --weight-font-xl: 700;
+
+  --font-size-xxl: #{calculate-clamp(
+      64px,
+      120px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+  --font-size-xl: #{calculate-clamp(
+      48px,
+      60px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+  --font-size-lg: #{calculate-clamp(
+      32px,
+      48px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+  --font-size-md: 30px;
+  --font-size-base: 18px;
+  --font-size-sm: #{calculate-clamp(
+      14px,
+      16px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+  --font-size-xs: #{calculate-clamp(
+      12px,
+      14px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+  --font-size-xxs: #{calculate-clamp(
+      10px,
+      12px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+
+  --line-height-base: 1;
+  --line-height-tighter: 1.2;
+  --line-height-tight: 1.3;
+  --line-height-md: 1.4;
+  --line-height-relaxed: 1.5;
+  --line-height-loose: 1.75;
+
+  --radius-sm: 4px;
+  --radius-base: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-4xl: 28px;
+  --radius-5xl: 32px;
+  --radius-6xl: 36px;
+  --radius-7xl: 40px;
+  --radius-max: 100000px;
+
+  --icon-sm: 16px;
+  --icon-base: #{calculate-clamp(
+      16px,
+      20px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+  --icon-md: #{calculate-clamp(20px, 24px, $desktop-breakpoint, $lg-breakpoint)};
+
+  --transition-base: 0.3s;
+
+  --container-inline-padding: #{calculate-clamp(
+      20px,
+      40px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+
+  --container-max-width: calc(
+    1840px + (calc(var(--container-inline-padding) * 2))
+  );
+
+  --calback-header-height: 62px;
+
+  --gap-blocks: #{calculate-clamp(
+      60px,
+      120px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+
+  --header-padding-top: 24px;
+
+  --main-padding-top: 40px;
+
+  --top-padding: calc(
+    var(--header-height, var(--calback-header-height)) + var(--main-padding-top) +
+      var(--header-padding-top)
+  );
+}
+
+@media (min-width: $desktop-breakpoint) {
+  :root {
+    --font-size-xxl: #{vw(64)};
+    --font-size-xl: #{vw(40)};
+    --font-size-lg: #{vw(32)};
+    --font-size-md: #{vw(28)};
+    --font-size-base: #{vw(20)};
+    --font-size-sm: #{vw(16)};
+    --font-size-xs: #{vw(14)};
+    --font-size-xxs: #{vw(12)};
+    --container-inline-padding: #{vw(40)};
+    --container-max-width: calc(
+      #{vw(1840)} + (var(--container-inline-padding) * 2)
+    );
+    --calback-header-height: #{vw(62)};
+    --gap-blocks: #{vw(120)};
+    --radius-sm: #{vw(4)};
+    --radius-base: #{vw(8)};
+    --radius-md: #{vw(12)};
+    --radius-lg: #{vw(14)};
+    --radius-xl: #{vw(16)};
+    --radius-2xl: #{vw(20)};
+    --radius-3xl: #{vw(24)};
+    --radius-4xl: #{vw(28)};
+    --radius-5xl: #{vw(32)};
+    --radius-6xl: #{vw(36)};
+    --radius-7xl: #{vw(40)};
+    --icon-sm: #{vw(16)};
+    --icon-base: #{vw(20)};
+    --icon-md: #{vw(24)};
+    --header-padding-top: #{vw(24)};
+    --main-padding-top: #{vw(40)};
+  }
+}
+
+// @media (max-width: $tablet-breakpoint) {
+//   :root {
+//     --main-padding-top: 40px;
+//   }
+// }
