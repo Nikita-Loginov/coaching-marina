@@ -6,7 +6,7 @@ import { PERSON_CONFIG } from "./person.config";
 export const SITE_CONFIG = {
   name: `${PERSON_CONFIG.name} ${PERSON_CONFIG.middlename}`,
   title: PERSON_CONFIG.post,
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://marinayagunova.ru",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://coaching-marina.vercel.app/",
   locale: "ru_RU",
 
   developer: {
