@@ -29,13 +29,13 @@ export const ListDefault = ({
       {title && <p className={titleClassName}>{title}</p>}
 
       <ul className={scss["list-default__list"]}>
-        {items.map((item) => {
+        {items.map((item, index) => {
           const { as = "link", label, href, ariaLabel, className, target, title} = item;
 
           const content = <p className={className}>{label}</p>;
 
           return (
-            <li className={scss["list-default__link"]}>
+            <li className={scss["list-default__link"]} key={index}>
               {as === "link" && href ? (
                 <Link
                   className={classNames(scss["list-default__item"], 'link')}

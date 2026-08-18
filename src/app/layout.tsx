@@ -13,15 +13,15 @@ import "@styles/global.scss";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  subsets: ["cyrillic", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
   preload: true,
 });
 
 const playfairDisplaySans = Playfair_Display({
   variable: "--font-playfair-display-sans",
-  subsets: ["latin"],
+  subsets: ["cyrillic", "latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
   preload: true,

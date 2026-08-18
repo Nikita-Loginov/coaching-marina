@@ -5,3 +5,5 @@ export * from "./menu/Menu";
 export * from "./button/Button";
 export * from "./footer/Footer";
 export * from "./lists/list-default/ListDefault";
+export * from "./hero/Hero";
+export * from "./top-inner/TopInner";

@@ -15,7 +15,7 @@ export const Menu = () => {
 
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-  const isMobile = () => window.innerWidth <= 1023;
+  // const isMobile = () => window.innerWidth <= 1023;
 
   useEffect(() => {
     if (isOpen) {

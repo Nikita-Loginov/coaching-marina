@@ -13,4 +13,8 @@ export const PERSON_CONFIG = {
       link: "https://yandex.ru/maps/org/bashnya_federatsiya/177194224888/?ll=37.537312%2C55.749572&z=14.54",
     },
   },
+  practice: {
+    label: "лет практики",
+    experience: "12+",
+  },
 };

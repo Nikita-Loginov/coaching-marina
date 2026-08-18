@@ -1,11 +1,11 @@
 export const MENU_ITEMS: { label: string; href: string }[] = [
   {
-    label: "Решения",
-    href: "#solutions",
+    label: "О компании",
+    href: "#philosophy",
   },
   {
-    label: "О компании",
-    href: "#about",
+    label: "Решения",
+    href: "#solutions",
   },
   {
     label: "Программы обучения",

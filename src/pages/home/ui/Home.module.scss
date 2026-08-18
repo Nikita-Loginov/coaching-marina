@@ -1,0 +1,16 @@
+.home {
+  &__btns {
+    --home-btns-gap: 24px;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--home-btns-gap);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    &__btns {
+      --home-btns-gap: #{vw(24)};
+    }
+  }
+}

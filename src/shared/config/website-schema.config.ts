@@ -1,6 +1,5 @@
 // import type { ProgramItem } from "@/entities/program/model/program.types";
 
-import { DEVELOPER_CONFIG } from "./developer.config";
 import { PERSON_CONFIG } from "./person.config";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL!;

@@ -19,18 +19,20 @@
   --button-gap: 8px;
   --button-border-width: 1px;
   --button-radius-icon: 50%;
+  --button-radius-text-small: var(--radius-2xl);
+  --button-radius-text-medium: var(--radius-3xl);
+  --button-flat-hover-transform: 2px;
 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--button-gap);
   cursor: pointer;
-  // width: 100%;
   border: var(--button-border-width) solid transparent;
   transition: background-color var(--transition-base),
     color var(--transition-base), transform var(--transition-base) ease,
     border var(--transition-base), opacity var(--transition-base);
-  font-weight: var(--weight-font-md);  
+  font-weight: var(--weight-font-md);
 
   &--size {
     &-small {
@@ -45,7 +47,7 @@
 
           &-text {
             min-height: var(--button-text-min-height-small);
-            border-radius: var(--radius-2xl);
+            border-radius: var(--button-radius-text-small);
           }
         }
       }
@@ -64,7 +66,7 @@
 
           &-text {
             min-height: var(--button-text-min-height-medium);
-            border-radius: var(--radius-3xl);
+            border-radius: var(--button-radius-text-medium);
           }
         }
       }
@@ -72,10 +74,6 @@
   }
 
   &--variant {
-    // &-text {
-    //   border-radius: var(--radius-2xl);
-    // }
-
     &-icon {
       border-radius: var(--button-radius-icon);
       flex-shrink: 0;
@@ -91,25 +89,24 @@
 
       &:hover {
         opacity: 0.7;
-        // background-color: var(--primary-color-200);
       }
 
       svg path {
-        fill: var(--gray-color-0);
+        stroke: var(--gray-color-0);
       }
     }
 
     &-secondary {
-      background-color: transparent;
-      border-color: var(--primary-color-100);
-      color: var(--gray-color-0);
+      background-color: var(--gray-color-50);
+      border-color: var(--primary-color-10);
+      color: var(--primary-color-0);
 
       svg path {
-        fill: var(--gray-color-0);
+        stroke: var(--primary-color-0);
       }
 
       &:hover {
-        background-color: var(--primary-color-100);
+        background-color: var(--gray-color-0);
         color: var(--dark-color-200);
 
         svg path {
@@ -117,11 +114,45 @@
         }
       }
     }
+
+    &-flat {
+      --button-text-min-height-small: 0px;
+      --button-padding-small: 0 0 4px 0px;
+      --button-padding-medium: 0 0 4px 0px;
+      --button-radius-text-small: 0;
+      --button-radius-text-medium: 0;
+
+      border: none;
+      border-bottom: 1px solid var(--primary-color-10);
+      min-height: 0;
+      border-radius: 0;
+      background-color: transparent;
+      color: var(--primary-color-0);
+      justify-content: flex-start;
+
+      svg path {
+        stroke: var(--primary-color-0);
+      }
+
+      &:hover {
+        opacity: 0.7;
+
+        svg {
+          transform: translateX(var(--button-flat-hover-transform));
+        }
+      }
+    }
+
+    
   }
 
   &--disabled {
     opacity: 0.4;
     cursor: not-allowed;
+  }
+
+  svg {
+    transition: transform var(--transition-base);
   }
 
   &__wrapper {
@@ -143,5 +174,18 @@
 
     --button-gap: #{vw(8)};
     --button-border-width: #{vw(1)};
+    --button-radius-text-small: var(--radius-2xl);
+    --button-radius-text-medium: var(--radius-3xl);
+    --button-flat-hover-transform: #{vw(2)};
+
+    &--theme {
+      &-flat {
+        --button-text-min-height-small: 0px;
+        --button-padding-small: 0 0 #{vw(4)} 0px;
+        --button-padding-medium: 0 0 #{vw(4)} 0px;
+        --button-radius-text-small: 0;
+        --button-radius-text-medium: 0;
+      }
+    }
   }
 }

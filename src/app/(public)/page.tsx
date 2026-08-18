@@ -1,5 +1,5 @@
-export default function Home() {
-  return (
-    <p>jfadf</p>
-  );
+import { Home } from "@/pages/home";
+
+export default function HomePage() {
+  return <Home />;
 }

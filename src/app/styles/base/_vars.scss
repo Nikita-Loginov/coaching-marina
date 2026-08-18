@@ -4,6 +4,7 @@
 :root {
   --gray-color-0: #ffffff;
   --gray-color-10: #ffffff1a;
+  --gray-color-40: #ffffff66;
   --gray-color-50: #ffffff80;
   --gray-color-60: #ffffff99;
   --gray-color-80: #ffffffcc;
@@ -11,6 +12,9 @@
   --dark-color-0: #000000;
 
   --primary-color-0: #07064a;
+  --primary-color-10: #07064a1a;
+  --primary-color-40: #07064a66;
+  --primary-color-60: #07064a99;
   --primary-color-70: #07064ab2;
   --primary-color-100: #050438;
 
@@ -22,8 +26,9 @@
   --red-color-200: #ff5f57;
 
   --font-family-main: var(--font-inter-sans), sans-serif;
-  --font-family-second: var(--font-playfair-display-sans), sans-serif;
+  --font-family-second: var(--font-playfair-display-sans), serif;
 
+  --weight-font-xs: 300;
   --weight-font-main: 400;
   --weight-font-md: 500;
   --weight-font-lg: 600;

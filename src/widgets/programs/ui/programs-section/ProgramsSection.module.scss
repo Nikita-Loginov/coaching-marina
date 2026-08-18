@@ -1,0 +1,14 @@
+.programs {
+  --programs-items-gap: var(--gap-blocks);
+
+  width: 100%;
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+
+    & > *:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  }
+}

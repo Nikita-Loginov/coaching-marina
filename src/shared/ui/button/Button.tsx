@@ -14,7 +14,7 @@ export interface ButtonProps {
   variant?: "text" | "icon";
   as?: "button" | "link";
   size?: "small" | "medium";
-  theme?: "primary" | "secondary";
+  theme?: "primary" | "secondary" | "flat";
   to?: string;
   iconSize?: "small" | "medium" | "big";
   ariaLabel?: string;
