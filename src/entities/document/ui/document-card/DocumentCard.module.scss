@@ -1,0 +1,97 @@
+.document-card {
+  --document-card-padding: 32px;
+  --document-card-gap: 32px;
+  --document-card-border-width: 1px;
+  --document-card-top-gap: 20px;
+  --document-card-header-gap: 20px;
+  --document-card-icon-size: 44px;
+  --document-card-icon-border-width: 1px;
+  --document-card-info-gap: 4px;
+  --document-card-block-gap: 10px;
+  --document-card-footer-gap: 16px;
+  --document-card-btns-gap: 10px;
+
+  padding: var(--document-card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--document-card-gap);
+  background-color: var(--gray-color-50);
+  border: var(--document-card-border-width) solid var(--gray-color-70);
+  border-radius: var(--radius-5xl);
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--document-card-top-gap);
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--document-card-header-gap);
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--document-card-icon-size);
+    aspect-ratio: 1 / 1;
+    background-color: var(--primary-color-10);
+    border: var(--document-card-icon-border-width) solid var(--primary-color-20);
+    color: var(--primary-color-50);
+    border-radius: var(--radius-lg);
+    flex-shrink: 0;
+
+    svg path {
+      stroke: var(--primary-color-50);
+    }
+
+    svg {
+        width: 40%;
+        height: 40%;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: var(--document-card-info-gap);
+    flex-wrap: wrap;
+    color: var(--primary-color-30);
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--document-card-block-gap);
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--document-card-footer-gap);
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--document-card-btns-gap);
+    align-items: flex-start;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --document-card-padding: #{vw(32)};
+    --document-card-gap: #{vw(32)};
+    --document-card-border-width: #{vw(1)};
+    --document-card-top-gap: #{vw(20)};
+    --document-card-header-gap: #{vw(20)};
+    --document-card-icon-size: #{vw(44)};
+    --document-card-icon-border-width: #{vw(1)};
+    --document-card-info-gap: #{vw(4)};
+    --document-card-block-gap: #{vw(10)};
+    --document-card-footer-gap: #{vw(16)};
+    --document-card-btns-gap: #{vw(10)};
+  }
+}

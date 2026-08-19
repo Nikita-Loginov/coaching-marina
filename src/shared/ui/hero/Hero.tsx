@@ -11,6 +11,7 @@ export interface HeroProps {
   title: {
     label: string;
     labelAccent: string;
+    variant?: 'h1' | 'h2'
   };
   desc: string[];
   badge?: string;
@@ -32,7 +33,7 @@ export const Hero = ({
   innerGrid = "grid",
   itemsImg,
 }: HeroProps) => {
-  const { label, labelAccent } = title;
+  const { label, labelAccent, variant = 'h1' } = title;
 
   return (
     <section className={scss["hero"]}>
@@ -49,7 +50,7 @@ export const Hero = ({
                 <p className="p3 primary-color-40 uppercase-text">{badge}</p>
               )}
 
-              <h1 className={classNames("h1", scss['hero__title'])}>
+              <h1 className={classNames(variant, scss['hero__title'])}>
                 {label} <br />{" "}
                 <span className="primary-color-40">{labelAccent}</span>
               </h1>

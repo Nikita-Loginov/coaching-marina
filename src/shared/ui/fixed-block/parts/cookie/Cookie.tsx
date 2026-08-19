@@ -48,7 +48,7 @@ export const Cookie = () => {
                 улучшать ваш пользовательский опыт. Юридические документы
                 доступны на странице{" "}
                 <Link
-                  href={"/svedeniya-ob-obrazovatelnoj-organizacii"}
+                  href={"/svedeniya/obrazovatelnoj-organizacii"}
                   title="Сведения об образовательной организации"
                   aria-label="Перейти на страницу Сведения об образовательной организации"
                   className="link"

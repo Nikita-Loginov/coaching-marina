@@ -65,7 +65,7 @@
         right: 0;
         width: var(--challenge-card-icon-width);
         aspect-ratio: 1 / 1;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Cpath d='M23.9941 10.6641L29.3262 15.9961L23.9941 21.3281' stroke='%2307064A' stroke-opacity='0.3' stroke-width='2.66602' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2.66602 15.9961H29.3262' stroke='%2307064A' stroke-opacity='0.3' stroke-width='2.66602' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Cpath d='M23.9941 10.6641L29.3262 15.9961L23.9941 21.3281' stroke='%2307064A' stroke-opacity='0.3' strokeWidth='2.66602' strokeLinecap='round' strokeLinejoin='round'/%3E%3Cpath d='M2.66602 15.9961H29.3262' stroke='%2307064A' stroke-opacity='0.3' strokeWidth='2.66602' strokeLinecap='round' strokeLinejoin='round'/%3E%3C/svg%3E");
         background-position: center;
         background-size: contain;
       }

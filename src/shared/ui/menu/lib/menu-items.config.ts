@@ -1,22 +1,22 @@
 export const MENU_ITEMS: { label: string; href: string }[] = [
   {
     label: "Обо мне",
-    href: "#about",
+    href: "/#about",
   }, 
   {
     label: "Программы обучения",
-    href: "#programs",
+    href: "/#programs",
   },
   {
     label: "Решения",
-    href: "#solutions",
+    href: "/#solutions",
   },
   {
     label: "FAQ",
-    href: "#fag",
+    href: "/#fag",
   },
   {
     label: "Контакты",
-    href: "#footer",
+    href: "/#footer",
   },
 ];

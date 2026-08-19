@@ -76,7 +76,7 @@ export const Footer = () => {
               <p className="p3">© 2026 Марина Ягунова</p>
 
               <Link
-                href={"/svedeniya-ob-obrazovatelnoj-organizacii"}
+                href={"/svedeniya/obrazovatelnoj-organizacii"}
                 title="Сведения об образовательной организации"
                 aria-label="Перейти на страницу Сведения об образовательной организации"
                 className="link p3"

@@ -13,9 +13,9 @@ export const ArrowChevronBottom = (props: SVGProps<SVGSVGElement>) => {
       <path
         d="M4.99805 7.49707L9.9961 12.4951L14.9941 7.49707"
         stroke-opacity="0.5"
-        stroke-width="1.66602"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.66602"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
