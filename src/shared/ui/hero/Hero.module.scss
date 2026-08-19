@@ -1,7 +1,7 @@
 .hero {
   --hero-inner-gap: 40px;
   --hero-content-gap: 50px;
-  --hero-content-max-width: 65%;
+  --hero-content-max-width: 100%;
   --hero-block-gap: 20px;
   --hero-footer-gap: 40px;
 
@@ -53,7 +53,7 @@
   @media (min-width: $desktop-breakpoint) {
     --hero-inner-gap: #{vw(40)};
     --hero-content-gap: #{vw(50)};
-    --hero-content-max-width: 65%;
+    --hero-content-max-width: 100%;
     --hero-block-gap: #{vw(20)};
     --hero-footer-gap: #{vw(40)};
   }

@@ -1,0 +1,89 @@
+.contact-form {
+  --contact-form-gap: 40px;
+  --contact-form-top-gap: 20px;
+  --contact-form-inputs-gap: 24px;
+  --contact-form-footer-gap: 16px;
+  --contact-form-btns-gap: 20px;
+  --contact-form-content-gap: 30px;
+  --contact-form-content-padding: 40px 0 40px 40px;
+  --contact-form-details-padding: 20px 64px;
+  --contact-form-details-gap: 40px;
+  --contact-form-details-item-gap: 8px;
+
+  display: grid;
+  grid-template-columns: auto 40%;
+  gap: var(--contact-form-gap);
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--contact-form-content-gap);
+    padding: var(--contact-form-content-padding);
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--contact-form-top-gap);
+  }
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--contact-form-inputs-gap);
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--contact-form-footer-gap);
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--contact-form-btns-gap);
+  }
+
+  &__title {
+    font-family: var(--font-family-second);
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--contact-form-details-padding);
+    gap: var(--contact-form-details-gap);
+    background-color: var(--primary-color-10);
+  }
+
+  &__details-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--contact-form-details-item-gap);
+  }
+
+  &__details-item-label {
+    text-transform: uppercase;
+    color: var(--primary-color-40);
+  }
+
+  &__details-item-title {
+    font-size: var(--font-size-md-add);
+    font-family: var(--font-family-second);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --contact-form-gap: #{vw(80)};
+    --contact-form-top-gap: #{vw(35)};
+    --contact-form-inputs-gap: #{vw(24)};
+    --contact-form-footer-gap: #{vw(16)};
+    --contact-form-btns-gap: #{vw(20)};
+    --contact-form-content-gap: #{vw(40)};
+    --contact-form-content-padding: #{vw(80)} 0 #{vw(80)} #{vw(80)};
+    --contact-form-details-padding: #{vw(20)} #{vw(64)};
+    --contact-form-details-gap: #{vw(40)};
+    --contact-form-details-item-gap: #{vw(8)};
+  }
+}

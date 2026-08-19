@@ -1,0 +1,24 @@
+.fixed-block {
+  --fixed-block-gap: 20px;
+  --fixed-block-bottom-offset: 2;
+
+  position: fixed;
+  z-index: 99;
+  right: var(--container-inline-padding);
+  bottom: calc(
+    var(--container-inline-padding) / var(--fixed-block-bottom-offset)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fixed-block-gap);
+
+  &.hidden {
+    display: none;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --fixed-block-gap: #{vw(20)};
+    --fixed-block-bottom-offset: 2;
+  }
+}

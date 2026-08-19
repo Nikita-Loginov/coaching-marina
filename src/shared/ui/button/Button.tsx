@@ -13,13 +13,14 @@ export interface ButtonProps {
   disabled?: boolean;
   variant?: "text" | "icon";
   as?: "button" | "link";
-  size?: "small" | "medium";
+  size?: "small" | "medium" | 'big';
   theme?: "primary" | "secondary" | "flat";
   to?: string;
   iconSize?: "small" | "medium" | "big";
   ariaLabel?: string;
   target?: "_blank" | "_parent";
   tooltip?: string;
+  animationIconHover?: 'left' | 'right' | 'default'
   onClick?: () => void;
   className?: string;
 }
@@ -31,6 +32,7 @@ export const Button = ({
   size = "small",
   theme = "primary",
   iconSize = "medium",
+  animationIconHover = 'right',
   children,
   disabled,
   iconLeft,
@@ -52,6 +54,7 @@ export const Button = ({
     scss[`button--size-${size}`],
     scss[`button--variant-${variant}`],
     scss[`button--theme-${theme}`],
+    scss[`button--animation-${animationIconHover}`],
     {
       [scss["button--disabled"]]: disabled,
     },

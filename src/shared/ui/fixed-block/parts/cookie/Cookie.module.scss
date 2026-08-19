@@ -1,0 +1,53 @@
+.cookie {
+  --cookie-gap: 20px;
+  --cookie-padding: 32px;
+  --cookie-border-width: 1px;
+  --cookie-max-width: 415px;
+  --cookie-header-gap: 16px;
+  --cookie-footer-gap: 16px;
+  --cookie-btns-gap: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--cookie-gap);
+  padding: var(--cookie-padding);
+  background-color: var(--gray-color-80);
+  border: var(--cookie-border-width) solid var(--gray-color-50);
+  backdrop-filter: blur(40px);
+  box-shadow: var(--dark-color-0);
+  border-radius: var(--radius-5xl);
+  overflow: hidden;
+  max-width: var(--cookie-max-width);
+
+  &__header,
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cookie-header-gap);
+  }
+
+  &__footer {
+    gap: var(--cookie-footer-gap);
+  }
+
+  &__btns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--cookie-btns-gap);
+  }
+
+  &__title {
+    font-size: var(--font-size-base);
+    font-family: var(--font-family-second);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --cookie-gap: #{vw(20)};
+    --cookie-padding: #{vw(32)};
+    --cookie-border-width: #{vw(1)};
+    --cookie-max-width: #{vw(415)};
+    --cookie-header-gap: #{vw(16)};
+    --cookie-footer-gap: #{vw(16)};
+    --cookie-btns-gap: #{vw(12)};
+  }
+}

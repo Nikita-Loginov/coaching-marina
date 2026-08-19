@@ -1,6 +1,7 @@
 .button {
   --button-padding-small: 2px 25px;
   --button-padding-medium: 2px 31px;
+  --button-padding-big: 2px 41px;
   --button-icon-size-small: #{calculate-clamp(
       30px,
       40px,
@@ -8,10 +9,17 @@
       $lg-breakpoint
     )};
   --button-icon-size-medium: 48px;
+  --button-icon-size-big: 56px;
   --button-text-min-height-small: 40px;
   --button-text-min-height-medium: #{calculate-clamp(
       42px,
       54px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+  --button-text-min-height-big: #{calculate-clamp(
+      54px,
+      67px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
@@ -21,7 +29,8 @@
   --button-radius-icon: 50%;
   --button-radius-text-small: var(--radius-2xl);
   --button-radius-text-medium: var(--radius-3xl);
-  --button-flat-hover-transform: 2px;
+  --button-radius-text-big: var(--radius-3xl);
+  --button-hover-icon-transform: 2px;
 
   display: flex;
   align-items: center;
@@ -29,9 +38,12 @@
   gap: var(--button-gap);
   cursor: pointer;
   border: var(--button-border-width) solid transparent;
-  transition: background-color var(--transition-base),
-    color var(--transition-base), transform var(--transition-base) ease,
-    border var(--transition-base), opacity var(--transition-base);
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    transform var(--transition-base) ease,
+    border var(--transition-base),
+    opacity var(--transition-base);
   font-weight: var(--weight-font-md);
 
   &--size {
@@ -71,6 +83,25 @@
         }
       }
     }
+
+    &-big {
+      padding: var(--button-padding-big);
+
+      &.button {
+        &--variant {
+          &-icon {
+            padding: 0;
+            width: var(--button-icon-size-big);
+            height: var(--button-icon-size-big);
+          }
+
+          &-text {
+            min-height: var(--button-text-min-height-big);
+            border-radius: var(--button-radius-text-big);
+          }
+        }
+      }
+    }
   }
 
   &--variant {
@@ -87,8 +118,10 @@
       color: var(--gray-color-0);
       border-color: var(--primary-color-0);
 
-      &:hover {
-        opacity: 0.7;
+      &:not(.button--disabled) {
+        &:hover {
+          opacity: 0.7;
+        }
       }
 
       svg path {
@@ -119,8 +152,10 @@
       --button-text-min-height-small: 0px;
       --button-padding-small: 0 0 4px 0px;
       --button-padding-medium: 0 0 4px 0px;
+      --button-padding-big: 0 0 4px 0px;
       --button-radius-text-small: 0;
       --button-radius-text-medium: 0;
+      --button-radius-text-big: 0;
 
       border: none;
       border-bottom: 1px solid var(--primary-color-10);
@@ -136,14 +171,26 @@
 
       &:hover {
         opacity: 0.7;
+      }
+    }
+  }
 
+  &--animation {
+    &-right {
+      &:hover {
         svg {
-          transform: translateX(var(--button-flat-hover-transform));
+          transform: translateX(var(--button-hover-icon-transform));
         }
       }
     }
 
-    
+    &--default {
+      &:hover {
+        svg {
+          transform: translateX(0);
+        }
+      }
+    }
   }
 
   &--disabled {
@@ -167,24 +214,30 @@
   @media (min-width: $desktop-breakpoint) {
     --button-padding-small: #{vw(2)} #{vw(25)};
     --button-padding-medium: #{vw(2)} #{vw(31)};
+    --button-padding-big: #{vw(2)} #{vw(41)};
     --button-icon-size-small: #{vw(40)};
     --button-icon-size-medium: #{vw(48)};
+    --button-icon-size-big: #{vw(56)};
     --button-text-min-height-small: #{vw(40)};
     --button-text-min-height-medium: #{vw(54)};
+    --button-text-min-height-big: #{vw(67)};
 
     --button-gap: #{vw(8)};
     --button-border-width: #{vw(1)};
     --button-radius-text-small: var(--radius-2xl);
     --button-radius-text-medium: var(--radius-3xl);
-    --button-flat-hover-transform: #{vw(2)};
+    --button-radius-text-big: var(--radius-3xl);
+    --button-hover-icon-transform: #{vw(2)};
 
     &--theme {
       &-flat {
         --button-text-min-height-small: 0px;
         --button-padding-small: 0 0 #{vw(4)} 0px;
         --button-padding-medium: 0 0 #{vw(4)} 0px;
+        --button-padding-big: 0 0 #{vw(4)} 0px;
         --button-radius-text-small: 0;
         --button-radius-text-medium: 0;
+        --button-radius-text-big: 0;
       }
     }
   }

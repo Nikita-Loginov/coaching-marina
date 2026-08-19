@@ -1,0 +1,91 @@
+.check {
+  --check-gap: 4px;
+  --check-content-gap: 16px;
+  --check-info-gap: 4px;
+  --check-decor-size: 24px;
+  --check-decor-border-width: 1px;
+  --check-decor-before-size: 60%;
+  --check-error-font-size: var(--font-size-xs);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--check-gap);
+  cursor: pointer;
+
+  &--error {
+    .check {
+      &__decor {
+        border-color: var(--red-color-200);
+      }
+
+      &__info {
+        color: var(--red-color-200);
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: var(--check-content-gap);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--check-info-gap);
+    color: var(--primary-color-60);
+    font-weight: var(--weight-font-xs);
+  }
+
+  &__custom {
+    input {
+      @extend %visually-hidden;
+
+      &:checked + .check__decor:before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__decor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--check-decor-border-width) solid var(--primary-color-20);
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    width: var(--check-decor-size);
+    aspect-ratio: 1 / 1;
+    position: relative;
+    flex-shrink: 0;
+
+    &:before {
+      position: absolute;
+      content: "";
+      width: var(--check-decor-before-size);
+      height: var(--check-decor-before-size);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-base);
+      background-color: var(--primary-color-0);
+      border-radius: inherit;
+    }
+  }
+
+  &__error {
+    color: var(--red-color-200);
+    font-size: var(--check-error-font-size);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --check-gap: #{vw(4)};
+    --check-content-gap: #{vw(16)};
+    --check-info-gap: #{vw(4)};
+    --check-decor-size: #{vw(24)};
+    --check-decor-border-width: #{vw(1)};
+    --check-decor-before-size: 60%;
+    --check-error-font-size: var(--font-size-xs);
+  }
+}

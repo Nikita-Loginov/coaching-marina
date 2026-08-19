@@ -1,5 +1,8 @@
 import { Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
+import { Toaster } from "react-hot-toast";
+
+import { FixedBlock, ModalProvider } from "@/shared/ui/index.ui";
 
 import { seoConfig } from "../shared/config/index.config";
 import {
@@ -10,6 +13,7 @@ import {
 } from "../shared/config/index.config";
 
 import "@styles/global.scss";
+
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -47,7 +51,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
       className={`${interSans.variable} ${playfairDisplaySans.variable}`}
     >
       <body className="body">
-        <div className="wrapper">{children}</div>
+        <ModalProvider>
+          <div className="wrapper">{children}</div>
+
+          <FixedBlock />
+
+          <Toaster position="top-right" />
+
+          <div id="modal-root"></div>
+        </ModalProvider>
 
         <Script
           id="schema"

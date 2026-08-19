@@ -17,7 +17,7 @@
   &__block {
     display: flex;
     gap: var(--top-inner-block-gap);
-    max-width: 38%;
+    
     width: 100%;
 
     &--column {
@@ -28,11 +28,12 @@
       flex-direction: row;
       flex-wrap: wrap;
       align-items: center;
+      // max-width: 100%;
+      justify-content: space-between;
     }
 
     &--left {
       text-align: start;
-      align-items: flex-start;
     }
 
     &--center {
@@ -59,6 +60,7 @@
     gap: var(--top-inner-textbox-gap);
     line-height: var(--line-height-relaxed);
     color: var(--primary-color-60);
+    max-width: 38%;
   }
 
   &__title {

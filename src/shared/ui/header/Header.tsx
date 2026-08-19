@@ -3,17 +3,20 @@
 import { useRef } from "react";
 import classNames from "classnames";
 
-import { Logo, Container, Menu, Button } from "../index.ui";
+import { Logo, Container, Menu, Button, Modal } from "../index.ui";
+import { ContactForm } from "@/features/contact-message/ui";
+import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
 
 import { useElementSize } from "@/shared/hooks/index.hooks";
 
-import scss from "./Header.module.scss";
+import { useModalStore } from "@/store/modal/modal.store";
 
+import scss from "./Header.module.scss";
 
 export const Header = () => {
   const headerRef = useRef<HTMLElement>(null);
 
-  // const { activeModal, close } = useModalStore();
+  const { activeModal, close } = useModalStore();
 
   useElementSize({ ref: headerRef, varName: "header-height" });
 
@@ -33,21 +36,17 @@ export const Header = () => {
             <Menu />
 
             <div className={scss["header__btns"]}>
-              {/* <ContactMessageBtn theme="secondary" size="small">
+              <ContactMessageBtn theme="primary" size="small">
                 <p className="p3">Записаться на консультацию</p>
-              </ContactMessageBtn> */}
-
-              <Button theme="primary" size="small">
-                <p className="p3">Записаться на консультацию</p>
-              </Button>
+              </ContactMessageBtn>
             </div>
           </div>
         </Container>
       </header>
 
-      {/* <Modal isOpen={activeModal === "contact"} onClose={close}>
+      <Modal isOpen={activeModal === "contact"} onClose={close} variant="second">
         <ContactForm />
-      </Modal> */}
+      </Modal>
     </>
   );
 };

@@ -1,0 +1,71 @@
+.cta {
+  --cta-inner-padding: 80px;
+  --cta-inner-gap: 44px;
+  --cta-inner-border-width: 1px;
+  --cta-content-gap: 44px;
+  --cta-content-max-width: 60%;
+  --cta-header-gap: 22px;
+  --cta-footer-gap: 22px;
+  --cta-btns-gap: 16px;
+
+  width: 100%;
+
+  &__inner {
+    background-color: var(--gray-color-40);
+    border: var(--cta-inner-border-width) solid var(--gray-color-60);
+    backdrop-filter: blur(8px);
+    width: 100%;
+    border-radius: var(--radius-10xl);
+    padding: var(--cta-inner-padding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--cta-inner-gap);
+    align-items: center;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cta-content-gap);
+    max-width: var(--cta-content-max-width);
+  }
+
+  &__header,
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: var(--cta-header-gap);
+  }
+
+  &__footer {
+    gap: var(--cta-footer-gap);
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cta-btns-gap);
+  }
+
+  &__title {
+    font-family: var(--font-family-second);
+  }
+
+  &__title-sub {
+    color: var(--primary-color-60);
+    font-style: italic;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --cta-inner-padding: #{vw(80)};
+    --cta-inner-gap: #{vw(44)};
+    --cta-inner-border-width: #{vw(1)};
+    --cta-content-gap: #{vw(44)};
+    --cta-content-max-width: 60%;
+    --cta-header-gap: #{vw(22)};
+    --cta-footer-gap: #{vw(22)};
+    --cta-btns-gap: #{vw(16)};
+  }
+}

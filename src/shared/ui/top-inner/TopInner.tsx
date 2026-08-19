@@ -1,10 +1,11 @@
 import classNames from "classnames";
+import React from "react";
 
 import scss from "./TopInner.module.scss";
 
 type TopInnerItem = {
   label?: string;
-  desc?: string[];
+  desc?: string[] | React.ReactNode[];
   title?: {
     label: string;
     labelAccent?: string;
@@ -56,11 +57,15 @@ export const TopInner = ({ items, children, className }: TopInnerProps) => {
 
               {desc && desc?.length > 0 ? (
                 <div className={scss["top-inner__textbox"]}>
-                  {desc?.map((text, index) => (
-                    <p key={index} className="p2">
-                      {text}
-                    </p>
-                  ))}
+                  {desc.map((text, index) =>
+                    typeof text === "string" ? (
+                      <p key={index} className="p2">
+                        {text}
+                      </p>
+                    ) : (
+                      <React.Fragment key={index}>{text}</React.Fragment>
+                    )
+                  )}
                 </div>
               ) : null}
             </div>

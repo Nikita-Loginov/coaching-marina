@@ -34,7 +34,6 @@ export const ProgramCard = ({
   const lastWord = name.split(' ').at(-1);
   const wordsWithoutLastWord = name.split(' ').slice(0, -1)
   
-  console.log(wordsWithoutLastWord)
   return (
     <div className={scss["program"]}>
       <div className={scss["program__img"]}>

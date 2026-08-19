@@ -1,0 +1,30 @@
+.fag {
+  --fag-max-width: 70%;
+  --fag-block-gap: 6px;
+  --fag-font-size: var(--font-size-sm);
+
+  max-width: var(--fag-max-width);
+  margin: 0 auto;
+
+  &__list {
+    * {
+      color: var(--gray-color-0);
+      font-size: var(--fag-font-size);
+    }
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fag-block-gap);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --fag-max-width: 70%;
+    --fag-block-gap: #{vw(6)};
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    --fag-max-width: 100%;
+  }
+}
