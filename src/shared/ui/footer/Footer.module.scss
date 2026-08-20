@@ -1,12 +1,32 @@
 .footer {
-  --footer-padding: 126px 0 50px;
+  --footer-padding: #{calculate-clamp(
+    60px,
+    126px,
+    $desktop-breakpoint,
+    $tablet-breakpoint
+  )} 0 50px;
   --footer-inner-gap: 48px;
-  --footer-content-gap: 80px;
+  --footer-content-gap: #{calculate-clamp(
+    56px,
+    80px,
+    $desktop-breakpoint,
+    $tablet-breakpoint
+  )};
   --footer-info-gap: 32px;
   --footer-lists-gap: 32px;
-  --footer-block-gap: 32px;
+  --footer-block-gap: #{calculate-clamp(
+    16px,
+    32px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --footer-bottom-gap: 16px;
-  --footer-copy-gap: 20px;
+  --footer-copy-gap: #{calculate-clamp(
+    12px,
+    20px,
+    $desktop-breakpoint,
+    $tablet-breakpoint
+  )};
 
   background-color: var(--primary-color-100);
   color: var(--secondary-color-0);
@@ -79,5 +99,19 @@
     --footer-block-gap: #{vw(32)};
     --footer-bottom-gap: #{vw(16)};
     --footer-copy-gap: #{vw(20)};
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    border-radius: var(--radius-4xl) var(--radius-4xl) 0 0;
+
+    &__info,
+    &__lists {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__lists {
+
+    }
   }
 }

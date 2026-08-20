@@ -24,7 +24,7 @@
     --fag-block-gap: #{vw(6)};
   }
 
-  @media (max-width: $tablet-breakpoint) {
+  @media (max-width: $lg-breakpoint) {
     --fag-max-width: 100%;
   }
 }

@@ -1,6 +1,11 @@
 .challenge {
   --challenge-content-gap: 16px;
-  --challenge-items-gap: 32px;
+  --challenge-items-gap: #{calculate-clamp(
+    16px,
+    32px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --challenge-card-padding: 40px;
   --challenge-card-gap: 16px;
   --challenge-card-border-width: 1px;
@@ -81,5 +86,41 @@
     --challenge-card-item-gap: #{vw(24)};
     --challenge-card-icon-width: #{vw(32)};
     --challenge-card-icon-padding: #{vw(10)};
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    &__items {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    --challenge-card-padding: 24px;
+    --challenge-card-icon-width: 24px;
+
+    &__card {
+      border-radius: var(--radius-3xl);
+    }
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    --challenge-card-item-gap: 10px;
+
+    &__card-content {
+      &:before {
+        display: none;
+      }
+
+      &:not(:last-child) {
+        padding: 0;
+      }
+    }
+
+    &__card-item {
+      display: flex;
+      flex-direction: column;
+      // align-items: normal;
+    }
   }
 }

@@ -1,6 +1,16 @@
 .document-card {
-  --document-card-padding: 32px;
-  --document-card-gap: 32px;
+  --document-card-padding: #{calculate-clamp(
+    24px,
+    32px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
+  --document-card-gap: #{calculate-clamp(
+    24px,
+    32px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --document-card-border-width: 1px;
   --document-card-top-gap: 20px;
   --document-card-header-gap: 20px;

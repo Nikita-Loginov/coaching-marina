@@ -11,4 +11,18 @@
       flex-direction: row-reverse;
     }
   }
+
+  @media (max-width: $lg-breakpoint) {
+    &__items {
+      gap: 60px;
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    &__items {
+      & > *:nth-child(even) {
+        flex-direction: column-reverse;
+      }
+    }
+  }
 }

@@ -1,7 +1,17 @@
 .philosophy {
-  --philosophy-inner-gap: 50px;
+  --philosophy-inner-gap: #{calculate-clamp(
+    24px,
+    50px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --philosophy-content-gap: 30px;
-  --philosophy-items-gap: 64px;
+  --philosophy-items-gap: #{calculate-clamp(
+    24px,
+    64px,
+    $desktop-breakpoint,
+    $tablet-breakpoint
+  )};
   --philosophy-items-max-width: 80%;
 
   width: 100%;
@@ -36,5 +46,9 @@
     --philosophy-content-gap: #{vw(30)};
     --philosophy-items-gap: #{vw(64)};
     --philosophy-items-max-width: 80%;
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    --philosophy-items-max-width: 100%
   }
 }

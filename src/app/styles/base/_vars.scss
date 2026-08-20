@@ -51,19 +51,29 @@
       $lg-breakpoint
     )};
   --font-size-lg: #{calculate-clamp(
-      32px,
+      24px,
       48px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
-  --font-size-md: 30px;
+  --font-size-md: #{calculate-clamp(
+    22px,
+    30px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --font-size-md-add: #{calculate-clamp(
     18px,
     24px,
     $desktop-breakpoint,
     $lg-breakpoint
   )};
-  --font-size-base: 18px;
+  --font-size-base: #{calculate-clamp(
+    16px,
+    18px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --font-size-sm: #{calculate-clamp(
       14px,
       16px,

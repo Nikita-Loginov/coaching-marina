@@ -46,7 +46,7 @@ export const ProgramsModal = () => {
     <Modal isOpen={isOpen} onClose={close}>
       <div className={scss["programs-modal"]}>
         <div className={scss["programs-modal__head"]}>
-          <h2 className="h2 font-text-second">{name}</h2>
+          <h2 className="h3 font-text-second">{name}</h2>
 
           <div className="textbox textbox--second">
             {descriptionFull.map((text, index) => {

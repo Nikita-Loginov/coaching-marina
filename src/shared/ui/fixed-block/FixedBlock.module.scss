@@ -21,4 +21,8 @@
     --fixed-block-gap: #{vw(20)};
     --fixed-block-bottom-offset: 2;
   }
+
+  @media (max-width: $tablet-breakpoint) {
+    left: var(--container-inline-padding);
+  }
 }

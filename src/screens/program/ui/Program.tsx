@@ -25,6 +25,7 @@ export const Program = ({ id }: ProgramProps) => {
         title={{
           label: program.name.split(" ").slice(0, -1).join(" "),
           labelAccent: program.name.split(" ").at(-1),
+          variant: 'h2'
         }}
         innerGrid="default"
         bottomInfo={{

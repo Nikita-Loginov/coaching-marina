@@ -1,10 +1,25 @@
 .hero-img {
   --hero-img-box-padding-inline: 40px;
-  --hero-img-card-padding: 16px 24px;
+  --hero-img-card-padding: #{calculate-clamp(
+    10px,
+    16px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )} #{calculate-clamp(
+    18px,
+    24px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --hero-img-card-gap: 6px;
   --hero-img-card-border-width: 1px;
   --hero-img-card-max-width: 200px;
-  --hero-img-card-even-padding: 16px;
+  --hero-img-card-even-padding: #{calculate-clamp(
+    12px,
+    16px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --hero-img-card-animation-duration: 5s;
   --hero-img-card-rotate: -3deg;
   --hero-img-card-even-rotate: 3deg;
@@ -96,6 +111,13 @@
     --hero-img-card-even-padding: #{vw(16)};
     --hero-img-card-animation-duration: 5s;
     --hero-img-card-translate-y: #{vw(10)};
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    &__box {
+      aspect-ratio: 3 / 4;
+      max-width: 444px;
+    }
   }
 }
 

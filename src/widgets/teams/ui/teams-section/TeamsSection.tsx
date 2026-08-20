@@ -19,8 +19,19 @@ export const TeamsSection = async () => {
             <div className={scss["teams__items"]}>
               <Swiper
                 config={{
-                  slidesPerView: 4,
+                  slidesPerView: 1,
                   spaceBetween: 20,
+                  breakpoints: {
+                    1024: {
+                      slidesPerView: 4,
+                    },
+                    768: {
+                      slidesPerView: 3,
+                    },
+                    480: {
+                      slidesPerView: 2,
+                    }
+                  }
                 }}
                 items={TEAMS_ITEMS.map((team) => (
                   <TeamCard key={team.id} card={{ ...team }} />

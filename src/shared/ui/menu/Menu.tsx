@@ -6,6 +6,8 @@ import classNames from "classnames";
 
 import { MENU_ITEMS } from "./lib/menu-items.config";
 
+import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
+
 // import { ContactMessageBtn } from "@/features/contact-message/ui";
 
 import scss from "./Menu.module.scss";
@@ -50,7 +52,7 @@ export const Menu = () => {
       className={classNames(scss["menu"], isOpen ? scss["active"] : "")}
       ref={menuRef}
     >
-      {/* <button
+      <button
         type="button"
         aria-label="open menu"
         className={scss["menu__burger"]}
@@ -61,7 +63,7 @@ export const Menu = () => {
         }}
       >
         <span></span>
-      </button> */}
+      </button>
 
       <div className={scss["menu__content"]}>
         <nav className={scss["menu__nav"]}>
@@ -77,10 +79,12 @@ export const Menu = () => {
                     aria-label={`Перейти к блоку ${label.toLocaleLowerCase()}`}
                     className={"link"}
                     onClick={() => {
-                      setIsOpen(false)
+                      setIsOpen(false);
                     }}
                   >
-                    <p className={classNames(scss['menu__link-text'])}>{label}</p>
+                    <p className={classNames(scss["menu__link-text"])}>
+                      {label}
+                    </p>
                   </Link>
                 </li>
               );
@@ -90,9 +94,15 @@ export const Menu = () => {
 
         <div className={scss["menu__mobile-details"]}>
           <div className={scss["menu__btns"]}>
-            {/* <ContactMessageBtn theme="secondary" size="small">
-              <p className="p3">Связаться</p>
-            </ContactMessageBtn> */}
+            <ContactMessageBtn
+              theme="primary"
+              size="small"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            >
+              <p className="p3">Записаться на консультацию</p>
+            </ContactMessageBtn>
           </div>
         </div>
       </div>

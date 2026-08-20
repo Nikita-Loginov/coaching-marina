@@ -1,8 +1,23 @@
 .cta {
-  --cta-inner-padding: 80px;
-  --cta-inner-gap: 44px;
+  --cta-inner-padding: #{calculate-clamp(
+      40px,
+      80px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+  --cta-inner-gap: #{calculate-clamp(
+      24px,
+      44px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --cta-inner-border-width: 1px;
-  --cta-content-gap: 44px;
+  --cta-content-gap: #{calculate-clamp(
+      24px,
+      44px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --cta-content-max-width: 60%;
   --cta-header-gap: 22px;
   --cta-footer-gap: 22px;
@@ -67,5 +82,18 @@
     --cta-header-gap: #{vw(22)};
     --cta-footer-gap: #{vw(22)};
     --cta-btns-gap: #{vw(16)};
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    --cta-content-max-width: 80%;
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    --cta-content-max-width: 100%;
+    --cta-inner-padding: 24px 16px;
+
+    &__inner {
+      border-radius: var(--radius-2xl);
+    }
   }
 }

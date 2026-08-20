@@ -1,12 +1,42 @@
 .solutions {
   --solutions-content-gap: 16px;
   --solutions-items-gap: 16px;
-  --solutions-card-gap: 60px;
-  --solutions-card-padding: 40px 40px 40px 50px;
+  --solutions-card-gap: #{calculate-clamp(
+    24px,
+    60px,
+    $lg-breakpoint,
+    $tablet-breakpoint
+  )};
+  --solutions-card-padding: #{calculate-clamp(
+    24px,
+    40px,
+    $lg-breakpoint,
+    $tablet-breakpoint
+  )} #{calculate-clamp(
+    24px,
+    40px,
+    $lg-breakpoint,
+    $tablet-breakpoint
+  )} #{calculate-clamp(
+    24px,
+    40px,
+    $lg-breakpoint,
+    $tablet-breakpoint
+  )} #{calculate-clamp(
+    24px,
+    50px,
+    $lg-breakpoint,
+    $tablet-breakpoint
+  )};
   --solutions-card-border-width: 1px;
   --solutions-card-number-size: 44px;
   --solutions-card-number-border-width: 1px;
-  --solutions-card-content-gap: 48px;
+  --solutions-card-content-gap: #{calculate-clamp(
+    24px,
+    48px,
+    $lg-breakpoint,
+    $tablet-breakpoint
+  )};
   --solutions-card-content-grid-template: auto 73%;
 
   width: 100%;
@@ -104,5 +134,26 @@
     --solutions-card-number-border-width: #{vw(1)};
     --solutions-card-content-gap: #{vw(48)};
     --solutions-card-content-grid-template: auto 73%;
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    &__text {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    --solutions-card-content-gap: 16px;
+
+    &__card {
+      align-items: flex-start;
+      // flex-direction: column;
+    }
+
+    &__card-content {
+      display: flex;
+      flex-direction: column;
+      align-items: normal;
+    }
   }
 }

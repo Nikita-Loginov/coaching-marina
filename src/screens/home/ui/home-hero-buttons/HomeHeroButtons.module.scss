@@ -1,5 +1,10 @@
 .home-hero-buttons {
-  --home-hero-buttons-gap: 24px;
+  --home-hero-buttons-gap: #{calculate-clamp(
+    12px,
+    24px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
 
   display: flex;
   align-items: center;
@@ -8,5 +13,10 @@
 
   @media (min-width: $desktop-breakpoint) {
     --home-hero-buttons-gap: #{vw(24)};
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    align-items: normal;
+    display: grid;
   }
 }

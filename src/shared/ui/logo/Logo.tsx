@@ -30,7 +30,7 @@ export const Logo = ({ variant = "accent", as = "icon" }: LogoProps) => {
           <Icons.LogoAccent />
         ) : null
       ) : (
-        <p className="h4">
+        <p className="h4 font-text-second">
           {PERSON_CONFIG.name} {PERSON_CONFIG.middlename}
         </p>
       )}

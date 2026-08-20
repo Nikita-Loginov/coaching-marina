@@ -22,7 +22,12 @@
   --svedeniya-info-item-link-padding-top: 24px;
   --svedeniya-info-item-sublist-gap: 10px;
   --svedeniya-info-item-sublist-link-gap: 2px;
-  --svedeniya-info-documents-padding: 32px 24px;
+  --svedeniya-info-documents-padding: #{calculate-clamp(
+    24px,
+    32px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )} 24px;
   --svedeniya-info-documents-gap: 20px;
   --svedeniya-info-documents-border-width: 1px;
   --svedeniya-info-documents-items-gap: 16px;
@@ -221,5 +226,14 @@
     --svedeniya-info-documents-gap: #{vw(20)};
     --svedeniya-info-documents-border-width: #{vw(1)};
     --svedeniya-info-documents-items-gap: #{vw(16)};
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: normal;
+      
+    }
   }
 }

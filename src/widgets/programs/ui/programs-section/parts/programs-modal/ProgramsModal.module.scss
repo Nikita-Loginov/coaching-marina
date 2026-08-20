@@ -1,5 +1,10 @@
 .programs-modal {
-  --programs-modal-gap: 64px;
+  --programs-modal-gap: #{calculate-clamp(
+    24px,
+    64px,
+    $lg-breakpoint,
+    $tablet-breakpoint
+  )};
   --programs-modal-head-gap: 32px;
   --programs-modal-content-gap: 48px;
   --programs-modal-items-gap: 48px;

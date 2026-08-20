@@ -1,5 +1,10 @@
 .top-inner {
-  --top-inner-gap: 80px;
+  --top-inner-gap: #{calculate-clamp(
+    24px,
+    80px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --top-inner-content-gap: 16px;
   --top-inner-block-gap: 20px;
   --top-inner-textbox-gap: 16px;
@@ -73,5 +78,31 @@
     --top-inner-content-gap: #{vw(16)};
     --top-inner-block-gap: #{vw(20)};
     --top-inner-textbox-gap: #{vw(16)};
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    &__textbox {
+      max-width: 50%;
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    &__textbox {
+      max-width: 80%;
+    }
+
+    &__block {
+      display: flex;
+      flex-direction: column;
+      align-items: normal;
+
+     
+    }
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    &__textbox {
+      max-width: 100%;
+    }
   }
 }

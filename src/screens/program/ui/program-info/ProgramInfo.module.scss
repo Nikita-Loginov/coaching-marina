@@ -1,7 +1,17 @@
 .program-info {
   --program-info-inner-gap: 16px;
-  --program-info-items-gap: 32px;
-  --program-info-item-padding: 48px;
+  --program-info-items-gap: #{calculate-clamp(
+      16px,
+      32px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+  --program-info-item-padding: #{calculate-clamp(
+      24px,
+      48px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --program-info-item-gap: 24px;
   --program-info-item-border-width: 1px;
   --program-info-item-block-gap: 6px;
@@ -127,5 +137,23 @@
     --program-info-item-link-dot-transform: #{vw(9)};
     --program-info-item-active-block-padding: #{vw(28)};
     --program-info-item-active-block-border-width: #{vw(1)};
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    &__items {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__item {
+      &--active {
+        .program-info {
+          &__item-boxs {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+    }
   }
 }

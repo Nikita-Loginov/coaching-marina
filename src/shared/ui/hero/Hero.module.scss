@@ -1,9 +1,24 @@
 .hero {
-  --hero-inner-gap: 40px;
-  --hero-content-gap: 50px;
+  --hero-inner-gap: #{calculate-clamp(
+      24px,
+      40px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+  --hero-content-gap: #{calculate-clamp(
+      24px,
+      50px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --hero-content-max-width: 100%;
   --hero-block-gap: 20px;
-  --hero-footer-gap: 40px;
+  --hero-footer-gap: #{calculate-clamp(
+      24px,
+      40px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
 
   width: 100%;
 
@@ -56,5 +71,26 @@
     --hero-content-max-width: 100%;
     --hero-block-gap: #{vw(20)};
     --hero-footer-gap: #{vw(40)};
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    &__inner {
+      &--grid {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    &__inner {
+      .hero {
+        &__title {
+          &--h2 {
+            font-size: var(--font-size-lg);
+          }
+        }
+      }
+    }
   }
 }

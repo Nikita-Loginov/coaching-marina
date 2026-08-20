@@ -1,8 +1,23 @@
 .header {
-  --header-padding: 18px 24px;
+  --header-padding: 10px #{calculate-clamp(
+    16px,
+    24px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --header-border-width: 1px;
-  --header-inner-gap: 30px;
-  --header-btns-gap: 32px;
+  --header-inner-gap: #{calculate-clamp(
+    10px,
+    30px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
+  --header-btns-gap: #{calculate-clamp(
+    16px,
+    32px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
 
   position: fixed;
   z-index: 999;
@@ -33,9 +48,15 @@
   }
 
   @media (min-width: $desktop-breakpoint) {
-    --header-padding: #{vw(18)} #{vw(24)};
+    --header-padding: #{vw(10)} #{vw(24)};
     --header-border-width: #{vw(1)};
     --header-inner-gap: #{vw(80)};
     --header-btns-gap: #{vw(32)};
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    &__btns {
+      display: none;
+    }
   }
 }

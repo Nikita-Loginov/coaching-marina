@@ -1,7 +1,22 @@
 .button {
-  --button-padding-small: 2px 25px;
-  --button-padding-medium: 2px 31px;
-  --button-padding-big: 2px 41px;
+  --button-padding-small: 4px #{calculate-clamp(
+    12px,
+    25px,
+    $desktop-breakpoint,
+    $mobile-breakpoint
+  )};
+  --button-padding-medium: 4px #{calculate-clamp(
+    12px,
+    31px,
+    $desktop-breakpoint,
+    $mobile-breakpoint
+  )};
+  --button-padding-big: 4px #{calculate-clamp(
+    12px,
+    41px,
+    $desktop-breakpoint,
+    $mobile-breakpoint
+  )};
   --button-icon-size-small: #{calculate-clamp(
       30px,
       40px,
@@ -212,9 +227,9 @@
   }
 
   @media (min-width: $desktop-breakpoint) {
-    --button-padding-small: #{vw(2)} #{vw(25)};
-    --button-padding-medium: #{vw(2)} #{vw(31)};
-    --button-padding-big: #{vw(2)} #{vw(41)};
+    --button-padding-small: #{vw(4)} #{vw(25)};
+    --button-padding-medium: #{vw(4)} #{vw(31)};
+    --button-padding-big: #{vw(4)} #{vw(41)};
     --button-icon-size-small: #{vw(40)};
     --button-icon-size-medium: #{vw(48)};
     --button-icon-size-big: #{vw(56)};
@@ -241,4 +256,10 @@
       }
     }
   }
+
+  // @media (max-width: $mobile-breakpoint) {
+  //   * {
+  //     font-size: var(--font-size-xs);
+  //   }
+  // }
 }

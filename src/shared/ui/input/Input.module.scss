@@ -1,6 +1,16 @@
 .input-box {
-  --input-content-mh: 58px;
-  --input-content-textarea-mh: 130px;
+  --input-content-mh: #{calculate-clamp(
+    42px,
+    58px,
+    $desktop-breakpoint,
+    $tablet-breakpoint
+  )};
+  --input-content-textarea-mh: #{calculate-clamp(
+    100px,
+    130px,
+    $desktop-breakpoint,
+    $tablet-breakpoint
+  )};
   --input-content-padding: 2px 24px;
   --input-content-textarea-padding: 16px 24px;
   --input-content-gap: 8px;

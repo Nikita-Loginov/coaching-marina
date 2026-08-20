@@ -26,4 +26,24 @@
     --program-textbox-max-width: 60%;
     --program-btns-gap: #{vw(16)};
   }
+
+  @media (max-width: $lg-breakpoint) {
+    &__textbox {
+      --program-textbox-max-width: 100%;
+    }
+   
+
+    &__block {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    &__btns {
+      display: grid;
+      width: 100%;
+      align-items: normal;
+    }
+  }
 }

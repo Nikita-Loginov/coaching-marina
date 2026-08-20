@@ -57,4 +57,37 @@
     --program-block-gap: #{vw(26)};
     --program-footer-gap: #{vw(10)};
   }
+
+  @media (max-width: $lg-breakpoint) {
+    background-color: var(--gray-color-0);
+    padding: #{calculate-clamp(
+      24px,
+      40px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
+    border-radius: var(--radius-2xl);
+    flex-direction: column-reverse;
+
+    &__img {
+      display: none;
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    --program-block-gap: 12px;
+
+    &__img {
+      display: flex;
+    }
+
+    &__title {
+      font-size: var(--font-size-lg);
+      // overflow-wrap: anywhere;
+
+      br {
+        display: none;
+      }
+    }
+  }
 }

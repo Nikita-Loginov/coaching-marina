@@ -8,7 +8,12 @@
   --swiper-pagination-bullet-size: 8px;
   --swiper-pagination-bullet-active-width: 28px;
   --swiper-controls-gap: 20px;
-  --swiper-controls-padding-top: 40px;
+  --swiper-controls-padding-top: #{calculate-clamp(
+    24px,
+    40px,
+    $lg-breakpoint,
+    $tablet-breakpoint
+  )};
 
   min-width: 0;
   width: 100%;
@@ -41,7 +46,7 @@
         display: none;
       }
 
-      @media (max-width: 1023px) {
+      @media (max-width: $lg-breakpoint) {
         grid-template-columns: repeat(3, 1fr);
         --swiper-grid-gap: 16px;
 
@@ -50,11 +55,20 @@
         }
       }
 
-      @media (max-width: 767px) {
+      @media (max-width: $tablet-breakpoint) {
         grid-template-columns: repeat(2, 1fr);
         --swiper-grid-gap: 16px;
 
         & > *:nth-child(n + 3) {
+          display: none;
+        }
+      }
+
+      @media (max-width: $mobile-breakpoint) {
+        grid-template-columns: repeat(1, 1fr);
+        --swiper-grid-gap: 16px;
+
+        & > *:nth-child(n + 2) {
           display: none;
         }
       }
@@ -164,5 +178,11 @@
     --swiper-pagination-bullet-active-width: #{vw(28)};
     --swiper-controls-gap: #{vw(20)};
     --swiper-controls-padding-top: #{vw(40)};
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    &__pagination {
+      display: none;
+    }
   }
 }

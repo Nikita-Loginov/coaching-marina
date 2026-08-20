@@ -88,12 +88,16 @@
   }
 
   @media (max-width: $tablet-breakpoint) {
-    --modal-padding: 4px;
+    // --modal-padding: 4px;
+    --modal-close-top: 16px;
+    --modal-close-right: 16px;
 
     padding: var(--modal-padding);
+   
 
     &__inner {
-      max-height: calc(100dvh - var(--modal-padding) * 2);
+      
+      // max-height: calc(100dvh - var(--modal-padding) * 2);
     }
 
     &--variant {

@@ -1,6 +1,11 @@
 .cookie {
   --cookie-gap: 20px;
-  --cookie-padding: 32px;
+  --cookie-padding: #{calculate-clamp(
+    24px,
+    32px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --cookie-border-width: 1px;
   --cookie-max-width: 415px;
   --cookie-header-gap: 16px;
@@ -49,5 +54,16 @@
     --cookie-header-gap: #{vw(16)};
     --cookie-footer-gap: #{vw(16)};
     --cookie-btns-gap: #{vw(12)};
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    max-width: 100%;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    &__btns {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

@@ -3,13 +3,19 @@ import { Button } from "@/shared/ui/index.ui";
 
 import type { ButtonProps } from "@/shared/ui/index.ui";
 
-export const ContactMessageBtn = ({ children, ...props }: ButtonProps) => {
+export const ContactMessageBtn = ({
+  children,
+  onClick,
+  ...props
+}: ButtonProps) => {
   const { open } = useModalStore();
 
   return (
     <Button
       {...props}
       onClick={() => {
+        onClick?.();
+
         open("contact", {});
       }}
     >

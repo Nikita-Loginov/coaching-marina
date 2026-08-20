@@ -50,7 +50,7 @@ export const Hero = ({
                 <p className="p3 primary-color-40 uppercase-text">{badge}</p>
               )}
 
-              <h1 className={classNames(variant, scss["hero__title"])}>
+              <h1 className={classNames(variant, scss["hero__title"], scss[`hero__title--${variant}`])}>
                 {label}
                 {labelAccent ? (
                   <>
