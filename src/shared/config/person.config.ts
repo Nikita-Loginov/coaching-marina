@@ -1,3 +1,6 @@
+import type { DocumentItem } from "@/entities/document/model/document.types";
+import { Images } from "../images/index.images";
+
 const PERSON_NAME = "Марина";
 const PERSON_MIDDLENAME = "Ягунова";
 const PERSON_FULL_NAME = "Ягунова Марина Григорьевна";
@@ -10,6 +13,11 @@ const PHONE = "+7 (925) 249-98-97";
 const EMAIL = "info@marinayagunova.ru";
 const WEBSITE = "https://marinayagunova.ru";
 
+const EXPERIENCE = "12+";
+
+const CLIENTS_COUNT = "500+";
+const WORK_DIRECTIONS_COUNT = 3;
+
 const ADDRESS =
   "140150, Пушкинский проезд, д. 8, рп. Быково, го Раменский, Московская область";
 
@@ -19,8 +27,20 @@ const LICENSE_DATE = "15.11.2024";
 export const PERSON_CONFIG = {
   name: PERSON_NAME,
   middlename: PERSON_MIDDLENAME,
+  fullname: PERSON_FULL_NAME,
   post: "Командный коуч ICF",
-  // images: [Images.MarinaOne],
+  clients: "500+",
+  countAreas: 3,
+  aboutInfo: {
+    desc: [
+      `За 12+ лет практики я убедилась: настоящие изменения происходят не от правильных советов, а от правильных вопросов. Коучинг — это не исправление человека. Это возвращение ему доступа к тому, что в нём уже есть.`,
+
+      `За годы практики я работала более чем с 500+ клиентами. Сегодня мои 3 направления работы — индивидуальный коучинг для руководителей и предпринимателей, командный коучинг в процессе изменений и образовательные программы для тех, кто хочет освоить коучинговый подход в управлении.`,
+    ],
+    title:
+      "Я работаю с людьми, которые стоят перед важными вопросами — в бизнесе, в команде, в собственном развитии. Моя задача не давать ответы, а создавать пространство, в котором человек может их найти сам.",
+    images: [Images.MarinaTwo],
+  },
 
   socials: {
     telegram: "https://t.me/yagunovam",
@@ -35,7 +55,7 @@ export const PERSON_CONFIG = {
 
   practice: {
     label: "лет практики",
-    experience: "12+",
+    experience: EXPERIENCE,
   },
 
   organization: {
@@ -436,4 +456,31 @@ export const PERSON_CONFIG = {
       },
     ],
   },
+
+  documents: [
+    {
+      id: "1",
+      name: "Политика в отношении обработки персональных данных",
+      description: [
+        "Основные принципы и правила обработки персональных данных.",
+      ],
+      file: "/documents/Политика-обработки-персональных-данных-и-информации-ИП-Ягунова-Марина-Григорьевна-1.pdf",
+    },
+    {
+      id: "2",
+      name: "Положение об обработке персональных данных",
+      description: [
+        "Порядок сбора, обработки, хранения и защиты персональных данных.",
+      ],
+      file: "/documents/Положение-об-обработке-персональных-данных-ИП-Ягунова-М.pdf",
+    },
+    {
+      id: "3",
+      name: "Публичная оферта - групповые онлайн программы",
+      description: [
+        "Условия участия, оплаты и предоставления услуг в рамках групповых онлайн-программ.",
+      ],
+      file: "/documents/oferta.pdf",
+    },
+  ] satisfies DocumentItem[],
 };

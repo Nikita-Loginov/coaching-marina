@@ -1,4 +1,6 @@
-import { Button, Input, Check } from "@/shared/ui/index.ui";
+import { Button } from "@/shared/ui/button/Button";
+import { Input } from "@/shared/ui/input/Input";
+import { Check } from "@/shared/ui/check/Check";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";

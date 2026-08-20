@@ -1,5 +1,8 @@
 export type ModalMap = {
   contact: {};
+  program: {
+    id: string;
+  }
 };
 
 export type ModalType = keyof ModalMap;

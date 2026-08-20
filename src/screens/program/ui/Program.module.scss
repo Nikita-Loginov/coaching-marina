@@ -1,0 +1,29 @@
+.program {
+  &__block {
+    --program-block-gap: 20px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--program-block-gap);
+  }
+
+  &__textbox {
+    --program-textbox-max-width: 60%;
+    max-width: var(--program-textbox-max-width);
+  }
+
+  &__btns {
+    --program-btns-gap: 16px;
+
+    display: flex;
+    align-items: center;
+    gap: var(--program-btns-gap);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --program-block-gap: #{vw(20)};
+    --program-textbox-max-width: 60%;
+    --program-btns-gap: #{vw(16)};
+  }
+}

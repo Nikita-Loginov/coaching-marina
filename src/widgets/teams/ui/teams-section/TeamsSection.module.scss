@@ -1,0 +1,25 @@
+.teams {
+  --teams-inner-gap: 40px;
+  --teams-top-gap: 20px;
+
+  width: 100%;
+  overflow: hidden;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--teams-inner-gap);
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--teams-top-gap);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --teams-inner-gap: #{vw(40)};
+    --teams-top-gap: #{vw(20)};
+  }
+}

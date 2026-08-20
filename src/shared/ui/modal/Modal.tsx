@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
 
-import { Button } from "../index.ui";
+import { Button } from "../button/Button";
 
 import { Icons } from "@/shared/icons/index.icons";
 

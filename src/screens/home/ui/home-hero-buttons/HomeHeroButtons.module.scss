@@ -1,0 +1,12 @@
+.home-hero-buttons {
+  --home-hero-buttons-gap: 24px;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--home-hero-buttons-gap);
+
+  @media (min-width: $desktop-breakpoint) {
+    --home-hero-buttons-gap: #{vw(24)};
+  }
+}

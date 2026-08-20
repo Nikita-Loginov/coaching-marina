@@ -166,7 +166,7 @@ export const seoConfig: Metadata = {
 
   referrer: "origin-when-cross-origin",
 
-  themeColor: "#EDF4FC",
+  // themeColor: "#EDF4FC",
 
   generator: "Next.js",
 };

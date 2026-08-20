@@ -16,3 +16,4 @@ export * from "./modal/Modal";
 export * from "./email/EmailLayout";
 export * from "./input/Input";
 export * from "./check/Check";
+export * from "./swiper/Swiper";

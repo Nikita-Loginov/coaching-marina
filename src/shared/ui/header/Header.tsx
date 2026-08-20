@@ -3,7 +3,10 @@
 import { useRef } from "react";
 import classNames from "classnames";
 
-import { Logo, Container, Menu, Button, Modal } from "../index.ui";
+import { Logo } from "../logo/Logo";
+import { Container } from "../container/Container";
+import { Menu } from "../menu/Menu";
+import { Modal } from "../modal/Modal";
 import { ContactForm } from "@/features/contact-message/ui";
 import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
 

@@ -6,7 +6,7 @@
       80px,
       $lg-breakpoint,
       $tablet-breakpoint
-    )} var(--modal-close-right);
+    )} var(--modal-close-right) var(--modal-close-top);
   --modal-inner-border-radius: var(--radius-8xl);
   --modal-close-size: 32px;
   --modal-close-top: 32px;
@@ -73,7 +73,7 @@
 
   @media (min-width: $desktop-breakpoint) {
     // --modal-padding: #{vw(20)};
-    --modal-inner-padding: #{vw(40)} #{vw(80)};
+    --modal-inner-padding: #{vw(80)} var(--modal-close-right) var(--modal-close-top);
     --modal-close-size: #{vw(32)};
     --modal-close-top: #{vw(32)};
     --modal-close-right: #{vw(32)};

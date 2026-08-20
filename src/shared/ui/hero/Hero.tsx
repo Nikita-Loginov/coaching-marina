@@ -10,10 +10,10 @@ import scss from "./Hero.module.scss";
 export interface HeroProps {
   title: {
     label: string;
-    labelAccent: string;
-    variant?: 'h1' | 'h2'
+    labelAccent?: string;
+    variant?: "h1" | "h2";
   };
-  desc: string[];
+  desc?: string[];
   badge?: string;
   img?: HeroImgItem;
   itemsImg?: HeroImgCardItem[];
@@ -33,7 +33,7 @@ export const Hero = ({
   innerGrid = "grid",
   itemsImg,
 }: HeroProps) => {
-  const { label, labelAccent, variant = 'h1' } = title;
+  const { label, labelAccent, variant = "h1" } = title;
 
   return (
     <section className={scss["hero"]}>
@@ -50,30 +50,39 @@ export const Hero = ({
                 <p className="p3 primary-color-40 uppercase-text">{badge}</p>
               )}
 
-              <h1 className={classNames(variant, scss['hero__title'])}>
-                {label} <br />{" "}
-                <span className="primary-color-40">{labelAccent}</span>
+              <h1 className={classNames(variant, scss["hero__title"])}>
+                {label}
+                {labelAccent ? (
+                  <>
+                    <br />{" "}
+                    <span className="primary-color-40">{labelAccent}</span>
+                  </>
+                ) : null}
               </h1>
             </div>
 
-            <div className={scss["hero__footer"]}>
-              <div className={classNames("textbox", scss["hero__textbox"])}>
-                {desc.map((text, index) => {
-                  return (
-                    <p className="p1" key={index}>
-                      {text}
-                    </p>
-                  );
-                })}
-              </div>
+            {desc ?  <div className={scss["hero__footer"]}>
+              {desc.length > 0 ? (
+                <div className={classNames("textbox", "textbox--second")}>
+                  {desc.map((text, index) => {
+                    return (
+                      <p className="p1" key={index}>
+                        {text}
+                      </p>
+                    );
+                  })}
+                </div>
+              ) : null}
 
               {bottomInfo?.content && bottomInfo.position === "left"
                 ? bottomInfo.content
                 : null}
-            </div>
+            </div> : null}
+
+           
           </div>
 
-          {(img && itemsImg) ? <HeroImg img={img} items={itemsImg} /> : null}
+          {img && itemsImg ? <HeroImg img={img} items={itemsImg} /> : null}
 
           {bottomInfo?.content && bottomInfo.position === "bottom"
             ? bottomInfo.content

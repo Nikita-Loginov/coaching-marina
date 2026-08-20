@@ -1,0 +1,81 @@
+.programs-modal {
+  --programs-modal-gap: 64px;
+  --programs-modal-head-gap: 32px;
+  --programs-modal-content-gap: 48px;
+  --programs-modal-items-gap: 48px;
+  --programs-modal-item-gap: 16px;
+  --programs-modal-item-content-gap: 16px;
+  --programs-modal-item-list-gap: 14px;
+  --programs-modal-item-link-gap: 6px;
+  --programs-modal-item-title-font-size: var(--font-size-md-add);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--programs-modal-gap);
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--programs-modal-head-gap);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--programs-modal-content-gap);
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--programs-modal-items-gap);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--programs-modal-item-gap);
+  }
+
+  &__item-title {
+    font-size: var(--programs-modal-item-title-font-size);
+    font-family: var(--font-family-second);
+  }
+
+  &__item-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--programs-modal-item-content-gap);
+  }
+
+  &__item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__item-link {
+    font-weight: var(--weight-font-xs);
+    color: var(--primary-color-50);
+    counter-increment: list 1;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--programs-modal-item-link-gap);
+
+    &:before {
+      content: counter(list) ") ";
+    }
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --programs-modal-gap: #{vw(64)};
+    --programs-modal-head-gap: #{vw(32)};
+    --programs-modal-content-gap: #{vw(48)};
+    --programs-modal-items-gap: #{vw(48)};
+    --programs-modal-item-gap: #{vw(16)};
+    --programs-modal-item-content-gap: #{vw(16)};
+    --programs-modal-item-list-gap: #{vw(14)};
+    --programs-modal-item-link-gap: #{vw(6)};
+    --programs-modal-item-title-font-size: var(--font-size-md-add);
+  }
+}
