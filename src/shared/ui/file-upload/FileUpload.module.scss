@@ -1,0 +1,75 @@
+.upload {
+  --upload-gap: 8px;
+  --upload-box-min-height: 140px;
+  --upload-box-border-width: 1px;
+  --upload-box-gap: 8px;
+  --upload-file-min-height: 80px;
+  --upload-file-padding: 16px;
+  --upload-file-gap: 16px;
+  --upload-file-info-gap: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--upload-gap);
+
+  &__content {
+    width: 100%;
+  }
+
+  &__box {
+    min-height: var(--upload-box-min-height);
+    border: var(--upload-box-border-width) dashed var(--primary-color-0);
+    border-radius: var(--radius-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--upload-box-gap);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--primary-color-10);
+    }
+  }
+
+  &__file {
+    min-height: var(--upload-file-min-height);
+    padding: var(--upload-file-padding);
+    border-radius: var(--radius-xl);
+    background-color: var(--primary-color-0);
+    color: var(--gray-color-0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--upload-file-gap);
+  }
+
+  &__file-info {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--upload-file-info-gap);
+
+    a {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &__error {
+    color: var(--red-color-100);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --upload-gap: #{vw(8)};
+    --upload-box-min-height: #{vw(140)};
+    --upload-box-border-width: #{vw(1)};
+    --upload-box-gap: #{vw(8)};
+    --upload-file-min-height: #{vw(80)};
+    --upload-file-padding: #{vw(16)};
+    --upload-file-gap: #{vw(16)};
+    --upload-file-info-gap: #{vw(12)};
+  }
+}

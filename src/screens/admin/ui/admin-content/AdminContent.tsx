@@ -6,7 +6,7 @@ interface AdminContentProps {
   children?: React.ReactNode;
   title: string;
   text: string;
-  linkTo: string;
+  linkTo?: string;
   linkLabel?: string
 }
 

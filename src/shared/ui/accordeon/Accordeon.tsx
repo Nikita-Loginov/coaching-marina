@@ -53,6 +53,7 @@ export const Accordeon = ({
                 isOpen ? scss["open"] : ""
               }`}
               onClick={() => toggleItem(item.key)}
+              type="button"
             >
               <span className={"p1"}>{item.label}</span>
 

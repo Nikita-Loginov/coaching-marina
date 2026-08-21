@@ -6,6 +6,9 @@
   --admin-form-item-gap: 16px;
   --admin-form-footer-gap: 10px;
   --admin-form-btns-gap: 16px;
+  --admin-form-content-gap: 16px;
+  --admin-form-block-gap: 16px;
+  --admin-form-documents-item-padding: 24px;
 
   display: flex;
   flex-direction: column;
@@ -25,6 +28,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--admin-form-inputs-gap);
+
+    &.admin-form__inputs--full {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 
   &__item {
@@ -47,6 +54,13 @@
   &__content {
     display: flex;
     flex-direction: column;
+    gap: var(--admin-form-content-gap);
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-form-block-gap);
   }
 
   &__btns {
@@ -60,6 +74,14 @@
     }
   }
 
+  &__documents {
+    .admin-form__item {
+      padding: var(--admin-form-documents-item-padding);
+      background-color: var(--primary-color-20);
+      border-radius: var(--radius-xl);
+    }
+  }
+
   @media (min-width: $desktop-breakpoint) {
     --admin-form-gap: #{vw(24)};
     --admin-form-max-width: 90%;
@@ -68,6 +90,9 @@
     --admin-form-item-gap: #{vw(16)};
     --admin-form-footer-gap: #{vw(10)};
     --admin-form-btns-gap: #{vw(16)};
+    --admin-form-content-gap: #{vw(16)};
+    --admin-form-block-gap: #{vw(16)};
+    --admin-form-documents-item-padding: #{vw(24)};
   }
 
   @media (max-width: $tablet-breakpoint) {

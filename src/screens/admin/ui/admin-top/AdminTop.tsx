@@ -7,7 +7,7 @@ import scss from "./AdminTop.module.scss";
 interface AdminTopProps {
   title: string;
   text: string;
-  linkTo: string;
+  linkTo?: string;
   linkLabel?: string;
 }
 
@@ -25,20 +25,22 @@ export const AdminTop = ({
         <p className="p2 primary-color-400">{text}</p>
       </div>
 
-      <div className={scss["admin-top__block"]}>
-        <div className={scss["admin-top__btns"]}>
-          <Button
-            as="link"
-            ariaLabel={`Перейти к добавлению ${title}`}
-            // size="medium"
-            to={linkTo}
-            iconSize="medium"
-            // iconLeft={<Plus />}
-          >
-            <p className="p3">{linkLabel}</p>
-          </Button>
+      {linkTo ? (
+        <div className={scss["admin-top__block"]}>
+          <div className={scss["admin-top__btns"]}>
+            <Button
+              as="link"
+              ariaLabel={`Перейти к добавлению ${title}`}
+              // size="medium"
+              to={linkTo}
+              iconSize="medium"
+              // iconLeft={<Plus />}
+            >
+              <p className="p3">{linkLabel}</p>
+            </Button>
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 };

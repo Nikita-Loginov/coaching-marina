@@ -1,0 +1,93 @@
+.multi-box {
+  --multi-box-gap: 16px;
+  --multi-box-content-padding: 20px;
+  --multi-box-content-gap: 20px;
+  --multi-box-content-border-width: 1px;
+  --multi-box-footer-gap: 16px;
+  --multi-box-btns-gap: 10px;
+  --multi-box-item-gap: 20px;
+  --multi-box-item-content-gap: 12px;
+  --multi-box-item-actions-gap: 12px;
+  --multi-box-item-inputs-gap: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--multi-box-gap);
+
+  &--error {
+    .multi-box {
+      &__content {
+        border-color: var(--red-color-100);
+        color: var(--red-color-100);
+      }
+    }
+  }
+
+  &__content {
+    padding: var(--multi-box-content-padding);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    background-color: var(--gray-color-100);
+    border: var(--multi-box-content-border-width) solid var(--primary-color-115);
+    display: flex;
+    flex-direction: column;
+    gap: var(--multi-box-content-gap);
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--multi-box-footer-gap);
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--multi-box-btns-gap);
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--multi-box-item-gap);
+  }
+
+  &__item-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--multi-box-item-content-gap);
+  }
+
+  &__item-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--multi-box-item-actions-gap);
+  }
+
+  &__item-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--multi-box-item-inputs-gap);
+  }
+
+  &__error {
+    text-align: left;
+    color: var(--red-color-200);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --multi-box-gap: #{vw(16)};
+    --multi-box-content-padding: #{vw(20)};
+    --multi-box-content-gap: #{vw(20)};
+    --multi-box-content-border-width: #{vw(1)};
+    --multi-box-footer-gap: #{vw(16)};
+    --multi-box-btns-gap: #{vw(10)};
+    --multi-box-item-gap: #{vw(20)};
+    --multi-box-item-content-gap: #{vw(12)};
+    --multi-box-item-actions-gap: #{vw(12)};
+    --multi-box-item-inputs-gap: #{vw(12)};
+  }
+}

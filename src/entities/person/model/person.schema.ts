@@ -1,88 +1,99 @@
 import { z } from "zod";
 
+const personAboutSchema = z.object({
+  desc: z.array(z.string()),
+
+  title: z.string().min(1, "Введите заголовок"),
+
+  experience: z.string().min(1, "Введите опыт"),
+
+  images: z.array(z.string()),
+});
+
+const personAddressSchema = z.object({
+  label: z.string().min(1, "Введите адрес"),
+
+  link: z.string().min(1, "Введите ссылку на карту"),
+});
+
+const personContactsSchema = z.object({
+  email: z.string().min(1, "Введите email"),
+
+  phone: z.string().min(1, "Введите телефон"),
+
+  website: z.string().min(1, "Введите сайт"),
+
+  address: personAddressSchema,
+});
+
+const personSocialsSchema = z.object({
+  telegram: z.string(),
+
+  vk: z.string(),
+});
+
+const personPracticeSchema = z.object({
+  label: z.string().min(1, "Введите подпись"),
+
+  experience: z.string().min(1, "Введите опыт"),
+
+  clients: z.string().min(1, "Введите количество клиентов"),
+
+  countAreas: z.coerce.number().min(0),
+});
+
 const personInfoItemSchema = z.object({
-  title: z.string().min(1, "Обязательное поле"),
-  description: z.string().min(1, "Обязательное поле"),
+  title: z.string().min(1, "Введите заголовок"),
+
+  description: z.string().min(1, "Введите описание"),
 });
 
 const personNestedItemSchema = z.object({
-  title: z.string().min(1, "Обязательное поле"),
+  title: z.string().min(1, "Введите заголовок"),
+
   items: z.array(personInfoItemSchema),
 });
 
 const personInfoSectionSchema = z.object({
-  title: z.string().min(1, "Обязательное поле"),
+  title: z.string().min(1, "Введите заголовок раздела"),
 
   items: z.array(z.union([personInfoItemSchema, personNestedItemSchema])),
 });
 
 const personDocumentSchema = z.object({
-  id: z.string().min(1, "Обязательное поле"),
-  name: z.string().min(1, "Обязательное поле"),
+  id: z.string(),
+
+  name: z.string().min(1, "Введите название документа"),
+
   description: z.array(z.string()),
-  file: z.string().min(1, "Обязательное поле"),
+
+  file: z.string().min(1, "Загрузите файл"),
 });
 
 export const personSchema = z.object({
-  id: z
-    .string()
-    .min(1, "Обязательное поле")
-    .regex(/^[a-z0-9-]+$/, "Только латиница в нижнем регистре, цифры и дефис"),
+  id: z.string(),
 
-  name: z.string().min(1, "Обязательное поле"),
+  name: z.string().min(1, "Введите имя"),
 
-  middlename: z.string().min(1, "Обязательное поле"),
+  middlename: z.string().min(1, "Введите отчество"),
 
-  fullname: z.string().min(1, "Обязательное поле"),
+  fullname: z.string().min(1, "Введите полное имя"),
 
-  post: z.string().min(1, "Обязательное поле"),
+  post: z.string().min(1, "Введите должность"),
 
-  clients: z.string().min(1, "Обязательное поле"),
+  clients: z.string().min(1, "Введите количество клиентов"),
 
-  countAreas: z
-    .number()
-    .int("Должно быть целое число")
-    .min(0, "Не может быть отрицательным"),
+  countAreas: z.coerce.number().min(0),
 
-  about: z.object({
-    desc: z.array(z.string().min(1)),
-    title: z.string().min(1, "Обязательное поле"),
-    experience: z.string().min(1, "Обязательное поле"),
+  license: z.string().min(1, "Введите номер лицензии"),
 
-    images: z.array(
-      z.object({
-        src: z.string().min(1, "Обязательное поле"),
-        alt: z.string().min(1, "Обязательное поле"),
-      })
-    ),
-  }),
+  about: personAboutSchema,
 
-  contacts: z.object({
-    email: z.string().email("Некорректный email"),
-    phone: z.string().min(1, "Обязательное поле"),
-    website: z.string().url("Некорректный URL"),
+  contacts: personContactsSchema,
 
-    address: z.object({
-      label: z.string().min(1, "Обязательное поле"),
-      link: z.string().url("Некорректный URL"),
-    }),
-  }),
+  socials: personSocialsSchema,
 
-  socials: z.object({
-    telegram: z.string().url("Некорректный URL"),
-    vk: z.string().url("Некорректный URL"),
-  }),
-
-  practice: z.object({
-    label: z.string().min(1, "Обязательное поле"),
-    experience: z.string().min(1, "Обязательное поле"),
-    clients: z.string().min(1, "Обязательное поле"),
-
-    countAreas: z
-      .number()
-      .int("Должно быть целое число")
-      .min(0, "Не может быть отрицательным"),
-  }),
+  practice: personPracticeSchema,
 
   organization: personInfoSectionSchema,
 
@@ -106,9 +117,5 @@ export const personSchema = z.object({
 });
 
 export type PersonFormValues = z.infer<typeof personSchema>;
-
-export type PersonFormInput = z.input<typeof personSchema>;
-
-export const personUpdateSchema = personSchema;
-
-export type PersonUpdateValues = z.infer<typeof personUpdateSchema>;
+export type OrgsFormInput = z.input<typeof personSchema>;
+export type OrgsFormValues = z.output<typeof personSchema>;

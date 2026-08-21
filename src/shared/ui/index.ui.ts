@@ -17,5 +17,10 @@ export * from "./email/EmailLayout";
 export * from "./input/Input";
 export * from "./check/Check";
 export * from "./swiper/Swiper";
-export * from './breadcrumbs/Breadcrumbs';
-export * from './image-upload/ImageUpload'
+export * from "./breadcrumbs/Breadcrumbs";
+export * from "./image-upload/ImageUpload";
+export * from "./multi-box/MultiBox";
+export * from "./multi-box/ui/multi-box-item/MultiBoxItem";
+export * from "./multi-box/ui/multi-box-text-field/MultiBoxTextField";
+export * from "./multi-box/ui/multi-box-title-description-field/MultiBoxTitleDescriptionField";
+export * from "./file-upload/FileUpload";
