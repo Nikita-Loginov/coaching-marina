@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useModalStore } from "@/store/modal/modal.store";
+import { useModalStore } from "@/shared/store/modal/modal.store";
 
 export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
   const activeModal = useModalStore((store) => store.activeModal);

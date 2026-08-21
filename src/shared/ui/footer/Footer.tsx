@@ -1,15 +1,28 @@
 import Link from "next/link";
 import classNames from "classnames";
 
-import { PERSON_CONFIG } from "@/shared/config/person.config";
+import { getPerson } from "@/entities/person/model/person.queries";
+
 import { DEVELOPER_CONFIG } from "@/shared/config/developer.config";
 
 import { Container, Logo, ListDefault } from "../index.ui";
 
 import scss from "./Footer.module.scss";
 
-export const Footer = () => {
-  const { email, phone, telegram, adress } = PERSON_CONFIG.socials;
+export const Footer = async () => {
+  const person = await getPerson();
+
+  if (!person) {
+    return null;
+  }
+
+  const { name, middlename, contacts, socials } = person;
+
+  const { email, phone, address } = contacts;
+
+  const { telegram } = socials;
+
+  const fullName = `${name} ${middlename}`;
 
   return (
     <footer className={scss["footer"]} id="footer">
@@ -18,11 +31,12 @@ export const Footer = () => {
           <div className={scss["footer__content"]}>
             <div className={scss["footer__info"]}>
               <div className={scss["footer__block"]}>
-                <Logo as="text" />
+                <Logo as="text" name={name} middlename={middlename} />
 
                 <div className="textbox">
                   <p className="p1 secondary-color-80">
-                    Пространство для трансформации <br /> лидеров и команд.
+                    Пространство для трансформации <br />
+                    лидеров и команд.
                   </p>
                 </div>
               </div>
@@ -49,8 +63,8 @@ export const Footer = () => {
                     {
                       label: "Telegram",
                       as: "link",
-                      ariaLabel: `Перейти в мой телеграмм: ${telegram}`,
-                      href: `${telegram}`,
+                      ariaLabel: `Перейти в телеграмм ${telegram}`,
+                      href: telegram,
                       title: telegram,
                     },
                   ]}
@@ -61,11 +75,11 @@ export const Footer = () => {
                   titleClassName="uppercase-text secondary-color-30"
                   items={[
                     {
-                      label: adress.label,
+                      label: address.label,
                       as: "link",
-                      ariaLabel: `Перейти по адресу ${adress.label}`,
-                      href: `${adress.link}`,
-                      title: adress.label,
+                      ariaLabel: `Перейти по адресу ${address.label}`,
+                      href: address.link,
+                      title: address.label,
                     },
                   ]}
                 />
@@ -73,10 +87,10 @@ export const Footer = () => {
             </div>
 
             <div className={scss["footer__copy"]}>
-              <p className="p3">© 2026 Марина Ягунова</p>
+              <p className="p3">© 2026 {fullName}</p>
 
               <Link
-                href={"/svedeniya/obrazovatelnoj-organizacii"}
+                href="/svedeniya/obrazovatelnoj-organizacii"
                 title="Сведения об образовательной организации"
                 aria-label="Перейти на страницу Сведения об образовательной организации"
                 className="link p3"

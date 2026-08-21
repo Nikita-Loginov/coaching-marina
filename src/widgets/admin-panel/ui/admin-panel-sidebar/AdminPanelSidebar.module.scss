@@ -1,0 +1,86 @@
+.admin-panel-sidebar {
+  --admin-panel-sidebar-pd-full: 24px;
+  --admin-panel-sidebar-max-width: 220px;
+  --admin-panel-sidebar-border-width: 1px;
+  --admin-panel-sidebar-top-gap: 40px;
+  --admin-panel-sidebar-menu-gap: 4px;
+  --admin-panel-sidebar-top-block-gap: 8px;
+  --admin-panel-sidebar-footer-gap: 16px;
+  --admin-panel-sidebar-footer-padding: 16px;
+  --admin-panel-sidebar-btns-gap: 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: var(--admin-panel-sidebar-max-width);
+  width: 100%;
+  background-color: var(--gray-color-0);
+  // border-right: var(--admin-panel-sidebar-border-width) solid
+  //   var(--gray-color-40);
+
+  & > * {
+    &:not(:last-child) {
+      padding-bottom: var(--admin-panel-sidebar-pd-full);
+      border-bottom: var(--admin-panel-sidebar-border-width) solid
+        var(--primary-color-115);
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-panel-sidebar-top-gap);
+    padding: var(--admin-panel-sidebar-pd-full)
+      calc(var(--admin-panel-sidebar-pd-full) / 2) 0;
+    flex: 1;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-panel-sidebar-menu-gap);
+  }
+
+  &__menu-link {
+    width: 100%;
+  }
+
+  &__top-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-panel-sidebar-top-block-gap);
+    padding-inline: calc(var(--admin-panel-sidebar-pd-full) / 2);
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-panel-sidebar-footer-gap);
+    padding: var(--admin-panel-sidebar-footer-padding);
+  }
+
+  &__btn {
+    &.active {
+      background-color: var(--dark-color-0);
+      color: var(--gray-color-0);
+    }
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-panel-sidebar-btns-gap);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --admin-panel-sidebar-pd-full: #{vw(24)};
+    --admin-panel-sidebar-max-width: #{vw(220)};
+    --admin-panel-sidebar-border-width: #{vw(1)};
+    --admin-panel-sidebar-top-gap: #{vw(40)};
+    --admin-panel-sidebar-menu-gap: #{vw(4)};
+    --admin-panel-sidebar-top-block-gap: #{vw(8)};
+    --admin-panel-sidebar-footer-gap: #{vw(16)};
+    --admin-panel-sidebar-footer-padding: #{vw(16)};
+    --admin-panel-sidebar-btns-gap: #{vw(16)};
+  }
+}

@@ -1,9 +1,9 @@
 export * from "./container/Container";
-export * from "./header/Header";
+// export * from "./header/Header";
 export * from "./logo/Logo";
 export * from "./menu/Menu";
 export * from "./button/Button";
-export * from "./footer/Footer";
+// export * from "./footer/Footer";
 export * from "./lists/list-default/ListDefault";
 export * from "./hero/Hero";
 export * from "./top-inner/TopInner";
@@ -17,3 +17,5 @@ export * from "./email/EmailLayout";
 export * from "./input/Input";
 export * from "./check/Check";
 export * from "./swiper/Swiper";
+export * from './breadcrumbs/Breadcrumbs';
+export * from './image-upload/ImageUpload'

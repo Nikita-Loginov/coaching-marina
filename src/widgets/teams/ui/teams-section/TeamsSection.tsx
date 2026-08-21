@@ -4,9 +4,14 @@ import { TeamCard } from "@/entities/team/ui";
 
 import { TEAMS_ITEMS } from "@/shared/config/teams.config";
 
+import { getTeams } from "@/entities/team/model/team.queries";
+
 import scss from './TeamsSection.module.scss'
 
+
 export const TeamsSection = async () => {
+  const teams = await getTeams();
+  
   return (
     <>
       <section className={scss["teams"]}>
@@ -33,7 +38,7 @@ export const TeamsSection = async () => {
                     }
                   }
                 }}
-                items={TEAMS_ITEMS.map((team) => (
+                items={teams.map((team) => (
                   <TeamCard key={team.id} card={{ ...team }} />
                 ))}
                 pagination

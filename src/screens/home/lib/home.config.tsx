@@ -1,40 +1,43 @@
 import { Images } from "@/shared/images/index.images";
 
-import { PERSON_CONFIG } from "@/shared/config/person.config";
-
 import HomeHeroButtons from "../ui/home-hero-buttons/HomeHeroButtons";
 
 import type { AccordeonItem, HeroProps } from "@/shared/ui/index.ui";
+import type { PersonItem } from "@/entities/person/model/person.types";
 
-export const HomeHeroContent: HeroProps = {
+export const getHomeHeroContent = (
+  person: PersonItem,
+): HeroProps => ({
   title: {
     label: "Ясность",
     labelAccent: "решений.",
   },
+
   desc: [
     "Мы создаем пространство, где неопределенность становится ясностью, а сложные вызовы превращаются в точные решения.",
   ],
+
   img: {
     src: Images.MarinaOne,
-    alt: `Фотография ${PERSON_CONFIG.name} ${PERSON_CONFIG.middlename}`,
+    alt: `Фотография ${person.name} ${person.middlename}`,
   },
+
   itemsImg: [
     {
       title: "Опыт",
-      desc: `${PERSON_CONFIG.practice.experience} ${PERSON_CONFIG.practice.label}`,
+      desc: `${person.practice.experience} ${person.practice.label}`,
     },
     {
-      title: PERSON_CONFIG.post,
+      title: person.post,
       desc: "Сертифицированный executive-коуч",
     },
   ],
+
   bottomInfo: {
     position: "left",
-    content: (
-      <HomeHeroButtons />
-    ),
+    content: <HomeHeroButtons />,
   },
-};
+});
 
 export const HomeFagItems: AccordeonItem[] = [
   {

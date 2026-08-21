@@ -1,0 +1,17 @@
+.admin-items {
+  --admin-items-gap: 16px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  //   flex-direction: column;
+  gap: var(--admin-items-gap);
+
+  @media (min-width: $desktop-breakpoint) {
+    --admin-items-gap: #{vw(16)};
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    display: flex;
+    flex-direction: column;
+  }
+}

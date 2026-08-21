@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
       @use "@/app/styles/base/helpers" as *;
     `,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.public.blob.vercel-storage.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

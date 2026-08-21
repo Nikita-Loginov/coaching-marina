@@ -1,0 +1,20 @@
+.admin-content {
+  --admin-content-gap: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-content-gap);
+  max-width: 90%;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+  // padding-top: var(--admin-panel-layout-content-gap);
+
+  @media (min-width: $desktop-breakpoint) {
+    --admin-content-gap: #{vw(32)};
+  }
+
+  @media (max-width: $md-desktop-breakpoint) {
+    max-width: 100%;
+  }
+}

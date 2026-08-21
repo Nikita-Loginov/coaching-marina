@@ -1,0 +1,37 @@
+.admin-panel-layout {
+  --admin-panel-layout-content-gap: #{calculate-clamp(
+    20px,
+    40px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
+
+  --admin-panel-header-padding-inline: 40px;
+  --admin-panel-header-padding-block: 20px;
+
+  display: flex;
+  min-height: 100dvh;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    // gap: var(--admin-panel-layout-content-gap);
+    width: 100%;
+  }
+
+  &__wrapper {
+    padding-inline: var(--admin-panel-header-padding-inline);
+    padding-block: var(--admin-panel-layout-content-gap);
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --admin-panel-layout-content-gap: #{vw(40)};
+
+    --admin-panel-header-padding-inline: #{vw(40)};
+    --admin-panel-header-padding-block: #{vw(20)};
+  }
+
+  
+}

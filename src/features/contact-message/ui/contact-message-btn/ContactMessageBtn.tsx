@@ -1,4 +1,4 @@
-import { useModalStore } from "@/store/modal/modal.store";
+import { useModalStore } from "@/shared/store/modal/modal.store";
 import { Button } from "@/shared/ui/index.ui";
 
 import type { ButtonProps } from "@/shared/ui/index.ui";

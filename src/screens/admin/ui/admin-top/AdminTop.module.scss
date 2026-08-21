@@ -1,0 +1,29 @@
+.admin-top {
+  --admin-top-gap: 20px;
+  --admin-top-block-gap: 8px;
+  --admin-top-btns-gap: 8px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--admin-top-gap);
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-top-block-gap);
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--admin-top-btns-gap);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --admin-top-gap: #{vw(20)};
+    --admin-top-block-gap: #{vw(8)};
+    --admin-top-btns-gap: #{vw(8)};
+  }
+}

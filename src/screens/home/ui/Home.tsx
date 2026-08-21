@@ -1,4 +1,4 @@
-import { HomeFagItems, HomeHeroContent } from "../lib/home.config";
+import { getHomeHeroContent, HomeFagItems } from "../lib/home.config";
 import { Philosophy } from "./philosophy/Philosophy";
 import { Challenge } from "./challenge/Challenge";
 import { About } from "./about/About";
@@ -6,10 +6,21 @@ import { ProgramsSection } from "@/widgets/programs";
 import { Solutions } from "./solutions/Solutions";
 import { Fag, Cta, Hero } from "@/shared/ui/index.ui";
 
-export const Home = () => {
+import { getPerson } from "@/entities/person/model/person.queries";
+
+export const Home = async () => {
+  const person = await getPerson();
+
+  if (!person) {
+    return null;
+  }
+
+  const heroContent = getHomeHeroContent(person);
+
+
   return (
     <>
-      <Hero {...HomeHeroContent} />
+      <Hero {...heroContent} />
 
       <About />
 

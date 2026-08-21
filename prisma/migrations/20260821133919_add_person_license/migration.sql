@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Person" ADD COLUMN     "license" TEXT NOT NULL DEFAULT 'Л035-01255-50/01533168';

@@ -123,7 +123,7 @@ export const Input = forwardRef<
 
     return (
       <label className={inputClassNames}>
-        {/* {label && <p className="p2">{label}</p>} */}
+        {label && <p className="p2">{label}</p>}
 
         <div className={scss["input-box__content"]}>
           {iconLeft && renderIcon(iconLeft)}

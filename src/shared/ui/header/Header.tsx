@@ -1,55 +1,20 @@
-"use client";
+import { getPerson } from "@/entities/person/model/person.queries";
 
-import { useRef } from "react";
-import classNames from "classnames";
+import { HeaderClient } from "./HeaderClient";
 
-import { Logo } from "../logo/Logo";
-import { Container } from "../container/Container";
-import { Menu } from "../menu/Menu";
-import { Modal } from "../modal/Modal";
-import { ContactForm } from "@/features/contact-message/ui";
-import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
+export const Header = async () => {
+  const person = await getPerson();
 
-import { useElementSize } from "@/shared/hooks/index.hooks";
-
-import { useModalStore } from "@/store/modal/modal.store";
-
-import scss from "./Header.module.scss";
-
-export const Header = () => {
-  const headerRef = useRef<HTMLElement>(null);
-
-  const { activeModal, close } = useModalStore();
-
-  useElementSize({ ref: headerRef, varName: "header-height" });
+  if (!person) {
+    return null;
+  }
 
   return (
-    <>
-      <header
-        className={classNames(scss.header)}
-        ref={headerRef}
-        // initial={headerVisible.initial}
-        // animate={headerVisible.animate}
-        // transition={headerVisible.transition}
-      >
-        <Container>
-          <div className={scss["header__inner"]}>
-            <Logo />
-
-            <Menu />
-
-            <div className={scss["header__btns"]}>
-              <ContactMessageBtn theme="primary" size="small">
-                <p className="p3">Записаться на консультацию</p>
-              </ContactMessageBtn>
-            </div>
-          </div>
-        </Container>
-      </header>
-
-      <Modal isOpen={activeModal === "contact"} onClose={close} variant="second">
-        <ContactForm />
-      </Modal>
-    </>
+    <HeaderClient
+      name={person.name}
+      middlename={person.middlename}
+    />
   );
 };
+
+export default Header;

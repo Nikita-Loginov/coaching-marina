@@ -1,0 +1,26 @@
+.admin-panel-header {
+  --admin-panel-header-gap: 20px;
+  --admin-panel-header-border-width: 1px;
+
+  padding: var(--admin-panel-header-padding-block) var(--admin-panel-header-padding-inline);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--admin-panel-header-gap);
+  border-bottom: var(--admin-panel-header-border-width) solid
+    var(--primary-color-115);
+  width: 100%;
+  background-color: var(--gray-color-0);
+
+  &__block {
+    display: flex;
+    align-items: center;
+    gap: var(--admin-panel-header-gap);
+    color: var(--primary-color-400);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --admin-panel-header-gap: #{vw(20)};
+    --admin-panel-header-border-width: #{vw(1)};
+  }
+}

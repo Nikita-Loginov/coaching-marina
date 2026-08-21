@@ -1,24 +1,19 @@
-import {
-  PERSON_CONFIG,
-  LICENSE_NUMBER,
-} from "../../../shared/config/person.config";
-
 import { Images } from "@/shared/images/index.images";
 
+import type { PersonItem } from "@/entities/person/model/person.types";
 import type { HeroProps } from "@/shared/ui/index.ui";
 
 interface SvedeniyaConfig {
-  hero: HeroProps;
-  info: typeof PERSON_CONFIG
+  getHero: (person: PersonItem) => HeroProps;
 }
 
 export const SVEDENIYA_CONFIG = {
   "obrazovatelnoj-organizacii": {
-    hero: {
+    getHero: (person) => ({
       title: {
         label: "Сведения об образовательной",
         labelAccent: "организации",
-        variant: 'h2'
+        variant: "h2",
       },
       desc: [
         "Эта страница содержит официальные сведения об образовательной деятельности, правовые документы и информацию об организации в соответствии с требованиями законодательства Российской Федерации.",
@@ -26,16 +21,15 @@ export const SVEDENIYA_CONFIG = {
       badge: "Официальная информация",
       img: {
         src: Images.MarinaOne,
-        alt: "Фотография Марины",
+        alt: `Фотография ${person.name} ${person.middlename}`,
       },
       itemsImg: [
         {
           title: "Лицензия",
-          desc: `№ ${LICENSE_NUMBER}`,
+          desc: person.license,
         },
       ],
-    },
-    info: PERSON_CONFIG
+    }),
   },
 } satisfies Record<string, SvedeniyaConfig>;
 

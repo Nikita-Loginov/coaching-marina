@@ -20,12 +20,17 @@
     }
   }
 
+  &--admin {
+
+  }
+
   &__img {
     aspect-ratio: 7 / 9;
     background-color: var(--primary-color-10);
     border-radius: var(--radius-7xl);
     overflow: hidden;
     transition: border-radius var(--transition-base);
+    position: relative;
 
     img {
       width: 100%;
@@ -52,6 +57,12 @@
     flex-direction: column;
     gap: var(--team-card-block-info-gap);
     color: var(--primary-color-50);
+  }
+
+  &__btns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 
   @media (min-width: $desktop-breakpoint) {

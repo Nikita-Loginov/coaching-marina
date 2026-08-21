@@ -112,6 +112,18 @@ body {
     margin-bottom: var(--main-section-margin-bottom);
     // }
   }
+
+  &--noPt {
+    padding-top: 0;
+
+    &:not(:has(.top-block)) {
+      padding-top: 0;
+    }
+
+    section {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .icon {

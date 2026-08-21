@@ -1,13 +1,19 @@
 import Image from "next/image";
 
-import { Container, TopInner } from "@/shared/ui/index.ui";
+import { getPerson } from "@/entities/person/model/person.queries";
 
-import { PERSON_CONFIG } from "@/shared/config/person.config";
+import { Container, TopInner } from "@/shared/ui/index.ui";
 
 import scss from "./About.module.scss";
 
-export const About = () => {
-  const { aboutInfo, fullname, post } = PERSON_CONFIG;
+export const About = async () => {
+  const person = await getPerson();
+
+  if (!person) {
+    return null;
+  }
+
+  const { about, fullname, post } = person;
 
   return (
     <section className={scss["about"]} id="about">
@@ -21,19 +27,23 @@ export const About = () => {
         >
           <div className={scss["about__inner"]}>
             <div className={scss["about__content"]}>
-              <h2 className={scss["about__title"]}>{aboutInfo.title}</h2>
+              <h2 className={scss["about__title"]}>
+                {about.title}
+              </h2>
 
               <div className="textbox textbox--second">
-                {aboutInfo.desc.map((text, index) => {
-                  return <p key={index}>{text}</p>;
-                })}
+                {about.desc.map((text, index) => (
+                  <p key={index}>{text}</p>
+                ))}
               </div>
             </div>
 
             <div className={scss["about__img-box"]}>
               <div className={scss["about__img-cards"]}>
                 <div className={scss["about__img-card"]}>
-                  <p className="p2 font-text-second">{fullname}</p>
+                  <p className="p2 font-text-second">
+                    {fullname}
+                  </p>
 
                   <div className="textbox textbox--second">
                     <p className="p2">{post}</p>
@@ -42,7 +52,11 @@ export const About = () => {
               </div>
 
               <div className={scss["about__img"]}>
-                <Image src={aboutInfo.images[0]} alt={`${fullname}`} />
+                <Image
+                  src={about.images[0]}
+                  alt={fullname}
+                  fill
+                />
               </div>
             </div>
           </div>

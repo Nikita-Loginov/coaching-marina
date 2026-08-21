@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import classNames from "classnames";
 
-import { useModalStore } from "@/store/modal/modal.store";
+import { useModalStore } from "@/shared/store/modal/modal.store";
 
 import { ContactMessageInput, contactMessageSchema } from "../../model/schema";
 import { sendEmail } from "../../api/send-email";

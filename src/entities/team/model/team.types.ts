@@ -10,3 +10,12 @@ export type TeamItem = {
     alt: string;
   };
 };
+
+export type TeamRow = {
+  id: string;
+  name: string;
+  middlename: string;
+  post: string;
+  img: string;
+  imgAlt: string;
+};

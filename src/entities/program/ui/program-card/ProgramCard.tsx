@@ -9,7 +9,7 @@ import { Button } from "@/shared/ui/index.ui";
 
 import { Icons } from "@/shared/icons/index.icons";
 
-import { useModalStore } from "@/store/modal/modal.store";
+import { useModalStore } from "@/shared/store/modal/modal.store";
 
 import scss from "./ProgramCard.module.scss";
 

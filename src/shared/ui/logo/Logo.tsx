@@ -3,26 +3,30 @@ import classNames from "classnames";
 
 import { Icons } from "@/shared/icons/index.icons";
 
-import { PERSON_CONFIG } from "@/shared/config/person.config";
-
 import scss from "./Logo.module.scss";
 
 interface LogoProps {
   variant?: "accent" | "white";
   as?: "icon" | "text";
+  name: string;
+  middlename: string;
 }
 
-export const Logo = ({ variant = "accent", as = "icon" }: LogoProps) => {
-  const logoClassNames = classNames(
-    scss.logo,
-    scss[`logo--as-${as}`],
-  )
+export const Logo = ({
+  variant = "accent",
+  as = "icon",
+  name,
+  middlename,
+}: LogoProps) => {
+  const logoClassNames = classNames(scss.logo, scss[`logo--as-${as}`]);
+
+  const fullName = `${name} ${middlename}`;
 
   return (
     <Link
-      href={"/"}
+      href="/"
       className={logoClassNames}
-      title={`${PERSON_CONFIG.name} ${PERSON_CONFIG.middlename}`}
+      title={fullName}
       aria-label="Перейти на главную"
     >
       {as === "icon" ? (
@@ -30,10 +34,10 @@ export const Logo = ({ variant = "accent", as = "icon" }: LogoProps) => {
           <Icons.LogoAccent />
         ) : null
       ) : (
-        <p className="h4 font-text-second">
-          {PERSON_CONFIG.name} {PERSON_CONFIG.middlename}
-        </p>
+        <p className="h4 font-text-second">{fullName}</p>
       )}
     </Link>
   );
 };
+
+export default Logo;
