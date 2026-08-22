@@ -6,8 +6,10 @@ html {
 
   scroll-behavior: smooth;
   scroll-padding-top: calc(
-    var(--gap-blocks) + var(--header-height, var(--calback-header-height)) -
-      var(--scroll-padding-top-minus)
+    var(--gap-blocks) +
+      var(--header-height, var(--calback-header-height)) - var(
+        --scroll-padding-top-minus
+      )
   );
 
   @media (min-width: $desktop-breakpoint) {
@@ -202,5 +204,66 @@ nextjs-portal {
 
   @media (min-width: $desktop-breakpoint) {
     --select-item-padding: #{vw(8)} #{vw(12)};
+  }
+}
+
+body {
+  .go2072408551 {
+    --toast-padding: 8px 10px;
+    --toast-max-width: 350px;
+    --toast-gap: 10px;
+
+    padding: var(--toast-padding);
+    border-radius: var(--radius-base);
+    max-width: var(--toast-max-width);
+    background-color: var(--gray-color-0);
+    color: var(--primary-color-0);
+    gap: var(--toast-gap);
+
+    @media (min-width: $desktop-breakpoint) {
+      --toast-padding: #{vw(8)} #{vw(10)};
+      --toast-max-width: #{vw(350)};
+      --toast-gap: #{vw(10)};
+    }
+  }
+
+  .go3958317564 {
+    margin: 0;
+  }
+
+  .go685806154 {
+    --toast-icon-size: 20px;
+
+    min-height: var(--toast-icon-size);
+    min-width: var(--toast-icon-size);
+
+    @media (min-width: $desktop-breakpoint) {
+      --toast-icon-size: #{vw(20)};
+    }
+  }
+
+  .go2344853693 {
+    --toast-close-size: 20px;
+    --toast-close-border-width: 2px;
+    --toast-close-bottom: 6px;
+    --toast-close-left: 6px;
+
+    width: var(--toast-close-size);
+    height: var(--toast-close-size);
+    border-radius: 50%;
+
+    &:after {
+      border-right: var(--toast-close-border-width) solid;
+      border-bottom: var(--toast-close-border-width) solid;
+      bottom: var(--toast-close-bottom);
+      left: var(--toast-close-left);
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+      --toast-close-size: #{vw(20)};
+      --toast-close-border-width: #{vw(2)};
+      --toast-close-bottom: #{vw(6)};
+      --toast-close-left: #{vw(6)};
+    }
   }
 }

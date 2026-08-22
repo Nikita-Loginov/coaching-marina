@@ -57,7 +57,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
             <FixedBlock />
 
-            <Toaster position="top-right" />
+            <Toaster
+              position="top-right"
+            />
 
             <div id="modal-root"></div>
           </ModalProvider>
