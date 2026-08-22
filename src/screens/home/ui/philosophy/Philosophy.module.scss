@@ -1,17 +1,17 @@
 .philosophy {
   --philosophy-inner-gap: #{calculate-clamp(
-    24px,
-    50px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+      24px,
+      50px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --philosophy-content-gap: 30px;
   --philosophy-items-gap: #{calculate-clamp(
-    24px,
-    64px,
-    $desktop-breakpoint,
-    $tablet-breakpoint
-  )};
+      24px,
+      64px,
+      $desktop-breakpoint,
+      $tablet-breakpoint
+    )};
   --philosophy-items-max-width: 80%;
 
   width: 100%;
@@ -35,6 +35,7 @@
     width: 100%;
     margin: 0 auto;
     font-family: var(--font-family-second);
+    font-style: italic;
 
     & > *:nth-child(even) {
       color: var(--primary-color-60);
@@ -49,6 +50,6 @@
   }
 
   @media (max-width: $lg-breakpoint) {
-    --philosophy-items-max-width: 100%
+    --philosophy-items-max-width: 100%;
   }
 }

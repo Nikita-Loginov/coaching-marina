@@ -23,10 +23,11 @@ const interSans = Inter({
   preload: true,
 });
 
-const playfairDisplaySans = Playfair_Display({
-  variable: "--font-playfair-display-sans",
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
   subsets: ["cyrillic", "latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   display: "swap",
   preload: true,
 });
@@ -48,7 +49,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="ru"
-      className={`${interSans.variable} ${playfairDisplaySans.variable}`}
+      className={`${interSans.variable} ${playfairDisplay.variable}`}
     >
       <body className="body">
         <ClerkProvider>

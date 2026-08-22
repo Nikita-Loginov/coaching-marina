@@ -1,11 +1,11 @@
 .challenge {
   --challenge-content-gap: 16px;
   --challenge-items-gap: #{calculate-clamp(
-    16px,
-    32px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+      16px,
+      32px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --challenge-card-padding: 40px;
   --challenge-card-gap: 16px;
   --challenge-card-border-width: 1px;
@@ -53,6 +53,7 @@
 
   &__card-textbox {
     font-family: var(--font-family-second);
+    font-style: italic;
   }
 
   &__card-content {

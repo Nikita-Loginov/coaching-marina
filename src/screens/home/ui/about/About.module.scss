@@ -1,11 +1,11 @@
 .about {
   --about-inner-gap: 48px;
   --about-content-gap: #{calculate-clamp(
-    24px,
-    40px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+      24px,
+      40px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --about-img-cards-padding: 20px;
   --about-img-card-padding: 12px;
   --about-img-card-gap: 2px;
@@ -28,6 +28,7 @@
   &__title {
     font-size: var(--font-size-md-add);
     font-family: var(--font-family-second);
+    font-style: italic;
     line-height: var(--line-height-relaxed);
   }
 

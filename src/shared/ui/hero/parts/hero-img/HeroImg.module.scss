@@ -1,25 +1,21 @@
 .hero-img {
   --hero-img-box-padding-inline: 40px;
   --hero-img-card-padding: #{calculate-clamp(
-    10px,
-    16px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )} #{calculate-clamp(
-    18px,
-    24px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+      10px,
+      16px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )}
+    #{calculate-clamp(18px, 24px, $desktop-breakpoint, $lg-breakpoint)};
   --hero-img-card-gap: 6px;
   --hero-img-card-border-width: 1px;
   --hero-img-card-max-width: 200px;
   --hero-img-card-even-padding: #{calculate-clamp(
-    12px,
-    16px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+      12px,
+      16px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --hero-img-card-animation-duration: 5s;
   --hero-img-card-rotate: -3deg;
   --hero-img-card-even-rotate: 3deg;
@@ -100,6 +96,7 @@
 
   &__card-desc {
     font-family: var(--font-family-second);
+    font-style: italic;
   }
 
   @media (min-width: $desktop-breakpoint) {
@@ -144,4 +141,3 @@
     transform: translateY(var(--hero-img-card-translate-y));
   }
 }
-

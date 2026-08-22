@@ -1,0 +1,97 @@
+.certificate-card {
+  --certificate-card-padding: #{calculate-clamp(
+      24px,
+      40px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
+  --certificate-card-gap: 28px;
+  --certificate-card-border-width: 1px;
+  --certificate-card-top-gap: 16px;
+  --certificate-card-top-block-gap: 20px;
+  --certificate-card-content-gap: 26px;
+  --certificate-card-block-gap: 16px;
+  --certificate-card-badges-gap: 10px;
+  --certificate-card-footer-gap: 16px;
+  --certificate-card-btns-gap: 16px;
+
+  background-color: var(--gray-color-50);
+  border: var(--certificate-card-border-width) solid var(--gray-color-80);
+  padding: var(--certificate-card-padding);
+  border-radius: var(--radius-7xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--certificate-card-gap);
+  height: 100%;
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--certificate-card-top-gap);
+  }
+
+  &__top-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--certificate-card-top-block-gap);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--certificate-card-content-gap);
+    flex: 1;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--certificate-card-block-gap);
+
+    &:not(:last-child) {
+      padding-bottom: var(--certificate-card-content-gap);
+      border-bottom: var(--certificate-card-border-width) solid
+        var(--primary-color-10);
+    }
+  }
+
+  &__title {
+    font-size: var(--font-size-md-add);
+    font-family: var(--font-family-second);
+    font-style: italic;
+  }
+
+  &__badges {
+    display: flex;
+    flex-direction: column;
+    gap: var(--certificate-card-badges-gap);
+    color: var(--secondary-color-600);
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--certificate-card-footer-gap);
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--certificate-card-btns-gap);
+    align-items: flex-start;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --certificate-card-padding: #{vw(40)};
+    --certificate-card-gap: #{vw(28)};
+    --certificate-card-border-width: #{vw(1)};
+    --certificate-card-top-gap: #{vw(16)};
+    --certificate-card-top-block-gap: #{vw(20)};
+    --certificate-card-content-gap: #{vw(26)};
+    --certificate-card-block-gap: #{vw(16)};
+    --certificate-card-badges-gap: #{vw(10)};
+    --certificate-card-footer-gap: #{vw(16)};
+    --certificate-card-btns-gap: #{vw(16)};
+  }
+}

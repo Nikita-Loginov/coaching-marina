@@ -1,0 +1,16 @@
+.certificates-section {
+  --certificates-section-content-gap: 10px;
+
+  width: 100%;
+  overflow: hidden;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--certificates-section-content-gap);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --certificates-section-content-gap: #{vw(10)};
+  }
+}

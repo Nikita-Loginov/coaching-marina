@@ -6,12 +6,8 @@
   --contact-form-btns-gap: 20px;
   --contact-form-content-gap: 30px;
   --contact-form-content-padding: 40px 0 40px 40px;
-  --contact-form-details-padding: 20px #{calculate-clamp(
-    40px,
-    64px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+  --contact-form-details-padding: 20px
+    #{calculate-clamp(40px, 64px, $desktop-breakpoint, $lg-breakpoint)};
   --contact-form-details-gap: 40px;
   --contact-form-details-item-gap: 8px;
 
@@ -52,6 +48,7 @@
 
   &__title {
     font-family: var(--font-family-second);
+    font-style: italic;
   }
 
   &__details {
@@ -77,6 +74,7 @@
   &__details-item-title {
     font-size: var(--font-size-md-add);
     font-family: var(--font-family-second);
+    font-style: italic;
   }
 
   @media (min-width: $desktop-breakpoint) {

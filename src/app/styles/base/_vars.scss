@@ -14,10 +14,10 @@
 
   --primary-color-0: #07064a;
   --primary-color-10: #07064a1a;
-  --primary-color-20: #07064A33;
-  --primary-color-30: #07064A4D;
+  --primary-color-20: #07064a33;
+  --primary-color-30: #07064a4d;
   --primary-color-40: #07064a66;
-  --primary-color-50: #07064A80;
+  --primary-color-50: #07064a80;
   --primary-color-60: #07064a99;
   --primary-color-70: #07064ab2;
   --primary-color-100: #050438;
@@ -25,12 +25,13 @@
   --secondary-color-0: #edf4fc;
   --secondary-color-30: #edf4fc4d;
   --secondary-color-80: #edf4fccc;
+  --secondary-color-600: #9be8fa;
 
   --red-color-100: #660403;
   --red-color-200: #ff5f57;
 
   --font-family-main: var(--font-inter-sans), sans-serif;
-  --font-family-second: var(--font-playfair-display-sans), serif;
+  --font-family-second: var(--font-playfair-display), serif;
 
   --weight-font-xs: 300;
   --weight-font-main: 400;
@@ -57,23 +58,23 @@
       $lg-breakpoint
     )};
   --font-size-md: #{calculate-clamp(
-    22px,
-    30px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+      22px,
+      30px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --font-size-md-add: #{calculate-clamp(
-    18px,
-    24px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+      18px,
+      24px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --font-size-base: #{calculate-clamp(
-    16px,
-    18px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+      16px,
+      18px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --font-size-sm: #{calculate-clamp(
       14px,
       16px,
@@ -154,8 +155,8 @@
   --main-padding-top: 40px;
 
   --top-padding: calc(
-    var(--header-height, var(--calback-header-height)) + var(--main-padding-top) +
-      var(--header-padding-top)
+    var(--header-height, var(--calback-header-height)) +
+      var(--main-padding-top) + var(--header-padding-top)
   );
 }
 

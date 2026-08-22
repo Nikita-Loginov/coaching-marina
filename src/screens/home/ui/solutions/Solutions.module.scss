@@ -2,41 +2,29 @@
   --solutions-content-gap: 16px;
   --solutions-items-gap: 16px;
   --solutions-card-gap: #{calculate-clamp(
-    24px,
-    60px,
-    $lg-breakpoint,
-    $tablet-breakpoint
-  )};
+      24px,
+      60px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
   --solutions-card-padding: #{calculate-clamp(
-    24px,
-    40px,
-    $lg-breakpoint,
-    $tablet-breakpoint
-  )} #{calculate-clamp(
-    24px,
-    40px,
-    $lg-breakpoint,
-    $tablet-breakpoint
-  )} #{calculate-clamp(
-    24px,
-    40px,
-    $lg-breakpoint,
-    $tablet-breakpoint
-  )} #{calculate-clamp(
-    24px,
-    50px,
-    $lg-breakpoint,
-    $tablet-breakpoint
-  )};
+      24px,
+      40px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )}
+    #{calculate-clamp(24px, 40px, $lg-breakpoint, $tablet-breakpoint)}
+    #{calculate-clamp(24px, 40px, $lg-breakpoint, $tablet-breakpoint)}
+    #{calculate-clamp(24px, 50px, $lg-breakpoint, $tablet-breakpoint)};
   --solutions-card-border-width: 1px;
   --solutions-card-number-size: 44px;
   --solutions-card-number-border-width: 1px;
   --solutions-card-content-gap: #{calculate-clamp(
-    24px,
-    48px,
-    $lg-breakpoint,
-    $tablet-breakpoint
-  )};
+      24px,
+      48px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
   --solutions-card-content-grid-template: auto 73%;
 
   width: 100%;
@@ -105,6 +93,7 @@
     color: var(--solution-card-number-color);
     font-size: var(--font-size-xs);
     font-family: var(--font-family-second);
+    font-style: italic;
   }
 
   &__card-content {
@@ -116,6 +105,7 @@
   &__card-title {
     font-size: var(--font-size-md-add);
     font-family: var(--font-family-second);
+    font-style: italic;
     color: var(--solution-card-title-color);
   }
 
