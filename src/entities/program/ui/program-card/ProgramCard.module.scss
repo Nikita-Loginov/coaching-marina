@@ -1,8 +1,20 @@
+@mixin programMediaAndAdmin {
+  background-color: var(--gray-color-0);
+  padding: #{calculate-clamp(24px, 40px, $lg-breakpoint, $tablet-breakpoint)};
+  border-radius: var(--radius-2xl);
+  flex-direction: column-reverse;
+
+  &__img {
+    display: none;
+  }
+}
+
 .program {
   --program-gap: 60px;
   --program-content-gap: 36px;
   --program-block-gap: 26px;
   --program-footer-gap: 10px;
+  --program-btns-gap: 16px;
 
   display: flex;
   align-items: center;
@@ -14,6 +26,7 @@
     width: 100%;
     border-radius: var(--radius-8xl);
     overflow: hidden;
+    position: relative;
 
     img {
       width: 100%;
@@ -51,27 +64,33 @@
     align-items: flex-start;
   }
 
+  &__btns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--program-btns-gap);
+    width: 100%;
+  }
+
+  &--admin {
+    @include programMediaAndAdmin;
+
+    .program {
+      &__img {
+        display: none;
+      }
+    }
+  }
+
   @media (min-width: $desktop-breakpoint) {
     --program-gap: #{vw(60)};
     --program-content-gap: #{vw(36)};
     --program-block-gap: #{vw(26)};
     --program-footer-gap: #{vw(10)};
+    --program-btns-gap: #{vw(16)};
   }
 
   @media (max-width: $lg-breakpoint) {
-    background-color: var(--gray-color-0);
-    padding: #{calculate-clamp(
-      24px,
-      40px,
-      $lg-breakpoint,
-      $tablet-breakpoint
-    )};
-    border-radius: var(--radius-2xl);
-    flex-direction: column-reverse;
-
-    &__img {
-      display: none;
-    }
+    @include programMediaAndAdmin;
   }
 
   @media (max-width: $tablet-breakpoint) {
@@ -83,7 +102,6 @@
 
     &__title {
       font-size: var(--font-size-lg);
-      // overflow-wrap: anywhere;
 
       br {
         display: none;

@@ -2,11 +2,12 @@ import { Container } from "@/shared/ui/index.ui";
 
 import { ProgramCard } from "@/entities/program/ui";
 
-import { PROGRAMS_ITEMS } from "@/shared/config/programs.config";
-
 import { ProgramsModal } from "./parts/programs-modal/ProgramsModal";
 
+import { getPrograms } from "@/entities/program/model/program.queries";
+
 import scss from "./ProgramsSection.module.scss";
+
 
 const CHAPTER_NAMES = [
   "первая",
@@ -22,13 +23,15 @@ const CHAPTER_NAMES = [
 ];
 
 export const ProgramsSection = async () => {
+  const programs = await getPrograms();
+  
   return (
     <>
       <section className={scss["programs"]} id="programs">
         <Container>
           <div className={scss["programs__inner"]}>
             <div className={scss["programs__items"]}>
-              {PROGRAMS_ITEMS.map((program, index) => {
+              {programs.map((program, index) => {
                 const chapterNumber = index + 1;
                 const chapter = CHAPTER_NAMES[index] ?? `${chapterNumber}-я`;
 
@@ -50,7 +53,7 @@ export const ProgramsSection = async () => {
         </Container>
       </section>
 
-      <ProgramsModal />
+      <ProgramsModal programs={programs} />
     </>
   );
 };

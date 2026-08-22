@@ -11,7 +11,7 @@
       $desktop-breakpoint,
       $lg-breakpoint
     )};
-  --button-icon-size-medium: 48px;
+  --button-icon-size-medium: #{calculate-clamp(42px, 48px, $desktop-breakpoint, $mobile-breakpoint)};
   --button-icon-size-big: 56px;
   --button-text-min-height-small: 40px;
   --button-text-min-height-medium: #{calculate-clamp(

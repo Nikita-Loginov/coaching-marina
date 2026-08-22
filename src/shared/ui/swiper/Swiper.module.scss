@@ -36,43 +36,87 @@
     }
   }
 
+  
+
   &:not(.swiper--init) {
-    :global(.swiper-wrapper) {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--swiper-grid-gap);
-
-      & > *:nth-child(n + 5) {
-        display: none;
-      }
-
-      @media (max-width: $lg-breakpoint) {
-        grid-template-columns: repeat(3, 1fr);
-        --swiper-grid-gap: 16px;
-
-        & > *:nth-child(n + 4) {
+    &.swiper--grid-four {
+      :global(.swiper-wrapper) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--swiper-grid-gap);
+  
+        & > *:nth-child(n + 5) {
           display: none;
         }
-      }
-
-      @media (max-width: $tablet-breakpoint) {
-        grid-template-columns: repeat(2, 1fr);
-        --swiper-grid-gap: 16px;
-
-        & > *:nth-child(n + 3) {
-          display: none;
+  
+        @media (max-width: $lg-breakpoint) {
+          grid-template-columns: repeat(3, 1fr);
+          --swiper-grid-gap: 16px;
+  
+          & > *:nth-child(n + 4) {
+            display: none;
+          }
         }
-      }
-
-      @media (max-width: $mobile-breakpoint) {
-        grid-template-columns: repeat(1, 1fr);
-        --swiper-grid-gap: 16px;
-
-        & > *:nth-child(n + 2) {
-          display: none;
+  
+        @media (max-width: $tablet-breakpoint) {
+          grid-template-columns: repeat(2, 1fr);
+          --swiper-grid-gap: 16px;
+  
+          & > *:nth-child(n + 3) {
+            display: none;
+          }
+        }
+  
+        @media (max-width: $mobile-breakpoint) {
+          grid-template-columns: repeat(1, 1fr);
+          --swiper-grid-gap: 16px;
+  
+          & > *:nth-child(n + 2) {
+            display: none;
+          }
         }
       }
     }
+
+    &.swiper--grid-three {
+      :global(.swiper-wrapper) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--swiper-grid-gap);
+  
+        & > *:nth-child(n + 4) {
+          display: none;
+        }
+  
+        @media (max-width: $lg-breakpoint) {
+          grid-template-columns: repeat(2, 1fr);
+          --swiper-grid-gap: 16px;
+  
+          & > *:nth-child(n + 3) {
+            display: none;
+          }
+        }
+  
+        @media (max-width: $tablet-breakpoint) {
+          grid-template-columns: repeat(1, 1fr);
+          --swiper-grid-gap: 16px;
+  
+          & > *:nth-child(n + 2) {
+            display: none;
+          }
+        }
+  
+        // @media (max-width: $mobile-breakpoint) {
+        //   grid-template-columns: repeat(1, 1fr);
+        //   --swiper-grid-gap: 16px;
+  
+        //   & > *:nth-child(n + 2) {
+        //     display: none;
+        //   }
+        // }
+      }
+    }
+    
   }
 
   :global(.swiper-pagination-fraction) {

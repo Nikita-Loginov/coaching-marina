@@ -49,3 +49,25 @@ model Person {
   createdAt                DateTime @default(now())
   updatedAt                DateTime @updatedAt
 }
+
+model Program {
+  id                   String   @id
+  name                 String
+  description          String[]
+  descriptionFull      String[]
+  as                   String
+  btnText              String
+
+  img                  Json
+
+  forWhom              Json
+  suitableRequests     Json
+  workflow             Json
+  cooperationFormat    Json
+  benefits             Json
+
+  reviews              Json?
+
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}

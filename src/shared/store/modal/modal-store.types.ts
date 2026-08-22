@@ -2,6 +2,10 @@ export type ModalMap = {
   contact: {};
   program: {
     id: string;
+  },
+  video: {
+    videoSrc: string;
+    videoPoster: string;
   }
 };
 

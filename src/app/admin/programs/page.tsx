@@ -1,6 +1,6 @@
 import AdminContent from "@/screens/admin";
 
-// import { ProgramAdminList } from "@/features/program/ui";
+import { ProgramAdminList } from "@/features/program/ui";
 
 export default function AdminPrograms() {
   return (
@@ -9,7 +9,7 @@ export default function AdminPrograms() {
       text="Управляйте программами коучинга"
       linkTo="/admin/programs/new"
     >
-      <p>hfksdgfksdfds</p>
+      <ProgramAdminList />
     </AdminContent>
   );
 }

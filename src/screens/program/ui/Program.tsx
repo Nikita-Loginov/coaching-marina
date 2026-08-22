@@ -1,23 +1,26 @@
-"use client";
-
 import classNames from "classnames";
-
-import { PROGRAMS_ITEMS } from "@/shared/config/programs.config";
 
 import { Hero } from "@/shared/ui/index.ui";
 import { ProgramInfo } from "./program-info/ProgramInfo";
+import { ReviewsSection } from "@/widgets/reviews";
+
+import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
+
+import { getProgramById } from "@/entities/program/model/program.queries";
 
 import scss from "./Program.module.scss";
-import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
+
 
 interface ProgramProps {
   id: string;
 }
 
-export const Program = ({ id }: ProgramProps) => {
-  const program = PROGRAMS_ITEMS.find((program) => program.id === id);
+export const Program = async ({ id }: ProgramProps) => {
+  const program = await getProgramById(id)
 
   if (!program) return <p>Такой программы нет</p>;
+
+  console.log(program);
 
   return (
     <>
@@ -25,7 +28,7 @@ export const Program = ({ id }: ProgramProps) => {
         title={{
           label: program.name.split(" ").slice(0, -1).join(" "),
           labelAccent: program.name.split(" ").at(-1),
-          variant: 'h2'
+          variant: "h2",
         }}
         innerGrid="default"
         bottomInfo={{
@@ -54,6 +57,8 @@ export const Program = ({ id }: ProgramProps) => {
       />
 
       <ProgramInfo program={program} />
+
+      <ReviewsSection reviews={program.reviews} />
     </>
   );
 };

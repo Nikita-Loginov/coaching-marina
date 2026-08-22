@@ -1304,7 +1304,7 @@ export const OrgsAdminForm = () => {
                   <div
                     className={classNames(
                       scss["admin-form__item"],
-                      scss["admin-form__documents"]
+                      scss["admin-form__cards"]
                     )}
                   >
                     {documentsField.fields.map((field, index) => {

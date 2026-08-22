@@ -14,7 +14,7 @@ import { useModalStore } from "@/shared/store/modal/modal.store";
 import scss from "./ProgramCard.module.scss";
 
 interface ProgramCardProps {
-  card: ProgramItem & { badge: string };
+  card: ProgramItem & { badge?: string };
   variant?: "default" | "admin";
   onDelete?: (id: string) => void;
 
@@ -33,6 +33,8 @@ export const ProgramCard = ({
   const { id, name, description, as, btnText, img, badge } = card;
   const { src, alt } = img;
 
+  const isDeleting = deleteStatus?.isPending && deleteStatus.id === id;
+
   const isModal = as === "modal";
 
   const lastWord = name.split(" ").at(-1);
@@ -40,19 +42,33 @@ export const ProgramCard = ({
 
   const { open } = useModalStore();
 
+  const isAdmin = variant === "admin";
+
   return (
-    <div className={scss["program"]}>
+    <div
+      className={classNames(
+        scss["program"],
+        isAdmin ? scss["program--admin"] : null
+      )}
+    >
       <div className={scss["program__img"]}>
-        <Image src={src} alt={alt} />
+        <Image src={src} alt={alt} fill />
       </div>
 
       <div className={scss["program__content"]}>
         <div className={scss["program__block"]}>
-          <p className="p3 uppercase-text medium-font primary-color-40">
-            {badge}
-          </p>
+          {badge && (
+            <p className="p3 uppercase-text medium-font primary-color-40">
+              {badge}
+            </p>
+          )}
 
-          <h2 className={classNames("h2", scss["program__title"])}>
+          <h2
+            className={classNames(
+              isAdmin ? "p1" : "h2",
+              scss["program__title"]
+            )}
+          >
             {wordsWithoutLastWord} <br />{" "}
             <span className={scss["program__title-sub"]}>{lastWord}</span>
           </h2>
@@ -68,24 +84,50 @@ export const ProgramCard = ({
           </div>
         </div>
 
-        <div className={scss["program__footer"]}>
-          <Button
-            theme="flat"
-            as={isModal ? "button" : "link"}
-            to={isModal ? undefined : `/programs/${id}`}
-            iconSize="small"
-            iconRight={<Icons.ArrowRight />}
-            onClick={() => {
-              if (isModal) {
-                open("program", {
-                  id: id,
-                });
-              }
-            }}
-          >
-            <p className="p3">{btnText}</p>
-          </Button>
-        </div>
+        {!isAdmin ? (
+          <div className={scss["program__footer"]}>
+            <Button
+              theme="flat"
+              as={isModal ? "button" : "link"}
+              to={isModal ? undefined : `/programs/${id}`}
+              iconSize="small"
+              iconRight={<Icons.ArrowRight />}
+              onClick={() => {
+                if (isModal) {
+                  open("program", {
+                    id: id,
+                  });
+                }
+              }}
+            >
+              <p className="p3">{btnText}</p>
+            </Button>
+          </div>
+        ) : (
+          <div className={scss["program__footer"]}>
+            <div className={scss["program__btns"]}>
+              <Button
+                theme="remove"
+                // size="medium"
+                typeBtn="submit"
+                disabled={isDeleting}
+                onClick={() => onDelete?.(id)}
+              >
+                <p className="p3">{isDeleting ? "Удаление..." : "Удалить"}</p>
+              </Button>
+
+              <Button
+                theme="secondary"
+                // size="medium"
+                as="link"
+                to={`/admin/programs/edit/${id}`}
+                typeBtn="submit"
+              >
+                <p className="p3">Редактирвоать</p>
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

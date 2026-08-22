@@ -19,9 +19,10 @@ interface SwiperProps {
   items: React.ReactElement[];
   pagination?: boolean;
   arrows?: boolean;
+  grid?: 'four' | 'three'
 }
 
-export const Swiper = ({ config, items, pagination, arrows }: SwiperProps) => {
+export const Swiper = ({ config, items, pagination, arrows, grid = 'four' }: SwiperProps) => {
   const [isInit, setIsInit] = useState(false);
 
   const id = useId().replace(/:/g, "");
@@ -43,7 +44,7 @@ export const Swiper = ({ config, items, pagination, arrows }: SwiperProps) => {
   }
 
   return (
-    <div className={classNames(scss["swiper"], isInit && scss["swiper--init"])}>
+    <div className={classNames(scss["swiper"], scss[`swiper--grid-${grid}`], isInit && scss["swiper--init"])}>
       <SwiperJs
         {...config}
         modules={modules}

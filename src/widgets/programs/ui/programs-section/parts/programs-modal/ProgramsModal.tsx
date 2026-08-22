@@ -2,16 +2,23 @@
 
 import { Modal } from "@/shared/ui/index.ui";
 
-import { PROGRAMS_ITEMS } from "@/shared/config/programs.config";
+import { getProgramById } from "@/entities/program/model/program.queries";
 
 import { useModalStore } from "@/shared/store/modal/modal.store";
 
-import { Button } from "@/shared/ui/index.ui";
-
-import scss from "./ProgramsModal.module.scss";
 import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
 
-export const ProgramsModal = () => {
+import { ProgramItem } from "@/entities/program/model/program.types";
+
+import scss from "./ProgramsModal.module.scss";
+
+
+interface ProgramsModalProps {
+  programs: ProgramItem[]
+}
+
+
+export const ProgramsModal =  ({programs} : ProgramsModalProps) => {
   const { activeModal, close, modalProps } = useModalStore();
 
   const isOpen = activeModal === "program";
@@ -20,7 +27,7 @@ export const ProgramsModal = () => {
 
   const id = modalProps?.modal === "program" ? modalProps.props.id : "1";
 
-  const program = PROGRAMS_ITEMS.find((program) => program.id === id);
+  const program = programs.find((item) => item.id === id);
 
   if (!program) return null;
 
