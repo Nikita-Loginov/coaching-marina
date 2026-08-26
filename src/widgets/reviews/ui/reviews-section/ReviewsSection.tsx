@@ -21,10 +21,14 @@ export const ReviewsSection = ({ reviews }: ReviewsSectionProps) => {
 
   if (!reviews || reviews?.length < 1) return;
 
-  const [videoSrc, videoPoster] =
+  const [videoSrc, videoPoster, typeVideo] =
     modalProps?.modal === "video"
-      ? [modalProps.props.videoSrc, modalProps.props.videoPoster]
-      : "1";
+      ? [
+          modalProps.props.videoSrc,
+          modalProps.props.videoPoster,
+          modalProps.props.type,
+        ]
+      : [undefined, undefined, undefined];
 
   return (
     <>
@@ -52,8 +56,8 @@ export const ReviewsSection = ({ reviews }: ReviewsSectionProps) => {
                     },
                     768: {
                       slidesPerView: 2,
-                    }
-                  }
+                    },
+                  },
                 }}
                 arrows
                 items={reviews.map((review) => (
@@ -69,13 +73,21 @@ export const ReviewsSection = ({ reviews }: ReviewsSectionProps) => {
       <Modal isOpen={activeModal === "video"} onClose={close}>
         <div className={scss["reviews-modal"]}>
           <div className={scss["reviews-modal__box"]}>
-            <video
-              src={videoSrc}
-              poster={videoPoster}
-              controls
-              playsInline
-              preload="metadata"
-            />
+            {typeVideo === "vk" ? (
+              <iframe
+                src={videoSrc}
+                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <video
+                src={videoSrc}
+                poster={videoPoster}
+                controls
+                playsInline
+                preload="metadata"
+              />
+            )}
           </div>
         </div>
       </Modal>

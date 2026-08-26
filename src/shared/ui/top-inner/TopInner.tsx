@@ -16,7 +16,7 @@ type TopInnerItem = {
 
 interface TopInnerProps {
   items: TopInnerItem[];
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
 
@@ -51,7 +51,7 @@ export const TopInner = ({ items, children, className }: TopInnerProps) => {
               {title?.label && (
                 <h2 className={classNames("h3", scss["top-inner__title"])}>
                   {title.label}{" "}
-                  {title.labelAccent ? <span className="primary-color-40">{title.labelAccent}</span> : null}
+                  {title.labelAccent ? <><br /> <span className="primary-color-40">{title.labelAccent}</span> </>: null}
                 </h2>
               )}
 

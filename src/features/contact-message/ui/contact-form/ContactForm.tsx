@@ -81,7 +81,7 @@ export const ContactForm = () => {
       <div className={scss["contact-form__content"]}>
         <div className={scss["contact-form__top"]}>
           <p className={classNames("h3", scss["contact-form__title"])}>
-            Записаться на консультацию
+            Записаться на разговор
           </p>
 
           <div className="textbox textbox--second">

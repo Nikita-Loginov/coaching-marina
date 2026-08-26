@@ -22,7 +22,7 @@ export default function ProgramLayout({ children }: SvedeniyaLayoutProps) {
         ]}
 
         btnInfo={{
-          text: "Записаться на консультацию",
+          text: "Записаться на разговор",
         }}
       />
     </>

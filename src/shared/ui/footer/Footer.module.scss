@@ -1,32 +1,33 @@
 .footer {
   --footer-padding: #{calculate-clamp(
-    60px,
-    126px,
-    $desktop-breakpoint,
-    $tablet-breakpoint
-  )} 0 50px;
+      60px,
+      126px,
+      $desktop-breakpoint,
+      $tablet-breakpoint
+    )}
+    0 50px;
   --footer-inner-gap: 48px;
   --footer-content-gap: #{calculate-clamp(
-    56px,
-    80px,
-    $desktop-breakpoint,
-    $tablet-breakpoint
-  )};
+      56px,
+      80px,
+      $desktop-breakpoint,
+      $tablet-breakpoint
+    )};
   --footer-info-gap: 32px;
   --footer-lists-gap: 32px;
   --footer-block-gap: #{calculate-clamp(
-    16px,
-    32px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+      16px,
+      32px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --footer-bottom-gap: 16px;
   --footer-copy-gap: #{calculate-clamp(
-    12px,
-    20px,
-    $desktop-breakpoint,
-    $tablet-breakpoint
-  )};
+      12px,
+      20px,
+      $desktop-breakpoint,
+      $tablet-breakpoint
+    )};
 
   background-color: var(--primary-color-100);
   color: var(--secondary-color-0);
@@ -52,11 +53,20 @@
   }
 
   &__lists {
+    // display: flex;
+    // flex-direction: column;
     display: grid;
     grid-template-columns: 40% 1fr;
     gap: var(--footer-lists-gap);
     color: var(--secondary-color-80);
     overflow-wrap: anywhere;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
   }
 
   &__block {
@@ -67,10 +77,16 @@
 
   &__copy {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: space-between;
     gap: var(--footer-copy-gap);
     flex-wrap: wrap;
+  }
+
+  &__copy-top {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
   &__bottom {
@@ -111,7 +127,6 @@
     }
 
     &__lists {
-
     }
   }
 }

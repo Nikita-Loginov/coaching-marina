@@ -4,6 +4,8 @@ import { Challenge } from "./challenge/Challenge";
 import { About } from "./about/About";
 import { ProgramsSection } from "@/widgets/programs";
 import { Solutions } from "./solutions/Solutions";
+import { WhoWork } from "./who-work/WhoWork";
+import {Principles} from "./principles/Principles";
 import { Fag, Cta, Hero } from "@/shared/ui/index.ui";
 
 import { getPerson } from "@/entities/person/model/person.queries";
@@ -17,12 +19,13 @@ export const Home = async () => {
 
   const heroContent = getHomeHeroContent(person);
 
-
   return (
     <>
       <Hero {...heroContent} />
 
       <About />
+
+      <WhoWork />
 
       <Philosophy />
 
@@ -32,6 +35,8 @@ export const Home = async () => {
 
       <Solutions />
 
+      <Principles />
+
       <Fag items={HomeFagItems} />
 
       <Cta
@@ -40,7 +45,7 @@ export const Home = async () => {
           labelAccent: "новых решений.",
         }}
         btnInfo={{
-          text: "Записаться на консультацию",
+          text: "Записаться на разговор",
         }}
       />
     </>

@@ -6,6 +6,7 @@ export type ModalMap = {
   video: {
     videoSrc: string;
     videoPoster: string;
+    type: 'url' | 'vk'
   }
 };
 

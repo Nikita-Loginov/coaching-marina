@@ -6,4 +6,5 @@ export type ReviewItem = {
   personImgSrc: string;
   videoSrc?: string;
   videoPoster?: string;
+  type: "url" | "vk"
 };

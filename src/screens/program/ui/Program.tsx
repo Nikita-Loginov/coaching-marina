@@ -48,7 +48,7 @@ export const Program = async ({ id }: ProgramProps) => {
 
               <div className={scss["program__btns"]}>
                 <ContactMessageBtn theme="primary" size="medium">
-                  <p className="p2">Записаться на консультацию</p>
+                  <p className="p2">Записаться на разговор</p>
                 </ContactMessageBtn>
               </div>
             </div>

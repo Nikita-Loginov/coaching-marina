@@ -13,7 +13,7 @@ export const About = async () => {
     return null;
   }
 
-  const { about, fullname, post } = person;
+  const { about, fullname, post, name, middlename } = person;
 
   return (
     <section className={scss["about"]} id="about">
@@ -27,9 +27,7 @@ export const About = async () => {
         >
           <div className={scss["about__inner"]}>
             <div className={scss["about__content"]}>
-              <h2 className={scss["about__title"]}>
-                {about.title}
-              </h2>
+              <h2 className={scss["about__title"]}>{about.title}</h2>
 
               <div className="textbox textbox--second">
                 {about.desc.map((text, index) => (
@@ -42,7 +40,7 @@ export const About = async () => {
               <div className={scss["about__img-cards"]}>
                 <div className={scss["about__img-card"]}>
                   <p className="p2 font-text-second">
-                    {fullname}
+                    {middlename} {name}
                   </p>
 
                   <div className="textbox textbox--second">
@@ -52,11 +50,7 @@ export const About = async () => {
               </div>
 
               <div className={scss["about__img"]}>
-                <Image
-                  src={about.images[0]}
-                  alt={fullname}
-                  fill
-                />
+                <Image src={about.images[0]} alt={fullname} fill />
               </div>
             </div>
           </div>

@@ -5,11 +5,11 @@ export const MENU_ITEMS: { label: string; href: string }[] = [
   }, 
   {
     label: "Программы обучения",
-    href: "/#programs",
+    href: "/programs/training-programs",
   },
   {
     label: "Решения",
-    href: "/#solutions",
+    href: "/#programs",
   },
   {
     label: "FAQ",

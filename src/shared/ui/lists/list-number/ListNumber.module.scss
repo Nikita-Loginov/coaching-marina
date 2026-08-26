@@ -1,0 +1,63 @@
+.list-number {
+  --list-number-gap: 24px;
+  --list-number-box-gap: #{calculate-clamp(
+      24px,
+      40px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
+  --list-number-link-gap: #{calculate-clamp(
+      24px,
+      40px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
+  --list-number-link-border-width: 1px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--list-number-gap);
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--list-number-box-gap);
+    list-style: none;
+    counter-reset: list;
+  }
+
+  &__link {
+    line-height: var(--line-height-relaxed);
+    font-weight: var(--weight-font-xs);
+    color: var(--primary-color-50);
+    counter-increment: list 1;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--list-number-link-gap);
+
+    &:not(:last-child) {
+      padding-bottom: var(--list-number-box-gap);
+      border-bottom: var(--list-number-link-border-width) solid
+        var(--primary-color-10);
+    }
+
+    &:before {
+      content: counter(list);
+    }
+
+    &:nth-child(-n + 9):before {
+      content: "0" counter(list);
+    }
+  }
+
+  &__item {
+    width: 100%;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --list-number-gap: #{vw(24)};
+    --list-number-box-gap: #{vw(40)};
+    --list-number-link-gap: #{vw(40)};
+    --list-number-link-border-width: #{vw(1)};
+  }
+}

@@ -117,7 +117,7 @@ export const ProgramsModal =  ({programs} : ProgramsModalProps) => {
         <div className={scss["programs-modal__footer"]}>
           <div className={scss["programs-modal__btns"]}>
             <ContactMessageBtn theme="primary" size="medium" >
-              <p className="p2">Записаться на консультацию</p>
+              <p className="p2">Записаться на разговор</p>
             </ContactMessageBtn>
           </div>
         </div>

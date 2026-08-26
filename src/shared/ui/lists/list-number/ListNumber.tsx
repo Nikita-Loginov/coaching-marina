@@ -2,10 +2,10 @@ import Link from "next/link";
 import classNames from "classnames";
 import { HTMLAttributeAnchorTarget } from "react";
 
-import scss from "./ListDefault.module.scss";
+import scss from "./ListNumber.module.scss";
 
 
-export interface ListDefaultProps {
+export interface ListNumberProps {
   title?: string;
   titleClassName?: string;
   items: {
@@ -19,26 +19,26 @@ export interface ListDefaultProps {
   }[];
 }
 
-export const ListDefault = ({
+export const ListNumber = ({
   title,
   titleClassName,
   items,
-}: ListDefaultProps) => {
+}: ListNumberProps) => {
   return (
-    <div className={scss["list-default"]}>
+    <div className={scss["list-number"]}>
       {title && <p className={titleClassName}>{title}</p>}
 
-      <ul className={scss["list-default__list"]}>
+      <ol className={scss["list-number__list"]}>
         {items.map((item, index) => {
           const { as = "link", label, href, ariaLabel, className, target, title} = item;
 
           const content = <p className={className}>{label}</p>;
 
           return (
-            <li className={scss["list-default__link"]} key={index}>
+            <li className={scss["list-number__link"]} key={index}>
               {as === "link" && href ? (
                 <Link
-                  className={classNames(scss["list-default__item"], 'link')}
+                  className={classNames(scss["list-number__item"], 'link')}
                   href={href}
                   aria-label={ariaLabel}
                   target={target}
@@ -52,7 +52,7 @@ export const ListDefault = ({
             </li>
           );
         })}
-      </ul>
+      </ol>
     </div>
   );
 };

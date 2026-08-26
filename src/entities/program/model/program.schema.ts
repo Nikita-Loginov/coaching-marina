@@ -19,6 +19,7 @@ const reviewSchema = z.object({
   personImgSrc: z.string().optional(),
   videoSrc: z.string().optional(),
   videoPoster: z.string().optional(),
+  type: z.enum(["url", "vk"]),
 });
 
 export const programSchema = z.object({

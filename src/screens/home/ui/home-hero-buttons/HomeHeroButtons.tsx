@@ -15,7 +15,7 @@ export const HomeHeroButtons = () => {
         iconRight={<Icons.ArrowRight />}
         iconSize="medium"
       >
-        <p className="p2">Записаться на консультацию</p>
+        <p className="p2">Записаться на разговор</p>
       </ContactMessageBtn>
 
       <Button size="medium" theme="secondary" as="link" to="#philosophy">

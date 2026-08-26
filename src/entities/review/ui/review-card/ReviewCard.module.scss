@@ -6,6 +6,11 @@
   --review-card-block-gap: 4px;
   --review-card-person-size: 36px;
   --review-card-content-gap: 16px;
+  --review-card-btns-gap: 10px;
+  --review-card-btns-padding-top: 10px;
+  --review-card-video-controls-bg: var(--secondary-color-30);
+  --review-card-video-controls-hover-bg: var(--gray-color-40);
+  --review-card-text-max-height: calc(10 * 1.6em);
 
   background-color: var(--gray-color-50);
   border: var(--review-card-border-width) solid var(--gray-color-80);
@@ -60,6 +65,20 @@
     }
   }
 
+  &__text {
+    &--collapsed {
+      max-height: var(--review-card-text-max-height);
+      overflow: hidden;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--review-card-btns-gap);
+    padding-top: var(--review-card-btns-padding-top);
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -77,7 +96,7 @@
     &:hover {
       .review-card {
         &__video-controls {
-          background-color: var(--gray-color-40);
+          background-color: var(--review-card-video-controls-hover-bg);
         }
       }
     }
@@ -92,7 +111,7 @@
     justify-content: center;
     transition: background-color var(--transition-base);
     color: var(--dark-color-0);
-    background-color: var(--secondary-color-30);
+    background-color: var(--review-card-video-controls-bg);
 
     svg {
       width: var(--icon-md);
@@ -122,5 +141,8 @@
     --review-card-block-gap: #{vw(4)};
     --review-card-person-size: #{vw(36)};
     --review-card-content-gap: #{vw(16)};
+    --review-card-btns-gap: #{vw(10)};
+    --review-card-btns-padding-top: #{vw(10)};
+    --review-card-text-max-height: calc(10 * 1.6em);
   }
 }

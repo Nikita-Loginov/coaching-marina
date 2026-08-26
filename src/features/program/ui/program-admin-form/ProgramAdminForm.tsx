@@ -1000,6 +1000,31 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                           error={errors.reviews?.[index]?.videoSrc?.message}
                         />
 
+                        <Select
+                          label="Тип видео"
+                          value={watch(`reviews.${index}.type`)}
+                          items={[
+                            {
+                              value: "url",
+                              label: "Видео-файл",
+                            },
+                            {
+                              value: "vk",
+                              label: "VK Video",
+                            },
+                          ]}
+                          onValueChange={(value) => {
+                            setValue(
+                              `reviews.${index}.type`,
+                              value as "url" | "vk",
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                        />
+
                         <ImageUpload
                           label="Превью видео"
                           value={watch(`reviews.${index}.videoPoster`) ?? ""}
@@ -1034,6 +1059,7 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                           personImgSrc: "",
                           videoSrc: "",
                           videoPoster: "",
+                          type: "url",
                         })
                       }
                     >

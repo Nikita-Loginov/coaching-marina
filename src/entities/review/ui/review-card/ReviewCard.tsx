@@ -3,8 +3,10 @@
 import classNames from "classnames";
 import Image from "next/image";
 import { Play } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 import type { ReviewItem } from "../../model/review.types";
+import { Button } from "@/shared/ui/index.ui";
 
 import { useModalStore } from "@/shared/store/modal/modal.store";
 
@@ -29,11 +31,48 @@ export const ReviewCard = ({
   onDelete,
   deleteStatus,
 }: ReviewCardProps) => {
-  const { id, name, post, text, personImgSrc, videoSrc, videoPoster } = card;
+  const { id, name, post, text, personImgSrc, videoSrc, videoPoster, type } =
+    card;
 
   const isDeleting = deleteStatus?.isPending && deleteStatus.id === id;
 
   const { open } = useModalStore();
+
+  const textRef = useRef<HTMLDivElement>(null);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+
+  useEffect(() => {
+    const element = textRef.current;
+
+    if (!element) return;
+
+    const checkOverflow = () => {
+      const lineHeight = parseFloat(getComputedStyle(element).lineHeight);
+
+      if (!lineHeight || Number.isNaN(lineHeight)) {
+        setIsOverflowing(false);
+        return;
+      }
+
+      const maxHeight = lineHeight * 10;
+
+      setIsOverflowing(element.scrollHeight > maxHeight + 1);
+    };
+
+    checkOverflow();
+
+    const resizeObserver = new ResizeObserver(checkOverflow);
+
+    resizeObserver.observe(element);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [text]);
+
+  const shouldShowReadMore = isOverflowing || isExpanded;
 
   return (
     <div className={scss["review-card"]}>
@@ -50,14 +89,37 @@ export const ReviewCard = ({
           <Image src={personImgSrc} alt={name} fill />
         </div>
       </div>
+      
 
       {text || videoSrc ? (
         <div className={scss["review-card__content"]}>
           {text && text.length > 0 ? (
-            <div className="textbox textbox--second">
-              {text.map((text, index) => (
-                <p key={index}>{text}</p>
-              ))}
+            <div>
+              <div
+                ref={textRef}
+                className={classNames(
+                  "textbox textbox--second",
+                  !isExpanded &&
+                    isOverflowing &&
+                    scss["review-card__text--collapsed"]
+                )}
+              >
+                {text.map((item, index) => (
+                  <p key={index}>{item}</p>
+                ))}
+              </div>
+
+              {shouldShowReadMore && (
+                <div className={scss["review-card__btns"]}>
+                  <Button
+                    typeBtn="button"
+                    onClick={() => setIsExpanded((prev) => !prev)}
+                    theme="primary"
+                  >
+                    {isExpanded ? "Скрыть" : "Читать полностью"}
+                  </Button>
+                </div>
+              )}
             </div>
           ) : null}
 
@@ -66,8 +128,9 @@ export const ReviewCard = ({
               className={scss["review-card__video"]}
               onClick={() => {
                 open("video", {
-                  videoSrc: videoSrc,
-                  videoPoster: videoPoster,
+                  videoSrc,
+                  videoPoster,
+                  type,
                 });
               }}
             >
@@ -75,7 +138,7 @@ export const ReviewCard = ({
                 <Play />
               </div>
 
-              <div className={classNames(scss["review-card__video-box"])}>
+              <div className={scss["review-card__video-box"]}>
                 <Image src={videoPoster} alt={name} fill />
               </div>
             </div>
