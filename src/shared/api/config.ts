@@ -4,5 +4,6 @@ export const API_CONFIG = {
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
+    
   },
 };
