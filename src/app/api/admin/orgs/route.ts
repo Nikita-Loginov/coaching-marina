@@ -3,7 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 
 import { PrismaClient } from "@/generated/client";
 
-const prisma = new PrismaClient();
+import { prisma } from "@/shared/lib/prisma";
 
 const PERSON_ID = "main";
 

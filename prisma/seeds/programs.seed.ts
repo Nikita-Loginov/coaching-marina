@@ -2,7 +2,7 @@ import "dotenv/config";
 
 import { PrismaClient } from "@/generated/client";
 
-const prisma = new PrismaClient();
+import { prisma } from "@/shared/lib/prisma";
 
 export const programs = [
   {
