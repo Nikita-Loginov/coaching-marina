@@ -8,8 +8,6 @@ interface PublicLayoutProps {
 export default function PublicLayout({
   children,
 }: PublicLayoutProps) {
-  console.log(process.env['DATABASE_URL'])
-
   return (
     <>
       <Header />
