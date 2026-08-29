@@ -15,9 +15,12 @@ import {
   Accordeon,
   MultiBoxTextField,
   MultiBoxTitleDescriptionField,
+  Check,
 } from "@/shared/ui/index.ui";
 
 import { useProgramQuery } from "../../model/useProgramQuery";
+
+import type { ProgramContent } from "@/entities/program/model/program.types";
 
 import {
   useCreateProgram,
@@ -37,6 +40,28 @@ interface ProgramAdminFormProps {
   mode: "create" | "edit";
 }
 
+const contentAsItems = [
+  {
+    value: "default",
+    label: "Обычный текст",
+  },
+  {
+    value: "list",
+    label: "Список",
+  },
+];
+
+const contentVariantItems = [
+  {
+    value: "small",
+    label: "Маленькая карточка",
+  },
+  {
+    value: "big",
+    label: "Большая карточка",
+  },
+];
+
 export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
   const router = useRouter();
   const isEdit = Boolean(id);
@@ -54,6 +79,8 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
       descriptionFull: [""],
       as: "modal",
       btnText: "",
+      btnTextInner: "",
+      teamShowed: true,
 
       img: {
         src: "",
@@ -65,8 +92,11 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         items: [
           {
             desc: [""],
+            as: "default",
           },
         ],
+        showed: true,
+        variant: "small",
       },
 
       suitableRequests: {
@@ -74,8 +104,11 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         items: [
           {
             desc: [""],
+            as: "default",
           },
         ],
+        showed: true,
+        variant: "small",
       },
 
       workflow: {
@@ -83,8 +116,11 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         items: [
           {
             desc: [""],
+            as: "default",
           },
         ],
+        showed: true,
+        variant: "small",
       },
 
       cooperationFormat: {
@@ -92,8 +128,11 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         items: [
           {
             desc: [""],
+            as: "default",
           },
         ],
+        showed: true,
+        variant: "small",
       },
 
       benefits: {
@@ -101,8 +140,11 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         items: [
           {
             desc: [""],
+            as: "default",
           },
         ],
+        showed: true,
+        variant: "small",
       },
 
       reviews: [],
@@ -162,6 +204,8 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         descriptionFull: program.descriptionFull,
         as: program.as,
         btnText: program.btnText,
+        btnTextInner: program.btnTextInner,
+        teamShowed: program.teamShowed,
 
         img: {
           src:
@@ -250,6 +294,15 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                       placeholder="Подробнее о формате"
                       {...register("btnText")}
                       error={errors.btnText?.message}
+                    />
+                  </div>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Input
+                      label="Текст внутренний кнопки"
+                      placeholder="Записаться на разговор"
+                      {...register("btnTextInner")}
+                      error={errors.btnTextInner?.message}
                     />
                   </div>
 
@@ -353,9 +406,17 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                         key={field.id}
                         className={classNames(
                           scss["admin-form__item"],
-                          scss["admin-form__item--big"]
+                          scss["admin-form__item--big"],
+                          scss["admin-form__item--bg"]
                         )}
                       >
+                        <Input
+                          label={`Заголовок пункта ${index + 1}`}
+                          placeholder="Заголовок"
+                          {...register(`forWhom.items.${index}.title`)}
+                          error={errors.forWhom?.items?.[index]?.title?.message}
+                        />
+
                         <MultiBoxTextField
                           label={`Пункт ${index + 1}`}
                           btnAddText="Добавить описание"
@@ -411,6 +472,24 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                           error={errors.forWhom?.items?.[index]?.desc?.message}
                         />
 
+                        <Select
+                          label="Тип отображения"
+                          value={
+                            watch(`forWhom.items.${index}.as`) ?? "default"
+                          }
+                          items={contentAsItems}
+                          onValueChange={(value) => {
+                            setValue(
+                              `forWhom.items.${index}.as`,
+                              value as "default" | "list",
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                        />
+
                         <Button
                           theme="secondary"
                           typeBtn="button"
@@ -428,11 +507,37 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                     onClick={() =>
                       forWhomField.append({
                         desc: [""],
+                        as: "default",
+                        title: "",
                       })
                     }
                   >
                     <p className="p3">Добавить пункт</p>
                   </Button>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Check
+                      {...register("forWhom.showed")}
+                      content={
+                        <p className="p3">Показывать блок на странице</p>
+                      }
+                      error={errors.forWhom?.showed?.message}
+                    />
+                  </div>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Select
+                      label="Размер блока"
+                      value={watch("forWhom.variant")}
+                      items={contentVariantItems}
+                      onValueChange={(value) => {
+                        setValue("forWhom.variant", value as "small" | "big", {
+                          shouldDirty: true,
+                          shouldValidate: true,
+                        });
+                      }}
+                    />
+                  </div>
                 </div>
               ),
             },
@@ -464,9 +569,20 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                         key={field.id}
                         className={classNames(
                           scss["admin-form__item"],
-                          scss["admin-form__item--big"]
+                          scss["admin-form__item--big"],
+                          scss["admin-form__item--bg"]
                         )}
                       >
+                        <Input
+                          label={`Заголовок пункта ${index + 1}`}
+                          placeholder="Заголовок"
+                          {...register(`suitableRequests.items.${index}.title`)}
+                          error={
+                            errors.suitableRequests?.items?.[index]?.title
+                              ?.message
+                          }
+                        />
+
                         <MultiBoxTextField
                           label={`Пункт ${index + 1}`}
                           btnAddText="Добавить описание"
@@ -528,6 +644,25 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                           }
                         />
 
+                        <Select
+                          label="Тип отображения"
+                          value={
+                            watch(`suitableRequests.items.${index}.as`) ??
+                            "default"
+                          }
+                          items={contentAsItems}
+                          onValueChange={(value) => {
+                            setValue(
+                              `suitableRequests.items.${index}.as`,
+                              value as "default" | "list",
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                        />
+
                         <Button
                           theme="secondary"
                           typeBtn="button"
@@ -545,11 +680,41 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                     onClick={() =>
                       suitableRequestsField.append({
                         desc: [""],
+                        as: "default",
+                        title: "",
                       })
                     }
                   >
                     <p className="p3">Добавить пункт</p>
                   </Button>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Check
+                      {...register("suitableRequests.showed")}
+                      content={
+                        <p className="p3">Показывать блок на странице</p>
+                      }
+                      error={errors.suitableRequests?.showed?.message}
+                    />
+                  </div>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Select
+                      label="Размер блока"
+                      value={watch("suitableRequests.variant")}
+                      items={contentVariantItems}
+                      onValueChange={(value) => {
+                        setValue(
+                          "suitableRequests.variant",
+                          value as "small" | "big",
+                          {
+                            shouldDirty: true,
+                            shouldValidate: true,
+                          }
+                        );
+                      }}
+                    />
+                  </div>
                 </div>
               ),
             },
@@ -581,9 +746,19 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                         key={field.id}
                         className={classNames(
                           scss["admin-form__item"],
-                          scss["admin-form__item--big"]
+                          scss["admin-form__item--big"],
+                          scss["admin-form__item--bg"]
                         )}
                       >
+                        <Input
+                          label={`Заголовок пункта ${index + 1}`}
+                          placeholder="Заголовок"
+                          {...register(`workflow.items.${index}.title`)}
+                          error={
+                            errors.workflow?.items?.[index]?.title?.message
+                          }
+                        />
+
                         <MultiBoxTextField
                           label={`Пункт ${index + 1}`}
                           btnAddText="Добавить описание"
@@ -638,6 +813,24 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                           error={errors.workflow?.items?.[index]?.desc?.message}
                         />
 
+                        <Select
+                          label="Тип отображения"
+                          value={
+                            watch(`workflow.items.${index}.as`) ?? "default"
+                          }
+                          items={contentAsItems}
+                          onValueChange={(value) => {
+                            setValue(
+                              `workflow.items.${index}.as`,
+                              value as "default" | "list",
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                        />
+
                         <Button
                           theme="secondary"
                           typeBtn="button"
@@ -655,11 +848,37 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                     onClick={() =>
                       workflowField.append({
                         desc: [""],
+                        as: "default",
+                        title: "",
                       })
                     }
                   >
                     <p className="p3">Добавить пункт</p>
                   </Button>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Check
+                      {...register("workflow.showed")}
+                      content={
+                        <p className="p3">Показывать блок на странице</p>
+                      }
+                      error={errors.workflow?.showed?.message}
+                    />
+                  </div>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Select
+                      label="Размер блока"
+                      value={watch("workflow.variant")}
+                      items={contentVariantItems}
+                      onValueChange={(value) => {
+                        setValue("workflow.variant", value as "small" | "big", {
+                          shouldDirty: true,
+                          shouldValidate: true,
+                        });
+                      }}
+                    />
+                  </div>
                 </div>
               ),
             },
@@ -691,9 +910,22 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                         key={field.id}
                         className={classNames(
                           scss["admin-form__item"],
-                          scss["admin-form__item--big"]
+                          scss["admin-form__item--big"],
+                          scss["admin-form__item--bg"]
                         )}
                       >
+                        <Input
+                          label={`Заголовок пункта ${index + 1}`}
+                          placeholder="Заголовок"
+                          {...register(
+                            `cooperationFormat.items.${index}.title`
+                          )}
+                          error={
+                            errors.cooperationFormat?.items?.[index]?.title
+                              ?.message
+                          }
+                        />
+
                         <MultiBoxTextField
                           label={`Пункт ${index + 1}`}
                           btnAddText="Добавить описание"
@@ -755,6 +987,25 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                           }
                         />
 
+                        <Select
+                          label="Тип отображения"
+                          value={
+                            watch(`cooperationFormat.items.${index}.as`) ??
+                            "default"
+                          }
+                          items={contentAsItems}
+                          onValueChange={(value) => {
+                            setValue(
+                              `cooperationFormat.items.${index}.as`,
+                              value as "default" | "list",
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                        />
+
                         <Button
                           theme="secondary"
                           typeBtn="button"
@@ -772,11 +1023,41 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                     onClick={() =>
                       cooperationFormatField.append({
                         desc: [""],
+                        as: "default",
+                        title: "",
                       })
                     }
                   >
                     <p className="p3">Добавить пункт</p>
                   </Button>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Check
+                      {...register("cooperationFormat.showed")}
+                      content={
+                        <p className="p3">Показывать блок на странице</p>
+                      }
+                      error={errors.cooperationFormat?.showed?.message}
+                    />
+                  </div>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Select
+                      label="Размер блока"
+                      value={watch("cooperationFormat.variant")}
+                      items={contentVariantItems}
+                      onValueChange={(value) => {
+                        setValue(
+                          "cooperationFormat.variant",
+                          value as "small" | "big",
+                          {
+                            shouldDirty: true,
+                            shouldValidate: true,
+                          }
+                        );
+                      }}
+                    />
+                  </div>
                 </div>
               ),
             },
@@ -808,9 +1089,19 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                         key={field.id}
                         className={classNames(
                           scss["admin-form__item"],
-                          scss["admin-form__item--big"]
+                          scss["admin-form__item--big"],
+                          scss["admin-form__item--bg"]
                         )}
                       >
+                        <Input
+                          label={`Заголовок пункта ${index + 1}`}
+                          placeholder="Заголовок"
+                          {...register(`benefits.items.${index}.title`)}
+                          error={
+                            errors.benefits?.items?.[index]?.title?.message
+                          }
+                        />
+
                         <MultiBoxTextField
                           label={`Пункт ${index + 1}`}
                           btnAddText="Добавить описание"
@@ -865,6 +1156,24 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                           error={errors.benefits?.items?.[index]?.desc?.message}
                         />
 
+                        <Select
+                          label="Тип отображения"
+                          value={
+                            watch(`benefits.items.${index}.as`) ?? "default"
+                          }
+                          items={contentAsItems}
+                          onValueChange={(value) => {
+                            setValue(
+                              `benefits.items.${index}.as`,
+                              value as "default" | "list",
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                        />
+
                         <Button
                           theme="secondary"
                           typeBtn="button"
@@ -882,11 +1191,37 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                     onClick={() =>
                       benefitsField.append({
                         desc: [""],
+                        as: "default",
+                        title: "",
                       })
                     }
                   >
                     <p className="p3">Добавить пункт</p>
                   </Button>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Check
+                      {...register("benefits.showed")}
+                      content={
+                        <p className="p3">Показывать блок на странице</p>
+                      }
+                      error={errors.benefits?.showed?.message}
+                    />
+                  </div>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Select
+                      label="Размер блока"
+                      value={watch("benefits.variant")}
+                      items={contentVariantItems}
+                      onValueChange={(value) => {
+                        setValue("benefits.variant", value as "small" | "big", {
+                          shouldDirty: true,
+                          shouldValidate: true,
+                        });
+                      }}
+                    />
+                  </div>
                 </div>
               ),
             },
@@ -1065,6 +1400,22 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                     >
                       <p className="p3">Добавить отзыв</p>
                     </Button>
+                  </div>
+                </div>
+              ),
+            },
+
+            {
+              key: "details",
+              label: "Детали",
+              children: (
+                <div className={scss["admin-form__inputs"]}>
+                  <div className={scss["admin-form__item"]}>
+                    <Check
+                      {...register("teamShowed")}
+                      content={<p className="p3">Показывать блок с командой</p>}
+                      error={errors.teamShowed?.message}
+                    />
                   </div>
                 </div>
               ),

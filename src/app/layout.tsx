@@ -1,4 +1,4 @@
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Cormorant } from "next/font/google";
 import Script from "next/script";
 import { Toaster } from "react-hot-toast";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -23,8 +23,8 @@ const interSans = Inter({
   preload: true,
 });
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
+const cormorantDisplay = Cormorant({
+  variable: "--font-cormorant-display",
   subsets: ["cyrillic", "latin"],
   weight: ["400", "500", "600"],
   style: ["normal", "italic"],
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="ru"
-      className={`${interSans.variable} ${playfairDisplay.variable}`}
+      className={`${interSans.variable} ${cormorantDisplay.variable}`}
     >
       <body className="body">
         <ClerkProvider>

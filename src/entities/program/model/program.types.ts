@@ -9,6 +9,8 @@ export type ProgramContentItem = {
 export type ProgramContent = {
   title: string;
   items: ProgramContentItem[];
+  showed: boolean
+  variant: "small" | 'big'
 };
 
 export type ProgramImage = {
@@ -28,6 +30,10 @@ export type ProgramItem = {
   as: "modal" | "page";
 
   btnText: string;
+
+  btnTextInner: string;
+
+  teamShowed: boolean;
 
   img: ProgramImage;
 
@@ -56,6 +62,10 @@ export type ProgramRow = {
   as: string;
 
   btnText: string;
+
+  btnTextInner: string;
+
+  teamShowed: boolean;
 
   img: unknown;
 

@@ -21,14 +21,14 @@ model Team {
 }
 
 model Person {
-  id                       String   @id @default("main")
-  name                     String
-  middlename               String
-  fullname                 String
-  post                     String
-  clients                  String
-  countAreas               Int
-  license                  String   @default("Л035-01255-50/01533168")
+  id         String @id @default("main")
+  name       String
+  middlename String
+  fullname   String
+  post       String
+  clients    String
+  countAreas Int
+  license    String @default("Л035-01255-50/01533168")
 
   about                    Json
   contacts                 Json
@@ -46,28 +46,30 @@ model Person {
   internationalCooperation Json
   documents                Json
 
-  createdAt                DateTime @default(now())
-  updatedAt                DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Program {
-  id                   String   @id
-  name                 String
-  description          String[]
-  descriptionFull      String[]
-  as                   String
-  btnText              String
+  id              String   @id
+  name            String
+  description     String[]
+  descriptionFull String[]
+  as              String
+  btnText         String
+  btnTextInner    String   @default("")
+  teamShowed      Boolean  @default(true)
 
-  img                  Json
+  img Json
 
-  forWhom              Json
-  suitableRequests     Json
-  workflow             Json
-  cooperationFormat    Json
-  benefits             Json
+  forWhom           Json
+  suitableRequests  Json
+  workflow          Json
+  cooperationFormat Json
+  benefits          Json
 
-  reviews              Json?
+  reviews Json?
 
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

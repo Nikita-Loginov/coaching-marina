@@ -30,7 +30,7 @@
     border: var(--cta-inner-border-width) solid var(--gray-color-60);
     backdrop-filter: blur(8px);
     width: 100%;
-    border-radius: var(--radius-10xl);
+    border-radius: var(--radius-4xl);
     padding: var(--cta-inner-padding);
     display: flex;
     flex-direction: column;
@@ -66,12 +66,12 @@
 
   &__title {
     font-family: var(--font-family-second);
-    font-style: italic;
+    
   }
 
   &__title-sub {
     color: var(--primary-color-60);
-    font-style: italic;
+    
   }
 
   @media (min-width: $desktop-breakpoint) {

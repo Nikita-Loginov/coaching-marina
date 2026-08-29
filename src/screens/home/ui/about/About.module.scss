@@ -28,7 +28,7 @@
   &__title {
     font-size: var(--font-size-md-add);
     font-family: var(--font-family-second);
-    font-style: italic;
+    
     line-height: var(--line-height-relaxed);
   }
 
@@ -53,7 +53,7 @@
     background-color: var(--gray-color-60);
     border: var(--about-img-card-border-width) solid var(--gray-color-60);
     padding: var(--about-img-card-padding);
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
     gap: var(--about-img-card-gap);
@@ -63,7 +63,7 @@
     aspect-ratio: 4 / 5;
     position: relative;
     z-index: 2;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     overflow: hidden;
     background-color: var(--primary-color-40);
 

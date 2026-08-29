@@ -82,6 +82,12 @@
     }
   }
 
+  &__item--bg {
+    padding: var(--admin-form-documents-item-padding);
+    background-color: var(--primary-color-20);
+    border-radius: var(--radius-xl);
+  }
+
   @media (min-width: $desktop-breakpoint) {
     --admin-form-gap: #{vw(24)};
     --admin-form-max-width: 90%;

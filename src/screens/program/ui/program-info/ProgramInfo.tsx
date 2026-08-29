@@ -13,9 +13,7 @@ interface ProgramInfoProps {
   program: ProgramItem;
 }
 
-type ProgramInfoItem = ProgramContent & {
-  variant?: "active";
-};
+type ProgramInfoItem = ProgramContent;
 
 export const ProgramInfo = ({ program }: ProgramInfoProps) => {
   const { forWhom, suitableRequests, workflow, cooperationFormat, benefits } =
@@ -26,7 +24,7 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
     suitableRequests,
     {
       ...workflow,
-      variant: "active",
+      // variant: "active",
     },
     cooperationFormat,
     benefits,
@@ -38,11 +36,13 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
         <div className={scss["program-info__inner"]}>
           <div className={scss["program-info__items"]}>
             {programItems.map((programItem) => {
+              if (!programItem.showed) return;
+
               return (
                 <div
                   className={classNames(
                     scss["program-info__item"],
-                    programItem?.variant === "active"
+                    programItem?.variant === "big"
                       ? scss["program-info__item--active"]
                       : null
                   )}
@@ -77,18 +77,24 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                           </div>
                         </div>
                       ) : (
-                        <ul className={scss["program-info__item-list"]}>
-                          {desc.map((text, index) => {
-                            return (
-                              <li
-                                className={scss["program-info__item-link"]}
-                                key={index}
-                              >
-                                <p className="p1">{text}</p>
-                              </li>
-                            );
-                          })}
-                        </ul>
+                        <div className={scss["program-info__item-block"]}>
+                          {title ? (
+                            <p className="p2 font-text-second">{title}</p>
+                          ) : null}
+
+                          <ul className={scss["program-info__item-list"]}>
+                            {desc.map((text, index) => {
+                              return (
+                                <li
+                                  className={scss["program-info__item-link"]}
+                                  key={index}
+                                >
+                                  <p className="p3">{text}</p>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
                       );
                     })}
                   </div>

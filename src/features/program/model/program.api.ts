@@ -17,6 +17,7 @@ const mapItemToRow = (
   descriptionFull: data.descriptionFull,
   as: data.as,
   btnText: data.btnText,
+  btnTextInner: data.btnTextInner,
   img: data.img,
   forWhom: data.forWhom,
   suitableRequests: data.suitableRequests,
@@ -24,6 +25,7 @@ const mapItemToRow = (
   cooperationFormat: data.cooperationFormat,
   benefits: data.benefits,
   reviews: data.reviews,
+  teamShowed: data.teamShowed,
 });
 
 export const programApi = {

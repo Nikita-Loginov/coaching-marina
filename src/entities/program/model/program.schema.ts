@@ -3,12 +3,14 @@ import { z } from "zod";
 const programContentItemSchema = z.object({
   title: z.string().optional(),
   desc: z.array(z.string().min(1, "Обязательное поле")),
-  as: z.enum(["default", "list"]).optional(),
+  as: z.enum(["default", "list"]).default("default"),
 });
 
 const programContentSchema = z.object({
   title: z.string().min(1, "Обязательное поле"),
   items: z.array(programContentItemSchema),
+  showed: z.boolean().default(true),
+  variant: z.enum(["small", "big"]).default("small"),
 });
 
 const reviewSchema = z.object({
@@ -40,7 +42,11 @@ export const programSchema = z.object({
 
   as: z.enum(["modal", "page"]),
 
+  teamShowed: z.boolean().default(true),
+
   btnText: z.string().min(1, "Обязательное поле"),
+
+  btnTextInner: z.string().min(1, "Обязательное поле"),
 
   img: z.object({
     src: z.string().min(1, "Обязательное поле"),

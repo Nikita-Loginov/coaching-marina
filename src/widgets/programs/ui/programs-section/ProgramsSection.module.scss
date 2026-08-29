@@ -1,11 +1,12 @@
 .programs {
-  --programs-items-gap: var(--gap-blocks);
+  --programs-items-gap: 40px;
 
   width: 100%;
 
   &__items {
     display: flex;
     flex-direction: column;
+    gap: var(--programs-items-gap);
 
     & > *:nth-child(even) {
       flex-direction: row-reverse;
@@ -13,9 +14,7 @@
   }
 
   @media (max-width: $lg-breakpoint) {
-    &__items {
-      gap: 60px;
-    }
+    --programs-items-gap: 60px;
   }
 
   @media (max-width: $tablet-breakpoint) {

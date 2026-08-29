@@ -35,7 +35,7 @@
     border: var(--challenge-card-border-width) solid var(--gray-color-60);
     background-color: var(--gray-color-40);
     backdrop-filter: blur(4px);
-    border-radius: var(--radius-7xl);
+    border-radius: var(--radius-4xl);
   }
 
   &__card-item {
@@ -53,7 +53,7 @@
 
   &__card-textbox {
     font-family: var(--font-family-second);
-    font-style: italic;
+    
   }
 
   &__card-content {

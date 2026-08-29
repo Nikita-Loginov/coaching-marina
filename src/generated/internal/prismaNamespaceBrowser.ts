@@ -121,6 +121,8 @@ export const ProgramScalarFieldEnum = {
   descriptionFull: 'descriptionFull',
   as: 'as',
   btnText: 'btnText',
+  btnTextInner: 'btnTextInner',
+  teamShowed: 'teamShowed',
   img: 'img',
   forWhom: 'forWhom',
   suitableRequests: 'suitableRequests',

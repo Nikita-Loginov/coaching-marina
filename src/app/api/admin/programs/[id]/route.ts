@@ -52,6 +52,7 @@ export async function PATCH(request: Request, { params }: RouteContext) {
         descriptionFull: body.descriptionFull,
         as: body.as,
         btnText: body.btnText,
+        btnTextInner: body.btnTextInner,
         img: body.img,
         forWhom: body.forWhom,
         suitableRequests: body.suitableRequests,
@@ -59,6 +60,7 @@ export async function PATCH(request: Request, { params }: RouteContext) {
         cooperationFormat: body.cooperationFormat,
         benefits: body.benefits,
         reviews: body.reviews ?? [],
+        teamShowed: body.teamShowed,
       },
     });
 

@@ -65,7 +65,7 @@
     border: var(--solutions-card-border-width) solid
       var(--solution-card-border-color);
     padding: var(--solutions-card-padding);
-    border-radius: var(--radius-7xl);
+    border-radius: var(--radius-4xl);
 
     &--accent {
       --solution-card-bg: var(--primary-color-0);
@@ -93,7 +93,7 @@
     color: var(--solution-card-number-color);
     font-size: var(--font-size-xs);
     font-family: var(--font-family-second);
-    font-style: italic;
+    
   }
 
   &__card-content {
@@ -105,7 +105,7 @@
   &__card-title {
     font-size: var(--font-size-md-add);
     font-family: var(--font-family-second);
-    font-style: italic;
+    
     color: var(--solution-card-title-color);
   }
 

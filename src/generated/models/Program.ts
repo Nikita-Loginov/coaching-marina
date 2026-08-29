@@ -29,6 +29,8 @@ export type ProgramMinAggregateOutputType = {
   name: string | null
   as: string | null
   btnText: string | null
+  btnTextInner: string | null
+  teamShowed: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -38,6 +40,8 @@ export type ProgramMaxAggregateOutputType = {
   name: string | null
   as: string | null
   btnText: string | null
+  btnTextInner: string | null
+  teamShowed: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -49,6 +53,8 @@ export type ProgramCountAggregateOutputType = {
   descriptionFull: number
   as: number
   btnText: number
+  btnTextInner: number
+  teamShowed: number
   img: number
   forWhom: number
   suitableRequests: number
@@ -67,6 +73,8 @@ export type ProgramMinAggregateInputType = {
   name?: true
   as?: true
   btnText?: true
+  btnTextInner?: true
+  teamShowed?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -76,6 +84,8 @@ export type ProgramMaxAggregateInputType = {
   name?: true
   as?: true
   btnText?: true
+  btnTextInner?: true
+  teamShowed?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -87,6 +97,8 @@ export type ProgramCountAggregateInputType = {
   descriptionFull?: true
   as?: true
   btnText?: true
+  btnTextInner?: true
+  teamShowed?: true
   img?: true
   forWhom?: true
   suitableRequests?: true
@@ -178,6 +190,8 @@ export type ProgramGroupByOutputType = {
   descriptionFull: string[]
   as: string
   btnText: string
+  btnTextInner: string
+  teamShowed: boolean
   img: runtime.JsonValue
   forWhom: runtime.JsonValue
   suitableRequests: runtime.JsonValue
@@ -217,6 +231,8 @@ export type ProgramWhereInput = {
   descriptionFull?: Prisma.StringNullableListFilter<"Program">
   as?: Prisma.StringFilter<"Program"> | string
   btnText?: Prisma.StringFilter<"Program"> | string
+  btnTextInner?: Prisma.StringFilter<"Program"> | string
+  teamShowed?: Prisma.BoolFilter<"Program"> | boolean
   img?: Prisma.JsonFilter<"Program">
   forWhom?: Prisma.JsonFilter<"Program">
   suitableRequests?: Prisma.JsonFilter<"Program">
@@ -235,6 +251,8 @@ export type ProgramOrderByWithRelationInput = {
   descriptionFull?: Prisma.SortOrder
   as?: Prisma.SortOrder
   btnText?: Prisma.SortOrder
+  btnTextInner?: Prisma.SortOrder
+  teamShowed?: Prisma.SortOrder
   img?: Prisma.SortOrder
   forWhom?: Prisma.SortOrder
   suitableRequests?: Prisma.SortOrder
@@ -256,6 +274,8 @@ export type ProgramWhereUniqueInput = Prisma.AtLeast<{
   descriptionFull?: Prisma.StringNullableListFilter<"Program">
   as?: Prisma.StringFilter<"Program"> | string
   btnText?: Prisma.StringFilter<"Program"> | string
+  btnTextInner?: Prisma.StringFilter<"Program"> | string
+  teamShowed?: Prisma.BoolFilter<"Program"> | boolean
   img?: Prisma.JsonFilter<"Program">
   forWhom?: Prisma.JsonFilter<"Program">
   suitableRequests?: Prisma.JsonFilter<"Program">
@@ -274,6 +294,8 @@ export type ProgramOrderByWithAggregationInput = {
   descriptionFull?: Prisma.SortOrder
   as?: Prisma.SortOrder
   btnText?: Prisma.SortOrder
+  btnTextInner?: Prisma.SortOrder
+  teamShowed?: Prisma.SortOrder
   img?: Prisma.SortOrder
   forWhom?: Prisma.SortOrder
   suitableRequests?: Prisma.SortOrder
@@ -298,6 +320,8 @@ export type ProgramScalarWhereWithAggregatesInput = {
   descriptionFull?: Prisma.StringNullableListFilter<"Program">
   as?: Prisma.StringWithAggregatesFilter<"Program"> | string
   btnText?: Prisma.StringWithAggregatesFilter<"Program"> | string
+  btnTextInner?: Prisma.StringWithAggregatesFilter<"Program"> | string
+  teamShowed?: Prisma.BoolWithAggregatesFilter<"Program"> | boolean
   img?: Prisma.JsonWithAggregatesFilter<"Program">
   forWhom?: Prisma.JsonWithAggregatesFilter<"Program">
   suitableRequests?: Prisma.JsonWithAggregatesFilter<"Program">
@@ -316,6 +340,8 @@ export type ProgramCreateInput = {
   descriptionFull?: Prisma.ProgramCreatedescriptionFullInput | string[]
   as: string
   btnText: string
+  btnTextInner?: string
+  teamShowed?: boolean
   img: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -334,6 +360,8 @@ export type ProgramUncheckedCreateInput = {
   descriptionFull?: Prisma.ProgramCreatedescriptionFullInput | string[]
   as: string
   btnText: string
+  btnTextInner?: string
+  teamShowed?: boolean
   img: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -352,6 +380,8 @@ export type ProgramUpdateInput = {
   descriptionFull?: Prisma.ProgramUpdatedescriptionFullInput | string[]
   as?: Prisma.StringFieldUpdateOperationsInput | string
   btnText?: Prisma.StringFieldUpdateOperationsInput | string
+  btnTextInner?: Prisma.StringFieldUpdateOperationsInput | string
+  teamShowed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   img?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -370,6 +400,8 @@ export type ProgramUncheckedUpdateInput = {
   descriptionFull?: Prisma.ProgramUpdatedescriptionFullInput | string[]
   as?: Prisma.StringFieldUpdateOperationsInput | string
   btnText?: Prisma.StringFieldUpdateOperationsInput | string
+  btnTextInner?: Prisma.StringFieldUpdateOperationsInput | string
+  teamShowed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   img?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -388,6 +420,8 @@ export type ProgramCreateManyInput = {
   descriptionFull?: Prisma.ProgramCreatedescriptionFullInput | string[]
   as: string
   btnText: string
+  btnTextInner?: string
+  teamShowed?: boolean
   img: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -406,6 +440,8 @@ export type ProgramUpdateManyMutationInput = {
   descriptionFull?: Prisma.ProgramUpdatedescriptionFullInput | string[]
   as?: Prisma.StringFieldUpdateOperationsInput | string
   btnText?: Prisma.StringFieldUpdateOperationsInput | string
+  btnTextInner?: Prisma.StringFieldUpdateOperationsInput | string
+  teamShowed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   img?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -424,6 +460,8 @@ export type ProgramUncheckedUpdateManyInput = {
   descriptionFull?: Prisma.ProgramUpdatedescriptionFullInput | string[]
   as?: Prisma.StringFieldUpdateOperationsInput | string
   btnText?: Prisma.StringFieldUpdateOperationsInput | string
+  btnTextInner?: Prisma.StringFieldUpdateOperationsInput | string
+  teamShowed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   img?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -450,6 +488,8 @@ export type ProgramCountOrderByAggregateInput = {
   descriptionFull?: Prisma.SortOrder
   as?: Prisma.SortOrder
   btnText?: Prisma.SortOrder
+  btnTextInner?: Prisma.SortOrder
+  teamShowed?: Prisma.SortOrder
   img?: Prisma.SortOrder
   forWhom?: Prisma.SortOrder
   suitableRequests?: Prisma.SortOrder
@@ -466,6 +506,8 @@ export type ProgramMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   as?: Prisma.SortOrder
   btnText?: Prisma.SortOrder
+  btnTextInner?: Prisma.SortOrder
+  teamShowed?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -475,6 +517,8 @@ export type ProgramMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   as?: Prisma.SortOrder
   btnText?: Prisma.SortOrder
+  btnTextInner?: Prisma.SortOrder
+  teamShowed?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -497,6 +541,10 @@ export type ProgramUpdatedescriptionFullInput = {
   push?: string | string[]
 }
 
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
 
 
 export type ProgramSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -506,6 +554,8 @@ export type ProgramSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   descriptionFull?: boolean
   as?: boolean
   btnText?: boolean
+  btnTextInner?: boolean
+  teamShowed?: boolean
   img?: boolean
   forWhom?: boolean
   suitableRequests?: boolean
@@ -524,6 +574,8 @@ export type ProgramSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   descriptionFull?: boolean
   as?: boolean
   btnText?: boolean
+  btnTextInner?: boolean
+  teamShowed?: boolean
   img?: boolean
   forWhom?: boolean
   suitableRequests?: boolean
@@ -542,6 +594,8 @@ export type ProgramSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   descriptionFull?: boolean
   as?: boolean
   btnText?: boolean
+  btnTextInner?: boolean
+  teamShowed?: boolean
   img?: boolean
   forWhom?: boolean
   suitableRequests?: boolean
@@ -560,6 +614,8 @@ export type ProgramSelectScalar = {
   descriptionFull?: boolean
   as?: boolean
   btnText?: boolean
+  btnTextInner?: boolean
+  teamShowed?: boolean
   img?: boolean
   forWhom?: boolean
   suitableRequests?: boolean
@@ -571,7 +627,7 @@ export type ProgramSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ProgramOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "descriptionFull" | "as" | "btnText" | "img" | "forWhom" | "suitableRequests" | "workflow" | "cooperationFormat" | "benefits" | "reviews" | "createdAt" | "updatedAt", ExtArgs["result"]["program"]>
+export type ProgramOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "descriptionFull" | "as" | "btnText" | "btnTextInner" | "teamShowed" | "img" | "forWhom" | "suitableRequests" | "workflow" | "cooperationFormat" | "benefits" | "reviews" | "createdAt" | "updatedAt", ExtArgs["result"]["program"]>
 
 export type $ProgramPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Program"
@@ -583,6 +639,8 @@ export type $ProgramPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     descriptionFull: string[]
     as: string
     btnText: string
+    btnTextInner: string
+    teamShowed: boolean
     img: runtime.JsonValue
     forWhom: runtime.JsonValue
     suitableRequests: runtime.JsonValue
@@ -1021,6 +1079,8 @@ export interface ProgramFieldRefs {
   readonly descriptionFull: Prisma.FieldRef<"Program", 'String[]'>
   readonly as: Prisma.FieldRef<"Program", 'String'>
   readonly btnText: Prisma.FieldRef<"Program", 'String'>
+  readonly btnTextInner: Prisma.FieldRef<"Program", 'String'>
+  readonly teamShowed: Prisma.FieldRef<"Program", 'Boolean'>
   readonly img: Prisma.FieldRef<"Program", 'Json'>
   readonly forWhom: Prisma.FieldRef<"Program", 'Json'>
   readonly suitableRequests: Prisma.FieldRef<"Program", 'Json'>

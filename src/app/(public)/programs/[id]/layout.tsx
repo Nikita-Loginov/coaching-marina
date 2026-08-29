@@ -1,5 +1,4 @@
 import { Cta } from "@/shared/ui/index.ui";
-import { TeamsSection } from "@/widgets/teams";
 
 interface SvedeniyaLayoutProps {
   children: React.ReactNode;
@@ -9,8 +8,6 @@ export default function ProgramLayout({ children }: SvedeniyaLayoutProps) {
   return (
     <>
       {children}
-
-      <TeamsSection />
 
       <Cta
         title={{

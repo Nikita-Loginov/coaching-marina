@@ -34,7 +34,11 @@ export const mapProgram = (row: ProgramRow): ProgramItem => ({
 
   btnText: row.btnText,
 
+  btnTextInner: row.btnTextInner,
+
   img: mapImage(row.img),
+
+  teamShowed: row.teamShowed,
 
   forWhom: mapContent(row.forWhom),
 

@@ -31,7 +31,7 @@ export const HeroImg = ({ img, items }: HeroImgProps) => {
                 {title}
               </p>
 
-              <p className={classNames("p3", scss["hero-img__card-desc"])}>
+              <p className={classNames("p2", scss["hero-img__card-desc"])}>
                 {desc}
               </p>
             </div>

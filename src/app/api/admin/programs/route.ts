@@ -33,6 +33,7 @@ export async function POST(request: Request) {
         descriptionFull: body.descriptionFull,
         as: body.as,
         btnText: body.btnText,
+        btnTextInner: body.btnTextInne,
         img: body.img,
         forWhom: body.forWhom,
         suitableRequests: body.suitableRequests,

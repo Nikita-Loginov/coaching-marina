@@ -31,7 +31,7 @@
   --red-color-200: #ff5f57;
 
   --font-family-main: var(--font-inter-sans), sans-serif;
-  --font-family-second: var(--font-playfair-display), serif;
+  --font-family-second: var(--font-cormorant-display), serif;
 
   --weight-font-xs: 300;
   --weight-font-main: 400;
@@ -40,20 +40,20 @@
   --weight-font-xl: 700;
 
   --font-size-xxl: #{calculate-clamp(
-      64px,
-      120px,
+      56px,
+      80px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
   --font-size-xl: #{calculate-clamp(
-      48px,
-      60px,
+      42px,
+      56px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
   --font-size-lg: #{calculate-clamp(
       24px,
-      48px,
+      42px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
@@ -65,31 +65,31 @@
     )};
   --font-size-md-add: #{calculate-clamp(
       18px,
-      24px,
+      22px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
   --font-size-base: #{calculate-clamp(
+      14px,
       16px,
-      18px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
   --font-size-sm: #{calculate-clamp(
+      12px,
       14px,
-      16px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
   --font-size-xs: #{calculate-clamp(
+      10px,
       12px,
-      14px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
   --font-size-xxs: #{calculate-clamp(
+      8px,
       10px,
-      12px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
@@ -162,15 +162,15 @@
 
 @media (min-width: $desktop-breakpoint) {
   :root {
-    --font-size-xxl: #{vw(120)};
-    --font-size-xl: #{vw(60)};
-    --font-size-lg: #{vw(48)};
+    --font-size-xxl: #{vw(80)};
+    --font-size-xl: #{vw(56)};
+    --font-size-lg: #{vw(42)};
     --font-size-md: #{vw(30)};
-    --font-size-md-add: #{vw(24)};
-    --font-size-base: #{vw(18)};
-    --font-size-sm: #{vw(16)};
-    --font-size-xs: #{vw(14)};
-    --font-size-xxs: #{vw(12)};
+    --font-size-md-add: #{vw(22)};
+    --font-size-base: #{vw(16)};
+    --font-size-sm: #{vw(14)};
+    --font-size-xs: #{vw(12)};
+    --font-size-xxs: #{vw(10)};
     --container-inline-padding: #{vw(40)};
     --container-max-width: calc(
       #{vw(1840)} + (var(--container-inline-padding) * 2)

@@ -31,7 +31,7 @@
 
   &__item {
     background-color: var(--gray-color-40);
-    border-radius: var(--radius-5xl);
+    border-radius: var(--radius-4xl);
     border: var(--accordeon-item-border-width) solid var(--gray-color-60);
     transition:
       border-color var(--transition-base),
@@ -62,7 +62,7 @@
     width: 100%;
     text-align: left;
     font-family: var(--font-family-second);
-    font-style: italic;
+    
     background-color: transparent;
     padding: var(--accordeon-header-padding);
     cursor: pointer;

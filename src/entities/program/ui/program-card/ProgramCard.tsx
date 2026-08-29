@@ -123,7 +123,7 @@ export const ProgramCard = ({
                 to={`/admin/programs/edit/${id}`}
                 typeBtn="submit"
               >
-                <p className="p3">Редактирвоать</p>
+                <p className="p3">Редактировать</p>
               </Button>
             </div>
           </div>

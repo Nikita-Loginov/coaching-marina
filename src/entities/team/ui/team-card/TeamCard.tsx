@@ -76,7 +76,7 @@ export const TeamCard = ({
             to={`/admin/teams/edit/${id}`}
             typeBtn="submit"
           >
-            <p className="p3">Редактирвоать</p>
+            <p className="p3">Редактировать</p>
           </Button>
           </>
         )}

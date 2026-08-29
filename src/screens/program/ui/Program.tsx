@@ -9,18 +9,16 @@ import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message
 import { getProgramById } from "@/entities/program/model/program.queries";
 
 import scss from "./Program.module.scss";
-
+import { TeamsSection } from "@/widgets/teams";
 
 interface ProgramProps {
   id: string;
 }
 
 export const Program = async ({ id }: ProgramProps) => {
-  const program = await getProgramById(id)
+  const program = await getProgramById(id);
 
   if (!program) return <p>Такой программы нет</p>;
-
-  console.log(program);
 
   return (
     <>
@@ -46,11 +44,13 @@ export const Program = async ({ id }: ProgramProps) => {
                 })}
               </div>
 
-              <div className={scss["program__btns"]}>
-                <ContactMessageBtn theme="primary" size="medium">
-                  <p className="p2">Записаться на разговор</p>
-                </ContactMessageBtn>
-              </div>
+              {program.btnTextInner && (
+                <div className={scss["program__btns"]}>
+                  <ContactMessageBtn theme="primary" size="medium">
+                    <p className="p2">{program.btnTextInner}</p>
+                  </ContactMessageBtn>
+                </div>
+              )}
             </div>
           ),
         }}
@@ -59,6 +59,8 @@ export const Program = async ({ id }: ProgramProps) => {
       <ProgramInfo program={program} />
 
       <ReviewsSection reviews={program.reviews} />
+
+      {program.teamShowed && <TeamsSection />}
     </>
   );
 };
