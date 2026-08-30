@@ -1,10 +1,10 @@
 .card-box {
   --card-box-padding: #{calculate-clamp(
-    24px,
-    40px,
-    $lg-breakpoint,
-    $tablet-breakpoint
-  )};
+      24px,
+      40px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
   --card-box-border-width: 1px;
 
   width: 100%;
@@ -13,10 +13,24 @@
   border: var(--card-box-border-width) solid var(--gray-color-60);
   border-radius: var(--radius-4xl);
   padding: var(--card-box-padding);
+  backdrop-filter: blur(4px);
+
+  &--big {
+    --card-box-padding: #{calculate-clamp(
+        30px,
+        60px,
+        $desktop-breakpoint,
+        $lg-breakpoint
+      )};
+  }
 
   @media (min-width: $desktop-breakpoint) {
     --card-box-padding: #{vw(40)};
     --card-box-border-width: #{vw(1)};
+
+    &--big {
+      --card-box-padding: #{vw(60)};
+    }
   }
 
   @media (max-width: $lg-breakpoint) {

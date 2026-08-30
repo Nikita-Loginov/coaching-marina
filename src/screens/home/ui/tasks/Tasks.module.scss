@@ -1,0 +1,57 @@
+.tasks {
+  --tasks-inner-padding: #{calculate-clamp(
+      30px,
+      60px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
+  --tasks-inner-gap: 40px;
+  --tasks-content-max-width: calc(2 / 3 * 100%);
+  --tasks-info-gap: 20px;
+
+  width: 100%;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--tasks-inner-gap);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--tasks-info-gap);
+  }
+
+  &__content {
+    max-width: var(--tasks-content-max-width);
+    width: 100%;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --tasks-inner-padding: #{vw(60)};
+    --tasks-inner-gap: #{vw(40)};
+    --tasks-content-max-width: calc(2 / 3 * 100%);
+    --tasks-info-gap: #{vw(20)};
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    --tasks-content-max-width: 100%;
+
+    &__inner {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    &__list {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

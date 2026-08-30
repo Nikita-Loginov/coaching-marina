@@ -22,9 +22,9 @@
   gap: var(--program-gap);
 
   &__img {
-    aspect-ratio: 10 / 13;
+    aspect-ratio: 13 / 14;
     width: 100%;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     overflow: hidden;
     position: relative;
     max-width: 40%;
@@ -49,11 +49,12 @@
     gap: var(--program-block-gap);
   }
 
-  &__title-sub {
+  &__title {
     font-family: var(--font-family-second);
-    
+  }
+
+  &__title-sub {
     color: var(--primary-color-60);
-    
   }
 
   &__textbox {

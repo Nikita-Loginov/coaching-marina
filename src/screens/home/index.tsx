@@ -6,3 +6,5 @@ export { default as About } from "./ui/about/About";
 export { default as HomeHeroButtons } from "./ui/home-hero-buttons/HomeHeroButtons";
 export { default as WhoWork } from "./ui/who-work/WhoWork";
 export { default as Principles } from "./ui/principles/Principles";
+export { default as Statistics } from "./ui/statistics/Statistics";
+export { default as Tasks } from "./ui/tasks/Tasks";

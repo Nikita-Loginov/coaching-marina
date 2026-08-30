@@ -1,38 +1,55 @@
+import classNames from "classnames";
+
 import { Container, TopInner } from "@/shared/ui/index.ui";
+
+import { getPerson } from "@/entities/person/model/person.queries";
 
 import scss from "./Philosophy.module.scss";
 
-const PHILOSOPHY_TITLIES = [
-  "Каждый человек уже обладает ресурсами для изменений.",
-  "Настоящие решения рождаются через осознанность.",
-  "Диалог меняет больше, чем инструкции.",
+const PHILOSOPHY_TITLE = [
+  "Мы повышаем",
+  "культуру менеджмента",
+  "и качество",
+  "деловой среды",
 ];
 
-export const Philosophy = () => {
+export const Philosophy = async () => {
+  const person = await getPerson();
+
+  if (!person) {
+    return null;
+  }
+
   return (
     <section className={scss["philosophy"]} id="philosophy">
       <Container>
-        <TopInner
-          items={[
-            {
-              label: "Философия",
-              positionY: "center",
-            },
-          ]}
-          className={scss["philosophy__inner"]}
-        >
+        <div className={scss["philosophy__inner"]}>
+          <div className={scss["philosophy__top"]}>
+            <p className={classNames("p4", scss["philosophy__label"])}>
+              Наша миссия
+            </p>
+
+            <p className="p3 primary-color-40">
+              - {person.name} {person.middlename}
+            </p>
+          </div>
+
           <div className={scss["philosophy__content"]}>
-            <div className={scss["philosophy__items"]}>
-              {PHILOSOPHY_TITLIES.map((title, index) => {
+            <h2 className={classNames("h1", scss["philosophy__title"])}>
+              {PHILOSOPHY_TITLE.map((title, index) => {
                 return (
-                  <h2 className="h3" key={index}>
+                  <span
+                    style={{ "--index": index } as React.CSSProperties}
+                    key={index}
+                  >
+                    {" "}
                     {title}
-                  </h2>
+                  </span>
                 );
               })}
-            </div>
+            </h2>
           </div>
-        </TopInner>
+        </div>
       </Container>
     </section>
   );

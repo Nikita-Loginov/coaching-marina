@@ -5,7 +5,9 @@ import { About } from "./about/About";
 import { ProgramsSection } from "@/widgets/programs";
 import { Solutions } from "./solutions/Solutions";
 import { WhoWork } from "./who-work/WhoWork";
-import {Principles} from "./principles/Principles";
+import { Principles } from "./principles/Principles";
+import { Statistics } from "./statistics/Statistics";
+import { Tasks } from "./tasks/Tasks";
 import { Fag, Cta, Hero } from "@/shared/ui/index.ui";
 
 import { getPerson } from "@/entities/person/model/person.queries";
@@ -23,19 +25,23 @@ export const Home = async () => {
     <>
       <Hero {...heroContent} />
 
-      <About />
+      {/* <About /> */}
 
       <WhoWork />
 
+      <Statistics />
+
       <Philosophy />
+
+      <Tasks />
+
+      <Solutions />
 
       <Challenge />
 
       <ProgramsSection />
 
-      <Solutions />
-
-      <Principles />
+      {/* <Principles /> */}
 
       <Fag items={HomeFagItems} />
 

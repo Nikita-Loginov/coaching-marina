@@ -1,0 +1,100 @@
+.statistics {
+  --statistics-content-gap: #{calculate-clamp(
+      24px,
+      40px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
+  --statistics-items-gap: #{calculate-clamp(
+      24px,
+      40px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
+  --statistics-item-gap: #{calculate-clamp(
+      16px,
+      24px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
+  --statistics-item-padding-bottom: #{calculate-clamp(
+      16px,
+      24px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
+  --statistics-item-line-width: 32px;
+  --statistics-item-line-height: 1px;
+  --statistics-item-number-gap: 4px;
+
+  width: 100%;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--statistics-content-gap);
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--statistics-items-gap);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--statistics-item-gap);
+
+    & > *:not(:last-child) {
+      position: relative;
+      padding-bottom: var(--statistics-item-padding-bottom);
+
+      &:before {
+        position: absolute;
+        content: "";
+        width: var(--statistics-item-line-width);
+        height: var(--statistics-item-line-height);
+        left: 0;
+        bottom: 0;
+        background-color: var(--secondary-color-600);
+      }
+    }
+  }
+
+  &__item-number {
+    font-family: var(--font-family-second);
+    font-size: var(--font-size-xxl);
+    display: flex;
+    align-items: baseline;
+    gap: var(--statistics-item-number-gap);
+  }
+
+  &__item-number-suffix {
+    font-size: var(--font-size-md);
+    color: var(--primary-color-50);
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --statistics-content-gap: #{vw(40)};
+    --statistics-items-gap: #{vw(40)};
+    --statistics-item-gap: #{vw(24)};
+    --statistics-item-padding-bottom: #{vw(24)};
+    --statistics-item-line-width: #{vw(32)};
+    --statistics-item-line-height: #{vw(1)};
+    --statistics-item-number-gap: #{vw(4)};
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    &__items {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: $mobile-small-breakpoint) {
+    &__items {
+        display: flex;
+        flex-direction: column;
+    }
+  }
+}

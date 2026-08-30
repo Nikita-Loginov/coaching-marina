@@ -9,7 +9,7 @@
     #{calculate-clamp(18px, 24px, $desktop-breakpoint, $lg-breakpoint)};
   --hero-img-card-gap: 6px;
   --hero-img-card-border-width: 1px;
-  --hero-img-card-max-width: 200px;
+  --hero-img-card-max-width: 250px;
   --hero-img-card-even-padding: #{calculate-clamp(
       12px,
       16px,
@@ -47,8 +47,10 @@
     z-index: 3;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-end;
     inset: 0;
+    right: 5px;
+    bottom: 10%;
   }
 
   &__card {
@@ -67,7 +69,7 @@
     rotate: var(--hero-img-card-rotate);
     transition: opacity var(--transition-base);
 
-    &:nth-child(even) {
+    &:nth-child(odd) {
       margin-left: auto;
       padding: var(--hero-img-card-even-padding);
       background-color: var(--primary-color-0);
@@ -103,7 +105,7 @@
     --hero-img-card-padding: #{vw(16)} #{vw(24)};
     --hero-img-card-gap: #{vw(6)};
     --hero-img-card-border-width: #{vw(1)};
-    --hero-img-card-max-width: #{vw(200)};
+    --hero-img-card-max-width: #{vw(250)};
     --hero-img-card-even-padding: #{vw(16)};
     --hero-img-card-animation-duration: 5s;
     --hero-img-card-translate-y: #{vw(10)};

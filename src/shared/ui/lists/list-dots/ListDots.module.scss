@@ -1,0 +1,52 @@
+.list-dots {
+  --list-dots-gap: 24px;
+  --list-dots-list-gap: #{calculate-clamp(
+    24px,
+    48px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
+  --list-dots-link-gap: 16px;
+  --list-dots-link-dot-size: 6px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--list-dots-gap);
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--list-dots-list-gap);
+    list-style: none;
+  }
+
+  &__link {
+    font-weight: var(--weight-font-xs);
+    color: var(--primary-color-50);
+    line-height: var(--line-height-relaxed);
+    display: flex;
+    gap: var(--list-dots-link-gap);
+    position: relative;
+    align-items: baseline;
+
+    &:before {
+      content: "";
+      width: var(--list-dots-link-dot-size);
+      height: var(--list-dots-link-dot-size);
+      border-radius: 50%;
+      flex-shrink: 0;
+      background-color: var(--secondary-color-600);
+    }
+  }
+
+  &__item {
+    width: 100%;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    --list-dots-gap: #{vw(24)};
+    --list-dots-list-gap: #{vw(48)};
+    --list-dots-link-gap: #{vw(16)};
+    --list-dots-link-dot-size: #{vw(6)};
+  }
+}

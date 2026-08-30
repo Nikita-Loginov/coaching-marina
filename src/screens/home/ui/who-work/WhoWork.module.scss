@@ -3,12 +3,17 @@
   --who-work-inner-gap: 20px;
   --who-work-box-gap: 40px;
   --who-work-content-max-width: 50%;
+  --who-work-list-gap: 24px;
+  --who-work-item-padding: 24px;
+  --who-work-item-gap: 24px;
+  --who-work-item-content-gap: 12px;
+  --who-work-item-textbox-gap: 16px;
 
   width: 100%;
 
   &__inner {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     gap: var(--who-work-inner-gap);
   }
 
@@ -17,13 +22,60 @@
     justify-content: space-between;
     gap: var(--who-work-box-gap);
     align-items: baseline;
+    max-width: calc(2 / 3 * 100%);
   }
 
   &__content {
     display: flex;
     flex-direction: column;
     gap: var(--who-work-content-gap);
-    max-width: var(--who-work-content-max-width);
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--who-work-list-gap);
+    counter-reset: list;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--who-work-item-gap);
+    padding: var(--who-work-item-padding);
+    border-radius: var(--radius-2xl);
+    text-align: center;
+    background-color: var(--gray-color-0);
+    counter-increment: list 1;
+
+    &:last-child {
+      grid-column: 1 / -1;
+    }
+
+    &:before {
+      content: counter(list);
+      font-size: var(--font-size-xxl);
+      font-family: var(--font-family-second);
+      line-height: var(--line-height-base);
+    }
+
+    &:nth-child(-n + 9):before {
+      content: "0" counter(list);
+    }
+  }
+
+  &__item-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--who-work-item-content-gap);
+  }
+
+  &__item-textbox {
+    display: flex;
+    flex-direction: column;
+    gap: var(--who-work-item-textbox-gap);
+    line-height: var(--line-height-relaxed);
+    font-family: var(--font-family-second);
   }
 
   @media (min-width: $desktop-breakpoint) {
@@ -31,12 +83,29 @@
     --who-work-inner-gap: #{vw(20)};
     --who-work-box-gap: #{vw(40)};
     --who-work-content-max-width: 50%;
+    --who-work-list-gap: #{vw(24)};
+    --who-work-item-padding: #{vw(24)};
+    --who-work-item-gap: #{vw(24)};
+    --who-work-item-content-gap: #{vw(12)};
+    --who-work-item-textbox-gap: #{vw(16)};
   }
 
   @media (max-width: $lg-breakpoint) {
     --who-work-content-max-width: 100%;
-    
+
     &__box {
+      flex-direction: column;
+      max-width: 100%;
+    }
+
+    &__inner {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    &__list {
+      display: flex;
       flex-direction: column;
     }
   }

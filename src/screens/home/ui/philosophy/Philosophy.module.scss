@@ -1,23 +1,44 @@
 .philosophy {
   --philosophy-inner-gap: #{calculate-clamp(
-      24px,
-      50px,
-      $desktop-breakpoint,
-      $lg-breakpoint
-    )};
+    24px,
+    80px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
+  --philosophy-top-gap: 20px;
   --philosophy-content-gap: 30px;
-  --philosophy-items-gap: #{calculate-clamp(
-      24px,
-      64px,
-      $desktop-breakpoint,
-      $tablet-breakpoint
-    )};
-  --philosophy-items-max-width: 80%;
+  --philosophy-title-offset-base: #{calculate-clamp(
+    15px,
+    40px,
+    $lg-breakpoint,
+    $tablet-breakpoint
+  )};
+  --philosophy-title-offset-multiplier: #{calculate-clamp(
+    15px,
+    30px,
+    $lg-breakpoint,
+    $tablet-breakpoint
+  )};
 
   width: 100%;
 
   &__inner {
+    display: flex;
+    flex-direction: column;
     gap: var(--philosophy-inner-gap);
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--philosophy-top-gap);
+  }
+
+  &__label {
+    text-transform: uppercase;
+    color: var(--primary-color-40);
+    font-weight: var(--weight-font-md);
   }
 
   &__content {
@@ -26,30 +47,40 @@
     gap: var(--philosophy-content-gap);
   }
 
-  &__items {
+  &__title {
     display: flex;
     flex-direction: column;
-    gap: var(--philosophy-items-gap);
-    text-align: center;
-    max-width: var(--philosophy-items-max-width);
-    width: 100%;
-    margin: 0 auto;
     font-family: var(--font-family-second);
-    
+    line-height: var(--line-height-base);
 
-    & > *:nth-child(even) {
-      color: var(--primary-color-60);
+    span {
+      &:nth-child(even) {
+        padding-left: calc(
+          var(--philosophy-title-offset-base) +
+            (var(--index) * var(--philosophy-title-offset-multiplier))
+        );
+        color: var(--primary-color-40);
+      }
     }
   }
 
   @media (min-width: $desktop-breakpoint) {
-    --philosophy-inner-gap: #{vw(50)};
+    --philosophy-inner-gap: #{vw(80)};
+    --philosophy-top-gap: #{vw(20)};
     --philosophy-content-gap: #{vw(30)};
-    --philosophy-items-gap: #{vw(64)};
-    --philosophy-items-max-width: 80%;
+    --philosophy-title-offset-base: #{vw(40)};
+    --philosophy-title-offset-multiplier: #{vw(30)};
   }
 
-  @media (max-width: $lg-breakpoint) {
-    --philosophy-items-max-width: 100%;
+  @media (max-width: $tablet-breakpoint) {
+    &__title {
+      font-size: var(--font-size-xl);
+    }
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    &__title {
+      font-size: var(--font-size-lg);
+    }
   }
 }

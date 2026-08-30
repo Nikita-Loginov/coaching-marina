@@ -9,9 +9,11 @@ import { ListNumber } from "@/shared/ui/index.ui";
 
 export const getHomeHeroContent = (person: PersonItem): HeroProps => ({
   title: {
-    label: "Ясность",
-    labelAccent: "решений.",
+    label: "Школа",
+    labelAccent: "управленческого развития",
   },
+
+  badge: 'ПЕРСОНАЛЬНЫЙ КОУЧИНГ | ОБУЧЕНИЕ | РАЗВИТИЕ КОМАНД',
 
   desc: [
     "Сильное решение начинается с точного ответа на вопрос, что действительно требует решения. Чем выше ставки, тем важнее не ошибиться в главном.",
@@ -24,13 +26,13 @@ export const getHomeHeroContent = (person: PersonItem): HeroProps => ({
   },
 
   itemsImg: [
+    // {
+    //   title: "Опыт",
+    //   desc: `${person.practice.experience} ${person.practice.label}`,
+    // },
     {
-      title: "Опыт",
-      desc: `${person.practice.experience} ${person.practice.label}`,
-    },
-    {
-      title: person.post,
-      desc: "Сертифицированный executive-коуч",
+      title: `${person.name} ${person.middlename}`,
+      desc: "Основатель Школы, партнер по стратегическому мышлению для собственников бизнеса и топ-менеджеров, коуч уровня PCC ICF",
     },
   ],
 

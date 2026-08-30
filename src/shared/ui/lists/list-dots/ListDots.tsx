@@ -2,10 +2,9 @@ import Link from "next/link";
 import classNames from "classnames";
 import { HTMLAttributeAnchorTarget } from "react";
 
-import scss from "./ListNumber.module.scss";
+import scss from "./ListDots.module.scss";
 
-
-export interface ListNumberProps {
+export interface ListDotsProps {
   title?: string;
   titleClassName?: string;
   listClassName?: string;
@@ -16,31 +15,39 @@ export interface ListNumberProps {
     ariaLabel?: string;
     className?: string;
     title?: string;
-    target?: HTMLAttributeAnchorTarget
+    target?: HTMLAttributeAnchorTarget;
   }[];
 }
 
-export const ListNumber = ({
+export const ListDots = ({
   title,
   titleClassName,
   listClassName,
   items,
-}: ListNumberProps) => {
+}: ListDotsProps) => {
   return (
-    <div className={scss["list-number"]}>
+    <div className={scss["list-dots"]}>
       {title && <p className={titleClassName}>{title}</p>}
 
-      <ol className={classNames(scss["list-number__list"], listClassName)}>
+      <ul className={classNames(scss["list-dots__list"], listClassName)}>
         {items.map((item, index) => {
-          const { as = "link", label, href, ariaLabel, className, target, title} = item;
+          const {
+            as = "link",
+            label,
+            href,
+            ariaLabel,
+            className,
+            target,
+            title,
+          } = item;
 
           const content = <p className={className}>{label}</p>;
 
           return (
-            <li className={scss["list-number__link"]} key={index}>
+            <li className={scss["list-dots__link"]} key={index}>
               {as === "link" && href ? (
                 <Link
-                  className={classNames(scss["list-number__item"], 'link')}
+                  className={classNames(scss["list-dots__item"], "link")}
                   href={href}
                   aria-label={ariaLabel}
                   target={target}
@@ -54,7 +61,7 @@ export const ListNumber = ({
             </li>
           );
         })}
-      </ol>
+      </ul>
     </div>
   );
 };

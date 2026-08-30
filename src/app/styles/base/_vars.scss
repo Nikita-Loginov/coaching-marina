@@ -146,8 +146,8 @@
   --gap-blocks: #{calculate-clamp(
       60px,
       120px,
-      $desktop-breakpoint,
-      $lg-breakpoint
+      $lg-breakpoint,
+      $tablet-breakpoint
     )};
 
   --header-padding-top: 24px;

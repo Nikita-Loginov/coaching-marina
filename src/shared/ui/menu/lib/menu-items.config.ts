@@ -5,7 +5,7 @@ export const MENU_ITEMS: { label: string; href: string }[] = [
   }, 
   {
     label: "Программы обучения",
-    href: "/programs/training-programs",
+    href: "/education",
   },
   {
     label: "Решения",

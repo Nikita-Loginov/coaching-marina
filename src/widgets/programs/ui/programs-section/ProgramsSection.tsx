@@ -31,7 +31,7 @@ export const ProgramsSection = async () => {
         <Container>
           <div className={scss["programs__inner"]}>
             <div className={scss["programs__items"]}>
-              {programs.map((program, index) => {
+              {programs.splice(0, 2).map((program, index) => {
                 const chapterNumber = index + 1;
                 const chapter = CHAPTER_NAMES[index] ?? `${chapterNumber}-я`;
 

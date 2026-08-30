@@ -39,7 +39,7 @@ export const About = async () => {
             <div className={scss["about__img-box"]}>
               <div className={scss["about__img-cards"]}>
                 <div className={scss["about__img-card"]}>
-                  <p className="p2 font-text-second">
+                  <p className="p1 font-text-second">
                     {middlename} {name}
                   </p>
 
