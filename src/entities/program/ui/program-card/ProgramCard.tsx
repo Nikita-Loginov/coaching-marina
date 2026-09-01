@@ -38,7 +38,7 @@ export const ProgramCard = ({
   const isModal = as === "modal";
 
   const lastWord = name.split(" ").at(-1);
-  const wordsWithoutLastWord = name.split(" ").slice(0, -1);
+  const wordsWithoutLastWord = name.split(" ").slice(0, -1).join(" ");
 
   const { open } = useModalStore();
 
@@ -58,7 +58,7 @@ export const ProgramCard = ({
       <div className={scss["program__content"]}>
         <div className={scss["program__block"]}>
           {badge && (
-            <p className="p3 uppercase-text medium-font primary-color-40">
+            <p className="p3 uppercase-text medium-font primary-color-70">
               {badge}
             </p>
           )}

@@ -35,9 +35,9 @@ export const Home = async () => {
 
       <Tasks />
 
-      <Solutions />
+      {/* <Solutions /> */}
 
-      <Challenge />
+      {/* <Challenge /> */}
 
       <ProgramsSection />
 

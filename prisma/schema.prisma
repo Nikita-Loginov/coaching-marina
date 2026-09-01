@@ -60,6 +60,8 @@ model Program {
   btnTextInner    String   @default("")
   teamShowed      Boolean  @default(true)
 
+  type            ProgramType @default(GENERAL)
+
   img Json
 
   forWhom           Json
@@ -67,9 +69,16 @@ model Program {
   workflow          Json
   cooperationFormat Json
   benefits          Json
+  skills            Json?
+  learningValue     Json?
 
   reviews Json?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+enum ProgramType {
+  GENERAL
+  EDUCATION
 }

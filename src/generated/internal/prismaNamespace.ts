@@ -726,12 +726,15 @@ export const ProgramScalarFieldEnum = {
   btnText: 'btnText',
   btnTextInner: 'btnTextInner',
   teamShowed: 'teamShowed',
+  type: 'type',
   img: 'img',
   forWhom: 'forWhom',
   suitableRequests: 'suitableRequests',
   workflow: 'workflow',
   cooperationFormat: 'cooperationFormat',
   benefits: 'benefits',
+  skills: 'skills',
+  learningValue: 'learningValue',
   reviews: 'reviews',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -854,6 +857,20 @@ export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'ProgramType'
+ */
+export type EnumProgramTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProgramType'>
+    
+
+
+/**
+ * Reference to a field of type 'ProgramType[]'
+ */
+export type ListEnumProgramTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProgramType[]'>
     
 
 

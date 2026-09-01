@@ -33,14 +33,14 @@
     z-index: 2;
     border-radius: var(--radius-md);
     overflow: hidden;
-    // box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-    // background-color: var(--primary-color-40);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    background-color: var(--primary-color-10);
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: right;
+      object-position: center;
     }
   }
 
@@ -82,7 +82,7 @@
 
       .hero-img {
         &__card-title {
-          color: var(--gray-color-50);
+          color: var(--gray-color-80);
         }
       }
     }
@@ -95,7 +95,7 @@
   &__card-title {
     text-transform: uppercase;
     font-weight: var(--weight-font-md);
-    color: var(--primary-color-40);
+    color: var(--primary-color-70);
   }
 
   &__card-desc {

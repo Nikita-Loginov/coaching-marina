@@ -1,6 +1,11 @@
 .who-work {
   --who-work-content-gap: 16px;
-  --who-work-inner-gap: 20px;
+  --who-work-inner-gap: #{calculate-clamp(
+    24px,
+    80px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
   --who-work-box-gap: 40px;
   --who-work-content-max-width: 50%;
   --who-work-list-gap: 24px;
@@ -13,7 +18,7 @@
 
   &__inner {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     gap: var(--who-work-inner-gap);
   }
 
@@ -22,7 +27,6 @@
     justify-content: space-between;
     gap: var(--who-work-box-gap);
     align-items: baseline;
-    max-width: calc(2 / 3 * 100%);
   }
 
   &__content {
@@ -33,7 +37,7 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--who-work-list-gap);
     counter-reset: list;
   }
@@ -48,9 +52,9 @@
     background-color: var(--gray-color-0);
     counter-increment: list 1;
 
-    &:last-child {
-      grid-column: 1 / -1;
-    }
+    // &:last-child {
+    //   grid-column: 1 / -1;
+    // }
 
     &:before {
       content: counter(list);
@@ -80,7 +84,7 @@
 
   @media (min-width: $desktop-breakpoint) {
     --who-work-content-gap: #{vw(16)};
-    --who-work-inner-gap: #{vw(20)};
+    --who-work-inner-gap: #{vw(80)};
     --who-work-box-gap: #{vw(40)};
     --who-work-content-max-width: 50%;
     --who-work-list-gap: #{vw(24)};
@@ -96,6 +100,16 @@
     &__box {
       flex-direction: column;
       max-width: 100%;
+    }
+
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &__item {
+      &:last-child {
+        grid-column: 1 / -1;
+      }
     }
 
     &__inner {

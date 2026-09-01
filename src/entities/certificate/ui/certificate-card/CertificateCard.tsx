@@ -21,7 +21,7 @@ export const CertificateCard = ({ card }: CertificateCardProps) => {
     <div className={scss["certificate-card"]}>
       <div className={scss["certificate-card__top"]}>
         <div className={scss["certificate-card__top-block"]}>
-          <p className="p4 medium-font primary-color-40">{year}</p>
+          <p className="p4 medium-font primary-color-70">{year}</p>
         </div>
       </div>
 

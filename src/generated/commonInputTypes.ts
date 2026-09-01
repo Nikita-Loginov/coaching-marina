@@ -155,6 +155,13 @@ export type BoolFilter<$PrismaModel = never> = {
   not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
 }
 
+export type EnumProgramTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProgramType | Prisma.EnumProgramTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel> | $Enums.ProgramType
+}
+
 export type JsonNullableFilter<$PrismaModel = never> =
 | Prisma.PatchUndefined<
     Prisma.Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
@@ -190,6 +197,16 @@ export type BoolWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedBoolFilter<$PrismaModel>
   _max?: Prisma.NestedBoolFilter<$PrismaModel>
+}
+
+export type EnumProgramTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProgramType | Prisma.EnumProgramTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProgramTypeWithAggregatesFilter<$PrismaModel> | $Enums.ProgramType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel>
 }
 
 export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
@@ -342,12 +359,29 @@ export type NestedBoolFilter<$PrismaModel = never> = {
   not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
 }
 
+export type NestedEnumProgramTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProgramType | Prisma.EnumProgramTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel> | $Enums.ProgramType
+}
+
 export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
   equals?: boolean | Prisma.BooleanFieldRefInput<$PrismaModel>
   not?: Prisma.NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedBoolFilter<$PrismaModel>
   _max?: Prisma.NestedBoolFilter<$PrismaModel>
+}
+
+export type NestedEnumProgramTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ProgramType | Prisma.EnumProgramTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ProgramType[] | Prisma.ListEnumProgramTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumProgramTypeWithAggregatesFilter<$PrismaModel> | $Enums.ProgramType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumProgramTypeFilter<$PrismaModel>
 }
 
 export type NestedIntNullableFilter<$PrismaModel = never> = {

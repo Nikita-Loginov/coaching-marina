@@ -15,7 +15,7 @@ import scss from "./Footer.module.scss";
 
 const footerDocumentsInfo: ListDefaultProps = {
   title: "Документы",
-  titleClassName: "uppercase-text secondary-color-30",
+  titleClassName: "uppercase-text secondary-color-80",
   items: [
     {
       label: "Сведения об образовательной организации",
@@ -94,7 +94,7 @@ export const Footer = async () => {
               <div className={scss["footer__lists"]}>
                 <ListDefault
                   title="Контакты"
-                  titleClassName="uppercase-text secondary-color-30"
+                  titleClassName="uppercase-text secondary-color-80"
                   items={[
                     {
                       label: email,

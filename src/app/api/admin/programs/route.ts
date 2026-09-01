@@ -39,6 +39,8 @@ export async function POST(request: Request) {
         suitableRequests: body.suitableRequests,
         workflow: body.workflow,
         cooperationFormat: body.cooperationFormat,
+        skills: body.skills,
+        learningValue: body.learningValue,
         benefits: body.benefits,
         reviews: body.reviews ?? [],
       },

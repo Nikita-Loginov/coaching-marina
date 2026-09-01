@@ -9,7 +9,9 @@
 * 🟢 You can import this file directly.
 */
 
+export const ProgramType = {
+  GENERAL: 'GENERAL',
+  EDUCATION: 'EDUCATION'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type ProgramType = (typeof ProgramType)[keyof typeof ProgramType]

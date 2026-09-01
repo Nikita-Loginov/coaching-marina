@@ -20,6 +20,7 @@
   --primary-color-50: #07064a80;
   --primary-color-60: #07064a99;
   --primary-color-70: #07064ab2;
+  --primary-color-90: #07064ae6;
   --primary-color-100: #050438;
 
   --secondary-color-0: #edf4fc;
@@ -41,7 +42,7 @@
 
   --font-size-xxl: #{calculate-clamp(
       56px,
-      80px,
+      56px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
@@ -162,7 +163,7 @@
 
 @media (min-width: $desktop-breakpoint) {
   :root {
-    --font-size-xxl: #{vw(80)};
+    --font-size-xxl: #{vw(56)};
     --font-size-xl: #{vw(56)};
     --font-size-lg: #{vw(42)};
     --font-size-md: #{vw(30)};

@@ -7,10 +7,8 @@ import { getPerson } from "@/entities/person/model/person.queries";
 import scss from "./Philosophy.module.scss";
 
 const PHILOSOPHY_TITLE = [
-  "Мы повышаем",
-  "культуру менеджмента",
-  "и качество",
-  "деловой среды",
+  "Мы повышаем культуру менеджмента",
+  "и качество деловой среды",
 ];
 
 export const Philosophy = async () => {
@@ -29,7 +27,7 @@ export const Philosophy = async () => {
               Наша миссия
             </p>
 
-            <p className="p3 primary-color-40">
+            <p className="p3 primary-color-70">
               - {person.name} {person.middlename}
             </p>
           </div>
@@ -37,13 +35,15 @@ export const Philosophy = async () => {
           <div className={scss["philosophy__content"]}>
             <h2 className={classNames("h1", scss["philosophy__title"])}>
               {PHILOSOPHY_TITLE.map((title, index) => {
+                const isFirst = index === 0;
+                const isLast = index === PHILOSOPHY_TITLE.length - 1;
+
                 return (
                   <span
                     style={{ "--index": index } as React.CSSProperties}
                     key={index}
                   >
-                    {" "}
-                    {title}
+                    {isFirst && "«"} {title} {isLast && "»"}
                   </span>
                 );
               })}

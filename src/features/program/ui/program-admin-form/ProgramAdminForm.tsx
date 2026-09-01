@@ -81,6 +81,7 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
       btnText: "",
       btnTextInner: "",
       teamShowed: true,
+      type: "GENERAL",
 
       img: {
         src: "",
@@ -147,6 +148,30 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         variant: "small",
       },
 
+      skills: {
+        title: "Какие навыки развивают участники?",
+        items: [
+          {
+            desc: [""],
+            as: "default",
+          },
+        ],
+        showed: true,
+        variant: "small",
+      },
+
+      learningValue: {
+        title: "Как оценить пользу от обучения на курсе?",
+        items: [
+          {
+            desc: [""],
+            as: "default",
+          },
+        ],
+        showed: true,
+        variant: "small",
+      },
+
       reviews: [],
     }),
     []
@@ -190,6 +215,16 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
     name: "benefits.items",
   });
 
+  const skillsField = useFieldArray({
+    control,
+    name: "skills.items",
+  });
+
+  const learningValueField = useFieldArray({
+    control,
+    name: "learningValue.items",
+  });
+
   const reviewsField = useFieldArray({
     control,
     name: "reviews",
@@ -206,6 +241,7 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         btnText: program.btnText,
         btnTextInner: program.btnTextInner,
         teamShowed: program.teamShowed,
+        type: program.type,
 
         img: {
           src:
@@ -219,6 +255,8 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         suitableRequests: program.suitableRequests,
         workflow: program.workflow,
         cooperationFormat: program.cooperationFormat,
+        skills: program.skills,
+        learningValue: program.learningValue,
         benefits: program.benefits,
         reviews: program.reviews ?? [],
       });
@@ -1227,6 +1265,341 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
             },
 
             {
+              key: "skills",
+              label: "Какие навыки развивают участники?",
+              children: (
+                <div className={scss["admin-form__inputs"]}>
+                  <div
+                    className={classNames(
+                      scss["admin-form__item"],
+                      scss["admin-form__item--big"]
+                    )}
+                  >
+                    <Input
+                      label="Заголовок"
+                      {...register("skills.title")}
+                      error={errors.skills?.title?.message}
+                    />
+                  </div>
+
+                  {skillsField.fields.map((field, index) => {
+                    const descriptions =
+                      watch(`skills.items.${index}.desc`) ?? [];
+
+                    return (
+                      <div
+                        key={field.id}
+                        className={classNames(
+                          scss["admin-form__item"],
+                          scss["admin-form__item--big"],
+                          scss["admin-form__item--bg"]
+                        )}
+                      >
+                        <Input
+                          label={`Заголовок пункта ${index + 1}`}
+                          placeholder="Заголовок"
+                          {...register(`skills.items.${index}.title`)}
+                          error={errors.skills?.items?.[index]?.title?.message}
+                        />
+
+                        <MultiBoxTextField
+                          label={`Пункт ${index + 1}`}
+                          btnAddText="Добавить описание"
+                          items={descriptions.map(
+                            (value, descriptionIndex) => ({
+                              id: `${field.id}-${descriptionIndex}`,
+                              value,
+                            })
+                          )}
+                          onAdd={() => {
+                            setValue(
+                              `skills.items.${index}.desc`,
+                              [...descriptions, ""],
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                          onRemove={(itemId) => {
+                            const descriptionIndex = Number(
+                              String(itemId).split("-").pop()
+                            );
+
+                            setValue(
+                              `skills.items.${index}.desc`,
+                              descriptions.filter(
+                                (_, currentIndex) =>
+                                  currentIndex !== descriptionIndex
+                              ),
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                          onUpdate={(itemId, value) => {
+                            const descriptionIndex = Number(
+                              String(itemId).split("-").pop()
+                            );
+
+                            const next = [...descriptions];
+                            next[descriptionIndex] = value;
+
+                            setValue(`skills.items.${index}.desc`, next, {
+                              shouldDirty: true,
+                              shouldValidate: true,
+                            });
+                          }}
+                          placeholder="Описание"
+                          emptyText="Нет добавленных описаний"
+                          error={errors.skills?.items?.[index]?.desc?.message}
+                        />
+
+                        <Select
+                          label="Тип отображения"
+                          value={watch(`skills.items.${index}.as`) ?? "default"}
+                          items={contentAsItems}
+                          onValueChange={(value) => {
+                            setValue(
+                              `skills.items.${index}.as`,
+                              value as "default" | "list",
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                        />
+
+                        <Button
+                          theme="secondary"
+                          typeBtn="button"
+                          onClick={() => skillsField.remove(index)}
+                        >
+                          <p className="p3">Удалить пункт</p>
+                        </Button>
+                      </div>
+                    );
+                  })}
+
+                  <Button
+                    theme="secondary"
+                    typeBtn="button"
+                    onClick={() =>
+                      skillsField.append({
+                        desc: [""],
+                        as: "default",
+                        title: "",
+                      })
+                    }
+                  >
+                    <p className="p3">Добавить пункт</p>
+                  </Button>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Check
+                      {...register("skills.showed")}
+                      content={
+                        <p className="p3">Показывать блок на странице</p>
+                      }
+                      error={errors.skills?.showed?.message}
+                    />
+                  </div>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Select
+                      label="Размер блока"
+                      value={watch("skills.variant")}
+                      items={contentVariantItems}
+                      onValueChange={(value) => {
+                        setValue("skills.variant", value as "small" | "big", {
+                          shouldDirty: true,
+                          shouldValidate: true,
+                        });
+                      }}
+                    />
+                  </div>
+                </div>
+              ),
+            },
+
+            {
+              key: "learningValue",
+              label: "Как оценить пользу от обучения на курсе?",
+              children: (
+                <div className={scss["admin-form__inputs"]}>
+                  <div
+                    className={classNames(
+                      scss["admin-form__item"],
+                      scss["admin-form__item--big"]
+                    )}
+                  >
+                    <Input
+                      label="Заголовок"
+                      {...register("learningValue.title")}
+                      error={errors.learningValue?.title?.message}
+                    />
+                  </div>
+
+                  {learningValueField.fields.map((field, index) => {
+                    const descriptions =
+                      watch(`learningValue.items.${index}.desc`) ?? [];
+
+                    return (
+                      <div
+                        key={field.id}
+                        className={classNames(
+                          scss["admin-form__item"],
+                          scss["admin-form__item--big"],
+                          scss["admin-form__item--bg"]
+                        )}
+                      >
+                        <Input
+                          label={`Заголовок пункта ${index + 1}`}
+                          placeholder="Заголовок"
+                          {...register(`learningValue.items.${index}.title`)}
+                          error={
+                            errors.learningValue?.items?.[index]?.title?.message
+                          }
+                        />
+
+                        <MultiBoxTextField
+                          label={`Пункт ${index + 1}`}
+                          btnAddText="Добавить описание"
+                          items={descriptions.map(
+                            (value, descriptionIndex) => ({
+                              id: `${field.id}-${descriptionIndex}`,
+                              value,
+                            })
+                          )}
+                          onAdd={() => {
+                            setValue(
+                              `learningValue.items.${index}.desc`,
+                              [...descriptions, ""],
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                          onRemove={(itemId) => {
+                            const descriptionIndex = Number(
+                              String(itemId).split("-").pop()
+                            );
+
+                            setValue(
+                              `learningValue.items.${index}.desc`,
+                              descriptions.filter(
+                                (_, currentIndex) =>
+                                  currentIndex !== descriptionIndex
+                              ),
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                          onUpdate={(itemId, value) => {
+                            const descriptionIndex = Number(
+                              String(itemId).split("-").pop()
+                            );
+
+                            const next = [...descriptions];
+                            next[descriptionIndex] = value;
+
+                            setValue(
+                              `learningValue.items.${index}.desc`,
+                              next,
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                          placeholder="Описание"
+                          emptyText="Нет добавленных описаний"
+                          error={
+                            errors.learningValue?.items?.[index]?.desc?.message
+                          }
+                        />
+
+                        <Select
+                          label="Тип отображения"
+                          value={
+                            watch(`learningValue.items.${index}.as`) ??
+                            "default"
+                          }
+                          items={contentAsItems}
+                          onValueChange={(value) => {
+                            setValue(
+                              `learningValue.items.${index}.as`,
+                              value as "default" | "list",
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                        />
+
+                        <Button
+                          theme="secondary"
+                          typeBtn="button"
+                          onClick={() => learningValueField.remove(index)}
+                        >
+                          <p className="p3">Удалить пункт</p>
+                        </Button>
+                      </div>
+                    );
+                  })}
+
+                  <Button
+                    theme="secondary"
+                    typeBtn="button"
+                    onClick={() =>
+                      learningValueField.append({
+                        desc: [""],
+                        as: "default",
+                        title: "",
+                      })
+                    }
+                  >
+                    <p className="p3">Добавить пункт</p>
+                  </Button>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Check
+                      {...register("learningValue.showed")}
+                      content={
+                        <p className="p3">Показывать блок на странице</p>
+                      }
+                      error={errors.learningValue?.showed?.message}
+                    />
+                  </div>
+
+                  <div className={scss["admin-form__item"]}>
+                    <Select
+                      label="Размер блока"
+                      value={watch("learningValue.variant")}
+                      items={contentVariantItems}
+                      onValueChange={(value) => {
+                        setValue(
+                          "learningValue.variant",
+                          value as "small" | "big",
+                          {
+                            shouldDirty: true,
+                            shouldValidate: true,
+                          }
+                        );
+                      }}
+                    />
+                  </div>
+                </div>
+              ),
+            },
+
+            {
               key: "reviews",
               label: "Отзывы",
               children: (
@@ -1417,6 +1790,27 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                       error={errors.teamShowed?.message}
                     />
                   </div>
+
+                  <Select
+                    label="Тип программы"
+                    value={watch("type")}
+                    items={[
+                      {
+                        label: "Общая программа",
+                        value: "GENERAL",
+                      },
+                      {
+                        label: "Программа обучения",
+                        value: "EDUCATION",
+                      },
+                    ]}
+                    onValueChange={(value) => {
+                      setValue("type", value as "GENERAL" | "EDUCATION", {
+                        shouldDirty: true,
+                        shouldValidate: true,
+                      });
+                    }}
+                  />
                 </div>
               ),
             },

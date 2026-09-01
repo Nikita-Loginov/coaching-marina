@@ -165,7 +165,7 @@
   &__item-link {
     padding-bottom: var(--svedeniya-info-item-link-padding-bottom);
     border-bottom: var(--svedeniya-info-item-link-border-width) solid
-      var(--primary-color-10);
+      var(--primary-color-70);
     display: grid;
     grid-template-columns: 30% auto;
     gap: var(--svedeniya-info-item-link-gap);
@@ -177,7 +177,7 @@
 
   &__item-key {
     font-weight: var(--weight-font-xs);
-    color: var(--primary-color-40);
+    color: var(--primary-color-70);
     font-size: var(--font-size-xs);
   }
 

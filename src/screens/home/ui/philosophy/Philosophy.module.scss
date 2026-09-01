@@ -37,7 +37,7 @@
 
   &__label {
     text-transform: uppercase;
-    color: var(--primary-color-40);
+    color: var(--primary-color-70);
     font-weight: var(--weight-font-md);
   }
 
@@ -59,7 +59,7 @@
           var(--philosophy-title-offset-base) +
             (var(--index) * var(--philosophy-title-offset-multiplier))
         );
-        color: var(--primary-color-40);
+        color: var(--primary-color-70);
       }
     }
   }

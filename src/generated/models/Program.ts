@@ -31,6 +31,7 @@ export type ProgramMinAggregateOutputType = {
   btnText: string | null
   btnTextInner: string | null
   teamShowed: boolean | null
+  type: $Enums.ProgramType | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -42,6 +43,7 @@ export type ProgramMaxAggregateOutputType = {
   btnText: string | null
   btnTextInner: string | null
   teamShowed: boolean | null
+  type: $Enums.ProgramType | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -55,12 +57,15 @@ export type ProgramCountAggregateOutputType = {
   btnText: number
   btnTextInner: number
   teamShowed: number
+  type: number
   img: number
   forWhom: number
   suitableRequests: number
   workflow: number
   cooperationFormat: number
   benefits: number
+  skills: number
+  learningValue: number
   reviews: number
   createdAt: number
   updatedAt: number
@@ -75,6 +80,7 @@ export type ProgramMinAggregateInputType = {
   btnText?: true
   btnTextInner?: true
   teamShowed?: true
+  type?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -86,6 +92,7 @@ export type ProgramMaxAggregateInputType = {
   btnText?: true
   btnTextInner?: true
   teamShowed?: true
+  type?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -99,12 +106,15 @@ export type ProgramCountAggregateInputType = {
   btnText?: true
   btnTextInner?: true
   teamShowed?: true
+  type?: true
   img?: true
   forWhom?: true
   suitableRequests?: true
   workflow?: true
   cooperationFormat?: true
   benefits?: true
+  skills?: true
+  learningValue?: true
   reviews?: true
   createdAt?: true
   updatedAt?: true
@@ -192,12 +202,15 @@ export type ProgramGroupByOutputType = {
   btnText: string
   btnTextInner: string
   teamShowed: boolean
+  type: $Enums.ProgramType
   img: runtime.JsonValue
   forWhom: runtime.JsonValue
   suitableRequests: runtime.JsonValue
   workflow: runtime.JsonValue
   cooperationFormat: runtime.JsonValue
   benefits: runtime.JsonValue
+  skills: runtime.JsonValue | null
+  learningValue: runtime.JsonValue | null
   reviews: runtime.JsonValue | null
   createdAt: Date
   updatedAt: Date
@@ -233,12 +246,15 @@ export type ProgramWhereInput = {
   btnText?: Prisma.StringFilter<"Program"> | string
   btnTextInner?: Prisma.StringFilter<"Program"> | string
   teamShowed?: Prisma.BoolFilter<"Program"> | boolean
+  type?: Prisma.EnumProgramTypeFilter<"Program"> | $Enums.ProgramType
   img?: Prisma.JsonFilter<"Program">
   forWhom?: Prisma.JsonFilter<"Program">
   suitableRequests?: Prisma.JsonFilter<"Program">
   workflow?: Prisma.JsonFilter<"Program">
   cooperationFormat?: Prisma.JsonFilter<"Program">
   benefits?: Prisma.JsonFilter<"Program">
+  skills?: Prisma.JsonNullableFilter<"Program">
+  learningValue?: Prisma.JsonNullableFilter<"Program">
   reviews?: Prisma.JsonNullableFilter<"Program">
   createdAt?: Prisma.DateTimeFilter<"Program"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Program"> | Date | string
@@ -253,12 +269,15 @@ export type ProgramOrderByWithRelationInput = {
   btnText?: Prisma.SortOrder
   btnTextInner?: Prisma.SortOrder
   teamShowed?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   img?: Prisma.SortOrder
   forWhom?: Prisma.SortOrder
   suitableRequests?: Prisma.SortOrder
   workflow?: Prisma.SortOrder
   cooperationFormat?: Prisma.SortOrder
   benefits?: Prisma.SortOrder
+  skills?: Prisma.SortOrderInput | Prisma.SortOrder
+  learningValue?: Prisma.SortOrderInput | Prisma.SortOrder
   reviews?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -276,12 +295,15 @@ export type ProgramWhereUniqueInput = Prisma.AtLeast<{
   btnText?: Prisma.StringFilter<"Program"> | string
   btnTextInner?: Prisma.StringFilter<"Program"> | string
   teamShowed?: Prisma.BoolFilter<"Program"> | boolean
+  type?: Prisma.EnumProgramTypeFilter<"Program"> | $Enums.ProgramType
   img?: Prisma.JsonFilter<"Program">
   forWhom?: Prisma.JsonFilter<"Program">
   suitableRequests?: Prisma.JsonFilter<"Program">
   workflow?: Prisma.JsonFilter<"Program">
   cooperationFormat?: Prisma.JsonFilter<"Program">
   benefits?: Prisma.JsonFilter<"Program">
+  skills?: Prisma.JsonNullableFilter<"Program">
+  learningValue?: Prisma.JsonNullableFilter<"Program">
   reviews?: Prisma.JsonNullableFilter<"Program">
   createdAt?: Prisma.DateTimeFilter<"Program"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Program"> | Date | string
@@ -296,12 +318,15 @@ export type ProgramOrderByWithAggregationInput = {
   btnText?: Prisma.SortOrder
   btnTextInner?: Prisma.SortOrder
   teamShowed?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   img?: Prisma.SortOrder
   forWhom?: Prisma.SortOrder
   suitableRequests?: Prisma.SortOrder
   workflow?: Prisma.SortOrder
   cooperationFormat?: Prisma.SortOrder
   benefits?: Prisma.SortOrder
+  skills?: Prisma.SortOrderInput | Prisma.SortOrder
+  learningValue?: Prisma.SortOrderInput | Prisma.SortOrder
   reviews?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -322,12 +347,15 @@ export type ProgramScalarWhereWithAggregatesInput = {
   btnText?: Prisma.StringWithAggregatesFilter<"Program"> | string
   btnTextInner?: Prisma.StringWithAggregatesFilter<"Program"> | string
   teamShowed?: Prisma.BoolWithAggregatesFilter<"Program"> | boolean
+  type?: Prisma.EnumProgramTypeWithAggregatesFilter<"Program"> | $Enums.ProgramType
   img?: Prisma.JsonWithAggregatesFilter<"Program">
   forWhom?: Prisma.JsonWithAggregatesFilter<"Program">
   suitableRequests?: Prisma.JsonWithAggregatesFilter<"Program">
   workflow?: Prisma.JsonWithAggregatesFilter<"Program">
   cooperationFormat?: Prisma.JsonWithAggregatesFilter<"Program">
   benefits?: Prisma.JsonWithAggregatesFilter<"Program">
+  skills?: Prisma.JsonNullableWithAggregatesFilter<"Program">
+  learningValue?: Prisma.JsonNullableWithAggregatesFilter<"Program">
   reviews?: Prisma.JsonNullableWithAggregatesFilter<"Program">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Program"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Program"> | Date | string
@@ -342,12 +370,15 @@ export type ProgramCreateInput = {
   btnText: string
   btnTextInner?: string
   teamShowed?: boolean
+  type?: $Enums.ProgramType
   img: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests: Prisma.JsonNullValueInput | runtime.InputJsonValue
   workflow: Prisma.JsonNullValueInput | runtime.InputJsonValue
   cooperationFormat: Prisma.JsonNullValueInput | runtime.InputJsonValue
   benefits: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  skills?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  learningValue?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -362,12 +393,15 @@ export type ProgramUncheckedCreateInput = {
   btnText: string
   btnTextInner?: string
   teamShowed?: boolean
+  type?: $Enums.ProgramType
   img: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests: Prisma.JsonNullValueInput | runtime.InputJsonValue
   workflow: Prisma.JsonNullValueInput | runtime.InputJsonValue
   cooperationFormat: Prisma.JsonNullValueInput | runtime.InputJsonValue
   benefits: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  skills?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  learningValue?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -382,12 +416,15 @@ export type ProgramUpdateInput = {
   btnText?: Prisma.StringFieldUpdateOperationsInput | string
   btnTextInner?: Prisma.StringFieldUpdateOperationsInput | string
   teamShowed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  type?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   img?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   workflow?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   cooperationFormat?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   benefits?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  skills?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  learningValue?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -402,12 +439,15 @@ export type ProgramUncheckedUpdateInput = {
   btnText?: Prisma.StringFieldUpdateOperationsInput | string
   btnTextInner?: Prisma.StringFieldUpdateOperationsInput | string
   teamShowed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  type?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   img?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   workflow?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   cooperationFormat?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   benefits?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  skills?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  learningValue?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -422,12 +462,15 @@ export type ProgramCreateManyInput = {
   btnText: string
   btnTextInner?: string
   teamShowed?: boolean
+  type?: $Enums.ProgramType
   img: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests: Prisma.JsonNullValueInput | runtime.InputJsonValue
   workflow: Prisma.JsonNullValueInput | runtime.InputJsonValue
   cooperationFormat: Prisma.JsonNullValueInput | runtime.InputJsonValue
   benefits: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  skills?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  learningValue?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -442,12 +485,15 @@ export type ProgramUpdateManyMutationInput = {
   btnText?: Prisma.StringFieldUpdateOperationsInput | string
   btnTextInner?: Prisma.StringFieldUpdateOperationsInput | string
   teamShowed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  type?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   img?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   workflow?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   cooperationFormat?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   benefits?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  skills?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  learningValue?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -462,12 +508,15 @@ export type ProgramUncheckedUpdateManyInput = {
   btnText?: Prisma.StringFieldUpdateOperationsInput | string
   btnTextInner?: Prisma.StringFieldUpdateOperationsInput | string
   teamShowed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  type?: Prisma.EnumProgramTypeFieldUpdateOperationsInput | $Enums.ProgramType
   img?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   forWhom?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   suitableRequests?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   workflow?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   cooperationFormat?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   benefits?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  skills?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  learningValue?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reviews?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -490,12 +539,15 @@ export type ProgramCountOrderByAggregateInput = {
   btnText?: Prisma.SortOrder
   btnTextInner?: Prisma.SortOrder
   teamShowed?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   img?: Prisma.SortOrder
   forWhom?: Prisma.SortOrder
   suitableRequests?: Prisma.SortOrder
   workflow?: Prisma.SortOrder
   cooperationFormat?: Prisma.SortOrder
   benefits?: Prisma.SortOrder
+  skills?: Prisma.SortOrder
+  learningValue?: Prisma.SortOrder
   reviews?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -508,6 +560,7 @@ export type ProgramMaxOrderByAggregateInput = {
   btnText?: Prisma.SortOrder
   btnTextInner?: Prisma.SortOrder
   teamShowed?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -519,6 +572,7 @@ export type ProgramMinOrderByAggregateInput = {
   btnText?: Prisma.SortOrder
   btnTextInner?: Prisma.SortOrder
   teamShowed?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -545,6 +599,10 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
+export type EnumProgramTypeFieldUpdateOperationsInput = {
+  set?: $Enums.ProgramType
+}
+
 
 
 export type ProgramSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -556,12 +614,15 @@ export type ProgramSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   btnText?: boolean
   btnTextInner?: boolean
   teamShowed?: boolean
+  type?: boolean
   img?: boolean
   forWhom?: boolean
   suitableRequests?: boolean
   workflow?: boolean
   cooperationFormat?: boolean
   benefits?: boolean
+  skills?: boolean
+  learningValue?: boolean
   reviews?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -576,12 +637,15 @@ export type ProgramSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   btnText?: boolean
   btnTextInner?: boolean
   teamShowed?: boolean
+  type?: boolean
   img?: boolean
   forWhom?: boolean
   suitableRequests?: boolean
   workflow?: boolean
   cooperationFormat?: boolean
   benefits?: boolean
+  skills?: boolean
+  learningValue?: boolean
   reviews?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -596,12 +660,15 @@ export type ProgramSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   btnText?: boolean
   btnTextInner?: boolean
   teamShowed?: boolean
+  type?: boolean
   img?: boolean
   forWhom?: boolean
   suitableRequests?: boolean
   workflow?: boolean
   cooperationFormat?: boolean
   benefits?: boolean
+  skills?: boolean
+  learningValue?: boolean
   reviews?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -616,18 +683,21 @@ export type ProgramSelectScalar = {
   btnText?: boolean
   btnTextInner?: boolean
   teamShowed?: boolean
+  type?: boolean
   img?: boolean
   forWhom?: boolean
   suitableRequests?: boolean
   workflow?: boolean
   cooperationFormat?: boolean
   benefits?: boolean
+  skills?: boolean
+  learningValue?: boolean
   reviews?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ProgramOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "descriptionFull" | "as" | "btnText" | "btnTextInner" | "teamShowed" | "img" | "forWhom" | "suitableRequests" | "workflow" | "cooperationFormat" | "benefits" | "reviews" | "createdAt" | "updatedAt", ExtArgs["result"]["program"]>
+export type ProgramOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "descriptionFull" | "as" | "btnText" | "btnTextInner" | "teamShowed" | "type" | "img" | "forWhom" | "suitableRequests" | "workflow" | "cooperationFormat" | "benefits" | "skills" | "learningValue" | "reviews" | "createdAt" | "updatedAt", ExtArgs["result"]["program"]>
 
 export type $ProgramPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Program"
@@ -641,12 +711,15 @@ export type $ProgramPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     btnText: string
     btnTextInner: string
     teamShowed: boolean
+    type: $Enums.ProgramType
     img: runtime.JsonValue
     forWhom: runtime.JsonValue
     suitableRequests: runtime.JsonValue
     workflow: runtime.JsonValue
     cooperationFormat: runtime.JsonValue
     benefits: runtime.JsonValue
+    skills: runtime.JsonValue | null
+    learningValue: runtime.JsonValue | null
     reviews: runtime.JsonValue | null
     createdAt: Date
     updatedAt: Date
@@ -1081,12 +1154,15 @@ export interface ProgramFieldRefs {
   readonly btnText: Prisma.FieldRef<"Program", 'String'>
   readonly btnTextInner: Prisma.FieldRef<"Program", 'String'>
   readonly teamShowed: Prisma.FieldRef<"Program", 'Boolean'>
+  readonly type: Prisma.FieldRef<"Program", 'ProgramType'>
   readonly img: Prisma.FieldRef<"Program", 'Json'>
   readonly forWhom: Prisma.FieldRef<"Program", 'Json'>
   readonly suitableRequests: Prisma.FieldRef<"Program", 'Json'>
   readonly workflow: Prisma.FieldRef<"Program", 'Json'>
   readonly cooperationFormat: Prisma.FieldRef<"Program", 'Json'>
   readonly benefits: Prisma.FieldRef<"Program", 'Json'>
+  readonly skills: Prisma.FieldRef<"Program", 'Json'>
+  readonly learningValue: Prisma.FieldRef<"Program", 'Json'>
   readonly reviews: Prisma.FieldRef<"Program", 'Json'>
   readonly createdAt: Prisma.FieldRef<"Program", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Program", 'DateTime'>

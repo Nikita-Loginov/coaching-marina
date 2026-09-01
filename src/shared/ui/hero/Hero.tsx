@@ -47,7 +47,7 @@ export const Hero = ({
           <div className={scss["hero__content"]}>
             <div className={scss["hero__block"]}>
               {badge && (
-                <p className="p3 primary-color-40 uppercase-text">{badge}</p>
+                <p className="p3 primary-color-70 uppercase-text">{badge}</p>
               )}
 
               <h1 className={classNames(variant, scss["hero__title"], scss[`hero__title--${variant}`])}>
@@ -55,7 +55,7 @@ export const Hero = ({
                 {labelAccent ? (
                   <>
                     <br />{" "}
-                    <span className="primary-color-40">{labelAccent}</span>
+                    <span className="primary-color-70">{labelAccent}</span>
                   </>
                 ) : null}
               </h1>

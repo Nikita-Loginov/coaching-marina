@@ -23,9 +23,12 @@ const mapItemToRow = (
   suitableRequests: data.suitableRequests,
   workflow: data.workflow,
   cooperationFormat: data.cooperationFormat,
+  skills: data.skills,
+  learningValue: data.learningValue,
   benefits: data.benefits,
   reviews: data.reviews,
   teamShowed: data.teamShowed,
+  type: data.type,
 });
 
 export const programApi = {

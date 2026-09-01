@@ -7,7 +7,7 @@
     )};
   --statistics-items-gap: #{calculate-clamp(
       24px,
-      40px,
+      24px,
       $lg-breakpoint,
       $tablet-breakpoint
     )};
@@ -26,6 +26,13 @@
   --statistics-item-line-width: 32px;
   --statistics-item-line-height: 1px;
   --statistics-item-number-gap: 4px;
+  --statistics-item-padding: #{calculate-clamp(
+    16px,
+    24px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
+  --statistics-item-border-width: 2px;
 
   width: 100%;
 
@@ -45,6 +52,9 @@
     display: flex;
     flex-direction: column;
     gap: var(--statistics-item-gap);
+    border-radius: var(--radius-md);
+    padding: var(--statistics-item-padding);
+    border: var(--statistics-item-border-width) solid var(--secondary-color-600);
 
     & > *:not(:last-child) {
       position: relative;
@@ -64,7 +74,7 @@
 
   &__item-number {
     font-family: var(--font-family-second);
-    font-size: var(--font-size-xxl);
+    font-size: var(--font-size-xl);
     display: flex;
     align-items: baseline;
     gap: var(--statistics-item-number-gap);
@@ -77,12 +87,14 @@
 
   @media (min-width: $desktop-breakpoint) {
     --statistics-content-gap: #{vw(40)};
-    --statistics-items-gap: #{vw(40)};
+    --statistics-items-gap: #{vw(24)};
     --statistics-item-gap: #{vw(24)};
     --statistics-item-padding-bottom: #{vw(24)};
     --statistics-item-line-width: #{vw(32)};
     --statistics-item-line-height: #{vw(1)};
     --statistics-item-number-gap: #{vw(4)};
+    --statistics-item-padding: #{vw(24)};
+    --statistics-item-border-width: #{vw(2)};
   }
 
   @media (max-width: $tablet-breakpoint) {
@@ -93,8 +105,8 @@
 
   @media (max-width: $mobile-small-breakpoint) {
     &__items {
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
   }
 }

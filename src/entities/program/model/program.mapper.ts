@@ -40,6 +40,8 @@ export const mapProgram = (row: ProgramRow): ProgramItem => ({
 
   teamShowed: row.teamShowed,
 
+  type: row.type,
+
   forWhom: mapContent(row.forWhom),
 
   suitableRequests: mapContent(row.suitableRequests),
@@ -47,6 +49,10 @@ export const mapProgram = (row: ProgramRow): ProgramItem => ({
   workflow: mapContent(row.workflow),
 
   cooperationFormat: mapContent(row.cooperationFormat),
+
+  skills: mapContent(row.skills),
+
+  learningValue: mapContent(row.learningValue),
 
   benefits: mapContent(row.benefits),
 

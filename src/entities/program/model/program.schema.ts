@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const programContentItemSchema = z.object({
   title: z.string().optional(),
-  desc: z.array(z.string().min(1, "Обязательное поле")),
+  desc: z.array(z.string().min(1, "Обязательное поле")).optional(),
   as: z.enum(["default", "list"]).default("default"),
 });
 
@@ -44,6 +44,8 @@ export const programSchema = z.object({
 
   teamShowed: z.boolean().default(true),
 
+  type: z.enum(["GENERAL", "EDUCATION"]).default("GENERAL"),
+
   btnText: z.string().min(1, "Обязательное поле"),
 
   btnTextInner: z.string().min(1, "Обязательное поле"),
@@ -60,6 +62,10 @@ export const programSchema = z.object({
   workflow: programContentSchema,
 
   cooperationFormat: programContentSchema,
+
+  skills: programContentSchema.optional(),
+
+  learningValue: programContentSchema.optional(),
 
   benefits: programContentSchema,
 

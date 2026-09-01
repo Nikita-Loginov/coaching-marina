@@ -1,54 +1,56 @@
 import classNames from "classnames";
 
 import { Hero } from "@/shared/ui/index.ui";
-import { ProgramInfo } from "./program-info/ProgramInfo";
 import { ReviewsSection } from "@/widgets/reviews";
 
 import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
 
 import { getProgramById } from "@/entities/program/model/program.queries";
 
+import { EducationInfo } from "./education-info/EducationInfo";
+
 import { TeamsSection } from "@/widgets/teams";
 
-import scss from "./Program.module.scss";
+import scss from "./Education.module.scss";
 
 interface ProgramProps {
   id: string;
 }
 
-export const Program = async ({ id }: ProgramProps) => {
-  const program = await getProgramById(id);
+export const Education = async () => {
+  const programEducation = await getProgramById("training-programs");
 
-  if (!program) return <p>Такой программы нет</p>;
+  if (!programEducation) return <p>Такой программы нет</p>;
 
   return (
     <>
       <Hero
         title={{
-          label: program.name.split(" ").slice(0, -1).join(" "),
-          labelAccent: program.name.split(" ").at(-1),
-          variant: "h2",
+          label: "Образование,",
+          labelAccent: "меняющее мышление.",
+          variant: "h1",
         }}
+        badge={programEducation.name}
         innerGrid="default"
         bottomInfo={{
           position: "bottom",
           content: (
-            <div className={scss["program__block"]}>
+            <div className={scss["edication__block"]}>
               <div
                 className={classNames(
                   "textbox textbox--second",
-                  scss["program__textbox"]
+                  scss["edication__textbox"]
                 )}
               >
-                {program.descriptionFull.map((text, index) => {
+                {programEducation.descriptionFull.map((text, index) => {
                   return <p key={index}>{text}</p>;
                 })}
               </div>
 
-              {program.btnTextInner && (
-                <div className={scss["program__btns"]}>
+              {programEducation.btnTextInner && (
+                <div className={scss["edication_btns"]}>
                   <ContactMessageBtn theme="primary" size="medium">
-                    <p className="p2">{program.btnTextInner}</p>
+                    <p className="p2">{programEducation.btnTextInner}</p>
                   </ContactMessageBtn>
                 </div>
               )}
@@ -57,13 +59,13 @@ export const Program = async ({ id }: ProgramProps) => {
         }}
       />
 
-      <ProgramInfo program={program} />
+      <EducationInfo />
 
-      <ReviewsSection reviews={program.reviews} />
+      <ReviewsSection reviews={programEducation.reviews} />
 
-      {program.teamShowed && <TeamsSection />}
+      {programEducation.teamShowed && <TeamsSection />}
     </>
   );
 };
 
-export default Program;
+export default Education;

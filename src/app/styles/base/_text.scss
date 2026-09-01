@@ -1,7 +1,7 @@
 h1,
 .h1 {
   font-size: var(--font-size-xxl);
-  line-height: var(--line-height-tighter);
+  line-height: var(--line-height-base);
 }
 
 h2,
@@ -67,7 +67,11 @@ h4,
 }
 
 .primary-color-40 {
-  color: var(--primary-color-40);
+  color: var(--primary-color-70);
+}
+
+.primary-color-70 {
+  color: var(--primary-color-70);
 }
 
 .secondary-color-0 {

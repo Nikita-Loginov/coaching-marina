@@ -9,8 +9,8 @@ export type ProgramContentItem = {
 export type ProgramContent = {
   title: string;
   items: ProgramContentItem[];
-  showed: boolean
-  variant: "small" | 'big'
+  showed: boolean;
+  variant: "small" | "big";
 };
 
 export type ProgramImage = {
@@ -35,6 +35,8 @@ export type ProgramItem = {
 
   teamShowed: boolean;
 
+  type: "GENERAL" | "EDUCATION";
+
   img: ProgramImage;
 
   forWhom: ProgramContent;
@@ -46,6 +48,10 @@ export type ProgramItem = {
   cooperationFormat: ProgramContent;
 
   benefits: ProgramContent;
+
+  skills?: ProgramContent;
+
+  learningValue?: ProgramContent;
 
   reviews?: ReviewItem[];
 };
@@ -67,6 +73,8 @@ export type ProgramRow = {
 
   teamShowed: boolean;
 
+  type: "GENERAL" | "EDUCATION";
+
   img: unknown;
 
   forWhom: unknown;
@@ -78,6 +86,10 @@ export type ProgramRow = {
   cooperationFormat: unknown;
 
   benefits: unknown;
+
+  skills?: ProgramContent;
+
+  learningValue?: ProgramContent;
 
   reviews: unknown;
 

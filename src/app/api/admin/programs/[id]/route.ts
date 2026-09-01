@@ -58,9 +58,12 @@ export async function PATCH(request: Request, { params }: RouteContext) {
         suitableRequests: body.suitableRequests,
         workflow: body.workflow,
         cooperationFormat: body.cooperationFormat,
+        skills: body.skills,
+        learningValue: body.learningValue,
         benefits: body.benefits,
         reviews: body.reviews ?? [],
         teamShowed: body.teamShowed,
+        type: body.type,
       },
     });
 
