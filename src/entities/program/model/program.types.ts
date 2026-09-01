@@ -87,9 +87,9 @@ export type ProgramRow = {
 
   benefits: unknown;
 
-  skills?: ProgramContent;
+  skills: unknown;
 
-  learningValue?: ProgramContent;
+  learningValue: unknown;
 
   reviews: unknown;
 

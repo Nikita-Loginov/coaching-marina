@@ -11,6 +11,12 @@ const mapContent = (value: unknown): ProgramContent => {
   return value as ProgramContent;
 };
 
+const mapOptionalContent = (value: unknown): ProgramContent | undefined => {
+  if (!value) return undefined;
+
+  return value as ProgramContent;
+};
+
 const mapImage = (value: unknown): ProgramImage => {
   return value as ProgramImage;
 };
@@ -50,11 +56,11 @@ export const mapProgram = (row: ProgramRow): ProgramItem => ({
 
   cooperationFormat: mapContent(row.cooperationFormat),
 
-  skills: mapContent(row.skills),
-
-  learningValue: mapContent(row.learningValue),
-
   benefits: mapContent(row.benefits),
+
+  skills: mapOptionalContent(row.skills),
+
+  learningValue: mapOptionalContent(row.learningValue),
 
   reviews: mapReviews(row.reviews),
 });
