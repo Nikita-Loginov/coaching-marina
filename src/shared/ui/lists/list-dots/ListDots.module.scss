@@ -1,13 +1,14 @@
 .list-dots {
   --list-dots-gap: 24px;
   --list-dots-list-gap: #{calculate-clamp(
-    24px,
-    48px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+      24px,
+      48px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --list-dots-link-gap: 16px;
   --list-dots-link-dot-size: 6px;
+  --list-dots-icon-size: 30px;
 
   display: flex;
   flex-direction: column;
@@ -27,20 +28,37 @@
     display: flex;
     gap: var(--list-dots-link-gap);
     position: relative;
-    align-items: baseline;
+    align-items: flex-start;
 
-    &:before {
-      content: "";
-      width: var(--list-dots-link-dot-size);
-      height: var(--list-dots-link-dot-size);
-      border-radius: 50%;
-      flex-shrink: 0;
-      background-color: var(--secondary-color-600);
-    }
+    // &:before {
+    //   content: "";
+    //   width: var(--list-dots-link-dot-size);
+    //   height: var(--list-dots-link-dot-size);
+    //   border-radius: 50%;
+    //   flex-shrink: 0;
+    //   background-color: var(--secondary-color-600);
+    // }
   }
 
   &__item {
     width: 100%;
+  }
+
+  &__icon {
+    width: var(--list-dots-icon-size);
+    height: var(--list-dots-icon-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: var(--radius-base);
+    background-color: var(--primary-color-70);
+    color: var(--gray-color-0);
+
+    svg {
+      width: 65%;
+      height: 65%;
+    }
   }
 
   @media (min-width: $desktop-breakpoint) {
@@ -48,5 +66,6 @@
     --list-dots-list-gap: #{vw(48)};
     --list-dots-link-gap: #{vw(16)};
     --list-dots-link-dot-size: #{vw(6)};
+    --list-dots-icon-size: #{vw(30)};
   }
 }

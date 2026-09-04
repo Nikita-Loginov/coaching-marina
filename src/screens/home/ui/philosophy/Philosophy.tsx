@@ -43,7 +43,9 @@ export const Philosophy = async () => {
                     style={{ "--index": index } as React.CSSProperties}
                     key={index}
                   >
-                    {isFirst && "«"} {title} {isLast && "»"}
+                    {/* {isFirst && "«"} */}
+                    {title}
+                    {/* {isLast && "»"} */}
                   </span>
                 );
               })}

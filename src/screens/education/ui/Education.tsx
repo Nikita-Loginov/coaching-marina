@@ -26,8 +26,8 @@ export const Education = async () => {
     <>
       <Hero
         title={{
-          label: "Образование,",
-          labelAccent: "меняющее мышление.",
+          label: "Бизнес-практикумы,",
+          // labelAccent: "меняющее мышление.",
           variant: "h1",
         }}
         badge={programEducation.name}

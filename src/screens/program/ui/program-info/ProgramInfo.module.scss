@@ -127,6 +127,10 @@
     }
   }
 
+  &__item-btns {
+    margin-top: auto;
+  }
+
   @media (min-width: $desktop-breakpoint) {
     --program-info-inner-gap: #{vw(16)};
     --program-info-items-gap: #{vw(32)};

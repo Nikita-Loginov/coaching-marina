@@ -19,7 +19,7 @@
   --hero-img-card-animation-duration: 5s;
   --hero-img-card-rotate: -3deg;
   --hero-img-card-even-rotate: 3deg;
-  --hero-img-card-translate-y: 10px;
+  --hero-img-card-translate-y: 5px;
 
   position: relative;
   overflow: hidden;
@@ -52,7 +52,7 @@
     justify-content: flex-end;
     inset: 0;
     right: 5px;
-    bottom: 10%;
+    bottom: 2%;
   }
 
   &__card {
@@ -110,7 +110,7 @@
     --hero-img-card-max-width: #{vw(250)};
     --hero-img-card-even-padding: #{vw(16)};
     --hero-img-card-animation-duration: 5s;
-    --hero-img-card-translate-y: #{vw(10)};
+    --hero-img-card-translate-y: #{vw(5)};
   }
 
   @media (max-width: $lg-breakpoint) {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import classNames from "classnames";
-import { HTMLAttributeAnchorTarget } from "react";
+import { HTMLAttributeAnchorTarget, ReactNode } from "react";
 
 import scss from "./ListDots.module.scss";
 
@@ -11,6 +11,7 @@ export interface ListDotsProps {
   items: {
     as?: "link" | "text";
     label: string;
+    icon?: ReactNode;
     href?: string;
     ariaLabel?: string;
     className?: string;
@@ -39,9 +40,16 @@ export const ListDots = ({
             className,
             target,
             title,
+            icon,
           } = item;
 
-          const content = <p className={className}>{label}</p>;
+          const content = (
+            <>
+              <div className={scss["list-dots__icon"]}>{icon}</div>
+
+              <p className={className}>{label}</p>
+            </>
+          );
 
           return (
             <li className={scss["list-dots__link"]} key={index}>

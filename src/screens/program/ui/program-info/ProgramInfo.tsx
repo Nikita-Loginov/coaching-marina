@@ -9,6 +9,8 @@ import type {
   ProgramItem,
 } from "@/entities/program/model/program.types";
 
+import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
+
 interface ProgramInfoProps {
   program: ProgramItem;
 }
@@ -19,40 +21,59 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
   const { forWhom, suitableRequests, workflow, cooperationFormat, benefits } =
     program;
 
-  const programItems: ProgramInfoItem[] = [
-    forWhom,
-    suitableRequests,
-    {
-      ...workflow,
-      // variant: "active",
-    },
-    cooperationFormat,
-    benefits,
-  ];
+    const programItems = [
+      {
+        key: "forWhom",
+        content: forWhom,
+      },
+      {
+        key: "suitableRequests",
+        content: suitableRequests,
+      },
+      {
+        key: "workflow",
+        content: {
+          ...workflow,
+          // variant: "active",
+        },
+      },
+      {
+        key: "cooperationFormat",
+        content: cooperationFormat,
+      },
+      {
+        key: "benefits",
+        content: benefits,
+      },
+    ];
 
   return (
     <section className={scss["program-info"]}>
       <Container>
         <div className={scss["program-info__inner"]}>
           <div className={scss["program-info__items"]}>
-            {programItems.map((programItem) => {
-              if (!programItem.showed) return;
+            {programItems.map((programItem, index) => {
+               const { key, content } = programItem;
+
+               if (!content?.showed) return null;
+
+               const isCooperationFormat = key === "cooperationFormat";
 
               return (
                 <div
                   className={classNames(
                     scss["program-info__item"],
-                    programItem?.variant === "big"
+                    content?.variant === "big"
                       ? scss["program-info__item--active"]
                       : null
                   )}
                 >
                   <p className={scss["program-info__item-title"]}>
-                    {programItem.title}
+                    {content.title}
                   </p>
 
                   <div className={scss["program-info__item-boxs"]}>
-                    {programItem.items.map((item) => {
+                    {content.items.map((item) => {
                       const { title, desc, as = "default" } = item;
 
                       return as === "default" ? (
@@ -98,6 +119,14 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                       );
                     })}
                   </div>
+
+                  {isCooperationFormat && (
+                    <div className={scss["program-info__item-btns"]}>
+                      <ContactMessageBtn theme="primary" size="medium">
+                        <p className="p2">Записаться на разговор</p>
+                      </ContactMessageBtn>
+                    </div>
+                  )}
                 </div>
               );
             })}

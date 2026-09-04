@@ -10,6 +10,8 @@
 
   &__textbox {
     --program-textbox-max-width: 60%;
+    --textbox-gap: 4px;
+
     max-width: var(--program-textbox-max-width);
   }
 

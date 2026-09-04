@@ -14,7 +14,7 @@ import { useModalStore } from "@/shared/store/modal/modal.store";
 import scss from "./ProgramCard.module.scss";
 
 interface ProgramCardProps {
-  card: ProgramItem & { badge?: string };
+  card: ProgramItem & { badge?: string; linkFrom?: string };
   variant?: "default" | "admin";
   onDelete?: (id: string) => void;
 
@@ -36,6 +36,7 @@ export const ProgramCard = ({
   const isDeleting = deleteStatus?.isPending && deleteStatus.id === id;
 
   const isModal = as === "modal";
+  const hasLinkFrom = Boolean(card.linkFrom);
 
   const lastWord = name.split(" ").at(-1);
   const wordsWithoutLastWord = name.split(" ").slice(0, -1).join(" ");
@@ -88,14 +89,20 @@ export const ProgramCard = ({
           <div className={scss["program__footer"]}>
             <Button
               theme="flat"
-              as={isModal ? "button" : "link"}
-              to={isModal ? undefined : `/programs/${id}`}
+              as={hasLinkFrom ? "link" : isModal ? "button" : "link"}
+              to={
+                hasLinkFrom
+                  ? card.linkFrom
+                  : isModal
+                    ? undefined
+                    : `/programs/${id}`
+              }
               iconSize="small"
               iconRight={<Icons.ArrowRight />}
               onClick={() => {
-                if (isModal) {
+                if (!hasLinkFrom && isModal) {
                   open("program", {
-                    id: id,
+                    id,
                   });
                 }
               }}

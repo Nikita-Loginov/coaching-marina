@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const programContentItemSchema = z.object({
   title: z.string().optional(),
-  desc: z.array(z.string().min(1, "Обязательное поле")),
+  desc: z.array(z.string().min(1, "Обязательное поле")).optional(),
   as: z.enum(["default", "list"]).default("default"),
 });
 

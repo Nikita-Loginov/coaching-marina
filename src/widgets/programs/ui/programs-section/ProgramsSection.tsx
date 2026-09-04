@@ -4,7 +4,10 @@ import { ProgramCard } from "@/entities/program/ui";
 
 import { ProgramsModal } from "./parts/programs-modal/ProgramsModal";
 
-import { getPrograms } from "@/entities/program/model/program.queries";
+import {
+  getProgramById,
+  getPrograms,
+} from "@/entities/program/model/program.queries";
 
 import scss from "./ProgramsSection.module.scss";
 
@@ -23,6 +26,7 @@ const CHAPTER_NAMES = [
 
 export const ProgramsSection = async () => {
   const programs = await getPrograms();
+  const programEducation = await getProgramById("training-programs");
 
   const generalPrograms = programs.filter(
     (program) => program.type === "GENERAL"
@@ -36,9 +40,10 @@ export const ProgramsSection = async () => {
             items={[
               {
                 title: {
-                  label: 'Как мы',
-                  labelAccent: 'работаем?'
-                }
+                  label: "Как мы",
+                  labelAccent: "работаем?",
+                },
+                label: "Решения",
               },
             ]}
           >
@@ -53,14 +58,25 @@ export const ProgramsSection = async () => {
                       key={program.id}
                       card={{
                         ...program,
-                        badge: `${String(chapterNumber).padStart(
-                          2,
-                          "0"
-                        )} — Глава ${chapter}`,
+                        // badge: `${String(chapterNumber).padStart(
+                        //   2,
+                        //   "0"
+                        // )} — Глава ${chapter}`,
+                        badge: `Решение ${index + 1}`,
                       }}
                     />
                   );
                 })}
+
+                {programEducation && (
+                  <ProgramCard
+                    card={{
+                      ...programEducation,
+                      badge: `Решение ${generalPrograms.length + 1}`,
+                      linkFrom: '/education'
+                    }}
+                  />
+                )}
               </div>
             </div>
           </TopInner>

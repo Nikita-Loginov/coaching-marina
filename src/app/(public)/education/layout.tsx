@@ -9,7 +9,7 @@ export default function ProgramLayout({ children }: SvedeniyaLayoutProps) {
     <>
       {children}
 
-      <Cta
+      {/* <Cta
         title={{
           label: "Готовы начать?",
           labelAccent: "Поговорим о вашем запросе.",
@@ -21,7 +21,7 @@ export default function ProgramLayout({ children }: SvedeniyaLayoutProps) {
         btnInfo={{
           text: "Записаться на разговор",
         }}
-      />
+      /> */}
     </>
   );
 }
