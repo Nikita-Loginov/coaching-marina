@@ -263,6 +263,9 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
     }
   }, [program, isEdit, reset]);
 
+  // console.log(errors)
+  
+
   const onSubmit = async (data: ProgramFormInput) => {
     const parsed = programSchema.parse(data);
 
