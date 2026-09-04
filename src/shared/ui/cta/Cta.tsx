@@ -30,7 +30,7 @@ export const Cta = ({ title, desc, btnInfo }: CtaProps) => {
         <div className={scss["cta__inner"]}>
           <div className={scss["cta__content"]}>
             <div className={scss["cta__header"]}>
-              <h3 className={classNames("h3", scss["cta__title"])}>
+              <h3 className={classNames("h4", scss["cta__title"])}>
                 {label} <br />{" "}
                 {labelAccent ? (
                   <span className={scss["cta__title-sub"]}>{labelAccent}</span>

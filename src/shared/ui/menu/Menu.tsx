@@ -101,7 +101,7 @@ export const Menu = () => {
                 setIsOpen(false);
               }}
             >
-              <p className="p3">Записаться на разговор</p>
+              <p className="p2">Записаться на разговор</p>
             </ContactMessageBtn>
           </div>
         </div>

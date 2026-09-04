@@ -44,7 +44,7 @@ export const DocumentCard = ({ document }: DocumentCardProps) => {
         </div>
 
         <div className={scss["document-card__block"]}>
-          <p className="p1 font-text-second">{document.name}</p>
+          <p className="p1">{document.name}</p>
 
           <div className="textbox textbox--second">
             {document.description.map((item) => (

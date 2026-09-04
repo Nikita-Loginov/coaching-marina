@@ -50,7 +50,7 @@ export const HeaderClient = ({
 
             <div className={scss["header__btns"]}>
               <ContactMessageBtn theme="primary" size="small">
-                <p className="p3">
+                <p className="p2">
                   Записаться на разговор
                 </p>
               </ContactMessageBtn>

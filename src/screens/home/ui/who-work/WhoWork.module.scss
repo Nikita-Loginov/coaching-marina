@@ -79,7 +79,7 @@
     flex-direction: column;
     gap: var(--who-work-item-textbox-gap);
     line-height: var(--line-height-relaxed);
-    font-family: var(--font-family-second);
+    // font-family: var(--font-family-second);
   }
 
   @media (min-width: $desktop-breakpoint) {

@@ -55,7 +55,7 @@ export const Accordeon = ({
               onClick={() => toggleItem(item.key)}
               type="button"
             >
-              <span className={"p1"}>{item.label}</span>
+              <span className={"p2"}>{item.label}</span>
 
               <span
                 className={`${scss["accordeon__icon"]} ${

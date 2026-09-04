@@ -125,7 +125,7 @@ export const EducationInfo = async () => {
                                       desc.length > 0 &&
                                       desc.map((text, index) => {
                                         return (
-                                          <p className="p1" key={index}>
+                                          <p className="p2" key={index}>
                                             {text}
                                           </p>
                                         );
@@ -148,7 +148,7 @@ export const EducationInfo = async () => {
                             className={scss["education-info__item-header-text"]}
                           >
                             {description.map((text, index) => (
-                              <p className="p1" key={index}>
+                              <p className="p2" key={index}>
                                 {text
                                   .split(". ")
                                   .map((sentence, index, arr) => (
@@ -207,7 +207,7 @@ export const EducationInfo = async () => {
                                       key={index}
                                     >
                                       {title ? (
-                                        <p className="p1 font-text-second">
+                                        <p className="p2 font-text-second">
                                           {title}
                                         </p>
                                       ) : null}
@@ -234,7 +234,7 @@ export const EducationInfo = async () => {
                                       key={index}
                                     >
                                       {title ? (
-                                        <p className="p1 font-text-second">
+                                        <p className="p2 font-text-second">
                                           {title}
                                         </p>
                                       ) : null}

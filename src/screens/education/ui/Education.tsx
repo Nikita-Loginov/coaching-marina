@@ -26,7 +26,7 @@ export const Education = async () => {
     <>
       <Hero
         title={{
-          label: "Бизнес-практикумы,",
+          label: "Бизнес-практикумы",
           // labelAccent: "меняющее мышление.",
           variant: "h1",
         }}

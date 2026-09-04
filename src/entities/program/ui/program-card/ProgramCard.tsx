@@ -66,7 +66,7 @@ export const ProgramCard = ({
 
           <h2
             className={classNames(
-              isAdmin ? "p1" : "h2",
+              isAdmin ? "p1" : "h3",
               scss["program__title"]
             )}
           >

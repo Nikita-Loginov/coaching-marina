@@ -1,4 +1,4 @@
-import { Inter, Cormorant } from "next/font/google";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 import { Toaster } from "react-hot-toast";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -23,15 +23,6 @@ const interSans = Inter({
   preload: true,
 });
 
-const cormorantDisplay = Cormorant({
-  variable: "--font-cormorant-display",
-  subsets: ["cyrillic", "latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
-  preload: true,
-});
-
 export const metadata = seoConfig;
 
 const structuredData = [
@@ -49,7 +40,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="ru"
-      className={`${interSans.variable} ${cormorantDisplay.variable}`}
+      className={`${interSans.variable}`}
     >
       <body className="body">
         <ClerkProvider>

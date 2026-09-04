@@ -40,13 +40,16 @@ export const ReviewCard = ({
 
   const textRef = useRef<HTMLDivElement>(null);
 
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isOverflowing, setIsOverflowing] = useState(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [isOverflowing, setIsOverflowing] = useState<boolean>(false);
+  const [isTextReady, setIsTextReady] = useState<boolean>(false);
 
   useEffect(() => {
     const element = textRef.current;
 
     if (!element) return;
+
+    setIsTextReady(false);
 
     const checkOverflow = () => {
       const lineHeight = parseFloat(getComputedStyle(element).lineHeight);
@@ -59,6 +62,7 @@ export const ReviewCard = ({
       const maxHeight = lineHeight * 10;
 
       setIsOverflowing(element.scrollHeight > maxHeight + 1);
+      setIsTextReady(true);
     };
 
     checkOverflow();
@@ -89,7 +93,6 @@ export const ReviewCard = ({
           <Image src={personImgSrc} alt={name} fill />
         </div>
       </div>
-      
 
       {text || videoSrc ? (
         <div className={scss["review-card__content"]}>
@@ -99,7 +102,9 @@ export const ReviewCard = ({
                 ref={textRef}
                 className={classNames(
                   "textbox textbox--second",
-                  !isExpanded &&
+                  !isTextReady && scss["review-card__text--checking"],
+                  isTextReady &&
+                    !isExpanded &&
                     isOverflowing &&
                     scss["review-card__text--collapsed"]
                 )}

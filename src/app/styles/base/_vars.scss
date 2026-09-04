@@ -31,8 +31,8 @@
   --red-color-100: #660403;
   --red-color-200: #ff5f57;
 
-  --font-family-main: var(--font-inter-sans), sans-serif;
-  --font-family-second: var(--font-cormorant-display), serif;
+  --font-family-main: "FuturaBookC", sans-serif;
+  --font-family-second: "Lighthaus", serif;
 
   --weight-font-xs: 300;
   --weight-font-main: 400;
@@ -41,20 +41,20 @@
   --weight-font-xl: 700;
 
   --font-size-xxl: #{calculate-clamp(
-      56px,
-      56px,
+      42px,
+      42px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
   --font-size-xl: #{calculate-clamp(
+      32px,
       42px,
-      56px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
   --font-size-lg: #{calculate-clamp(
       24px,
-      42px,
+      32px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
@@ -163,9 +163,9 @@
 
 @media (min-width: $desktop-breakpoint) {
   :root {
-    --font-size-xxl: #{vw(56)};
-    --font-size-xl: #{vw(56)};
-    --font-size-lg: #{vw(42)};
+    --font-size-xxl: #{vw(42)};
+    --font-size-xl: #{vw(42)};
+    --font-size-lg: #{vw(32)};
     --font-size-md: #{vw(30)};
     --font-size-md-add: #{vw(22)};
     --font-size-base: #{vw(16)};

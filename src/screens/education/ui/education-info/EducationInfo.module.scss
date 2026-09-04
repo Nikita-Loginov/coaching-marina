@@ -113,10 +113,10 @@
   &__link-title {
     text-transform: uppercase;
     color: var(--primary-color-30);
+    font-family: var(--font-family-second);
   }
 
   &__link-text {
-    font-family: var(--font-family-second);
     display: flex;
     flex-direction: column;
     gap: var(--education-info-link-text);
