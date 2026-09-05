@@ -29,6 +29,7 @@ export type TeamMinAggregateOutputType = {
   name: string | null
   middlename: string | null
   post: string | null
+  desc: string | null
   img: string | null
   imgAlt: string | null
   createdAt: Date | null
@@ -40,6 +41,7 @@ export type TeamMaxAggregateOutputType = {
   name: string | null
   middlename: string | null
   post: string | null
+  desc: string | null
   img: string | null
   imgAlt: string | null
   createdAt: Date | null
@@ -51,6 +53,7 @@ export type TeamCountAggregateOutputType = {
   name: number
   middlename: number
   post: number
+  desc: number
   img: number
   imgAlt: number
   createdAt: number
@@ -64,6 +67,7 @@ export type TeamMinAggregateInputType = {
   name?: true
   middlename?: true
   post?: true
+  desc?: true
   img?: true
   imgAlt?: true
   createdAt?: true
@@ -75,6 +79,7 @@ export type TeamMaxAggregateInputType = {
   name?: true
   middlename?: true
   post?: true
+  desc?: true
   img?: true
   imgAlt?: true
   createdAt?: true
@@ -86,6 +91,7 @@ export type TeamCountAggregateInputType = {
   name?: true
   middlename?: true
   post?: true
+  desc?: true
   img?: true
   imgAlt?: true
   createdAt?: true
@@ -170,6 +176,7 @@ export type TeamGroupByOutputType = {
   name: string
   middlename: string
   post: string
+  desc: string
   img: string
   imgAlt: string
   createdAt: Date
@@ -202,6 +209,7 @@ export type TeamWhereInput = {
   name?: Prisma.StringFilter<"Team"> | string
   middlename?: Prisma.StringFilter<"Team"> | string
   post?: Prisma.StringFilter<"Team"> | string
+  desc?: Prisma.StringFilter<"Team"> | string
   img?: Prisma.StringFilter<"Team"> | string
   imgAlt?: Prisma.StringFilter<"Team"> | string
   createdAt?: Prisma.DateTimeFilter<"Team"> | Date | string
@@ -213,6 +221,7 @@ export type TeamOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   middlename?: Prisma.SortOrder
   post?: Prisma.SortOrder
+  desc?: Prisma.SortOrder
   img?: Prisma.SortOrder
   imgAlt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -227,6 +236,7 @@ export type TeamWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Team"> | string
   middlename?: Prisma.StringFilter<"Team"> | string
   post?: Prisma.StringFilter<"Team"> | string
+  desc?: Prisma.StringFilter<"Team"> | string
   img?: Prisma.StringFilter<"Team"> | string
   imgAlt?: Prisma.StringFilter<"Team"> | string
   createdAt?: Prisma.DateTimeFilter<"Team"> | Date | string
@@ -238,6 +248,7 @@ export type TeamOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   middlename?: Prisma.SortOrder
   post?: Prisma.SortOrder
+  desc?: Prisma.SortOrder
   img?: Prisma.SortOrder
   imgAlt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -255,6 +266,7 @@ export type TeamScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Team"> | string
   middlename?: Prisma.StringWithAggregatesFilter<"Team"> | string
   post?: Prisma.StringWithAggregatesFilter<"Team"> | string
+  desc?: Prisma.StringWithAggregatesFilter<"Team"> | string
   img?: Prisma.StringWithAggregatesFilter<"Team"> | string
   imgAlt?: Prisma.StringWithAggregatesFilter<"Team"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Team"> | Date | string
@@ -266,6 +278,7 @@ export type TeamCreateInput = {
   name: string
   middlename: string
   post: string
+  desc?: string
   img: string
   imgAlt: string
   createdAt?: Date | string
@@ -277,6 +290,7 @@ export type TeamUncheckedCreateInput = {
   name: string
   middlename: string
   post: string
+  desc?: string
   img: string
   imgAlt: string
   createdAt?: Date | string
@@ -288,6 +302,7 @@ export type TeamUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   middlename?: Prisma.StringFieldUpdateOperationsInput | string
   post?: Prisma.StringFieldUpdateOperationsInput | string
+  desc?: Prisma.StringFieldUpdateOperationsInput | string
   img?: Prisma.StringFieldUpdateOperationsInput | string
   imgAlt?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -299,6 +314,7 @@ export type TeamUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   middlename?: Prisma.StringFieldUpdateOperationsInput | string
   post?: Prisma.StringFieldUpdateOperationsInput | string
+  desc?: Prisma.StringFieldUpdateOperationsInput | string
   img?: Prisma.StringFieldUpdateOperationsInput | string
   imgAlt?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -310,6 +326,7 @@ export type TeamCreateManyInput = {
   name: string
   middlename: string
   post: string
+  desc?: string
   img: string
   imgAlt: string
   createdAt?: Date | string
@@ -321,6 +338,7 @@ export type TeamUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   middlename?: Prisma.StringFieldUpdateOperationsInput | string
   post?: Prisma.StringFieldUpdateOperationsInput | string
+  desc?: Prisma.StringFieldUpdateOperationsInput | string
   img?: Prisma.StringFieldUpdateOperationsInput | string
   imgAlt?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -332,6 +350,7 @@ export type TeamUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   middlename?: Prisma.StringFieldUpdateOperationsInput | string
   post?: Prisma.StringFieldUpdateOperationsInput | string
+  desc?: Prisma.StringFieldUpdateOperationsInput | string
   img?: Prisma.StringFieldUpdateOperationsInput | string
   imgAlt?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -343,6 +362,7 @@ export type TeamCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   middlename?: Prisma.SortOrder
   post?: Prisma.SortOrder
+  desc?: Prisma.SortOrder
   img?: Prisma.SortOrder
   imgAlt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -354,6 +374,7 @@ export type TeamMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   middlename?: Prisma.SortOrder
   post?: Prisma.SortOrder
+  desc?: Prisma.SortOrder
   img?: Prisma.SortOrder
   imgAlt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -365,6 +386,7 @@ export type TeamMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   middlename?: Prisma.SortOrder
   post?: Prisma.SortOrder
+  desc?: Prisma.SortOrder
   img?: Prisma.SortOrder
   imgAlt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -386,6 +408,7 @@ export type TeamSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   name?: boolean
   middlename?: boolean
   post?: boolean
+  desc?: boolean
   img?: boolean
   imgAlt?: boolean
   createdAt?: boolean
@@ -397,6 +420,7 @@ export type TeamSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   name?: boolean
   middlename?: boolean
   post?: boolean
+  desc?: boolean
   img?: boolean
   imgAlt?: boolean
   createdAt?: boolean
@@ -408,6 +432,7 @@ export type TeamSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   name?: boolean
   middlename?: boolean
   post?: boolean
+  desc?: boolean
   img?: boolean
   imgAlt?: boolean
   createdAt?: boolean
@@ -419,13 +444,14 @@ export type TeamSelectScalar = {
   name?: boolean
   middlename?: boolean
   post?: boolean
+  desc?: boolean
   img?: boolean
   imgAlt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type TeamOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "middlename" | "post" | "img" | "imgAlt" | "createdAt" | "updatedAt", ExtArgs["result"]["team"]>
+export type TeamOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "middlename" | "post" | "desc" | "img" | "imgAlt" | "createdAt" | "updatedAt", ExtArgs["result"]["team"]>
 
 export type $TeamPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Team"
@@ -435,6 +461,7 @@ export type $TeamPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     name: string
     middlename: string
     post: string
+    desc: string
     img: string
     imgAlt: string
     createdAt: Date
@@ -866,6 +893,7 @@ export interface TeamFieldRefs {
   readonly name: Prisma.FieldRef<"Team", 'String'>
   readonly middlename: Prisma.FieldRef<"Team", 'String'>
   readonly post: Prisma.FieldRef<"Team", 'String'>
+  readonly desc: Prisma.FieldRef<"Team", 'String'>
   readonly img: Prisma.FieldRef<"Team", 'String'>
   readonly imgAlt: Prisma.FieldRef<"Team", 'String'>
   readonly createdAt: Prisma.FieldRef<"Team", 'DateTime'>

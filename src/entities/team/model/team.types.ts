@@ -4,6 +4,7 @@ export type TeamItem = {
   post: string;
   name: string;
   middlename: string;
+  desc: string;
   id: string;
   img: {
     src: string | StaticImageData;
@@ -15,6 +16,7 @@ export type TeamRow = {
   id: string;
   name: string;
   middlename: string;
+  desc: string;
   post: string;
   img: string;
   imgAlt: string;

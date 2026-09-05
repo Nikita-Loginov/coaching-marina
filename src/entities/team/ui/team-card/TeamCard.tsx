@@ -28,7 +28,7 @@ export const TeamCard = ({
   onDelete,
   deleteStatus,
 }: TeamCardProps) => {
-  const { id, name, middlename, img, post } = card;
+  const { id, name, middlename, desc, img, post } = card;
   const { src, alt } = img;
 
   const isDeleting = deleteStatus?.isPending && deleteStatus.id === id;
@@ -51,14 +51,24 @@ export const TeamCard = ({
           </p>
 
           <div className={scss["team-card__block-info"]}>
-            <p className="p3">{post}</p>
+            <div
+              className={classNames(
+                scss["team-card__block-item"],
+                scss["team-card__block-post"]
+              )}
+            >
+              <p className="p2">{post}</p>
+            </div>
+
+            <div className={classNames(scss["team-card__block-item"], scss["team-card__block-desc"])}>
+              <p className="p3">{desc}</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className={scss["team-card__btns"]}>
-        {variant === "admin" && (
-          <>
+      {variant === "admin" && (
+        <div className={scss["team-card__btns"]}>
           <Button
             theme="remove"
             // size="medium"
@@ -78,9 +88,8 @@ export const TeamCard = ({
           >
             <p className="p3">Редактировать</p>
           </Button>
-          </>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

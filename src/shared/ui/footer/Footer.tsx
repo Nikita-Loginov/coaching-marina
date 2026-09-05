@@ -48,14 +48,14 @@ const footerDocumentsInfo: ListDefaultProps = {
       title: "Согласие на обработку персональных данных",
       target: '_blank',
     },
-    {
-      label: "Согласие на получение рассылок",
-      as: "link",
-      ariaLabel: "Скачать согласие на получение рассылок",
-      href: "/documents/soglasie-na-poluchenie-rassylok.pdf",
-      title: "Согласие на получение рассылок",
-      target: '_blank',
-    },
+    // {
+    //   label: "Согласие на получение рассылок",
+    //   as: "link",
+    //   ariaLabel: "Скачать согласие на получение рассылок",
+    //   href: "/documents/soglasie-na-poluchenie-rassylok.pdf",
+    //   title: "Согласие на получение рассылок",
+    //   target: '_blank',
+    // },
   ],
 };
 

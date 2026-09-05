@@ -4,6 +4,7 @@ export const mapTeam = (row: TeamRow): TeamItem => ({
   id: row.id,
   name: row.name,
   middlename: row.middlename,
+  desc: row.desc,
   post: row.post,
   img: {
     src: row.img,

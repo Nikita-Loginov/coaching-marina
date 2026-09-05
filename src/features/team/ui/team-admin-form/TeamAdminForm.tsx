@@ -42,6 +42,7 @@ export const TeamAdminForm = ({ id, mode }: TeamAdminFormProps) => {
       id: "",
       name: "",
       middlename: "",
+      desc: "",
       post: "",
       img: "",
       imgAlt: "",
@@ -68,6 +69,7 @@ export const TeamAdminForm = ({ id, mode }: TeamAdminFormProps) => {
         id: team.id,
         name: team.name,
         middlename: team.middlename,
+        desc: team.desc,
         post: team.post,
         img: typeof team.img === "string" ? team.img : String(team.img.src),
         imgAlt: team.img.alt,
@@ -146,6 +148,15 @@ export const TeamAdminForm = ({ id, mode }: TeamAdminFormProps) => {
               placeholder="Executive Coach"
               {...register("post")}
               error={errors.post?.message}
+            />
+          </div>
+
+          <div className={scss["admin-form__item"]}>
+            <Input
+              label="Описание"
+              placeholder="Коуч уровня PCC ICF,"
+              {...register("desc")}
+              error={errors.desc?.message}
             />
           </div>
 

@@ -9,6 +9,7 @@ const mapItemToRow = (
   id: data.id,
   name: data.name,
   middlename: data.middlename,
+  desc: data.desc,
   post: data.post,
   img: data.img,
   imgAlt: data.imgAlt,

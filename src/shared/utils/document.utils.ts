@@ -42,6 +42,7 @@ export const downloadFile = (file: string, name?: string): void => {
   const link = document.createElement("a");
 
   link.href = file;
+  link.target = '_blank'
   link.download = name || file.split("/").pop() || "document";
 
   document.body.appendChild(link);

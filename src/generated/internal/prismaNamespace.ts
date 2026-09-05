@@ -678,6 +678,7 @@ export const TeamScalarFieldEnum = {
   name: 'name',
   middlename: 'middlename',
   post: 'post',
+  desc: 'desc',
   img: 'img',
   imgAlt: 'imgAlt',
   createdAt: 'createdAt',

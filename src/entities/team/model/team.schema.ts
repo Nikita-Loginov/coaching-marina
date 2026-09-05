@@ -7,6 +7,7 @@ export const teamSchema = z.object({
     .regex(/^[a-z0-9-]+$/, "Только латиница в нижнем регистре, цифры и дефис"),
   name: z.string().min(1, "Обязательное поле"),
   middlename: z.string().min(1, "Обязательное поле"),
+  desc: z.string().min(1, "Обязательное поле"),
   post: z.string().min(1, "Обязательное поле"),
   img: z.string().min(1, "Обязательное поле"),
   imgAlt: z.string().min(1, "Обязательное поле"),
