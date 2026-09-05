@@ -2,8 +2,6 @@ import { Container, Swiper } from "@/shared/ui/index.ui";
 
 import { TeamCard } from "@/entities/team/ui";
 
-import { TEAMS_ITEMS } from "@/shared/config/teams.config";
-
 import { getTeams } from "@/entities/team/model/team.queries";
 
 import scss from './TeamsSection.module.scss'
