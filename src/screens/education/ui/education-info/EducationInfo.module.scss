@@ -267,15 +267,7 @@
     gap: var(--education-info-item-block-gap);
   }
 
-  &__desc {
-    color: var(--program-item-desc);
 
-    --textbox-gap: 1px;
-
-    @media (min-width: $desktop-breakpoint) {
-      --textbox-gap: #{vw(1)};
-    }
-  }
 
   &__list {
     display: flex;
@@ -330,5 +322,19 @@
     --education-info-item-active-block-padding: #{vw(28)};
     --education-info-item-active-block-border-width: #{vw(1)};
     --education-info-item-btns-gap:  #{vw(10)};
+  }
+}
+
+body {
+  .education-info-card {
+    &__desc {
+      color: var(--program-item-desc);
+  
+      --textbox-gap: 1px;
+  
+      @media (min-width: $desktop-breakpoint) {
+        --textbox-gap: #{vw(1)};
+      }
+    }
   }
 }

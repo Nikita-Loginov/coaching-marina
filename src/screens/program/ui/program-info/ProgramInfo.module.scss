@@ -106,16 +106,6 @@
     gap: var(--program-info-item-block-gap);
   }
 
-  &__item-desc {
-    --textbox-gap: 4px;
-
-    color: var(--program-item-desc);
-
-    @media (min-width: $desktop-breakpoint) {
-      --textbox-gap: #{vw(4)};
-    }
-  }
-
   &__item-list {
     display: flex;
     flex-direction: column;
@@ -185,10 +175,22 @@
 
   @media (max-width: $tablet-breakpoint) {
     &__item {
-      
-
       &--center {
         max-width: 100%;
+      }
+    }
+  }
+}
+
+body {
+  .program-info {
+    &__item-desc {
+      --textbox-gap: 4px;
+
+      color: var(--program-item-desc);
+
+      @media (min-width: $desktop-breakpoint) {
+        --textbox-gap: #{vw(4)};
       }
     }
   }

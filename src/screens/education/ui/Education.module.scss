@@ -10,14 +10,8 @@
 
   &__textbox {
     --program-textbox-max-width: 60%;
-    --textbox-gap: 4px;
 
-    color: var(--program-item-desc);
     max-width: var(--program-textbox-max-width);
-
-    @media (min-width: $desktop-breakpoint) {
-      --textbox-gap: #{vw(4)};
-    }
   }
 
   &__btns {
@@ -50,6 +44,20 @@
       display: grid;
       width: 100%;
       align-items: normal;
+    }
+  }
+}
+
+body {
+  .edication {
+    &__textbox {
+      --textbox-gap: 4px;
+
+      color: var(--program-item-desc);
+  
+      @media (min-width: $desktop-breakpoint) {
+        --textbox-gap: #{vw(4)};
+      }
     }
   }
 }

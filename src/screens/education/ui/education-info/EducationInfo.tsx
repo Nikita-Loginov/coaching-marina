@@ -11,7 +11,6 @@ import { preventOrphans } from "@/shared/utils/preventOrphans.util";
 
 import scss from "./EducationInfo.module.scss";
 
-
 export const EducationInfo = async () => {
   const programs = await getPrograms();
 
@@ -112,7 +111,7 @@ export const EducationInfo = async () => {
                                         scss["education-info__link-title"]
                                       )}
                                     >
-                                      {title}
+                                      {preventOrphans(title)}
                                     </p>
                                   )}
 
@@ -126,7 +125,7 @@ export const EducationInfo = async () => {
                                       desc.map((text, index) => {
                                         return (
                                           <p className="p1" key={index}>
-                                            {text}
+                                            {preventOrphans(text)}
                                           </p>
                                         );
                                       })}
@@ -140,7 +139,7 @@ export const EducationInfo = async () => {
                         <div className="textbox textbox--second">
                           {descriptionFull.map((text, index) => (
                             <p className="p1" key={index}>
-                              {text}
+                              {preventOrphans(text)}
                             </p>
                           ))}
 
@@ -153,7 +152,7 @@ export const EducationInfo = async () => {
                                   .split(". ")
                                   .map((sentence, index, arr) => (
                                     <span key={index}>
-                                      {sentence}
+                                      {preventOrphans(sentence)}
                                       {index < arr.length - 1 && "."}
                                       {index < arr.length - 1 && <br />}
                                     </span>
@@ -184,7 +183,7 @@ export const EducationInfo = async () => {
                             key={key}
                           >
                             <p className={scss["education-info-card__title"]}>
-                              {content.title}
+                              {preventOrphans(content.title)}
                             </p>
 
                             <div
@@ -208,7 +207,7 @@ export const EducationInfo = async () => {
                                     >
                                       {title ? (
                                         <p className="p1 font-text-second">
-                                          {title}
+                                          {preventOrphans(title)}
                                         </p>
                                       ) : null}
 
@@ -221,7 +220,8 @@ export const EducationInfo = async () => {
                                         {desc?.length > 0 &&
                                           desc.map((text, index) => (
                                             <p className="p1" key={index}>
-                                              {text}
+                                              {preventOrphans(text)}
+                                              {/* {text} */}
                                             </p>
                                           ))}
                                       </div>
@@ -235,7 +235,7 @@ export const EducationInfo = async () => {
                                     >
                                       {title ? (
                                         <p className="p1 font-text-second">
-                                          {title}
+                                          {preventOrphans(title)}
                                         </p>
                                       ) : null}
 
@@ -259,7 +259,9 @@ export const EducationInfo = async () => {
                                               }
                                               key={index}
                                             >
-                                              <p className="p1">{preventOrphans(text)}</p>
+                                              <p className="p1">
+                                                {preventOrphans(text)}
+                                              </p>
                                             </li>
                                           ))}
                                       </ul>
@@ -272,7 +274,10 @@ export const EducationInfo = async () => {
                               <div
                                 className={scss["education-info-card__btns"]}
                               >
-                                <ContactMessageBtn theme="primary" size="medium">
+                                <ContactMessageBtn
+                                  theme="primary"
+                                  size="medium"
+                                >
                                   <p className="p1">Заказать тест-драйв</p>
                                 </ContactMessageBtn>
                               </div>
