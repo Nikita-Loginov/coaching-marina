@@ -60,6 +60,10 @@ const contentVariantItems = [
     value: "big",
     label: "Большая карточка",
   },
+  {
+    value: "center",
+    label: "Центрированная карточка",
+  },
 ];
 
 export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {

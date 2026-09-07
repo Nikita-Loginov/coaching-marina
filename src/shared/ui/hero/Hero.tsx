@@ -3,6 +3,8 @@ import classNames from "classnames";
 import { Container } from "../index.ui";
 import { HeroImg } from "./parts/hero-img/HeroImg";
 
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
+
 import { HeroImgCardItem, HeroImgItem } from "./lib/hero.types";
 
 import scss from "./Hero.module.scss";
@@ -67,7 +69,7 @@ export const Hero = ({
                   {desc.map((text, index) => {
                     return (
                       <p className="p1" key={index}>
-                        {text}
+                        {preventOrphans(text)}
                       </p>
                     );
                   })}

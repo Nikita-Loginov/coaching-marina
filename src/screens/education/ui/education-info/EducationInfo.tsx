@@ -125,7 +125,7 @@ export const EducationInfo = async () => {
                                       desc.length > 0 &&
                                       desc.map((text, index) => {
                                         return (
-                                          <p className="p2" key={index}>
+                                          <p className="p1" key={index}>
                                             {text}
                                           </p>
                                         );
@@ -139,7 +139,7 @@ export const EducationInfo = async () => {
 
                         <div className="textbox textbox--second">
                           {descriptionFull.map((text, index) => (
-                            <p className="p2" key={index}>
+                            <p className="p1" key={index}>
                               {text}
                             </p>
                           ))}
@@ -148,7 +148,7 @@ export const EducationInfo = async () => {
                             className={scss["education-info__item-header-text"]}
                           >
                             {description.map((text, index) => (
-                              <p className="p2" key={index}>
+                              <p className="p1" key={index}>
                                 {text
                                   .split(". ")
                                   .map((sentence, index, arr) => (
@@ -207,7 +207,7 @@ export const EducationInfo = async () => {
                                       key={index}
                                     >
                                       {title ? (
-                                        <p className="p2 font-text-second">
+                                        <p className="p1 font-text-second">
                                           {title}
                                         </p>
                                       ) : null}
@@ -220,7 +220,7 @@ export const EducationInfo = async () => {
                                       >
                                         {desc?.length > 0 &&
                                           desc.map((text, index) => (
-                                            <p className="p2" key={index}>
+                                            <p className="p1" key={index}>
                                               {text}
                                             </p>
                                           ))}
@@ -234,7 +234,7 @@ export const EducationInfo = async () => {
                                       key={index}
                                     >
                                       {title ? (
-                                        <p className="p2 font-text-second">
+                                        <p className="p1 font-text-second">
                                           {title}
                                         </p>
                                       ) : null}
@@ -259,7 +259,7 @@ export const EducationInfo = async () => {
                                               }
                                               key={index}
                                             >
-                                              <p className="p2">{text}</p>
+                                              <p className="p1">{preventOrphans(text)}</p>
                                             </li>
                                           ))}
                                       </ul>
@@ -273,7 +273,7 @@ export const EducationInfo = async () => {
                                 className={scss["education-info-card__btns"]}
                               >
                                 <ContactMessageBtn theme="primary" size="medium">
-                                  <p className="p2">Заказать тест-драйв</p>
+                                  <p className="p1">Заказать тест-драйв</p>
                                 </ContactMessageBtn>
                               </div>
                             )}

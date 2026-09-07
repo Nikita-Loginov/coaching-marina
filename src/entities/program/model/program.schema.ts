@@ -10,7 +10,7 @@ const programContentSchema = z.object({
   title: z.string().min(1, "Обязательное поле"),
   items: z.array(programContentItemSchema),
   showed: z.boolean().default(true),
-  variant: z.enum(["small", "big"]).default("small"),
+  variant: z.enum(["small", "big", "center"]).default("small"),
 });
 
 const reviewSchema = z.object({

@@ -4,12 +4,11 @@ import { TeamCard } from "@/entities/team/ui";
 
 import { getTeams } from "@/entities/team/model/team.queries";
 
-import scss from './TeamsSection.module.scss'
-
+import scss from "./TeamsSection.module.scss";
 
 export const TeamsSection = async () => {
   const teams = await getTeams();
-  
+
   return (
     <>
       <section className={scss["teams"]}>
@@ -33,8 +32,8 @@ export const TeamsSection = async () => {
                     },
                     480: {
                       slidesPerView: 2,
-                    }
-                  }
+                    },
+                  },
                 }}
                 items={teams.map((team) => (
                   <TeamCard key={team.id} card={{ ...team }} />

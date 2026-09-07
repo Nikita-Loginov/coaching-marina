@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 import type { DocumentItem } from "../../model/document.types";
 
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
+
 import {
   getFileFormat,
   getFileSize,
@@ -36,14 +38,26 @@ export const DocumentCard = ({ document }: DocumentCardProps) => {
             <Icons.FileIcon />
           </div>
 
-          <div className={scss["document-card__info"]}>
+          {/* <div className={scss["document-card__header-top"]}> */}
+            <p
+              className="p1"
+              style={{
+                cursor: "pointer"
+              }}
+              onClick={() => downloadFile(document.file, document.name)}
+            >
+              {preventOrphans(document.name)}
+            </p>
+          {/* </div> */}
+
+          {/* <div className={scss["document-card__info"]}>
             <p className="p4 medium-font">{fileFormat}</p>
 
             <p className="p4">{fileSize}</p>
-          </div>
+          </div> */}
         </div>
 
-        <div className={scss["document-card__block"]}>
+        {/* <div className={scss["document-card__block"]}>
           <p className="p1">{document.name}</p>
 
           <div className="textbox textbox--second">
@@ -53,10 +67,10 @@ export const DocumentCard = ({ document }: DocumentCardProps) => {
               </p>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
 
-      <div className={scss["document-card__footer"]}>
+      {/* <div className={scss["document-card__footer"]}>
         <div className={scss["document-card__btns"]}>
           <Button
             theme="secondary"
@@ -68,7 +82,7 @@ export const DocumentCard = ({ document }: DocumentCardProps) => {
             <p className="p3">Скачать</p>
           </Button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

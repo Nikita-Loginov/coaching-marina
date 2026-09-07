@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Icons } from "@/shared/icons/index.icons";
 
 import scss from "./Accordeon.module.scss";
-import { ArrowChevronBottom } from "../../icons/arrows/arrow-chevron-bottom";
 
 export interface AccordeonItem {
   key: string;

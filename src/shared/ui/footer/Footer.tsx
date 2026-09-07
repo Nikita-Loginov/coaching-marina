@@ -7,6 +7,8 @@ import { SITE_CONFIG } from "@/shared/config/seo.config";
 
 import { DEVELOPER_CONFIG } from "@/shared/config/developer.config";
 
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
+
 import { Container, Logo, ListDefault } from "../index.ui";
 
 import type { ListDefaultProps } from "../index.ui";
@@ -66,11 +68,11 @@ export const Footer = async () => {
     return null;
   }
 
-  const { name, middlename, contacts, socials } = person;
+  const { name, middlename, contacts, socials, license } = person;
 
   const { email, phone, address } = contacts;
 
-  const { telegram } = socials;
+  const { telegram, vk } = socials;
 
   const fullName = `${name} ${middlename}`;
 
@@ -85,9 +87,12 @@ export const Footer = async () => {
 
                 <div className="textbox">
                   <p className="p1 secondary-color-80">
-                    Пространство для трансформации <br />
-                    лидеров и команд.
+                    Школа управленческого развития
                   </p>
+
+                  <Link href={'https://islod.obrnadzor.gov.ru/rlic/details/5a35dac6-c0e9-457a-7045-65167df978e5/'} title={`№${license}`} aria-label="Посмотреть лицензию" className="p1 secondary-color-80" target="_blank">
+                    Лицензия №{license} от 15.11.2024
+                  </Link>
                 </div>
               </div>
 
@@ -116,6 +121,15 @@ export const Footer = async () => {
                       ariaLabel: `Перейти в телеграмм ${telegram}`,
                       href: telegram,
                       title: telegram,
+                      target: '_blank'
+                    },
+                    {
+                      label: "VK",
+                      as: "link",
+                      ariaLabel: `Перейти в вк ${vk}`,
+                      href: vk,
+                      title: vk,
+                      target: '_blank'
                     },
                   ]}
                 />
@@ -159,14 +173,14 @@ export const Footer = async () => {
                 </ul>
               </div> */}
 
-              <p className="p3">
-                © 2026 {fullName}. Содержание данного информационного ресурса
-                (сайт {SITE_CONFIG.url}), включая любую информацию и результаты
+              <p className="p2">
+                {preventOrphans(`© 2026 ${fullName}. Содержание данного информационного ресурса
+                (сайт ${SITE_CONFIG.url}), включая любую информацию и результаты
                 интеллектуальной деятельности, защищены законодательством
                 Российской Федерации и международными соглашениями. Любое
                 использование, копирование, воспроизведение или распространение
                 любой размещённой информации без предварительного согласия
-                правообладателя не допускается.
+                правообладателя не допускается.`)}
               </p>
 
               {/* <Link

@@ -67,30 +67,30 @@
   --font-size-md-add: #{calculate-clamp(
       18px,
       22px,
-      $desktop-breakpoint,
-      $lg-breakpoint
+      $lg-breakpoint,
+      $tablet-breakpoint
     )};
   --font-size-base: #{calculate-clamp(
-      14px,
       16px,
-      $desktop-breakpoint,
-      $lg-breakpoint
+      18px,
+      $lg-breakpoint,
+      $tablet-breakpoint
     )};
   --font-size-sm: #{calculate-clamp(
-      12px,
       14px,
-      $desktop-breakpoint,
-      $lg-breakpoint
+      16px,
+      $lg-breakpoint,
+      $tablet-breakpoint
     )};
   --font-size-xs: #{calculate-clamp(
-      10px,
       12px,
+      14px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
   --font-size-xxs: #{calculate-clamp(
-      8px,
       10px,
+      12px,
       $desktop-breakpoint,
       $lg-breakpoint
     )};
@@ -168,10 +168,10 @@
     --font-size-lg: #{vw(32)};
     --font-size-md: #{vw(30)};
     --font-size-md-add: #{vw(22)};
-    --font-size-base: #{vw(16)};
-    --font-size-sm: #{vw(14)};
-    --font-size-xs: #{vw(12)};
-    --font-size-xxs: #{vw(10)};
+    --font-size-base: #{vw(18)};
+    --font-size-sm: #{vw(16)};
+    --font-size-xs: #{vw(14)};
+    --font-size-xxs: #{vw(12)};
     --container-inline-padding: #{vw(40)};
     --container-max-width: calc(
       #{vw(1840)} + (var(--container-inline-padding) * 2)

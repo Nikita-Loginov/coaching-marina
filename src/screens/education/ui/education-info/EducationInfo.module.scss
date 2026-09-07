@@ -269,6 +269,12 @@
 
   &__desc {
     color: var(--program-item-desc);
+
+    --textbox-gap: 1px;
+
+    @media (min-width: $desktop-breakpoint) {
+      --textbox-gap: #{vw(1)};
+    }
   }
 
   &__list {

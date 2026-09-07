@@ -18,34 +18,34 @@ interface ProgramInfoProps {
 type ProgramInfoItem = ProgramContent;
 
 export const ProgramInfo = ({ program }: ProgramInfoProps) => {
-  const { forWhom, suitableRequests, workflow, cooperationFormat, benefits } =
+  const { forWhom, suitableRequests, workflow, cooperationFormat, benefits, btnTextInner } =
     program;
 
-    const programItems = [
-      {
-        key: "forWhom",
-        content: forWhom,
+  const programItems = [
+    {
+      key: "forWhom",
+      content: forWhom,
+    },
+    {
+      key: "suitableRequests",
+      content: suitableRequests,
+    },
+    {
+      key: "workflow",
+      content: {
+        ...workflow,
+        // variant: "active",
       },
-      {
-        key: "suitableRequests",
-        content: suitableRequests,
-      },
-      {
-        key: "workflow",
-        content: {
-          ...workflow,
-          // variant: "active",
-        },
-      },
-      {
-        key: "cooperationFormat",
-        content: cooperationFormat,
-      },
-      {
-        key: "benefits",
-        content: benefits,
-      },
-    ];
+    },
+    {
+      key: "cooperationFormat",
+      content: cooperationFormat,
+    },
+    {
+      key: "benefits",
+      content: benefits,
+    },
+  ];
 
   return (
     <section className={scss["program-info"]}>
@@ -53,11 +53,11 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
         <div className={scss["program-info__inner"]}>
           <div className={scss["program-info__items"]}>
             {programItems.map((programItem, index) => {
-               const { key, content } = programItem;
+              const { key, content } = programItem;
 
-               if (!content?.showed) return null;
+              if (!content?.showed) return null;
 
-               const isCooperationFormat = key === "cooperationFormat";
+              const isCooperationFormat = key === "cooperationFormat";
 
               return (
                 <div
@@ -65,6 +65,9 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                     scss["program-info__item"],
                     content?.variant === "big"
                       ? scss["program-info__item--active"]
+                      : null,
+                    content?.variant === "center"
+                      ? scss["program-info__item--center"]
                       : null
                   )}
                 >
@@ -90,7 +93,7 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                           >
                             {desc.map((text, index) => {
                               return (
-                                <p className={"p3"} key={index}>
+                                <p className={"p2"} key={index}>
                                   {text}
                                 </p>
                               );
@@ -110,7 +113,7 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                                   className={scss["program-info__item-link"]}
                                   key={index}
                                 >
-                                  <p className="p3">{text}</p>
+                                  <p className="p2">{text}</p>
                                 </li>
                               );
                             })}
@@ -123,7 +126,7 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                   {isCooperationFormat && (
                     <div className={scss["program-info__item-btns"]}>
                       <ContactMessageBtn theme="primary" size="medium">
-                        <p className="p2">Записаться на разговор</p>
+                        <p className="p2">{btnTextInner}</p>
                       </ContactMessageBtn>
                     </div>
                   )}

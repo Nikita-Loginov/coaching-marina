@@ -9,6 +9,8 @@ import classNames from "classnames";
 
 import { useModalStore } from "@/shared/store/modal/modal.store";
 
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
+
 import { ContactMessageInput, contactMessageSchema } from "../../model/schema";
 import { sendEmail } from "../../api/send-email";
 
@@ -86,8 +88,9 @@ export const ContactForm = () => {
 
           <div className="textbox textbox--second">
             <p className="p1">
-              Первый диалог поможет понять ваш запрос, откалибровать ожидания и
-              выбрать наиболее точный формат работы.
+              {preventOrphans(
+                "Первая встреча - это разговор по существу. Вы получите независимый взгляд на ситуацию и поймете, подходит ли вам такой формат работы."
+              )}
             </p>
           </div>
         </div>

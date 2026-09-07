@@ -7,6 +7,8 @@ import type { PersonItem } from "@/entities/person/model/person.types";
 import { Container, Accordeon } from "@/shared/ui/index.ui";
 import { DocumentCard } from "@/entities/document/ui";
 
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
+
 import scss from "./SvedeniyaInfo.module.scss";
 
 interface SvedeniyaInfoProps {
@@ -66,11 +68,11 @@ export const SvedeniyaInfo = ({ info }: SvedeniyaInfoProps) => {
                   key={item.title}
                 >
                   <p className={scss["svedeniya-info__item-key"]}>
-                    {item.title}
+                    {preventOrphans(item.title)}
                   </p>
 
                   <div className={scss["svedeniya-info__item-mean"]}>
-                    <p>{item.description}</p>
+                    <p>{preventOrphans(item.description)}</p>
                   </div>
                 </li>
               );
@@ -81,7 +83,7 @@ export const SvedeniyaInfo = ({ info }: SvedeniyaInfoProps) => {
                 className={scss["svedeniya-info__item-link"]}
                 key={item.title}
               >
-                <p className={scss["svedeniya-info__item-key"]}>{item.title}</p>
+                <p className={scss["svedeniya-info__item-key"]}>{preventOrphans(item.title)}</p>
 
                 <div className={scss["svedeniya-info__item-mean"]}>
                   <ul className={scss["svedeniya-info__item-sublist"]}>
@@ -90,9 +92,9 @@ export const SvedeniyaInfo = ({ info }: SvedeniyaInfoProps) => {
                         className={scss["svedeniya-info__item-sublist-link"]}
                         key={nestedItem.title}
                       >
-                        <p className="medium-font">{nestedItem.title}</p>
+                        <p className="medium-font">{preventOrphans(nestedItem.title)}</p>
 
-                        <p>{nestedItem.description}</p>
+                        <p>{preventOrphans(nestedItem.description)}</p>
                       </li>
                     ))}
                   </ul>

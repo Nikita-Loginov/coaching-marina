@@ -2,6 +2,8 @@ import Link from "next/link";
 import classNames from "classnames";
 import { HTMLAttributeAnchorTarget, ReactNode } from "react";
 
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
+
 import scss from "./ListDots.module.scss";
 
 export interface ListDotsProps {
@@ -47,7 +49,7 @@ export const ListDots = ({
             <>
               <div className={scss["list-dots__icon"]}>{icon}</div>
 
-              <p className={className}>{label}</p>
+              <p className={className}>{preventOrphans(label)}</p>
             </>
           );
 

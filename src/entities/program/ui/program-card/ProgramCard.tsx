@@ -9,6 +9,8 @@ import { Button } from "@/shared/ui/index.ui";
 
 import { Icons } from "@/shared/icons/index.icons";
 
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
+
 import { useModalStore } from "@/shared/store/modal/modal.store";
 
 import scss from "./ProgramCard.module.scss";
@@ -78,7 +80,7 @@ export const ProgramCard = ({
             {description.map((text, index) => {
               return (
                 <p className="p1" key={index}>
-                  {text}
+                  {preventOrphans(text)}
                 </p>
               );
             })}

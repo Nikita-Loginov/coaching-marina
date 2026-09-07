@@ -10,7 +10,7 @@ export type ProgramContent = {
   title: string;
   items: ProgramContentItem[];
   showed: boolean;
-  variant: "small" | "big";
+  variant: "small" | "big" | "center";
 };
 
 export type ProgramImage = {

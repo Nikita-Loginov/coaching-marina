@@ -76,6 +76,15 @@
         }
       }
     }
+
+    &--center {
+      grid-column: 1 / -1;
+      max-width: 60%;
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+      align-items: center;
+    }
   }
 
   &__item-title {
@@ -98,7 +107,13 @@
   }
 
   &__item-desc {
+    --textbox-gap: 4px;
+
     color: var(--program-item-desc);
+
+    @media (min-width: $desktop-breakpoint) {
+      --textbox-gap: #{vw(4)};
+    }
   }
 
   &__item-list {
@@ -160,6 +175,20 @@
             flex-direction: column;
           }
         }
+      }
+
+      &--center {
+        max-width: 80%;
+      }
+    }
+  }
+
+  @media (max-width: $tablet-breakpoint) {
+    &__item {
+      
+
+      &--center {
+        max-width: 100%;
       }
     }
   }

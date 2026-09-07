@@ -46,7 +46,7 @@ export const TeamCard = ({
 
       <div className={scss["team-card__content"]}>
         <div className={scss["team-card__block"]}>
-          <p className="p1 font-text-second">
+          <p className="p1">
             {name} {middlename}
           </p>
 
@@ -54,7 +54,7 @@ export const TeamCard = ({
             <div
               className={classNames(
                 scss["team-card__block-item"],
-                scss["team-card__block-post"]
+                scss["team-card__block-post"],
               )}
             >
               <p className="p2">{post}</p>
