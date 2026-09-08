@@ -14,7 +14,7 @@ export async function GET() {
   }
 
   const teams = await prisma.team.findMany({
-    orderBy: { createdAt: "asc" },
+    orderBy: { order: "asc" },
   });
 
   return NextResponse.json(teams);

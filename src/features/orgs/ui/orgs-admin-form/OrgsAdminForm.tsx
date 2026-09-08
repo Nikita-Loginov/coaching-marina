@@ -62,6 +62,7 @@ export const OrgsAdminForm = () => {
 
       about: {
         desc: [],
+        list: [],
         title: "",
         experience: "",
         images: [],
@@ -139,6 +140,8 @@ export const OrgsAdminForm = () => {
   });
 
   const aboutDesc = watch("about.desc") ?? [];
+
+  const aboutList = watch("about.list") ?? [];
 
   const organizationField = useFieldArray({
     control,
@@ -367,6 +370,54 @@ export const OrgsAdminForm = () => {
                       placeholder="Описание"
                       emptyText="Нет добавленных описаний"
                       error={errors.about?.desc?.message}
+                    />
+                  </div>
+
+                  <div
+                    className={classNames(
+                      scss["admin-form__item"],
+                      scss["admin-form__item--big"]
+                    )}
+                  >
+                    <MultiBoxTextField
+                      label="Список"
+                      btnAddText="Добавить описание"
+                      items={aboutList.map((value, index) => ({
+                        id: String(index),
+                        value,
+                      }))}
+                      onAdd={() => {
+                        setValue("about.list", [...aboutList, ""], {
+                          shouldDirty: true,
+                          shouldValidate: true,
+                        });
+                      }}
+                      onRemove={(id) => {
+                        const index = Number(id);
+
+                        setValue(
+                          "about.list",
+                          aboutList.filter((_, i) => i !== index),
+                          {
+                            shouldDirty: true,
+                            shouldValidate: true,
+                          }
+                        );
+                      }}
+                      onUpdate={(id, value) => {
+                        const index = Number(id);
+
+                        const next = [...aboutList];
+                        next[index] = value;
+
+                        setValue("about.list", next, {
+                          shouldDirty: true,
+                          shouldValidate: true,
+                        });
+                      }}
+                      placeholder="Описание"
+                      emptyText="Нет добавленных описаний"
+                      error={errors.about?.list?.message}
                     />
                   </div>
                 </div>

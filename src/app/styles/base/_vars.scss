@@ -47,7 +47,7 @@
       $lg-breakpoint
     )};
   --font-size-xl: #{calculate-clamp(
-      32px,
+      28px,
       42px,
       $desktop-breakpoint,
       $lg-breakpoint

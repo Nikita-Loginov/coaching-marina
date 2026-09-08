@@ -1,8 +1,10 @@
 import Image from "next/image";
+import classNames from "classnames";
+import { Check } from "lucide-react";
 
 import { getPerson } from "@/entities/person/model/person.queries";
 
-import { Container, TopInner } from "@/shared/ui/index.ui";
+import { Container, TopInner, ListDots } from "@/shared/ui/index.ui";
 
 import scss from "./About.module.scss";
 
@@ -15,46 +17,69 @@ export const About = async () => {
 
   const { about, fullname, post, name, middlename } = person;
 
+  const middle = Math.ceil(about.list.length / 2);
+
+  const firstList = about.list.slice(0, middle);
+  const secondList = about.list.slice(middle);
+
   return (
     <section className={scss["about"]} id="about">
       <Container>
-        <TopInner
-          items={[
-            {
-              label: "Обо мне",
-            },
-          ]}
-        >
-          <div className={scss["about__inner"]}>
-            <div className={scss["about__content"]}>
-              <h2 className={scss["about__title"]}>{about.title}</h2>
+        <div className={scss["about__inner"]}>
+          <div className={scss["about__top"]}>
+            <p className="p1 medium-font primary-color-70">{post}</p>
 
-              <div className="textbox textbox--second">
-                {about.desc.map((text, index) => (
-                  <p key={index}>{text}</p>
-                ))}
-              </div>
-            </div>
+            <p className="h2 font-text-second">
+              {name} {middlename}
+            </p>
+          </div>
 
-            <div className={scss["about__img-box"]}>
-              <div className={scss["about__img-cards"]}>
-                <div className={scss["about__img-card"]}>
-                  <p className="p1 font-text-second">
-                    {middlename} {name}
-                  </p>
-
-                  <div className="textbox textbox--second">
-                    <p className="p2">{post}</p>
-                  </div>
-                </div>
-              </div>
+          <div className={scss["about__content"]}>
+            <div className={scss["about__info"]}>
+              <ListDots
+                items={firstList.map((label) => ({
+                  as: "text",
+                  label,
+                  icon: <Check />,
+                }))}
+              />
 
               <div className={scss["about__img"]}>
                 <Image src={about.images[0]} alt={fullname} fill />
               </div>
+
+              <ListDots
+                items={secondList.map((label) => ({
+                  as: "text",
+                  label,
+                  icon: <Check />,
+                }))}
+              />
+            </div>
+
+            <div className={scss["about__quote"]}>
+              <div className={scss["about__quote-content"]}>
+                <p className={classNames("p3", scss["about__quote-head"])}>
+                  «{about.title}
+                </p>
+                {about.desc.map((text, index) => {
+                  return (
+                    <p className="p2" key={index}>
+                      {text}
+                      {index === about.desc.length - 1 ? "»" : null}
+                    </p>
+                  );
+                })}{" "}
+              </div>
+
+              <div className={scss["about__quote-footer"]}>
+                <p className="p2">
+                  - {name} {middlename}
+                </p>
+              </div>
             </div>
           </div>
-        </TopInner>
+        </div>
       </Container>
     </section>
   );

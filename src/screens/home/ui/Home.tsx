@@ -25,8 +25,6 @@ export const Home = async () => {
     <>
       <Hero {...heroContent} />
 
-      {/* <About /> */}
-
       <WhoWork />
 
       <Statistics />
@@ -42,6 +40,8 @@ export const Home = async () => {
       <ProgramsSection />
 
       {/* <Principles /> */}
+
+      <About />
 
       <Fag items={HomeFagItems} />
 

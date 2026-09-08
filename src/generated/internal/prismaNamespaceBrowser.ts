@@ -78,6 +78,7 @@ export const TeamScalarFieldEnum = {
   desc: 'desc',
   img: 'img',
   imgAlt: 'imgAlt',
+  order: 'order',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

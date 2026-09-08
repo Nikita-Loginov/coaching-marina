@@ -19,3 +19,12 @@ export type TeamFormInput = z.input<typeof teamSchema>;
 export const teamUpdateSchema = teamSchema;
 
 export type TeamUpdateValues = z.infer<typeof teamUpdateSchema>;
+
+export const teamReorderSchema = z.object({
+  items: z.array(
+    z.object({
+      id: z.string(),
+      order: z.number().int(),
+    })
+  ),
+});

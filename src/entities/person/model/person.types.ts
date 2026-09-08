@@ -2,6 +2,7 @@ export type PersonAbout = {
   desc: string[];
   title: string;
   experience: string;
+  list: string[];
   images: string[];
 };
 

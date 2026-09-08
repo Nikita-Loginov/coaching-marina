@@ -50,4 +50,17 @@ export const teamApi = {
   remove: async (id: string): Promise<void> => {
     await apiClient.delete(`admin/teams/${id}`);
   },
+
+  reorder: async (
+    items: {
+      id: string;
+      order: number;
+    }[]
+  ) => {
+    const response = await apiClient.put("admin/teams/reorder", {
+      items,
+    });
+
+    return response.data;
+  },
 };

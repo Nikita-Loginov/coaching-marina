@@ -20,8 +20,18 @@ export type TeamModel = runtime.Types.Result.DefaultSelection<Prisma.$TeamPayloa
 
 export type AggregateTeam = {
   _count: TeamCountAggregateOutputType | null
+  _avg: TeamAvgAggregateOutputType | null
+  _sum: TeamSumAggregateOutputType | null
   _min: TeamMinAggregateOutputType | null
   _max: TeamMaxAggregateOutputType | null
+}
+
+export type TeamAvgAggregateOutputType = {
+  order: number | null
+}
+
+export type TeamSumAggregateOutputType = {
+  order: number | null
 }
 
 export type TeamMinAggregateOutputType = {
@@ -32,6 +42,7 @@ export type TeamMinAggregateOutputType = {
   desc: string | null
   img: string | null
   imgAlt: string | null
+  order: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -44,6 +55,7 @@ export type TeamMaxAggregateOutputType = {
   desc: string | null
   img: string | null
   imgAlt: string | null
+  order: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -56,11 +68,20 @@ export type TeamCountAggregateOutputType = {
   desc: number
   img: number
   imgAlt: number
+  order: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
+
+export type TeamAvgAggregateInputType = {
+  order?: true
+}
+
+export type TeamSumAggregateInputType = {
+  order?: true
+}
 
 export type TeamMinAggregateInputType = {
   id?: true
@@ -70,6 +91,7 @@ export type TeamMinAggregateInputType = {
   desc?: true
   img?: true
   imgAlt?: true
+  order?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -82,6 +104,7 @@ export type TeamMaxAggregateInputType = {
   desc?: true
   img?: true
   imgAlt?: true
+  order?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -94,6 +117,7 @@ export type TeamCountAggregateInputType = {
   desc?: true
   img?: true
   imgAlt?: true
+  order?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -137,6 +161,18 @@ export type TeamAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: TeamAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: TeamSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: TeamMinAggregateInputType
@@ -167,6 +203,8 @@ export type TeamGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   _count?: TeamCountAggregateInputType | true
+  _avg?: TeamAvgAggregateInputType
+  _sum?: TeamSumAggregateInputType
   _min?: TeamMinAggregateInputType
   _max?: TeamMaxAggregateInputType
 }
@@ -179,9 +217,12 @@ export type TeamGroupByOutputType = {
   desc: string
   img: string
   imgAlt: string
+  order: number
   createdAt: Date
   updatedAt: Date
   _count: TeamCountAggregateOutputType | null
+  _avg: TeamAvgAggregateOutputType | null
+  _sum: TeamSumAggregateOutputType | null
   _min: TeamMinAggregateOutputType | null
   _max: TeamMaxAggregateOutputType | null
 }
@@ -212,6 +253,7 @@ export type TeamWhereInput = {
   desc?: Prisma.StringFilter<"Team"> | string
   img?: Prisma.StringFilter<"Team"> | string
   imgAlt?: Prisma.StringFilter<"Team"> | string
+  order?: Prisma.IntFilter<"Team"> | number
   createdAt?: Prisma.DateTimeFilter<"Team"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Team"> | Date | string
 }
@@ -224,6 +266,7 @@ export type TeamOrderByWithRelationInput = {
   desc?: Prisma.SortOrder
   img?: Prisma.SortOrder
   imgAlt?: Prisma.SortOrder
+  order?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -239,6 +282,7 @@ export type TeamWhereUniqueInput = Prisma.AtLeast<{
   desc?: Prisma.StringFilter<"Team"> | string
   img?: Prisma.StringFilter<"Team"> | string
   imgAlt?: Prisma.StringFilter<"Team"> | string
+  order?: Prisma.IntFilter<"Team"> | number
   createdAt?: Prisma.DateTimeFilter<"Team"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Team"> | Date | string
 }, "id">
@@ -251,11 +295,14 @@ export type TeamOrderByWithAggregationInput = {
   desc?: Prisma.SortOrder
   img?: Prisma.SortOrder
   imgAlt?: Prisma.SortOrder
+  order?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.TeamCountOrderByAggregateInput
+  _avg?: Prisma.TeamAvgOrderByAggregateInput
   _max?: Prisma.TeamMaxOrderByAggregateInput
   _min?: Prisma.TeamMinOrderByAggregateInput
+  _sum?: Prisma.TeamSumOrderByAggregateInput
 }
 
 export type TeamScalarWhereWithAggregatesInput = {
@@ -269,6 +316,7 @@ export type TeamScalarWhereWithAggregatesInput = {
   desc?: Prisma.StringWithAggregatesFilter<"Team"> | string
   img?: Prisma.StringWithAggregatesFilter<"Team"> | string
   imgAlt?: Prisma.StringWithAggregatesFilter<"Team"> | string
+  order?: Prisma.IntWithAggregatesFilter<"Team"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Team"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Team"> | Date | string
 }
@@ -281,6 +329,7 @@ export type TeamCreateInput = {
   desc?: string
   img: string
   imgAlt: string
+  order?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -293,6 +342,7 @@ export type TeamUncheckedCreateInput = {
   desc?: string
   img: string
   imgAlt: string
+  order?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -305,6 +355,7 @@ export type TeamUpdateInput = {
   desc?: Prisma.StringFieldUpdateOperationsInput | string
   img?: Prisma.StringFieldUpdateOperationsInput | string
   imgAlt?: Prisma.StringFieldUpdateOperationsInput | string
+  order?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -317,6 +368,7 @@ export type TeamUncheckedUpdateInput = {
   desc?: Prisma.StringFieldUpdateOperationsInput | string
   img?: Prisma.StringFieldUpdateOperationsInput | string
   imgAlt?: Prisma.StringFieldUpdateOperationsInput | string
+  order?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -329,6 +381,7 @@ export type TeamCreateManyInput = {
   desc?: string
   img: string
   imgAlt: string
+  order?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -341,6 +394,7 @@ export type TeamUpdateManyMutationInput = {
   desc?: Prisma.StringFieldUpdateOperationsInput | string
   img?: Prisma.StringFieldUpdateOperationsInput | string
   imgAlt?: Prisma.StringFieldUpdateOperationsInput | string
+  order?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -353,6 +407,7 @@ export type TeamUncheckedUpdateManyInput = {
   desc?: Prisma.StringFieldUpdateOperationsInput | string
   img?: Prisma.StringFieldUpdateOperationsInput | string
   imgAlt?: Prisma.StringFieldUpdateOperationsInput | string
+  order?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -365,8 +420,13 @@ export type TeamCountOrderByAggregateInput = {
   desc?: Prisma.SortOrder
   img?: Prisma.SortOrder
   imgAlt?: Prisma.SortOrder
+  order?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type TeamAvgOrderByAggregateInput = {
+  order?: Prisma.SortOrder
 }
 
 export type TeamMaxOrderByAggregateInput = {
@@ -377,6 +437,7 @@ export type TeamMaxOrderByAggregateInput = {
   desc?: Prisma.SortOrder
   img?: Prisma.SortOrder
   imgAlt?: Prisma.SortOrder
+  order?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -389,12 +450,25 @@ export type TeamMinOrderByAggregateInput = {
   desc?: Prisma.SortOrder
   img?: Prisma.SortOrder
   imgAlt?: Prisma.SortOrder
+  order?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
+export type TeamSumOrderByAggregateInput = {
+  order?: Prisma.SortOrder
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -411,6 +485,7 @@ export type TeamSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   desc?: boolean
   img?: boolean
   imgAlt?: boolean
+  order?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["team"]>
@@ -423,6 +498,7 @@ export type TeamSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   desc?: boolean
   img?: boolean
   imgAlt?: boolean
+  order?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["team"]>
@@ -435,6 +511,7 @@ export type TeamSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   desc?: boolean
   img?: boolean
   imgAlt?: boolean
+  order?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["team"]>
@@ -447,11 +524,12 @@ export type TeamSelectScalar = {
   desc?: boolean
   img?: boolean
   imgAlt?: boolean
+  order?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type TeamOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "middlename" | "post" | "desc" | "img" | "imgAlt" | "createdAt" | "updatedAt", ExtArgs["result"]["team"]>
+export type TeamOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "middlename" | "post" | "desc" | "img" | "imgAlt" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["team"]>
 
 export type $TeamPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Team"
@@ -464,6 +542,7 @@ export type $TeamPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     desc: string
     img: string
     imgAlt: string
+    order: number
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["team"]>
@@ -896,6 +975,7 @@ export interface TeamFieldRefs {
   readonly desc: Prisma.FieldRef<"Team", 'String'>
   readonly img: Prisma.FieldRef<"Team", 'String'>
   readonly imgAlt: Prisma.FieldRef<"Team", 'String'>
+  readonly order: Prisma.FieldRef<"Team", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Team", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Team", 'DateTime'>
 }

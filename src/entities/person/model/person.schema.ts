@@ -7,6 +7,8 @@ const personAboutSchema = z.object({
 
   experience: z.string().min(1, "Введите опыт"),
 
+  list: z.array(z.string()),
+
   images: z.array(z.string()),
 });
 

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import classNames from "classnames";
 
-import { Container } from "@/shared/ui/index.ui";
+import { Container, ListDots } from "@/shared/ui/index.ui";
 
 import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
 
@@ -239,7 +239,7 @@ export const EducationInfo = async () => {
                                         </p>
                                       ) : null}
 
-                                      <ul
+                                      <ol
                                         className={classNames(
                                           scss["education-info-card__list"],
                                           desc.length > 6
@@ -264,7 +264,7 @@ export const EducationInfo = async () => {
                                               </p>
                                             </li>
                                           ))}
-                                      </ul>
+                                      </ol>
                                     </div>
                                   );
                                 })}

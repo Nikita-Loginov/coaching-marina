@@ -4,7 +4,7 @@ import type { TeamItem } from "./team.types";
 import { mapTeam } from "./team.mapper";
 
 export const getTeams = async (): Promise<TeamItem[]> => {
-  const rows = await prisma.team.findMany({ orderBy: { createdAt: "asc" } });
+  const rows = await prisma.team.findMany({ orderBy: { order: "asc" } });
 
   return rows.map(mapTeam);
 };

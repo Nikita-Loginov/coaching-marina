@@ -1,0 +1,15 @@
+.sortable-team-card {
+  cursor: grab;
+  touch-action: manipulation;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &--dragging {
+    z-index: 10;
+    opacity: 0.95;
+    box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+}
