@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 import { prisma } from "@/shared/lib/prisma";
 
@@ -66,6 +67,9 @@ export async function PATCH(request: Request, { params }: RouteContext) {
         type: body.type,
       },
     });
+
+    revalidatePath("/");
+    revalidatePath(`/programs/${id}`);
 
     return NextResponse.json(program);
   } catch (error) {

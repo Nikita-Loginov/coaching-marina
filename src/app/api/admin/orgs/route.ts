@@ -4,6 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 import { PrismaClient } from "@/generated/client";
 
 import { prisma } from "@/shared/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 const PERSON_ID = "main";
 
@@ -77,6 +78,8 @@ export async function PATCH(request: NextRequest) {
         documents: body.documents,
       },
     });
+
+    revalidatePath("/", "layout");
 
     return NextResponse.json(person);
   } catch (error) {
