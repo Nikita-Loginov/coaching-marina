@@ -61,7 +61,7 @@
     color: var(--primary-color-0);
     width: 100%;
     text-align: left;
-    font-family: var(--font-family-second);
+    // font-family: var(--font-family-second);
     
     background-color: transparent;
     padding: var(--accordeon-header-padding);
@@ -102,6 +102,7 @@
       grid-template-rows 0.2s ease,
       padding-top 0.2s ease;
     overflow: hidden;
+    white-space: pre-line;
 
     &.expanded {
       grid-template-rows: auto;
@@ -115,6 +116,7 @@
     gap: var(--accordeon-inner-gap);
     line-height: var(--line-height-loose);
     padding-inline: var(--accordeon-inner-padding-inline);
+    text-align: justify;
   }
 
   @media (min-width: $desktop-breakpoint) {

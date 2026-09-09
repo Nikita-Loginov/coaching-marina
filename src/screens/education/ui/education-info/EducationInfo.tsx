@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import classNames from "classnames";
+import { Check } from "lucide-react";
 
 import { Container, ListDots } from "@/shared/ui/index.ui";
 
@@ -147,7 +148,7 @@ export const EducationInfo = async () => {
                             className={scss["education-info__item-header-text"]}
                           >
                             {description.map((text, index) => (
-                              <p className="p1" key={index}>
+                              <p className="h5" key={index}>
                                 {text
                                   .split(". ")
                                   .map((sentence, index, arr) => (
@@ -206,7 +207,7 @@ export const EducationInfo = async () => {
                                       key={index}
                                     >
                                       {title ? (
-                                        <p className="p1 font-text-second">
+                                        <p className="p1">
                                           {preventOrphans(title)}
                                         </p>
                                       ) : null}
@@ -234,12 +235,12 @@ export const EducationInfo = async () => {
                                       key={index}
                                     >
                                       {title ? (
-                                        <p className="p1 font-text-second">
+                                        <p className="p1">
                                           {preventOrphans(title)}
                                         </p>
                                       ) : null}
 
-                                      <ol
+                                      {/* <ol
                                         className={classNames(
                                           scss["education-info-card__list"],
                                           desc.length > 6
@@ -248,23 +249,25 @@ export const EducationInfo = async () => {
                                               ]
                                             : null
                                         )}
-                                      >
-                                        {desc.length > 0 &&
-                                          desc.map((text, index) => (
-                                            <li
-                                              className={
-                                                scss[
-                                                  "education-info-card__link"
+                                      > */}
+                                      {desc.length > 0 && (
+                                        <ListDots
+                                          listClassName={classNames(
+                                            scss["education-info-card__list"],
+                                            desc.length > 6
+                                              ? scss[
+                                                  "education-info-card__list--grid"
                                                 ]
-                                              }
-                                              key={index}
-                                            >
-                                              <p className="p1">
-                                                {preventOrphans(text)}
-                                              </p>
-                                            </li>
-                                          ))}
-                                      </ol>
+                                              : null
+                                          )}
+                                          items={desc.map((label) => ({
+                                            as: "text",
+                                            label,
+                                            icon: <Check />,
+                                          }))}
+                                        />
+                                      )}
+                                      {/* </ol> */}
                                     </div>
                                   );
                                 })}

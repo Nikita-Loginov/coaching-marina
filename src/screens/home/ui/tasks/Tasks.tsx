@@ -47,9 +47,8 @@ export const Tasks = () => {
                   icon: <RefreshCcw />,
                 },
                 {
-                  label:
-                    "большинство решений замыкается на первом лице компании",
-                  icon: <Target />,
+                  label: "важно переосмыслить будущее",
+                  icon: <Compass />,
                 },
                 {
                   label: "команда не оправдывает ожиданий",
@@ -64,8 +63,9 @@ export const Tasks = () => {
                   icon: <MessagesSquare />,
                 },
                 {
-                  label: "важно переосмыслить будущее",
-                  icon: <Compass />,
+                  label:
+                    "большинство решений замыкается на первом лице компании",
+                  icon: <Target />,
                 },
                 {
                   label:

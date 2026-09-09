@@ -48,7 +48,7 @@ export const Home = async () => {
       <Cta
         title={{
           label: "Возможно, именно этот разговор станет началом ",
-          labelAccent: "новых решений.",
+          labelAccent: "новых решений",
         }}
         btnInfo={{
           text: "Записаться на разговор",

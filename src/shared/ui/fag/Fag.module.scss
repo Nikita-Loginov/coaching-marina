@@ -1,5 +1,5 @@
 .fag {
-  --fag-max-width: 70%;
+  --fag-max-width: 63%;
   --fag-block-gap: 6px;
   --fag-font-size: var(--font-size-sm);
 
@@ -20,7 +20,7 @@
   }
 
   @media (min-width: $desktop-breakpoint) {
-    --fag-max-width: 70%;
+    --fag-max-width: 63%;
     --fag-block-gap: #{vw(6)};
   }
 

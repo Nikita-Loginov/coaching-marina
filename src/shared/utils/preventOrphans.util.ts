@@ -18,6 +18,7 @@ const NON_BREAKING_WORDS = [
   "от",
   "по",
   "под",
+  "без",
   "со",
   "над",
   "при",
@@ -30,8 +31,9 @@ const NON_BREAKING_WORDS = [
   "да",
 ];
 
-export const preventOrphans = (text: string) => {
+export const preventOrphans = (text: string): string => {
+  const textWithNewLines = text.replace(/<br\s*\/?>/gi, "\n");
+  
   const regex = new RegExp(`\\s(${NON_BREAKING_WORDS.join("|")})\\s`, "gi");
-
-  return text.replace(regex, " $1\u00A0");
+  return textWithNewLines.replace(regex, " $1\u00A0");
 };

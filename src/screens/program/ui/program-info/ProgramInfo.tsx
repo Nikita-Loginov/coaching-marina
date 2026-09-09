@@ -10,6 +10,7 @@ import type {
 } from "@/entities/program/model/program.types";
 
 import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
 
 interface ProgramInfoProps {
   program: ProgramItem;
@@ -72,7 +73,7 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                   )}
                 >
                   <p className={scss["program-info__item-title"]}>
-                    {content.title}
+                    {preventOrphans(content.title)}
                   </p>
 
                   <div className={scss["program-info__item-boxs"]}>
@@ -82,7 +83,7 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                       return as === "default" ? (
                         <div className={scss["program-info__item-block"]}>
                           {title ? (
-                            <p className="p2 font-text-second">{title}</p>
+                            <p className="p1">{preventOrphans(title)}</p>
                           ) : null}
 
                           <div
@@ -94,7 +95,7 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                             {desc.map((text, index) => {
                               return (
                                 <p className={"p2"} key={index}>
-                                  {text}
+                                  {preventOrphans(text)}
                                 </p>
                               );
                             })}
@@ -103,7 +104,7 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                       ) : (
                         <div className={scss["program-info__item-block"]}>
                           {title ? (
-                            <p className="p2 font-text-second">{title}</p>
+                            <p className="p1">{preventOrphans(title)}</p>
                           ) : null}
 
                           <ul className={scss["program-info__item-list"]}>
@@ -113,7 +114,7 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                                   className={scss["program-info__item-link"]}
                                   key={index}
                                 >
-                                  <p className="p2">{text}</p>
+                                  <p className="p2">{preventOrphans(text)}</p>
                                 </li>
                               );
                             })}

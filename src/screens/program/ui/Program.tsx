@@ -8,6 +8,8 @@ import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message
 
 import { getProgramById } from "@/entities/program/model/program.queries";
 
+import { preventOrphans } from "../../../shared/utils/preventOrphans.util";
+
 import { TeamsSection } from "@/widgets/teams";
 
 import scss from "./Program.module.scss";
@@ -41,14 +43,11 @@ export const Program = async ({ id }: ProgramProps) => {
                 )}
               >
                 {program.descriptionFull.map((text, index) => {
-                  const paragraphs = text
-                    .split(". ")
-                    .map((item) => item.trim())
-                    .filter(Boolean);
-
-                  return paragraphs.map((paragraph, paragraphIndex) => (
-                    <p key={`${index}-${paragraphIndex}`}>{paragraph}.</p>
-                  ));
+                  return (
+                    <p key={`${index}`}>
+                      {preventOrphans(text)}.
+                    </p>
+                  );
                 })}
               </div>
 

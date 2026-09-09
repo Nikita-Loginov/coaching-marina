@@ -2,11 +2,16 @@ import Image from "next/image";
 import classNames from "classnames";
 import { Check } from "lucide-react";
 
+import { Images } from "@/shared/images/index.images";
+
 import { getPerson } from "@/entities/person/model/person.queries";
 
 import { Container, TopInner, ListDots } from "@/shared/ui/index.ui";
 
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
+
 import scss from "./About.module.scss";
+
 
 export const About = async () => {
   const person = await getPerson();
@@ -45,7 +50,7 @@ export const About = async () => {
               />
 
               <div className={scss["about__img"]}>
-                <Image src={about.images[0]} alt={fullname} fill />
+                <Image src={Images.MarinaThree} alt={fullname} fill />
               </div>
 
               <ListDots
@@ -59,13 +64,14 @@ export const About = async () => {
 
             <div className={scss["about__quote"]}>
               <div className={scss["about__quote-content"]}>
-                <p className={classNames("p3", scss["about__quote-head"])}>
+                {/* <p className={classNames("p3", scss["about__quote-head"])}>
                   «{about.title}
-                </p>
+                </p> */}
                 {about.desc.map((text, index) => {
                   return (
                     <p className="p2" key={index}>
-                      {text}
+                      {index === 0 ? "«" : null}
+                      {preventOrphans(text)}
                       {index === about.desc.length - 1 ? "»" : null}
                     </p>
                   );

@@ -64,6 +64,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--education-info-item-box-gap);
+    white-space: pre-line;
   }
 
   &__item-top {
@@ -128,7 +129,7 @@
     gap: var(--education-info-header-text-gap);
     line-height: var(--line-height-loose);
     color: var(--primary-color-0);
-    font-family: var(--font-family-second);
+    // font-family: var(--font-family-second);
     padding-left: var(--education-info-header-text-padding-left);
     border-left: var(--education-info-header-text-border-width) solid
       var(--secondary-color-600);
@@ -191,7 +192,7 @@
   --education-info-item-gap: 24px;
   --education-info-item-border-width: 1px;
   --education-info-item-block-gap: 6px;
-  --education-info-item-list-gap: 6px;
+  --education-info-item-list-gap: 10px;
   --education-info-item-link-gap: 12px;
   --education-info-item-link-dot-size: 6px;
   --education-info-item-link-dot-transform: 5px;
@@ -294,17 +295,17 @@
     font-weight: var(--weight-font-xs);
     counter-increment: list-custom 1;
 
-    &:before {
-      content: counter(list-custom) ")";
-      font-size: var(--font-size-sm);
-      // width: var(--education-info-item-link-dot-size);
-      // height: var(--education-info-item-link-dot-size);
-      // flex-shrink: 0;
-      // display: flex;
-      // background-color: currentColor;
-      // transform: translateY(var(--education-info-item-link-dot-transform));
-      // border-radius: 50%;
-    }
+    // &:before {
+    //   content: counter(list-custom) ")";
+    //   font-size: var(--font-size-sm);
+    //   // width: var(--education-info-item-link-dot-size);
+    //   // height: var(--education-info-item-link-dot-size);
+    //   // flex-shrink: 0;
+    //   // display: flex;
+    //   // background-color: currentColor;
+    //   // transform: translateY(var(--education-info-item-link-dot-transform));
+    //   // border-radius: 50%;
+    // }
   }
 
   &__btns {
@@ -318,7 +319,7 @@
     --education-info-item-gap: #{vw(24)};
     --education-info-item-border-width: #{vw(1)};
     --education-info-item-block-gap: #{vw(6)};
-    --education-info-item-list-gap: #{vw(6)};
+    --education-info-item-list-gap: #{vw(10)};
     --education-info-item-link-gap: #{vw(12)};
     --education-info-item-link-dot-size: #{vw(6)};
     --education-info-item-link-dot-transform: #{vw(5)};

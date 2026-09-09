@@ -2,35 +2,57 @@ import { Container, TopInner, ListNumber, CardBox } from "@/shared/ui/index.ui";
 
 import type { ListNumberProps } from "@/shared/ui/index.ui";
 
+import { preventOrphans } from "../../../../shared/utils/preventOrphans.util";
+
 import scss from "./WhoWork.module.scss";
 
 const WHO_LIST_ITEMS = [
   {
-    label: [
+    label: (
       <p className="p1">
-        С собственниками бизнесов и предпринимателями, которым нужен надежный
-        партнер по мышлению, <br /> для принятия стратегических решений, трансформации
-        компании и усиления управленческой команды
-      </p>,
-    ],
+        {preventOrphans(
+          "С собственниками бизнесов и предпринимателями, которым нужен"
+        )}
+        <br />
+        {preventOrphans(
+          "надежный партнер по мышлению, "
+        )}
+        <br />
+        {preventOrphans(
+          "для принятия стратегических решений, трансформации компании и усиления управленческой команды"
+        )}
+      </p>
+    ),
     title: "Собственники и Предприниматели",
   },
   {
-    label: [
+    label: (
       <p className="p1">
-        С топ-менеджерами, кто отвечает <br /> за стратегические изменения, риски <br /> и
-        результаты команд в среде высокой неопределенности
-      </p>,
-    ],
+        {preventOrphans("С топ-менеджерами, кто отвечает ")}
+        <br />
+        {preventOrphans("за стратегические изменения, ")}
+        <br />
+        {preventOrphans("риски и результаты команд")}
+        <br />
+        {preventOrphans("в среде высокой неопределенности")}
+      </p>
+    ),
     title: "Топ-менеджеры",
   },
   {
-    label: [
+    label: (
       <p className="p1">
-        С управленческими командами, <br /> которым необходимо повысить <br /> качество
-        взаимодействия, <br /> укрепить доверие <br /> и объединиться вокруг целей бизнеса
-      </p>,
-    ],
+        {preventOrphans("С управленческими командами, ")}
+        <br />
+        {preventOrphans("которым необходимо повысить ")}
+        <br />
+        {preventOrphans("качество взаимодействия, ")}
+        <br />
+        {preventOrphans("укрепить доверие ")}
+        <br />
+        {preventOrphans("и объединиться вокруг целей бизнеса")}
+      </p>
+    ),
     title: "Управленческие команды",
   },
 ];
@@ -61,14 +83,12 @@ export const WhoWork = () => {
                   return (
                     <li className={scss["who-work__item"]} key={index}>
                       <div className={scss["who-work__item-content"]}>
-                        <p className="p3 primary-color-40 uppercase-text">
+                        {/* <p className="p3 primary-color-40 uppercase-text">
                           {title}
-                        </p>
+                        </p> */}
 
                         <div className={scss["who-work__item-textbox"]}>
-                          {label.map((item, index) => (
-                            <div key={index}>{item}</div>
-                          ))}
+                          {label}
                         </div>
                       </div>
                     </li>

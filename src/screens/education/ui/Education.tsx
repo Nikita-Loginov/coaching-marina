@@ -11,7 +11,10 @@ import { EducationInfo } from "./education-info/EducationInfo";
 
 import { TeamsSection } from "@/widgets/teams";
 
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
+
 import scss from "./Education.module.scss";
+
 
 interface ProgramProps {
   id: string;
@@ -43,14 +46,7 @@ export const Education = async () => {
                 )}
               >
                 {programEducation.descriptionFull.map((text, index) => {
-                  const paragraphs = text
-                    .split(". ")
-                    .map((item) => item.trim())
-                    .filter(Boolean);
-
-                  return paragraphs.map((paragraph, paragraphIndex) => (
-                    <p key={`${index}-${paragraphIndex}`}>{paragraph}.</p>
-                  ));
+                  return <p key={`${index}`}>{preventOrphans(text)}.</p>;
                 })}
               </div>
 

@@ -53,16 +53,21 @@ export const TeamCard = ({
           <div className={scss["team-card__block-info"]}>
             <div
               className={classNames(
-                scss["team-card__block-item"],
-                scss["team-card__block-post"],
+                scss["team-card__block-item"]
+                // scss["team-card__block-post"],
               )}
             >
               <p className="p2">{post}</p>
             </div>
 
-            <div className={classNames(scss["team-card__block-item"], scss["team-card__block-desc"])}>
+            {/* <div
+              className={classNames(
+                scss["team-card__block-item"],
+                // scss["team-card__block-desc"]
+              )}
+            >
               <p className="p3">{desc}</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

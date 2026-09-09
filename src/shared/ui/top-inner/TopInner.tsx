@@ -1,6 +1,8 @@
 import classNames from "classnames";
 import React from "react";
 
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
+
 import scss from "./TopInner.module.scss";
 
 type TopInnerItem = {
@@ -50,7 +52,7 @@ export const TopInner = ({ items, children, className }: TopInnerProps) => {
 
               {title?.label && (
                 <h2 className={classNames("h4", scss["top-inner__title"])}>
-                  {title.label}{" "}
+                  {preventOrphans(title.label)}{" "}
                   {title.labelAccent ? <><br /> <span className="primary-color-70">{title.labelAccent}</span> </>: null}
                 </h2>
               )}

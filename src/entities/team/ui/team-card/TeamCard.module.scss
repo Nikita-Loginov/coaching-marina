@@ -71,15 +71,15 @@
     color: var(--primary-color-50);
     flex: 1;
 
-    & > *:not(:last-child) {
-      padding-bottom: var(--team-card-block-info-padding-bottom);
-      border-bottom: var(--team-card-block-info-border-width) solid
-        var(--primary-color-20);
-    }
+    // & > *:not(:last-child) {
+    //   padding-bottom: var(--team-card-block-info-padding-bottom);
+    //   border-bottom: var(--team-card-block-info-border-width) solid
+    //     var(--primary-color-20);
+    // }
   }
 
   &__block-post {
-    flex: 1;
+    // flex: 1;
   }
 
   &__block-item {
