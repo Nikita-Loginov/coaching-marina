@@ -41,11 +41,11 @@
     &.open {
       padding-bottom: var(--accordeon-item-padding-bottom);
 
-      .accordeon {
+      > .accordeon {
         &__header {
           border-color: var(--primary-color-10);
         }
-
+    
         &__content {
           padding-top: var(--accordeon-header-padding);
         }

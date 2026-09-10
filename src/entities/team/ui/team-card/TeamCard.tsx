@@ -32,17 +32,22 @@ export const TeamCard = ({
   const { src, alt } = img;
 
   const isDeleting = deleteStatus?.isPending && deleteStatus.id === id;
+  const isAdmin = variant === "admin";
+
+  
 
   return (
     <div
       className={classNames(
         scss["team-card"],
-        variant === "admin" ? scss["team-card--admin"] : null
+        isAdmin ? scss["team-card--admin"] : null
       )}
     >
-      <div className={scss["team-card__img"]}>
-        <Image src={src} alt={alt} fill />
-      </div>
+      {!isAdmin ? (
+        <div className={scss["team-card__img"]}>
+          <Image src={src} alt={alt} fill />
+        </div>
+      ) : null}
 
       <div className={scss["team-card__content"]}>
         <div className={scss["team-card__block"]}>

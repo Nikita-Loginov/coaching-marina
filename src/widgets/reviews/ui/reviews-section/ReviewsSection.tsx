@@ -30,6 +30,13 @@ export const ReviewsSection = ({ reviews }: ReviewsSectionProps) => {
         ]
       : [undefined, undefined, undefined];
 
+  console.log(reviews);
+
+  const reviewsText = reviews.filter(
+    (review) => review.text && review.text[0]?.length > 0
+  );
+  const reviewsVideo = reviews.filter((review) => review.videoSrc?.length);
+
   return (
     <>
       <section className={scss["reviews-section"]}>
@@ -46,25 +53,36 @@ export const ReviewsSection = ({ reviews }: ReviewsSectionProps) => {
             ]}
           >
             <div className={scss["reviews-section__content"]}>
-              <Swiper
-                config={{
-                  spaceBetween: 20,
-                  slidesPerView: 1,
-                  breakpoints: {
-                    1024: {
-                      slidesPerView: 3,
+              {reviewsVideo.length > 0 ? (
+                <div className={scss["reviews-section__items"]}>
+                  {reviewsVideo.map((review) => (
+                    <ReviewCard key={review.id} card={{ ...review }} />
+                  ))}
+                </div>
+              ) : null}
+
+              <div className={scss["reviews-section__items"]}></div>
+              {reviewsText.length > 0 ? (
+                <Swiper
+                  config={{
+                    spaceBetween: 20,
+                    slidesPerView: 1,
+                    breakpoints: {
+                      1024: {
+                        slidesPerView: 3,
+                      },
+                      768: {
+                        slidesPerView: 2,
+                      },
                     },
-                    768: {
-                      slidesPerView: 2,
-                    },
-                  },
-                }}
-                arrows
-                items={reviews.map((review) => (
-                  <ReviewCard key={review.id} card={{ ...review }} />
-                ))}
-                grid="three"
-              />
+                  }}
+                  arrows
+                  items={reviewsText.map((review) => (
+                    <ReviewCard key={review.id} card={{ ...review }} />
+                  ))}
+                  grid="three"
+                />
+              ) : null}
             </div>
           </TopInner>
         </Container>

@@ -268,7 +268,6 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
   }, [program, isEdit, reset]);
 
   // console.log(errors)
-  
 
   const onSubmit = async (data: ProgramFormInput) => {
     const parsed = programSchema.parse(data);
@@ -1619,149 +1618,212 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                     )}
                   >
                     {reviewsField.fields.map((field, index) => (
-                      <div key={field.id} className={scss["admin-form__item"]}>
-                        <Input
-                          label="ID"
-                          placeholder="review-1"
-                          {...register(`reviews.${index}.id`)}
-                          error={errors.reviews?.[index]?.id?.message}
-                        />
+                      <Accordeon
+                        key={field.id}
+                        items={[
+                          {
+                            key: field.id,
+                            label: `Отзыв ${index + 1}${field.name ? ` — ${field.name}` : ""}`,
+                            children: (
+                              <div className={classNames(scss["admin-form__inputs"], scss["admin-form__inputs--full"])}>
+                                <div className={scss["admin-form__item"]}>
+                                  <Input
+                                    label="ID"
+                                    placeholder="review-1"
+                                    {...register(`reviews.${index}.id`)}
+                                    error={errors.reviews?.[index]?.id?.message}
+                                  />
+                                </div>
 
-                        <Input
-                          label="Имя"
-                          placeholder="Иван Иванов"
-                          {...register(`reviews.${index}.name`)}
-                          error={errors.reviews?.[index]?.name?.message}
-                        />
+                                <div className={scss["admin-form__item"]}>
+                                  <Input
+                                    label="Имя"
+                                    placeholder="Иван Иванов"
+                                    {...register(`reviews.${index}.name`)}
+                                    error={
+                                      errors.reviews?.[index]?.name?.message
+                                    }
+                                  />
+                                </div>
 
-                        <Input
-                          label="Должность"
-                          placeholder="Руководитель компании"
-                          {...register(`reviews.${index}.post`)}
-                          error={errors.reviews?.[index]?.post?.message}
-                        />
+                                <div className={scss["admin-form__item"]}>
+                                  <Input
+                                    label="Должность"
+                                    placeholder="Руководитель компании"
+                                    {...register(`reviews.${index}.post`)}
+                                    error={
+                                      errors.reviews?.[index]?.post?.message
+                                    }
+                                  />
+                                </div>
 
-                        <ImageUpload
-                          label="Фото человека"
-                          value={watch(`reviews.${index}.personImgSrc`) ?? ""}
-                          onChange={(url) => {
-                            setValue(`reviews.${index}.personImgSrc`, url, {
-                              shouldDirty: true,
-                              shouldValidate: true,
-                            });
-                          }}
-                          error={errors.reviews?.[index]?.personImgSrc?.message}
-                        />
+                                <div className={scss["admin-form__item"]}>
+                                  <ImageUpload
+                                    label="Фото человека"
+                                    value={
+                                      watch(`reviews.${index}.personImgSrc`) ??
+                                      ""
+                                    }
+                                    onChange={(url) => {
+                                      setValue(
+                                        `reviews.${index}.personImgSrc`,
+                                        url,
+                                        {
+                                          shouldDirty: true,
+                                          shouldValidate: true,
+                                        }
+                                      );
+                                    }}
+                                    error={
+                                      errors.reviews?.[index]?.personImgSrc
+                                        ?.message
+                                    }
+                                  />
+                                </div>
 
-                        <MultiBoxTextField
-                          label="Текст отзыва"
-                          btnAddText="Добавить абзац"
-                          items={(watch(`reviews.${index}.text`) ?? []).map(
-                            (value, textIndex) => ({
-                              id: `${field.id}-${textIndex}`,
-                              value,
-                            })
-                          )}
-                          onAdd={() => {
-                            const text = watch(`reviews.${index}.text`) ?? [];
+                                <div className={scss["admin-form__item"]}>
+                                  <MultiBoxTextField
+                                    label="Текст отзыва"
+                                    btnAddText="Добавить абзац"
+                                    items={(
+                                      watch(`reviews.${index}.text`) ?? []
+                                    ).map((value, textIndex) => ({
+                                      id: `${field.id}-${textIndex}`,
+                                      value,
+                                    }))}
+                                    onAdd={() => {
+                                      const text =
+                                        watch(`reviews.${index}.text`) ?? [];
 
-                            setValue(`reviews.${index}.text`, [...text, ""], {
-                              shouldDirty: true,
-                              shouldValidate: true,
-                            });
-                          }}
-                          onRemove={(textId) => {
-                            const text = watch(`reviews.${index}.text`) ?? [];
+                                      setValue(
+                                        `reviews.${index}.text`,
+                                        [...text, ""],
+                                        {
+                                          shouldDirty: true,
+                                          shouldValidate: true,
+                                        }
+                                      );
+                                    }}
+                                    onRemove={(textId) => {
+                                      const text =
+                                        watch(`reviews.${index}.text`) ?? [];
 
-                            const textIndex = Number(
-                              String(textId).split("-").pop()
-                            );
+                                      const textIndex = Number(
+                                        String(textId).split("-").pop()
+                                      );
 
-                            setValue(
-                              `reviews.${index}.text`,
-                              text.filter(
-                                (_, currentIndex) => currentIndex !== textIndex
-                              ),
-                              {
-                                shouldDirty: true,
-                                shouldValidate: true,
-                              }
-                            );
-                          }}
-                          onUpdate={(textId, value) => {
-                            const text = watch(`reviews.${index}.text`) ?? [];
+                                      setValue(
+                                        `reviews.${index}.text`,
+                                        text.filter(
+                                          (_, currentIndex) =>
+                                            currentIndex !== textIndex
+                                        ),
+                                        {
+                                          shouldDirty: true,
+                                          shouldValidate: true,
+                                        }
+                                      );
+                                    }}
+                                    onUpdate={(textId, value) => {
+                                      const text =
+                                        watch(`reviews.${index}.text`) ?? [];
 
-                            const textIndex = Number(
-                              String(textId).split("-").pop()
-                            );
+                                      const textIndex = Number(
+                                        String(textId).split("-").pop()
+                                      );
 
-                            const next = [...text];
-                            next[textIndex] = value;
+                                      const next = [...text];
+                                      next[textIndex] = value;
 
-                            setValue(`reviews.${index}.text`, next, {
-                              shouldDirty: true,
-                              shouldValidate: true,
-                            });
-                          }}
-                          placeholder="Текст отзыва"
-                          emptyText="Нет добавленного текста"
-                          error={errors.reviews?.[index]?.text?.message}
-                        />
+                                      setValue(`reviews.${index}.text`, next, {
+                                        shouldDirty: true,
+                                        shouldValidate: true,
+                                      });
+                                    }}
+                                    placeholder="Текст отзыва"
+                                    emptyText="Нет добавленного текста"
+                                    error={
+                                      errors.reviews?.[index]?.text?.message
+                                    }
+                                  />
+                                </div>
 
-                        <Input
-                          label="Видео"
-                          placeholder="URL видео"
-                          {...register(`reviews.${index}.videoSrc`)}
-                          error={errors.reviews?.[index]?.videoSrc?.message}
-                        />
+                                <div className={scss["admin-form__item"]}>
+                                  <Input
+                                    label="Видео"
+                                    placeholder="URL видео"
+                                    {...register(`reviews.${index}.videoSrc`)}
+                                    error={
+                                      errors.reviews?.[index]?.videoSrc?.message
+                                    }
+                                  />
+                                </div>
 
-                        <Select
-                          label="Тип видео"
-                          value={watch(`reviews.${index}.type`)}
-                          items={[
-                            {
-                              value: "url",
-                              label: "Видео-файл",
-                            },
-                            {
-                              value: "vk",
-                              label: "VK Video",
-                            },
-                          ]}
-                          onValueChange={(value) => {
-                            setValue(
-                              `reviews.${index}.type`,
-                              value as "url" | "vk",
-                              {
-                                shouldDirty: true,
-                                shouldValidate: true,
-                              }
-                            );
-                          }}
-                        />
+                                <div className={scss["admin-form__item"]}>
+                                  <Select
+                                    label="Тип видео"
+                                    value={watch(`reviews.${index}.type`)}
+                                    items={[
+                                      {
+                                        value: "url",
+                                        label: "Видео-файл",
+                                      },
+                                      {
+                                        value: "vk",
+                                        label: "VK Video",
+                                      },
+                                    ]}
+                                    onValueChange={(value) => {
+                                      setValue(
+                                        `reviews.${index}.type`,
+                                        value as "url" | "vk",
+                                        {
+                                          shouldDirty: true,
+                                          shouldValidate: true,
+                                        }
+                                      );
+                                    }}
+                                  />
+                                </div>
 
-                        <ImageUpload
-                          label="Превью видео"
-                          value={watch(`reviews.${index}.videoPoster`) ?? ""}
-                          onChange={(url) => {
-                            setValue(`reviews.${index}.videoPoster`, url, {
-                              shouldDirty: true,
-                              shouldValidate: true,
-                            });
-                          }}
-                          error={errors.reviews?.[index]?.videoPoster?.message}
-                        />
+                                <div className={scss["admin-form__item"]}>
+                                  <ImageUpload
+                                    label="Превью видео"
+                                    value={
+                                      watch(`reviews.${index}.videoPoster`) ??
+                                      ""
+                                    }
+                                    onChange={(url) => {
+                                      setValue(
+                                        `reviews.${index}.videoPoster`,
+                                        url,
+                                        {
+                                          shouldDirty: true,
+                                          shouldValidate: true,
+                                        }
+                                      );
+                                    }}
+                                    error={
+                                      errors.reviews?.[index]?.videoPoster
+                                        ?.message
+                                    }
+                                  />
+                                </div>
 
-                        <Button
-                          theme="secondary"
-                          typeBtn="button"
-                          onClick={() => reviewsField.remove(index)}
-                        >
-                          <p className="p3">Удалить отзыв</p>
-                        </Button>
-                      </div>
+                                <Button
+                                  theme="secondary"
+                                  typeBtn="button"
+                                  onClick={() => reviewsField.remove(index)}
+                                >
+                                  <p className="p3">Удалить отзыв</p>
+                                </Button>
+                              </div>
+                            ),
+                          },
+                        ]}
+                      />
                     ))}
-
+        
                     <Button
                       theme="secondary"
                       typeBtn="button"

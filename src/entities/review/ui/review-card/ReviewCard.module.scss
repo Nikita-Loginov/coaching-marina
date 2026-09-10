@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--review-card-gap);
+  justify-content: space-between;
 
   &__top {
     display: flex;
@@ -89,6 +90,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--review-card-content-gap);
+    margin-top: auto;
   }
 
   &__video {

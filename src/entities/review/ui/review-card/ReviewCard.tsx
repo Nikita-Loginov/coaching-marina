@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Play } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import { preventOrphans } from "@/shared/utils/preventOrphans.util";
+
 import type { ReviewItem } from "../../model/review.types";
 import { Button } from "@/shared/ui/index.ui";
 
@@ -110,7 +112,7 @@ export const ReviewCard = ({
                 )}
               >
                 {text.map((item, index) => (
-                  <p key={index}>{item}</p>
+                  <p key={index}>{preventOrphans(item)}</p>
                 ))}
               </div>
 

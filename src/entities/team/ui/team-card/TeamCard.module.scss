@@ -8,6 +8,7 @@
   --team-card-img-scale: 1.1;
   --team-card-block-info-padding-bottom: 10px;
   --team-card-block-info-border-width: 1px;
+  --team-card-admin-padding: 32px;
 
   display: flex;
   flex-direction: column;
@@ -27,6 +28,10 @@
   }
 
   &--admin {
+    background-color: var(--gray-color-0);
+    padding: var(--team-card-admin-padding);
+    border-radius: var(--radius-lg);
+
     .team-card {
       &__img {
         // aspect-ratio: 2 / 3;
@@ -109,5 +114,6 @@
     --team-card-img-scale: 1.1;
     --team-card-block-info-padding-bottom: #{vw(10)};
     --team-card-block-info-border-width: #{vw(1)};
+    --team-card-admin-padding: #{vw(32)};
   }
 }

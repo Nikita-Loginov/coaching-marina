@@ -135,8 +135,8 @@ export const TeamAdminForm = ({ id, mode }: TeamAdminFormProps) => {
 
           <div className={scss["admin-form__item"]}>
             <Input
-              label="Отчество"
-              placeholder="Тест"
+              label="Фамилия"
+              placeholder="Ягунова"
               {...register("middlename")}
               error={errors.middlename?.message}
             />

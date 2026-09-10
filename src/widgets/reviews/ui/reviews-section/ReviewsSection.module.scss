@@ -1,5 +1,16 @@
 .reviews-section {
-  --reviews-section-content-gap: 16px;
+  --reviews-section-content-gap: #{calculate-clamp(
+    24px,
+    80px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
+  --reviews-section-items-gap: #{calculate-clamp(
+    16px,
+    32px,
+    $desktop-breakpoint,
+    $lg-breakpoint
+  )};
 
   width: 100%;
   overflow: hidden;
@@ -10,8 +21,22 @@
     gap: var(--reviews-section-content-gap);
   }
 
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--reviews-section-items-gap);
+  }
+
   @media (min-width: $desktop-breakpoint) {
-    --reviews-section-content-gap: #{vw(16)};
+    --reviews-section-content-gap: #{vw(80)};
+    --reviews-section-items-gap: #{vw(32)};
+  }
+
+  @media (max-width: $lg-breakpoint) {
+    &__items {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 
