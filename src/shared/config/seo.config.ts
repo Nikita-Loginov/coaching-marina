@@ -172,7 +172,7 @@ export const seoConfig: Metadata = {
   },
 
   alternates: {
-    canonical: "/",
+    canonical: SITE_CONFIG.url,
   },
 
   referrer: "origin-when-cross-origin",
@@ -190,8 +190,14 @@ export function createPageMetadata(
   return {
     title,
     description: description ?? HOME_DESCRIPTION,
-    alternates: {
-      canonical,
+    alternates: canonical
+      ? {
+          canonical,
+        }
+      : undefined,
+    other: {
+      developer: SITE_CONFIG.developer.name,
+      "developer-url": SITE_CONFIG.developer.url,
     },
   };
 }
