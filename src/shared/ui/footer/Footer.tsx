@@ -23,7 +23,7 @@ const footerDocumentsInfo: ListDefaultProps = {
       label: "Сведения об образовательной организации",
       as: "link",
       ariaLabel: "Перейти к сведениям об образовательной организации",
-      href: "/svedeniya/obrazovatelnoj-organizacii",
+      href: "/legal",
       title: "Сведения об образовательной организации",
     },
     {
