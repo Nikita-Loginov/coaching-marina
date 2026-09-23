@@ -59,7 +59,8 @@ export const seoConfig: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
 
   title: {
-    default: `${SITE_CONFIG.name} | ${SITE_CONFIG.title}`,
+    // default: `${SITE_CONFIG.name} | ${SITE_CONFIG.title}`,
+    default: 'Управленческое развитие от эксперта Марины Ягуновой: коучинг собственников бизнеса, топ-менеджеров, управленческих команд',
     template: `%s | ${SITE_CONFIG.name}`,
   },
 
