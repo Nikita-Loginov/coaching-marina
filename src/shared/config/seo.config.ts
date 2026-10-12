@@ -55,6 +55,7 @@ export const KEYWORDS = [
   "коуч онлайн",
 ];
 
+
 export const seoConfig: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
 
