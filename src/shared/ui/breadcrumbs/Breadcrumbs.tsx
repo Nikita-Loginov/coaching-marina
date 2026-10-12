@@ -24,6 +24,7 @@ export const Breadcrumbs = () => {
             <li key={index} className={scss["breadcrumbs__link"]}>
               <Link
                 href={href}
+                prefetch={false}
                 className={classNames(
                   scss["breadcrumbs__item"],
                   isLast ? scss["last"] : null

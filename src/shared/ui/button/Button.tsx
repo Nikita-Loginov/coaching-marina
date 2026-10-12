@@ -23,6 +23,7 @@ export interface ButtonProps {
   animationIconHover?: 'left' | 'right' | 'default'
   onClick?: () => void;
   className?: string;
+  prefetch?: boolean | null;
 }
 
 export const Button = ({
@@ -42,6 +43,7 @@ export const Button = ({
   target,
   tooltip,
   ariaLabel,
+  prefetch,
   ...restProps
 }: ButtonProps) => {
   const iconClassNames = classNames({
@@ -76,6 +78,7 @@ export const Button = ({
       <Link
         href={restProps.to || "#"}
         {...restProps}
+        {...(prefetch !== undefined ? { prefetch } : {})}
         className={buttonClassNames}
         target={target}
         aria-label={ariaLabel || ""}

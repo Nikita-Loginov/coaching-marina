@@ -30,6 +30,7 @@ export const AdminTop = ({
           <div className={scss["admin-top__btns"]}>
             <Button
               as="link"
+              prefetch={false}
               ariaLabel={`Перейти к добавлению ${title}`}
               // size="medium"
               to={linkTo}

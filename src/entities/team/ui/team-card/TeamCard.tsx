@@ -93,6 +93,7 @@ export const TeamCard = ({
             theme="secondary"
             // size="medium"
             as="link"
+            prefetch={false}
             to={`/admin/teams/edit/${id}`}
             typeBtn="submit"
           >

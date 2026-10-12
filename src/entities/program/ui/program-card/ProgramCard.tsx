@@ -129,6 +129,7 @@ export const ProgramCard = ({
                 theme="secondary"
                 // size="medium"
                 as="link"
+                prefetch={false}
                 to={`/admin/programs/edit/${id}`}
                 typeBtn="submit"
               >

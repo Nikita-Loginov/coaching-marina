@@ -38,6 +38,7 @@ export const AdminPanelSidebar = () => {
                   theme="secondary"
                   to={to || "admin"}
                   as="link"
+                  prefetch={false}
                   aria-label={`Перейти на страницу ${label}`}
                   className={classNames(
                     scss["admin-panel-sidebar__btn"],
