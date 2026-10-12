@@ -92,7 +92,9 @@ export const ReviewCard = ({
         </div>
 
         <div className={scss["review-card__person"]}>
-          <Image src={personImgSrc} alt={name} fill />
+          {personImgSrc ? (
+            <Image src={personImgSrc} alt={name} fill sizes="36px" />
+          ) : null}
         </div>
       </div>
 
@@ -146,7 +148,13 @@ export const ReviewCard = ({
               </div>
 
               <div className={scss["review-card__video-box"]}>
-                <Image src={videoPoster} alt={name} fill />
+                <Image
+                  src={videoPoster}
+                  alt={name}
+                  fill
+                  priority
+                  sizes="(max-width: 1023px) 100vw, 40vw"
+                />
               </div>
             </div>
           ) : null}
