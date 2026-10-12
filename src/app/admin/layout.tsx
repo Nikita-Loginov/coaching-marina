@@ -19,7 +19,7 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
   }
 
   return (
-    <ClerkProvider>
+    <ClerkProvider proxyUrl={process.env.NEXT_PUBLIC_CLERK_PROXY_URL}>
       <ReactQueryProvider>
         <AdminPanelLayout>{children}</AdminPanelLayout>
       </ReactQueryProvider>

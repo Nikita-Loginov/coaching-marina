@@ -5,5 +5,9 @@ interface AuthLayoutProps {
 }
 
 export default function AuthLayout({ children }: AuthLayoutProps) {
-  return <ClerkProvider>{children}</ClerkProvider>;
+  return (
+    <ClerkProvider proxyUrl={process.env.NEXT_PUBLIC_CLERK_PROXY_URL}>
+      {children}
+    </ClerkProvider>
+  );
 }
