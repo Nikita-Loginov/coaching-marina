@@ -1,19 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
 
 import { PrismaClient } from "@/generated/client";
 
 import { prisma } from "@/shared/lib/prisma";
+import { requireAdmin } from "@/shared/lib/admin-session";
 import { revalidatePath } from "next/cache";
 
 const PERSON_ID = "main";
 
 export async function GET() {
   try {
-    const { userId } = await auth();
+    const denied = await requireAdmin();
 
-    if (!userId) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (denied) {
+      return denied;
     }
 
     const person = await prisma.person.findUnique({
@@ -41,10 +41,10 @@ export async function GET() {
 
 export async function PATCH(request: NextRequest) {
   try {
-    const { userId } = await auth();
+    const denied = await requireAdmin();
 
-    if (!userId) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (denied) {
+      return denied;
     }
 
     const body = await request.json();

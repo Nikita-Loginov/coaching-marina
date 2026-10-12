@@ -1,21 +1,37 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextRequest, NextResponse } from "next/server";
 
-const isAdminRoute = createRouteMatcher(["/admin(.*)", "/api/admin(.*)"]);
-const isPublicAdminRoute = createRouteMatcher(["/sign-in(.*)"]);
+import { readSessionToken, SESSION_COOKIE } from "@/shared/lib/session";
 
-export default clerkMiddleware(
-  async (auth, req) => {
-    if (isAdminRoute(req) && !isPublicAdminRoute(req)) {
-      await auth.protect();
+export default async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  const session = await readSessionToken(request.cookies.get(SESSION_COOKIE)?.value);
+  const isAdmin =
+    pathname.startsWith("/admin") || pathname.startsWith("/api/admin");
+  const isSignIn = pathname === "/sign-in" || pathname.startsWith("/sign-in/");
+
+  if (isAdmin && !session) {
+    if (pathname.startsWith("/api/")) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-  },
-  {
-    frontendApiProxy: {
-      enabled: true,
-    },
-  },
-);
+
+    const url = request.nextUrl.clone();
+    url.pathname = "/sign-in";
+    url.search = "";
+
+    return NextResponse.redirect(url);
+  }
+
+  if (isSignIn && session) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/admin";
+    url.search = "";
+
+    return NextResponse.redirect(url);
+  }
+
+  return NextResponse.next();
+}
 
 export const config = {
-  matcher: ["/admin(.*)", "/api/admin(.*)", "/sign-in(.*)", "/__clerk(.*)"],
+  matcher: ["/admin(.*)", "/api/admin(.*)", "/sign-in(.*)"],
 };

@@ -26,7 +26,7 @@ interface InputProps {
   theme?: "primary" | "flat";
   iconSize?: "small" | "medium" | "big";
   className?: string;
-  autoComplete?: 'email' | 'name';
+  autoComplete?: "email" | "name" | "current-password";
   name?: string;
   onChange?: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

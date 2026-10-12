@@ -2,8 +2,8 @@
 
 import classNames from "classnames";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { LogOut } from "lucide-react";
-import { SignOutButton } from "@clerk/nextjs";
 
 import { Button, Logo } from "@/shared/ui/index.ui";
 
@@ -13,6 +13,13 @@ import scss from "./AdminPanelSidebar.module.scss";
 
 export const AdminPanelSidebar = () => {
   const pathname = usePathname();
+  const [signingOut, setSigningOut] = useState(false);
+
+  const signOut = async () => {
+    setSigningOut(true);
+    await fetch("/api/auth/logout", { method: "POST" });
+    window.location.href = "/sign-in";
+  };
 
   return (
     <aside className={scss["admin-panel-sidebar"]}>
@@ -57,17 +64,16 @@ export const AdminPanelSidebar = () => {
 
       <div className={scss["admin-panel-sidebar__footer"]}>
         <div className={scss["admin-panel-sidebar__btns"]}>
-          <SignOutButton redirectUrl="/sign-in">
-            <Button
-              theme="secondary"
-              // size="ghost"
-              iconLeft={<LogOut />}
-              animationIconHover="left"
-              iconSize="small"
-            >
-              <p className="p3">Выйти</p>
-            </Button>
-          </SignOutButton>
+          <Button
+            theme="secondary"
+            iconLeft={<LogOut />}
+            animationIconHover="left"
+            iconSize="small"
+            disabled={signingOut}
+            onClick={signOut}
+          >
+            <p className="p3">{signingOut ? "Выходим..." : "Выйти"}</p>
+          </Button>
         </div>
       </div>
     </aside>

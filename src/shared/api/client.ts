@@ -5,19 +5,7 @@ export const apiClient: AxiosInstance = axios.create({
   baseURL: API_CONFIG.baseURL,
   timeout: API_CONFIG.timeout,
   headers: API_CONFIG.headers,
-});
-
-apiClient.interceptors.request.use(async (config) => {
-  try {
-    const { getToken } = await import("@clerk/nextjs");
-    const token = await getToken();
-
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-  } catch {}
-
-  return config;
+  withCredentials: true,
 });
 
 apiClient.interceptors.response.use(

@@ -1,17 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
 import { put, del } from "@vercel/blob";
 import { randomUUID } from "crypto";
 
+import { requireAdmin } from "@/shared/lib/admin-session";
+
 export async function POST(request: NextRequest) {
   try {
-    const { userId } = await auth();
+    const denied = await requireAdmin();
 
-    console.log("USER:", userId);
-    console.log("TOKEN:", process.env.BLOB_READ_WRITE_TOKEN?.slice(0, 20));
-
-    if (!userId) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (denied) {
+      return denied;
     }
 
     const formData = await request.formData();
@@ -43,10 +41,10 @@ export async function POST(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
-    const { userId } = await auth();
+    const denied = await requireAdmin();
 
-    if (!userId) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (denied) {
+      return denied;
     }
 
     const { url } = await request.json();

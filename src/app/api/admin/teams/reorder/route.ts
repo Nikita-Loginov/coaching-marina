@@ -1,23 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { auth } from "@clerk/nextjs/server";
-
 import { prisma } from "@/shared/lib/prisma";
+import { requireAdmin } from "@/shared/lib/admin-session";
 
 import { teamReorderSchema } from "@/entities/team/model/team.schema";
 
 export const PUT = async (request: NextRequest) => {
-  const { userId } = await auth();
+  const denied = await requireAdmin();
 
-  if (!userId) {
-    return NextResponse.json(
-      {
-        error: "Unauthorized",
-      },
-      {
-        status: 401,
-      }
-    );
+  if (denied) {
+    return denied;
   }
 
   const body = await request.json();

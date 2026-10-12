@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
 import { prisma } from "@/shared/lib/prisma";
+import { requireAdmin } from "@/shared/lib/admin-session";
 
 interface RouteContext {
   params: Promise<{
@@ -10,6 +11,12 @@ interface RouteContext {
 }
 
 export async function GET(_request: Request, { params }: RouteContext) {
+  const denied = await requireAdmin();
+
+  if (denied) {
+    return denied;
+  }
+
   try {
     const { id } = await params;
 
@@ -38,6 +45,12 @@ export async function GET(_request: Request, { params }: RouteContext) {
 }
 
 export async function PATCH(request: Request, { params }: RouteContext) {
+  const denied = await requireAdmin();
+
+  if (denied) {
+    return denied;
+  }
+
   try {
     const { id } = await params;
     const body = await request.json();
@@ -83,6 +96,12 @@ export async function PATCH(request: Request, { params }: RouteContext) {
 }
 
 export async function DELETE(_request: Request, { params }: RouteContext) {
+  const denied = await requireAdmin();
+
+  if (denied) {
+    return denied;
+  }
+
   try {
     const { id } = await params;
 

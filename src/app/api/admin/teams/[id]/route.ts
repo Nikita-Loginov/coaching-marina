@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
 import { prisma } from "@/shared/lib/prisma";
+import { requireAdmin } from "@/shared/lib/admin-session";
 
 import { teamUpdateSchema } from "@/entities/team/model/team.schema";
 
@@ -11,10 +11,10 @@ interface RouteParams {
 }
 
 export async function GET(_request: NextRequest, { params }: RouteParams) {
-  const { userId } = await auth();
+  const denied = await requireAdmin();
 
-  if (!userId) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (denied) {
+    return denied;
   }
 
   const { id } = await params;
@@ -29,10 +29,10 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
 }
 
 export async function PATCH(request: NextRequest, { params }: RouteParams) {
-  const { userId } = await auth();
+  const denied = await requireAdmin();
 
-  if (!userId) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (denied) {
+    return denied;
   }
 
   const { id } = await params;
@@ -63,10 +63,10 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
 }
 
 export async function DELETE(_request: NextRequest, { params }: RouteParams) {
-  const { userId } = await auth();
+  const denied = await requireAdmin();
 
-  if (!userId) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (denied) {
+    return denied;
   }
 
   const { id } = await params;

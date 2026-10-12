@@ -1,8 +1,15 @@
 import { NextResponse } from "next/server";
 
 import { prisma } from "@/shared/lib/prisma";
+import { requireAdmin } from "@/shared/lib/admin-session";
 
 export async function GET() {
+  const denied = await requireAdmin();
+
+  if (denied) {
+    return denied;
+  }
+
   try {
     const programs = await prisma.program.findMany({
       orderBy: {
@@ -22,6 +29,12 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const denied = await requireAdmin();
+
+  if (denied) {
+    return denied;
+  }
+
   try {
     const body = await request.json();
 

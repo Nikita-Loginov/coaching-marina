@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
 import { prisma } from "@/shared/lib/prisma";
+import { requireAdmin } from "@/shared/lib/admin-session";
 
 import { teamSchema } from "@/entities/team/model/team.schema";
 
 export async function GET() {
-  const { userId } = await auth();
+  const denied = await requireAdmin();
 
-  if (!userId) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (denied) {
+    return denied;
   }
 
   const teams = await prisma.team.findMany({
@@ -22,13 +22,10 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    const { userId } = await auth();
+    const denied = await requireAdmin();
 
-    if (!userId) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+    if (denied) {
+      return denied;
     }
 
     const body = await request.json();
