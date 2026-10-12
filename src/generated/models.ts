@@ -11,4 +11,5 @@
 export type * from './models/Team'
 export type * from './models/Person'
 export type * from './models/Program'
+export type * from './models/User'
 export type * from './commonInputTypes'
