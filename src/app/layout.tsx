@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import { Toaster } from "react-hot-toast";
-import { ClerkProvider } from "@clerk/nextjs";
 
 import { FixedBlock, ModalProvider } from "@/shared/ui/index.ui";
 
@@ -101,25 +100,23 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
         </noscript>
 
-        <ClerkProvider>
-          <ModalProvider>
-            <div className="wrapper">{children}</div>
+        <ModalProvider>
+          <div className="wrapper">{children}</div>
 
-            <FixedBlock />
+          <FixedBlock />
 
-            <Toaster position="top-right" />
+          <Toaster position="top-right" />
 
-            <div id="modal-root"></div>
-          </ModalProvider>
+          <div id="modal-root"></div>
+        </ModalProvider>
 
-          <Script
-            id="schema"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(structuredData),
-            }}
-          />
-        </ClerkProvider>
+        <Script
+          id="schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
       </body>
     </html>
   );

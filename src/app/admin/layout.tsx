@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import { AdminPanelLayout } from "@/widgets/admin-panel/ui";
 
@@ -18,8 +19,10 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
   }
 
   return (
-    <ReactQueryProvider>
-      <AdminPanelLayout>{children}</AdminPanelLayout>
-    </ReactQueryProvider>
+    <ClerkProvider>
+      <ReactQueryProvider>
+        <AdminPanelLayout>{children}</AdminPanelLayout>
+      </ReactQueryProvider>
+    </ClerkProvider>
   );
 }
