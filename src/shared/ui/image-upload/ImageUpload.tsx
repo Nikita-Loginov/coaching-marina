@@ -6,7 +6,8 @@ import { Upload, X } from "lucide-react";
 import classNames from "classnames";
 
 import { apiClient } from "@/shared/api/client";
-import { uploadAdminFile } from "@/shared/lib/upload-file.client";
+import { uploadAdminFile, UploadProgress as UploadProgressState } from "@/shared/lib/upload-file.client";
+import { UploadProgress } from "@/shared/ui/upload-progress/UploadProgress";
 
 import { Button } from "../index.ui";
 
@@ -22,6 +23,7 @@ interface ImageUploadProps {
 
 export const ImageUpload = ({ value, onChange, label, error }: ImageUploadProps) => {
   const [isUploading, setIsUploading] = useState(false);
+  const [progress, setProgress] = useState<UploadProgressState | null>(null);
   const [uploadError, setUploadError] = useState("");
 
   const uploadImage = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,14 +33,16 @@ export const ImageUpload = ({ value, onChange, label, error }: ImageUploadProps)
 
     try {
       setIsUploading(true);
+      setProgress({ phase: "prepare", percent: 0, loaded: 0, total: 0 });
       setUploadError("");
 
-      onChange(await uploadAdminFile(file, { image: true }));
+      onChange(await uploadAdminFile(file, { image: true, onProgress: setProgress }));
     } catch (error) {
       console.error("Ошибка загрузки изображения", error);
       setUploadError("Не удалось загрузить фото");
     } finally {
       setIsUploading(false);
+      setProgress(null);
       event.target.value = "";
     }
   };
@@ -85,12 +89,25 @@ export const ImageUpload = ({ value, onChange, label, error }: ImageUploadProps)
             </div>
           </div>
         ) : (
-          <label className={scss["upload__box"]}>
-            <Upload size={24} />
+          <label
+            className={classNames(scss["upload__box"], isUploading && scss["upload__box_busy"])}
+          >
+            {isUploading && progress ? (
+              <UploadProgress kind="photo" progress={progress} />
+            ) : (
+              <>
+                <Upload size={24} />
+                <span>Загрузить фото</span>
+              </>
+            )}
 
-            <span>{isUploading ? "Загрузка..." : "Загрузить фото"}</span>
-
-            <input type="file" accept="image/*" onChange={uploadImage} hidden />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={uploadImage}
+              disabled={isUploading}
+              hidden
+            />
           </label>
         )}
       </div>

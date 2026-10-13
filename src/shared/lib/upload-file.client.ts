@@ -2,6 +2,13 @@ import { apiClient } from "@/shared/api/client";
 
 const CHUNK_SIZE = 16 * 1024;
 
+export type UploadProgress = {
+  phase: "prepare" | "upload" | "save";
+  percent: number;
+  loaded: number;
+  total: number;
+};
+
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const prepareImage = (file: File) =>
@@ -88,14 +95,31 @@ const postChunk = async (
   throw lastError;
 };
 
-export const uploadAdminFile = async (file: File, options?: { image?: boolean }) => {
+export const uploadAdminFile = async (
+  file: File,
+  options?: { image?: boolean; onProgress?: (progress: UploadProgress) => void }
+) => {
+  const report = (progress: UploadProgress) => options?.onProgress?.(progress);
+
+  report({ phase: "prepare", percent: 0, loaded: 0, total: 0 });
+
   const prepared = options?.image ? await prepareImage(file) : file;
   const uploadId = crypto.randomUUID();
   const total = Math.max(1, Math.ceil(prepared.size / CHUNK_SIZE));
 
+  report({ phase: "upload", percent: 5, loaded: 0, total });
+
   for (let index = 0; index < total; index += 1) {
     await postChunk(prepared, uploadId, index, total);
+    report({
+      phase: "upload",
+      percent: 5 + Math.round(((index + 1) / total) * 87),
+      loaded: index + 1,
+      total,
+    });
   }
+
+  report({ phase: "save", percent: 96, loaded: total, total });
 
   const { data } = await apiClient.post(
     "/admin/upload",
@@ -108,6 +132,8 @@ export const uploadAdminFile = async (file: File, options?: { image?: boolean })
     },
     { timeout: 60000 }
   );
+
+  report({ phase: "save", percent: 100, loaded: total, total });
 
   return data.url as string;
 };

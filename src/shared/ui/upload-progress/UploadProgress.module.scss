@@ -1,0 +1,76 @@
+.progress {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.percent {
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--weight-font-lg);
+  color: var(--primary-color-0);
+}
+
+.track {
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--primary-color-10);
+}
+
+.bar {
+  position: relative;
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  background: var(--primary-color-0);
+  transition: width 0.25s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    animation: sheen 1.3s ease-in-out infinite;
+  }
+}
+
+.barIndeterminate {
+  width: 38%;
+  animation: slide 1.15s ease-in-out infinite;
+}
+
+.hint {
+  color: var(--primary-color-70);
+}
+
+@keyframes sheen {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(-120%);
+  }
+
+  to {
+    transform: translateX(280%);
+  }
+}

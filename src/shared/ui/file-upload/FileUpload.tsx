@@ -5,7 +5,8 @@ import { FileText, Upload, X } from "lucide-react";
 import classNames from "classnames";
 
 import { apiClient } from "@/shared/api/client";
-import { uploadAdminFile } from "@/shared/lib/upload-file.client";
+import { uploadAdminFile, UploadProgress as UploadProgressState } from "@/shared/lib/upload-file.client";
+import { UploadProgress } from "@/shared/ui/upload-progress/UploadProgress";
 
 import { Button } from "../index.ui";
 
@@ -27,6 +28,7 @@ export const FileUpload = ({
   accept = ".pdf,.doc,.docx",
 }: FileUploadProps) => {
   const [isUploading, setIsUploading] = useState(false);
+  const [progress, setProgress] = useState<UploadProgressState | null>(null);
   const [uploadError, setUploadError] = useState("");
 
   const uploadFile = async (
@@ -38,14 +40,16 @@ export const FileUpload = ({
 
     try {
       setIsUploading(true);
+      setProgress({ phase: "prepare", percent: 0, loaded: 0, total: 0 });
       setUploadError("");
 
-      onChange(await uploadAdminFile(file));
+      onChange(await uploadAdminFile(file, { onProgress: setProgress }));
     } catch (error) {
       console.error("Ошибка загрузки файла", error);
       setUploadError("Не удалось загрузить файл");
     } finally {
       setIsUploading(false);
+      setProgress(null);
 
       event.target.value = "";
     }
@@ -104,19 +108,27 @@ export const FileUpload = ({
             />
           </div>
         ) : (
-          <label className={scss["upload__box"]}>
-            <Upload size={24} />
+          <label
+            className={classNames(
+              scss["upload__box"],
+              isUploading && scss["upload__box_busy"]
+            )}
+          >
+            {isUploading && progress ? (
+              <UploadProgress kind="file" progress={progress} />
+            ) : (
+              <>
+                <Upload size={24} />
 
-            <span>
-              {isUploading
-                ? "Загрузка..."
-                : "Загрузить документ"}
-            </span>
+                <span>Загрузить документ</span>
+              </>
+            )}
 
             <input
               type="file"
               accept={accept}
               onChange={uploadFile}
+              disabled={isUploading}
               hidden
             />
           </label>

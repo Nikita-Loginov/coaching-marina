@@ -33,6 +33,12 @@
     }
   }
 
+  &__box_busy {
+    cursor: progress;
+    align-items: stretch;
+    padding: 16px;
+  }
+
   &__file {
     min-height: var(--upload-file-min-height);
     padding: var(--upload-file-padding);

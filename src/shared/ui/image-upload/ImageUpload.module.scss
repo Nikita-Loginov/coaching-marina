@@ -52,6 +52,13 @@
     min-height: var(--upload-box-min-height);
   }
 
+  &__box_busy {
+    cursor: progress;
+    align-items: stretch;
+    flex-direction: column;
+    padding: 12px 14px;
+  }
+
   &__error {
     text-align: left;
     color: var(--red-color-200);
