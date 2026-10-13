@@ -46,8 +46,12 @@ const saveChunk = async (request: NextRequest) => {
   return NextResponse.json({ ok: true });
 };
 
-const completeUpload = async (request: NextRequest) => {
-  const body = await request.json().catch(() => null);
+const completeUpload = async (body: {
+  uploadId?: string;
+  total?: number;
+  filename?: string;
+  contentType?: string;
+}) => {
   const uploadId = String(body?.uploadId ?? "");
   const total = Number(body?.total);
   const filename = safeFilename(String(body?.filename ?? "file"));
@@ -116,7 +120,13 @@ export async function POST(request: NextRequest) {
     const contentType = request.headers.get("content-type") ?? "";
 
     if (contentType.includes("application/json")) {
-      return await completeUpload(request);
+      const body = await request.json().catch(() => null);
+
+      if (body?.mode !== "complete") {
+        return NextResponse.json({ error: "Файл нужно отправить частями" }, { status: 400 });
+      }
+
+      return await completeUpload(body);
     }
 
     return await saveChunk(request);

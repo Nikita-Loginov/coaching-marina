@@ -73,7 +73,11 @@ const postChunk = async (
 
   for (let attempt = 0; attempt < 3; attempt += 1) {
     try {
-      await apiClient.post("/admin/upload", formData, { timeout: 30000 });
+      await apiClient.post("/admin/upload", formData, {
+        timeout: 30000,
+        headers: { "Content-Type": "multipart/form-data" },
+        transformRequest: [(data) => data],
+      });
       return;
     } catch (error) {
       lastError = error;
