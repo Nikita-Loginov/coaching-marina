@@ -6,6 +6,7 @@ import { Upload, X } from "lucide-react";
 import classNames from "classnames";
 
 import { apiClient } from "@/shared/api/client";
+import { uploadAdminFile } from "@/shared/lib/upload-file.client";
 
 import { Button } from "../index.ui";
 
@@ -21,30 +22,24 @@ interface ImageUploadProps {
 
 export const ImageUpload = ({ value, onChange, label, error }: ImageUploadProps) => {
   const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
 
   const uploadImage = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
 
     if (!file) return;
 
-    const formData = new FormData();
-
-    formData.append("file", file);
-
     try {
       setIsUploading(true);
+      setUploadError("");
 
-      const { data } = await apiClient.post("/admin/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      onChange(data.url);
+      onChange(await uploadAdminFile(file, { image: true }));
     } catch (error) {
       console.error("Ошибка загрузки изображения", error);
+      setUploadError("Не удалось загрузить фото");
     } finally {
       setIsUploading(false);
+      event.target.value = "";
     }
   };
 
@@ -100,8 +95,8 @@ export const ImageUpload = ({ value, onChange, label, error }: ImageUploadProps)
         )}
       </div>
 
-      {error && (
-          <p className={classNames("p3", scss["upload__error"])}>{error}</p>
+      {(uploadError || error) && (
+          <p className={classNames("p3", scss["upload__error"])}>{uploadError || error}</p>
         )}
     </div>
   );

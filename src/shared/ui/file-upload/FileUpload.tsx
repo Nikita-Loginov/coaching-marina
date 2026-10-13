@@ -5,6 +5,7 @@ import { FileText, Upload, X } from "lucide-react";
 import classNames from "classnames";
 
 import { apiClient } from "@/shared/api/client";
+import { uploadAdminFile } from "@/shared/lib/upload-file.client";
 
 import { Button } from "../index.ui";
 
@@ -26,6 +27,7 @@ export const FileUpload = ({
   accept = ".pdf,.doc,.docx",
 }: FileUploadProps) => {
   const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
 
   const uploadFile = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -34,22 +36,14 @@ export const FileUpload = ({
 
     if (!file) return;
 
-    const formData = new FormData();
-
-    formData.append("file", file);
-
     try {
       setIsUploading(true);
+      setUploadError("");
 
-      const { data } = await apiClient.post("/admin/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      onChange(data.url);
+      onChange(await uploadAdminFile(file));
     } catch (error) {
       console.error("Ошибка загрузки файла", error);
+      setUploadError("Не удалось загрузить файл");
     } finally {
       setIsUploading(false);
 
@@ -129,14 +123,14 @@ export const FileUpload = ({
         )}
       </div>
 
-      {error && (
+      {(uploadError || error) && (
         <p
           className={classNames(
             "p3",
             scss["upload__error"]
           )}
         >
-          {error}
+          {uploadError || error}
         </p>
       )}
     </div>
