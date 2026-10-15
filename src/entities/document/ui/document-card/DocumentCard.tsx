@@ -6,10 +6,11 @@ import type { DocumentItem } from "../../model/document.types";
 
 import { preventOrphans } from "@/shared/utils/preventOrphans.util";
 
+import { toPublicFileUrl } from "@/shared/lib/public-file-url";
+
 import {
   getFileFormat,
   getFileSize,
-  downloadFile,
 } from "@/shared/utils/document.utils";
 
 import { Icons } from "@/shared/icons/index.icons";
@@ -39,15 +40,14 @@ export const DocumentCard = ({ document }: DocumentCardProps) => {
           </div>
 
           {/* <div className={scss["document-card__header-top"]}> */}
-            <p
+            <a
               className="p1"
-              style={{
-                cursor: "pointer"
-              }}
-              onClick={() => downloadFile(document.file, document.name)}
+              href={toPublicFileUrl(document.file)}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {preventOrphans(document.name)}
-            </p>
+            </a>
           {/* </div> */}
 
           {/* <div className={scss["document-card__info"]}>

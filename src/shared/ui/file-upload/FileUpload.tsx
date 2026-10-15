@@ -6,6 +6,7 @@ import classNames from "classnames";
 
 import { apiClient } from "@/shared/api/client";
 import { uploadAdminFile, UploadProgress as UploadProgressState } from "@/shared/lib/upload-file.client";
+import { toPublicFileUrl } from "@/shared/lib/public-file-url";
 import { UploadProgress } from "@/shared/ui/upload-progress/UploadProgress";
 
 import { Button } from "../index.ui";
@@ -90,7 +91,7 @@ export const FileUpload = ({
               <FileText size={24} />
 
               <a
-                href={value}
+                href={toPublicFileUrl(value)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p3"

@@ -1,3 +1,5 @@
+import { toPublicFileUrl } from "@/shared/lib/public-file-url";
+
 export const getFileFormat = (file: string): string => {
   const cleanFile = file.split("?")[0];
   const extension = cleanFile.split(".").pop();
@@ -18,7 +20,7 @@ export const formatFileSize = (bytes: number): string => {
 
 export const getFileSize = async (file: string): Promise<string> => {
   try {
-    const response = await fetch(file, {
+    const response = await fetch(toPublicFileUrl(file), {
       method: "HEAD",
     });
 
@@ -41,9 +43,13 @@ export const getFileSize = async (file: string): Promise<string> => {
 export const downloadFile = (file: string, name?: string): void => {
   const link = document.createElement("a");
 
-  link.href = file;
-  link.target = '_blank'
-  link.download = name || file.split("/").pop() || "document";
+  link.href = toPublicFileUrl(file);
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+
+  if (name) {
+    link.download = name;
+  }
 
   document.body.appendChild(link);
   link.click();
