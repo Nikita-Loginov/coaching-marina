@@ -11,6 +11,8 @@ export type ProgramContent = {
   items: ProgramContentItem[];
   showed: boolean;
   variant: "small" | "big" | "center";
+  buttonShowed?: boolean;
+  buttonText?: string;
 };
 
 export type ProgramImage = {

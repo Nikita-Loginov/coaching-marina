@@ -6,6 +6,12 @@ import { Container, ListDots } from "@/shared/ui/index.ui";
 
 import { ContactMessageBtn } from "@/features/contact-message/ui/contact-message-btn/ContactMessageBtn";
 
+import {
+  cardButtonPreset,
+  withCardButton,
+  type ProgramContentKey,
+} from "@/entities/program/model/program-card-button";
+
 import { getPrograms } from "@/entities/program/model/program.queries";
 
 import { preventOrphans } from "@/shared/utils/preventOrphans.util";
@@ -43,7 +49,10 @@ export const EducationInfo = async () => {
                 descriptionFull,
               } = program;
 
-              const programItems = [
+              const programItems: {
+                key: ProgramContentKey;
+                content: NonNullable<typeof skills>;
+              }[] = [
                 {
                   key: "suitableRequests",
                   content: suitableRequests,
@@ -51,7 +60,7 @@ export const EducationInfo = async () => {
                 ...(skills
                   ? [
                       {
-                        key: "skills",
+                        key: "skills" as const,
                         content: skills,
                       },
                     ]
@@ -71,7 +80,7 @@ export const EducationInfo = async () => {
                 ...(learningValue
                   ? [
                       {
-                        key: "learningValue",
+                        key: "learningValue" as const,
                         content: learningValue,
                       },
                     ]
@@ -171,32 +180,35 @@ export const EducationInfo = async () => {
 
                         if (!content?.showed) return null;
 
-                        const isWorkflow = key === "workflow";
+                        const resolved = withCardButton(
+                          content,
+                          cardButtonPreset(program, key)
+                        );
 
                         return (
                           <div
                             className={classNames(
                               scss["education-info-card"],
-                              content.variant === "big"
+                              resolved.variant === "big"
                                 ? scss["education-info-card--active"]
                                 : null
                             )}
                             key={key}
                           >
                             <p className={scss["education-info-card__title"]}>
-                              {preventOrphans(content.title)}
+                              {preventOrphans(resolved.title)}
                             </p>
 
                             <div
                               className={classNames(
                                 scss["education-info-card__boxs"],
-                                content.items.length > 6
+                                resolved.items.length > 6
                                   ? scss["education-info-card__boxs--grid"]
                                   : null
                               )}
                             >
-                              {content.items.length > 0 &&
-                                content.items.map((item, index) => {
+                              {resolved.items.length > 0 &&
+                                resolved.items.map((item, index) => {
                                   const { title, desc, as = "default" } = item;
 
                                   return as === "default" ? (
@@ -273,7 +285,7 @@ export const EducationInfo = async () => {
                                 })}
                             </div>
 
-                            {isWorkflow && (
+                            {resolved.buttonShowed && resolved.buttonText ? (
                               <div
                                 className={scss["education-info-card__btns"]}
                               >
@@ -281,10 +293,10 @@ export const EducationInfo = async () => {
                                   theme="primary"
                                   size="medium"
                                 >
-                                  <p className="p1">Заказать тест-драйв</p>
+                                  <p className="p1">{resolved.buttonText}</p>
                                 </ContactMessageBtn>
                               </div>
-                            )}
+                            ) : null}
                           </div>
                         );
                       })}

@@ -4,7 +4,13 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import classNames from "classnames";
 import { useEffect, useMemo } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
+import {
+  useFieldArray,
+  useForm,
+  type FieldErrors,
+  type UseFormRegister,
+  type UseFormWatch,
+} from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
@@ -20,7 +26,11 @@ import {
 
 import { useProgramQuery } from "../../model/useProgramQuery";
 
-import type { ProgramContent } from "@/entities/program/model/program.types";
+import {
+  cardButtonPreset,
+  withCardButton,
+  type ProgramContentKey,
+} from "@/entities/program/model/program-card-button";
 
 import {
   useCreateProgram,
@@ -66,6 +76,46 @@ const contentVariantItems = [
   },
 ];
 
+const CardButtonFields = ({
+  name,
+  register,
+  watch,
+  errors,
+}: {
+  name: ProgramContentKey;
+  register: UseFormRegister<ProgramFormInput>;
+  watch: UseFormWatch<ProgramFormInput>;
+  errors: FieldErrors<ProgramFormInput>;
+}) => {
+  const sectionErrors = errors[name];
+  const showed = watch(`${name}.buttonShowed`);
+
+  return (
+    <>
+      <div className={scss["admin-form__item"]}>
+        <Check
+          {...register(`${name}.buttonShowed`)}
+          content={<p className="p3">Показывать кнопку</p>}
+        />
+      </div>
+
+      {showed ? (
+        <div className={scss["admin-form__item"]}>
+          <Input
+            label="Текст кнопки"
+            {...register(`${name}.buttonText`)}
+            error={
+              sectionErrors && "buttonText" in sectionErrors
+                ? sectionErrors.buttonText?.message
+                : undefined
+            }
+          />
+        </div>
+      ) : null}
+    </>
+  );
+};
+
 export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
   const router = useRouter();
   const isEdit = Boolean(id);
@@ -102,6 +152,8 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         ],
         showed: true,
         variant: "small",
+        buttonShowed: false,
+        buttonText: "",
       },
 
       suitableRequests: {
@@ -114,6 +166,8 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         ],
         showed: true,
         variant: "small",
+        buttonShowed: false,
+        buttonText: "",
       },
 
       workflow: {
@@ -126,6 +180,8 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         ],
         showed: true,
         variant: "small",
+        buttonShowed: false,
+        buttonText: "",
       },
 
       cooperationFormat: {
@@ -138,6 +194,8 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         ],
         showed: true,
         variant: "small",
+        buttonShowed: false,
+        buttonText: "",
       },
 
       benefits: {
@@ -150,6 +208,8 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         ],
         showed: true,
         variant: "small",
+        buttonShowed: false,
+        buttonText: "",
       },
 
       skills: {
@@ -162,6 +222,8 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         ],
         showed: true,
         variant: "small",
+        buttonShowed: false,
+        buttonText: "",
       },
 
       learningValue: {
@@ -174,6 +236,8 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
         ],
         showed: true,
         variant: "small",
+        buttonShowed: false,
+        buttonText: "",
       },
 
       reviews: [],
@@ -255,13 +319,35 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
           alt: program.img.alt,
         },
 
-        forWhom: program.forWhom,
-        suitableRequests: program.suitableRequests,
-        workflow: program.workflow,
-        cooperationFormat: program.cooperationFormat,
-        skills: program.skills,
-        learningValue: program.learningValue,
-        benefits: program.benefits,
+        forWhom: withCardButton(
+          program.forWhom,
+          cardButtonPreset(program, "forWhom")
+        ),
+        suitableRequests: withCardButton(
+          program.suitableRequests,
+          cardButtonPreset(program, "suitableRequests")
+        ),
+        workflow: withCardButton(
+          program.workflow,
+          cardButtonPreset(program, "workflow")
+        ),
+        cooperationFormat: withCardButton(
+          program.cooperationFormat,
+          cardButtonPreset(program, "cooperationFormat")
+        ),
+        skills: program.skills
+          ? withCardButton(program.skills, cardButtonPreset(program, "skills"))
+          : program.skills,
+        learningValue: program.learningValue
+          ? withCardButton(
+              program.learningValue,
+              cardButtonPreset(program, "learningValue")
+            )
+          : program.learningValue,
+        benefits: withCardButton(
+          program.benefits,
+          cardButtonPreset(program, "benefits")
+        ),
         reviews: program.reviews ?? [],
       });
     }
@@ -569,6 +655,13 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                     />
                   </div>
 
+                  <CardButtonFields
+                    name="forWhom"
+                    register={register}
+                    watch={watch}
+                    errors={errors}
+                  />
+
                   <div className={scss["admin-form__item"]}>
                     <Select
                       label="Размер блока"
@@ -742,6 +835,13 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                     />
                   </div>
 
+                  <CardButtonFields
+                    name="suitableRequests"
+                    register={register}
+                    watch={watch}
+                    errors={errors}
+                  />
+
                   <div className={scss["admin-form__item"]}>
                     <Select
                       label="Размер блока"
@@ -909,6 +1009,13 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                       error={errors.workflow?.showed?.message}
                     />
                   </div>
+
+                  <CardButtonFields
+                    name="workflow"
+                    register={register}
+                    watch={watch}
+                    errors={errors}
+                  />
 
                   <div className={scss["admin-form__item"]}>
                     <Select
@@ -1085,6 +1192,13 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                     />
                   </div>
 
+                  <CardButtonFields
+                    name="cooperationFormat"
+                    register={register}
+                    watch={watch}
+                    errors={errors}
+                  />
+
                   <div className={scss["admin-form__item"]}>
                     <Select
                       label="Размер блока"
@@ -1253,6 +1367,13 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                     />
                   </div>
 
+                  <CardButtonFields
+                    name="benefits"
+                    register={register}
+                    watch={watch}
+                    errors={errors}
+                  />
+
                   <div className={scss["admin-form__item"]}>
                     <Select
                       label="Размер блока"
@@ -1412,6 +1533,13 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                       error={errors.skills?.showed?.message}
                     />
                   </div>
+
+                  <CardButtonFields
+                    name="skills"
+                    register={register}
+                    watch={watch}
+                    errors={errors}
+                  />
 
                   <div className={scss["admin-form__item"]}>
                     <Select
@@ -1583,6 +1711,13 @@ export const ProgramAdminForm = ({ id, mode }: ProgramAdminFormProps) => {
                       error={errors.learningValue?.showed?.message}
                     />
                   </div>
+
+                  <CardButtonFields
+                    name="learningValue"
+                    register={register}
+                    watch={watch}
+                    errors={errors}
+                  />
 
                   <div className={scss["admin-form__item"]}>
                     <Select

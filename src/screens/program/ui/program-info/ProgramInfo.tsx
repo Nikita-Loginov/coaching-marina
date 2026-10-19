@@ -4,6 +4,12 @@ import { Container } from "@/shared/ui/index.ui";
 
 import scss from "./ProgramInfo.module.scss";
 
+import {
+  cardButtonPreset,
+  withCardButton,
+  type ProgramContentKey,
+} from "@/entities/program/model/program-card-button";
+
 import type {
   ProgramContent,
   ProgramItem,
@@ -19,10 +25,10 @@ interface ProgramInfoProps {
 type ProgramInfoItem = ProgramContent;
 
 export const ProgramInfo = ({ program }: ProgramInfoProps) => {
-  const { forWhom, suitableRequests, workflow, cooperationFormat, benefits, btnTextInner } =
+  const { forWhom, suitableRequests, workflow, cooperationFormat, benefits } =
     program;
 
-  const programItems = [
+  const programItems: { key: ProgramContentKey; content: ProgramContent }[] = [
     {
       key: "forWhom",
       content: forWhom,
@@ -33,10 +39,7 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
     },
     {
       key: "workflow",
-      content: {
-        ...workflow,
-        // variant: "active",
-      },
+      content: workflow,
     },
     {
       key: "cooperationFormat",
@@ -53,31 +56,35 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
       <Container>
         <div className={scss["program-info__inner"]}>
           <div className={scss["program-info__items"]}>
-            {programItems.map((programItem, index) => {
+            {programItems.map((programItem) => {
               const { key, content } = programItem;
 
               if (!content?.showed) return null;
 
-              const isCooperationFormat = key === "cooperationFormat";
+              const resolved = withCardButton(
+                content,
+                cardButtonPreset(program, key)
+              );
 
               return (
                 <div
+                  key={key}
                   className={classNames(
                     scss["program-info__item"],
-                    content?.variant === "big"
+                    resolved.variant === "big"
                       ? scss["program-info__item--active"]
                       : null,
-                    content?.variant === "center"
+                    resolved.variant === "center"
                       ? scss["program-info__item--center"]
                       : null
                   )}
                 >
                   <p className={scss["program-info__item-title"]}>
-                    {preventOrphans(content.title)}
+                    {preventOrphans(resolved.title)}
                   </p>
 
                   <div className={scss["program-info__item-boxs"]}>
-                    {content.items.map((item) => {
+                    {resolved.items.map((item) => {
                       const { title, desc, as = "default" } = item;
 
                       return as === "default" ? (
@@ -124,13 +131,13 @@ export const ProgramInfo = ({ program }: ProgramInfoProps) => {
                     })}
                   </div>
 
-                  {isCooperationFormat && (
+                  {resolved.buttonShowed && resolved.buttonText ? (
                     <div className={scss["program-info__item-btns"]}>
                       <ContactMessageBtn theme="primary" size="medium">
-                        <p className="p2">{btnTextInner}</p>
+                        <p className="p2">{resolved.buttonText}</p>
                       </ContactMessageBtn>
                     </div>
-                  )}
+                  ) : null}
                 </div>
               );
             })}

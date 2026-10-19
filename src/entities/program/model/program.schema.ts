@@ -6,12 +6,22 @@ const programContentItemSchema = z.object({
   as: z.enum(["default", "list"]).default("default"),
 });
 
-const programContentSchema = z.object({
-  title: z.string().min(1, "Обязательное поле"),
-  items: z.array(programContentItemSchema),
-  showed: z.boolean().default(true),
-  variant: z.enum(["small", "big", "center"]).default("small"),
-});
+const programContentSchema = z
+  .object({
+    title: z.string().min(1, "Обязательное поле"),
+    items: z.array(programContentItemSchema),
+    showed: z.boolean().default(true),
+    variant: z.enum(["small", "big", "center"]).default("small"),
+    buttonShowed: z.boolean().default(false),
+    buttonText: z.string().default(""),
+  })
+  .refine(
+    (value) => !value.buttonShowed || value.buttonText.trim().length > 0,
+    {
+      message: "Укажите текст кнопки",
+      path: ["buttonText"],
+    }
+  );
 
 const reviewSchema = z.object({
   id: z.string().min(1, "Обязательное поле"),
