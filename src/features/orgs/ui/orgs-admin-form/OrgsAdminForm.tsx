@@ -207,6 +207,7 @@ export const OrgsAdminForm = () => {
       toast.success("Данные успешно измененены");
     } catch (error) {
       console.error("Ошибка сохранения данных организации:", error);
+      toast.error("Не удалось сохранить");
     }
   };
 
