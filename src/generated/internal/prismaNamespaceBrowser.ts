@@ -110,6 +110,7 @@ export const PersonScalarFieldEnum = {
   studentSupport: 'studentSupport',
   internationalCooperation: 'internationalCooperation',
   documents: 'documents',
+  hero: 'hero',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

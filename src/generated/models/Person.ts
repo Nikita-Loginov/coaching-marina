@@ -83,6 +83,7 @@ export type PersonCountAggregateOutputType = {
   studentSupport: number
   internationalCooperation: number
   documents: number
+  hero: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -146,6 +147,7 @@ export type PersonCountAggregateInputType = {
   studentSupport?: true
   internationalCooperation?: true
   documents?: true
+  hero?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -260,6 +262,7 @@ export type PersonGroupByOutputType = {
   studentSupport: runtime.JsonValue
   internationalCooperation: runtime.JsonValue
   documents: runtime.JsonValue
+  hero: runtime.JsonValue | null
   createdAt: Date
   updatedAt: Date
   _count: PersonCountAggregateOutputType | null
@@ -310,6 +313,7 @@ export type PersonWhereInput = {
   studentSupport?: Prisma.JsonFilter<"Person">
   internationalCooperation?: Prisma.JsonFilter<"Person">
   documents?: Prisma.JsonFilter<"Person">
+  hero?: Prisma.JsonNullableFilter<"Person">
   createdAt?: Prisma.DateTimeFilter<"Person"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Person"> | Date | string
 }
@@ -337,6 +341,7 @@ export type PersonOrderByWithRelationInput = {
   studentSupport?: Prisma.SortOrder
   internationalCooperation?: Prisma.SortOrder
   documents?: Prisma.SortOrder
+  hero?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -367,6 +372,7 @@ export type PersonWhereUniqueInput = Prisma.AtLeast<{
   studentSupport?: Prisma.JsonFilter<"Person">
   internationalCooperation?: Prisma.JsonFilter<"Person">
   documents?: Prisma.JsonFilter<"Person">
+  hero?: Prisma.JsonNullableFilter<"Person">
   createdAt?: Prisma.DateTimeFilter<"Person"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Person"> | Date | string
 }, "id">
@@ -394,6 +400,7 @@ export type PersonOrderByWithAggregationInput = {
   studentSupport?: Prisma.SortOrder
   internationalCooperation?: Prisma.SortOrder
   documents?: Prisma.SortOrder
+  hero?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.PersonCountOrderByAggregateInput
@@ -429,6 +436,7 @@ export type PersonScalarWhereWithAggregatesInput = {
   studentSupport?: Prisma.JsonWithAggregatesFilter<"Person">
   internationalCooperation?: Prisma.JsonWithAggregatesFilter<"Person">
   documents?: Prisma.JsonWithAggregatesFilter<"Person">
+  hero?: Prisma.JsonNullableWithAggregatesFilter<"Person">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Person"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Person"> | Date | string
 }
@@ -456,6 +464,7 @@ export type PersonCreateInput = {
   studentSupport: Prisma.JsonNullValueInput | runtime.InputJsonValue
   internationalCooperation: Prisma.JsonNullValueInput | runtime.InputJsonValue
   documents: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  hero?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -483,6 +492,7 @@ export type PersonUncheckedCreateInput = {
   studentSupport: Prisma.JsonNullValueInput | runtime.InputJsonValue
   internationalCooperation: Prisma.JsonNullValueInput | runtime.InputJsonValue
   documents: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  hero?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -510,6 +520,7 @@ export type PersonUpdateInput = {
   studentSupport?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   internationalCooperation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   documents?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  hero?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -537,6 +548,7 @@ export type PersonUncheckedUpdateInput = {
   studentSupport?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   internationalCooperation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   documents?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  hero?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -564,6 +576,7 @@ export type PersonCreateManyInput = {
   studentSupport: Prisma.JsonNullValueInput | runtime.InputJsonValue
   internationalCooperation: Prisma.JsonNullValueInput | runtime.InputJsonValue
   documents: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  hero?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -591,6 +604,7 @@ export type PersonUpdateManyMutationInput = {
   studentSupport?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   internationalCooperation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   documents?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  hero?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -618,6 +632,7 @@ export type PersonUncheckedUpdateManyInput = {
   studentSupport?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   internationalCooperation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   documents?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  hero?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -645,6 +660,7 @@ export type PersonCountOrderByAggregateInput = {
   studentSupport?: Prisma.SortOrder
   internationalCooperation?: Prisma.SortOrder
   documents?: Prisma.SortOrder
+  hero?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -708,6 +724,7 @@ export type PersonSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   studentSupport?: boolean
   internationalCooperation?: boolean
   documents?: boolean
+  hero?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["person"]>
@@ -735,6 +752,7 @@ export type PersonSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   studentSupport?: boolean
   internationalCooperation?: boolean
   documents?: boolean
+  hero?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["person"]>
@@ -762,6 +780,7 @@ export type PersonSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   studentSupport?: boolean
   internationalCooperation?: boolean
   documents?: boolean
+  hero?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["person"]>
@@ -789,11 +808,12 @@ export type PersonSelectScalar = {
   studentSupport?: boolean
   internationalCooperation?: boolean
   documents?: boolean
+  hero?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PersonOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "middlename" | "fullname" | "post" | "clients" | "countAreas" | "license" | "about" | "contacts" | "socials" | "practice" | "organization" | "management" | "education" | "materialTechnicalSupport" | "paidEducationalServices" | "financialActivity" | "vacantPlaces" | "studentSupport" | "internationalCooperation" | "documents" | "createdAt" | "updatedAt", ExtArgs["result"]["person"]>
+export type PersonOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "middlename" | "fullname" | "post" | "clients" | "countAreas" | "license" | "about" | "contacts" | "socials" | "practice" | "organization" | "management" | "education" | "materialTechnicalSupport" | "paidEducationalServices" | "financialActivity" | "vacantPlaces" | "studentSupport" | "internationalCooperation" | "documents" | "hero" | "createdAt" | "updatedAt", ExtArgs["result"]["person"]>
 
 export type $PersonPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Person"
@@ -821,6 +841,7 @@ export type $PersonPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     studentSupport: runtime.JsonValue
     internationalCooperation: runtime.JsonValue
     documents: runtime.JsonValue
+    hero: runtime.JsonValue | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["person"]>
@@ -1268,6 +1289,7 @@ export interface PersonFieldRefs {
   readonly studentSupport: Prisma.FieldRef<"Person", 'Json'>
   readonly internationalCooperation: Prisma.FieldRef<"Person", 'Json'>
   readonly documents: Prisma.FieldRef<"Person", 'Json'>
+  readonly hero: Prisma.FieldRef<"Person", 'Json'>
   readonly createdAt: Prisma.FieldRef<"Person", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Person", 'DateTime'>
 }

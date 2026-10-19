@@ -19,6 +19,8 @@ import {
 import { useOrgsQuery } from "../../model/useOrgsMutations";
 import { useUpdateOrgs } from "../../model/useOrgsQuery";
 
+import { defaultPersonHero } from "@/entities/person/model/person-hero";
+
 import {
   OrgsFormValues,
   PersonFormValues,
@@ -136,10 +138,14 @@ export const OrgsAdminForm = () => {
       },
 
       documents: [],
+
+      hero: defaultPersonHero,
     },
   });
 
   const aboutDesc = watch("about.desc") ?? [];
+
+  const heroDesc = watch("hero.desc") ?? [];
 
   const aboutList = watch("about.list") ?? [];
 
@@ -196,7 +202,10 @@ export const OrgsAdminForm = () => {
   useEffect(() => {
     if (!person) return;
 
-    reset(person);
+    reset({
+      ...person,
+      hero: person.hero?.title ? person.hero : defaultPersonHero,
+    });
   }, [person, reset]);
 
   const onSubmit = async (data: PersonFormValues) => {
@@ -286,6 +295,92 @@ export const OrgsAdminForm = () => {
                     {...register("license")}
                     error={errors.license?.message}
                   />
+                </div>
+              ),
+            },
+          ]}
+        />
+
+        <Accordeon
+          items={[
+            {
+              key: "hero",
+              label: "Первый экран",
+              children: (
+                <div className={scss["admin-form__inputs"]}>
+                  <Input
+                    label="Бейдж"
+                    {...register("hero.badge")}
+                    error={errors.hero?.badge?.message}
+                  />
+
+                  <Input
+                    label="Заголовок"
+                    {...register("hero.title")}
+                    error={errors.hero?.title?.message}
+                  />
+
+                  <Input
+                    label="Вторая строка заголовка"
+                    {...register("hero.titleAccent")}
+                    error={errors.hero?.titleAccent?.message}
+                  />
+
+                  <div
+                    className={classNames(
+                      scss["admin-form__item"],
+                      scss["admin-form__item--big"]
+                    )}
+                  >
+                    {heroDesc.map((value, index) => (
+                      <div key={index} className={scss["admin-form__item"]}>
+                        <Input
+                          label={`Описание, абзац ${index + 1}`}
+                          as="textarea"
+                          value={value}
+                          onChange={(event) => {
+                            const next = [...heroDesc];
+                            next[index] = event.target.value;
+                            setValue("hero.desc", next, {
+                              shouldDirty: true,
+                              shouldValidate: true,
+                            });
+                          }}
+                          error={errors.hero?.desc?.[index]?.message}
+                        />
+
+                        <Button
+                          theme="secondary"
+                          typeBtn="button"
+                          onClick={() => {
+                            setValue(
+                              "hero.desc",
+                              heroDesc.filter((_, itemIndex) => itemIndex !== index),
+                              {
+                                shouldDirty: true,
+                                shouldValidate: true,
+                              }
+                            );
+                          }}
+                        >
+                          <p className="p3">Удалить абзац</p>
+                        </Button>
+                      </div>
+                    ))}
+
+                    <Button
+                      theme="secondary"
+                      typeBtn="button"
+                      onClick={() => {
+                        setValue("hero.desc", [...heroDesc, ""], {
+                          shouldDirty: true,
+                          shouldValidate: true,
+                        });
+                      }}
+                    >
+                      <p className="p3">Добавить абзац</p>
+                    </Button>
+                  </div>
                 </div>
               ),
             },

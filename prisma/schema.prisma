@@ -47,6 +47,7 @@ model Person {
   studentSupport           Json
   internationalCooperation Json
   documents                Json
+  hero                     Json?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

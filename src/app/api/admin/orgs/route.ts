@@ -74,6 +74,7 @@ const savePerson = async (body: unknown) => {
       studentSupport: parsed.studentSupport,
       internationalCooperation: parsed.internationalCooperation,
       documents: parsed.documents,
+      hero: parsed.hero,
     },
   });
 

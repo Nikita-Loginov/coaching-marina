@@ -1,5 +1,14 @@
 import { z } from "zod";
 
+const personHeroSchema = z.object({
+  badge: z.string().min(1, "Введите бейдж"),
+  title: z.string().min(1, "Введите заголовок"),
+  titleAccent: z.string().default(""),
+  desc: z
+    .array(z.string().min(1, "Введите описание"))
+    .min(1, "Добавьте описание"),
+});
+
 const personAboutSchema = z.object({
   desc: z.array(z.string()),
 
@@ -116,6 +125,8 @@ export const personSchema = z.object({
   internationalCooperation: personInfoSectionSchema,
 
   documents: z.array(personDocumentSchema),
+
+  hero: personHeroSchema,
 });
 
 export type PersonFormValues = z.infer<typeof personSchema>;

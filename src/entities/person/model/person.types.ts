@@ -1,3 +1,5 @@
+import type { PersonHero } from "./person-hero";
+
 export type PersonAbout = {
   desc: string[];
   title: string;
@@ -70,6 +72,8 @@ export type PersonItem = {
   internationalCooperation: PersonInfoSection;
 
   documents: PersonDocument[];
+
+  hero?: PersonHero | null;
 };
 
 export type PersonDocument = {
@@ -107,4 +111,6 @@ export type PersonRow = {
   internationalCooperation: unknown;
 
   documents: unknown;
+
+  hero: unknown;
 };

@@ -1,3 +1,5 @@
+import { resolvePersonHero } from "./person-hero";
+import type { PersonHero } from "./person-hero";
 import type { PersonItem, PersonRow } from "./person.types";
 
 export const mapPerson = (row: PersonRow): PersonItem => ({
@@ -31,4 +33,6 @@ export const mapPerson = (row: PersonRow): PersonItem => ({
     row.internationalCooperation as PersonItem["internationalCooperation"],
 
   documents: row.documents as PersonItem["documents"],
+
+  hero: resolvePersonHero(row.hero as PersonHero | null),
 });

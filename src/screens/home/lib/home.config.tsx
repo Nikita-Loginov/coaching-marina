@@ -3,28 +3,25 @@ import { Images } from "@/shared/images/index.images";
 import HomeHeroButtons from "../ui/home-hero-buttons/HomeHeroButtons";
 
 import type { AccordeonItem, HeroProps } from "@/shared/ui/index.ui";
+import { resolvePersonHero } from "@/entities/person/model/person-hero";
 import type { PersonItem } from "@/entities/person/model/person.types";
 
 import { preventOrphans } from "@/shared/utils/preventOrphans.util";
 
 import { ListNumber } from "@/shared/ui/index.ui";
 
-export const getHomeHeroContent = (person: PersonItem): HeroProps => ({
+export const getHomeHeroContent = (person: PersonItem): HeroProps => {
+  const hero = resolvePersonHero(person.hero);
+
+  return {
   title: {
-    label: "Школа",
-    labelAccent: "управленческого развития",
+    label: hero.title,
+    labelAccent: hero.titleAccent || undefined,
   },
 
-  badge: "ПЕРСОНАЛЬНЫЙ КОУЧИНГ | ОБУЧЕНИЕ | РАЗВИТИЕ КОМАНД",
+  badge: hero.badge,
 
-  desc: [
-    preventOrphans(
-      "Сильное решение начинается с точного ответа на вопрос, что действительно требует вашего внимания.<br> Чем выше ставки, тем важнее не ошибиться в главном."
-    ),
-    preventOrphans(
-      "Для меня коучинг собственников бизнеса и топ-менеджеров - это партнерство в мышлении там, где нет простых ответов, где можно выйти за границы привычного взгляда, увидеть суть и найти сильное решение, какими бы сложными ни были обстоятельства."
-    ),
-  ],
+  desc: hero.desc,
 
   img: {
     src: Images.MarinaOne,
@@ -46,7 +43,8 @@ export const getHomeHeroContent = (person: PersonItem): HeroProps => ({
     position: "left",
     content: <HomeHeroButtons />,
   },
-});
+  };
+};
 
 export const HomeFagItems: AccordeonItem[] = [
   {

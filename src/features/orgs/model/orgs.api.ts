@@ -38,6 +38,8 @@ const mapItemToRow = (
   internationalCooperation: data.internationalCooperation,
 
   documents: data.documents,
+
+  hero: data.hero,
 });
 
 const CHUNK_BYTES = 9 * 1024;
