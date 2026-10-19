@@ -1,24 +1,24 @@
 .philosophy {
   --philosophy-inner-gap: #{calculate-clamp(
-    24px,
-    80px,
-    $desktop-breakpoint,
-    $lg-breakpoint
-  )};
+      24px,
+      80px,
+      $desktop-breakpoint,
+      $lg-breakpoint
+    )};
   --philosophy-top-gap: 20px;
   --philosophy-content-gap: 30px;
   --philosophy-title-offset-base: #{calculate-clamp(
-    15px,
-    40px,
-    $lg-breakpoint,
-    $tablet-breakpoint
-  )};
+      15px,
+      40px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
   --philosophy-title-offset-multiplier: #{calculate-clamp(
-    15px,
-    30px,
-    $lg-breakpoint,
-    $tablet-breakpoint
-  )};
+      15px,
+      30px,
+      $lg-breakpoint,
+      $tablet-breakpoint
+    )};
 
   width: 100%;
 
@@ -71,16 +71,20 @@
     --philosophy-title-offset-base: #{vw(40)};
     --philosophy-title-offset-multiplier: #{vw(30)};
   }
+}
 
-  @media (max-width: $tablet-breakpoint) {
-    &__title {
-      font-size: var(--font-size-xl);
+main {
+  .philosophy {
+    @media (max-width: $tablet-breakpoint) {
+      &__title {
+        font-size: var(--font-size-xl);
+      }
     }
-  }
 
-  @media (max-width: $mobile-breakpoint) {
-    &__title {
-      font-size: var(--font-size-lg);
+    @media (max-width: $mobile-breakpoint) {
+      &__title {
+        font-size: var(--font-size-lg);
+      }
     }
   }
 }
