@@ -1,20 +1,18 @@
-// import { unstable_noStore as noStore } from "next/cache";
+import { unstable_noStore as noStore } from "next/cache";
 
-// import { prisma } from "@/shared/lib/prisma";
+import { prisma } from "@/shared/lib/prisma";
 
 import type { PersonItem } from "./person.types";
-// import { mapPerson } from "./person.mapper";
+import { mapPerson } from "./person.mapper";
 
 export const getPerson = async (): Promise<PersonItem | null> => {
-  return null;
+  noStore();
 
-  // noStore();
+  const row = await prisma.person.findUnique({
+    where: {
+      id: "main",
+    },
+  });
 
-  // const row = await prisma.person.findUnique({
-  //   where: {
-  //     id: "main",
-  //   },
-  // });
-
-  // return row ? mapPerson(row) : null;
+  return row ? mapPerson(row) : null;
 };

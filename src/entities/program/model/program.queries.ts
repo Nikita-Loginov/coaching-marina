@@ -1,39 +1,33 @@
-// import { prisma } from "@/shared/lib/prisma";
-// import { revalidatePath } from "next/cache";
-// import { unstable_noStore as noStore } from "next/cache";
+import { prisma } from "@/shared/lib/prisma";
+import { revalidatePath } from "next/cache";
+import { unstable_noStore as noStore } from "next/cache";
 
 import type { ProgramItem } from "./program.types";
 
-// import { mapProgram } from "./program.mapper";
+import { mapProgram } from "./program.mapper";
 
 export const getPrograms = async (): Promise<ProgramItem[]> => {
-  return [];
+  noStore();
 
-  // noStore();
+  const rows = await prisma.program.findMany({
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
 
-  // const rows = await prisma.program.findMany({
-  //   orderBy: {
-  //     createdAt: "asc",
-  //   },
-  // });
-
-  // return rows.map(mapProgram);
+  return rows.map(mapProgram);
 };
 
 export const getProgramById = async (
   id: string
 ): Promise<ProgramItem | null> => {
-  void id;
+  noStore();
+  
+  const row = await prisma.program.findUnique({
+    where: {
+      id,
+    },
+  });
 
-  return null;
-
-  // noStore();
-
-  // const row = await prisma.program.findUnique({
-  //   where: {
-  //     id,
-  //   },
-  // });
-
-  // return row ? mapProgram(row) : null;
+  return row ? mapProgram(row) : null;
 };
